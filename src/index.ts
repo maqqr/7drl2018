@@ -1,9 +1,9 @@
 import * as $ from "jquery";
+import { GameData } from "./data";
 import { IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 import { ITileset } from "./interface/tileset-schema";
 import { Level } from "./level";
 import { Renderer } from "./renderer";
-
 
 export class Game {
     public static readonly WIDTH: number = 600;
@@ -11,8 +11,10 @@ export class Game {
 
     private renderer: Renderer;
     private currentLevel: Level;
+    private data: GameData;
 
     public start(): void {
+        this.data = new GameData();
         this.renderer = new Renderer(this);
         this.currentLevel = new Level(12, 12);
         Promise.all([this.loadData(), this.renderer.loadGraphics()])
