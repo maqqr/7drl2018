@@ -1,0 +1,7 @@
+{
+    "$schema":"./itemset-schema.json",
+    "items":[
+        {"id":0,"type":"Healing potion","category": "Potion"},
+        {"id":1,"type":"Liquid courage","category":"Potion"}
+    ]
+}

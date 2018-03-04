@@ -1,7 +1,7 @@
 import * as $ from "jquery";
 import { GameData } from "./data";
 import { IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
-import { ITileset } from "./interface/tileset-schema";
+import { ICreatureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { Renderer } from "./renderer";
 
@@ -23,12 +23,25 @@ export class Game {
 
     public async loadData(): Promise<void> {
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
-        const tilesetSchema = await this.loadJSON<ITileset>("data/tileset-schema.json");
-        const creatureSchema = await this.loadJSON<ITileset>("data/creature-schema.json");
+        const tilesetSchema = await this.loadJSON<ITileset>("data/creatureset-schema.json");
+        const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
+        const creaturesetSchema = await this.loadJSON<ICreatureset>("data/itemset-schema.json");
+        const itemset = await this.loadJSON<IItemset>("data/itemset.json");
+        const itemsetSchema = await this.loadJSON<IItemset>("data/tileset-schema.json");
 
         const testmap = await this.loadJSON<IPuzzleRoom>("data/testmap.json");
 
         // TODO: move this code somewhere else
+
+        // Load the creatures to data
+        for (const ent of creatureset.creatures) {
+            this.data.creatures[ent.id] = ent;
+        }
+
+        for (const ent of itemset.items) {
+            this.data.items[ent.id] = ent;
+        }
+
         for (const layer of testmap.layers) {
             if (layer.type === "tilelayer") {
                 const tilelayer = layer as ITileLayer;
@@ -45,6 +58,7 @@ export class Game {
 
     public assetsLoaded(): void {
         console.log("loaded");
+        console.log(this.data.creatures);
         this.refreshDisplay();
     }
 
