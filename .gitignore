@@ -1,6 +1,7 @@
 /*.js
 !index.js
 !webpack.config.js
+!tsx2json.js
 /src/*.js
 /*.d.ts
 /*.log
