@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 import { GameData } from "./data";
-import { IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
+import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { Renderer } from "./renderer";
@@ -31,8 +31,6 @@ export class Game {
 
         const testmap = await this.loadJSON<IPuzzleRoom>("data/testmap.json");
 
-        // TODO: move this code somewhere else
-
         // Load the creatures to data
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
@@ -42,18 +40,8 @@ export class Game {
             this.data.items[ent.id] = ent;
         }
 
-        for (const layer of testmap.layers) {
-            if (layer.type === "tilelayer") {
-                const tilelayer = layer as ITileLayer;
-                for (let y = 0; y < testmap.height; y++) {
-                    for (let x = 0; x < testmap.width; x++) {
-                        const tile = tilelayer.data[x + y * testmap.width];
-                        this.currentLevel.set(x, y, tile - 1);
-                    }
-                }
-                return;
-            }
-        }
+        // Place test puzzle map into current level
+        this.currentLevel.placePuzzleAt(0, 0, testmap);
     }
 
     public assetsLoaded(): void {

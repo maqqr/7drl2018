@@ -31,6 +31,12 @@ export class Renderer {
                 this.renderer.drawTexture(x * 16, y * 16, tile);
             }
         }
+
+        const furnitures = this.game.getCurrentLevel().furnitures;
+        for (const furniture of furnitures) {
+            this.renderer.drawTexture(furniture.x * 16, furniture.y * 16, 1);
+        }
+
         // this.renderer.drawRect(0, 0, 64, 64, true);
         this.renderer.render();
     }
