@@ -1,8 +1,9 @@
 import * as $ from "jquery";
+import { IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 import { ITileset } from "./interface/tileset-schema";
 import { Level } from "./level";
 import { Renderer } from "./renderer";
-import { IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
+
 
 export class Game {
     public static readonly WIDTH: number = 600;

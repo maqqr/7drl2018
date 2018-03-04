@@ -1,0 +1,7 @@
+{
+    "$schema":"./creatureset-schema.json",
+    "creatures":[
+        {"id":0,"type":"Goblin","maxhp": 10,"strength": 3,"speed": 5,"size": 8},
+        {"id":1,"type":"Kobold","maxhp": 8,"strength": 2,"speed": 8,"size": 7}
+    ]
+}
