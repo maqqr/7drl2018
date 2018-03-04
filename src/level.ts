@@ -1,5 +1,6 @@
 import { Furniture } from "./furniture";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
+import { Game } from ".";
 
 type TileID = number;
 
@@ -38,7 +39,7 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
-    public placePuzzleAt(px: number, py: number, puzzle: IPuzzleRoom): void {
+    public placePuzzleAt(game: Game, px: number, py: number, puzzle: IPuzzleRoom): void {
         const getLayerByName = (name: string) => {
             for (const layer of puzzle.layers) {
                 if (layer.name === name) {
@@ -67,7 +68,19 @@ export class Level {
                 furniture.x = furnitureDefinition.x / 16;
                 furniture.y = furnitureDefinition.y / 16 - 1;
                 furniture.dataType = furnitureDefinition.type;
+
+                // Get type from the corresponding tile
                 if (furnitureDefinition.type === "") {
+                    if ("gid" in furnitureDefinition) {
+                        const tileIndex = furnitureDefinition.gid - 1;
+                        const tile = game.data.tiles[tileIndex];
+                        if (tile === undefined) {
+                            console.error("Tile " + furnitureDefinition.gid + " not found.");
+                        }
+                        furniture.dataType = tile.type;
+                    }
+                }
+                if (furniture.dataType === "") {
                     console.error("Furniture object is missing type.");
                     continue;
                 }

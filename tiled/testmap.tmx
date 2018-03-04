@@ -18,7 +18,7 @@
 </data>
  </layer>
  <objectgroup name="furniture">
-  <object id="16" gid="49" x="80" y="80" width="16" height="16"/>
+  <object id="16" gid="49" x="64" y="80" width="16" height="16"/>
   <object id="17" gid="10" x="160" y="112" width="16" height="16"/>
   <object id="18" gid="52" x="128" y="96" width="16" height="16"/>
   <object id="19" gid="31" x="128" y="48" width="16" height="16"/>

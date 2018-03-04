@@ -10,7 +10,7 @@ function filterTiles (children) {
         var child = children[i];
         if (child.name === 'tile') {
             var tile = {
-                id: child.attributes.id,
+                id: parseInt(child.attributes.id),
                 type: child.attributes.type
             };
 
