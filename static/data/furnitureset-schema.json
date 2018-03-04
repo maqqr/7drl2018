@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "definitions": {
+        "furniture": {
+            "$id": "furniture",
+            "type":"object",
+            "required": [
+                "icon","type"
+            ],
+            "properties": {
+                "icon": {"type":"integer"},
+                "movable": {"type":"integer","minimum": 0,"maximum": 21,"default":false},
+                "type": {"type":"string"},
+                "maxsize": {"type":"integer","minimum": 0,"maximum": 21,"default":0},
+                "damage": {"type":"integer","minimum": 0}
+            }
+        }
+    },
+    "type":"object",
+    "required": [
+        "furnitures"
+    ],
+    "properties": {
+        "furnitures": {"type":"array","items": {
+            "$ref":"#definitions/furniture"
+        }}
+    }
+    
+
+}
