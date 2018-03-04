@@ -75,7 +75,7 @@
   </properties>
  </tile>
  <tile id="51" type="pillar"/>
- <tile id="52" type="statua"/>
+ <tile id="52" type="statue"/>
  <tile id="53" type="tomb"/>
  <tile id="54" type="tombbroken"/>
  <tile id="55" type="doorbar"/>
