@@ -20,7 +20,10 @@
  <objectgroup name="furniture">
   <object id="16" gid="49" x="0" y="16" width="16" height="16">
    <properties>
-    <property name="activationtarget" value="[0,0]"/>
+    <property name="activationtarget" value="[[0,0]]"/>
+    <property name="type" value="leverleft"/>
+    <property name="useractivation" value="leverright"/>
+    <property name="useractivationtext" value="You pull the lever."/>
    </properties>
   </object>
   <object id="17" gid="10" x="0" y="32" width="16" height="16"/>
@@ -31,7 +34,14 @@
   <object id="23" gid="74" x="64" y="48" width="16" height="16"/>
   <object id="26" gid="56" x="48" y="64" width="16" height="16"/>
   <object id="27" gid="29" x="32" y="32" width="16" height="16"/>
-  <object id="30" gid="50" x="16" y="16" width="16" height="16"/>
+  <object id="30" gid="50" x="16" y="16" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[0,0]]"/>
+    <property name="type" value="leverright"/>
+    <property name="useractivation" value="leverleft"/>
+    <property name="useractivationtext" value="You pull the lever."/>
+   </properties>
+  </object>
   <object id="32" gid="11" x="16" y="32" width="16" height="16"/>
   <object id="33" gid="12" x="0" y="48" width="16" height="16"/>
   <object id="34" gid="13" x="16" y="48" width="16" height="16"/>
