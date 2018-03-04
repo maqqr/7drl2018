@@ -1,9 +1,7 @@
 import * as $ from "jquery";
 import { GameData } from "./data";
-import { ICreatureset } from "./interface/creatureset-schema";
-import { IItemset } from "./interface/itemset-schema";
 import { IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
-import { ITileset } from "./interface/tileset-schema";
+import { ICreatureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { Renderer } from "./renderer";
 
@@ -25,11 +23,11 @@ export class Game {
 
     public async loadData(): Promise<void> {
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
-        const tilesetSchema = await this.loadJSON<ITileset>("data/tileset-schema.json");
+        const tilesetSchema = await this.loadJSON<ITileset>("data/creatureset-schema.json");
         const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
-        const creaturesetSchema = await this.loadJSON<ICreatureset>("data/creatureset-schema.json");
+        const creaturesetSchema = await this.loadJSON<ICreatureset>("data/itemset-schema.json");
         const itemset = await this.loadJSON<IItemset>("data/itemset.json");
-        const itemsetSchema = await this.loadJSON<IItemset>("data/itemset-schema.json");
+        const itemsetSchema = await this.loadJSON<IItemset>("data/tileset-schema.json");
 
         const testmap = await this.loadJSON<IPuzzleRoom>("data/testmap.json");
 

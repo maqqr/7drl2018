@@ -1,7 +1,6 @@
-import { ICreature } from "./interface/creature-schema";
-import { IItem } from "./interface/item-schema";
+import { ICreature, IItem, ITile } from "./interface/entity-schema";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
-import { ITile } from "./interface/tile-schema";
+
 
 
 
