@@ -1,5 +1,4 @@
-{ "$schema": "./puzzle-schema.json",
-  "height":12,
+{ "height":12,
  "infinite":false,
  "layers":[
         {
@@ -160,6 +159,26 @@
                  "width":16,
                  "x":48,
                  "y":48
+                }, 
+                {
+                 "gid":65,
+                 "height":16,
+                 "id":28,
+                 "name":"",
+                 "properties":
+                    {
+                     "type":"rock"
+                    },
+                 "propertytypes":
+                    {
+                     "type":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -177,11 +196,16 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":28,
+ "nextobjectid":29,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
  "tileheight":16,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"..\/..\/tiled\/tileset.tsx"
+        }],
  "tilewidth":16,
  "type":"map",
  "version":1,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="28">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="29">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -30,6 +30,11 @@
   <object id="25" gid="51" x="128" y="128" width="16" height="16"/>
   <object id="26" gid="56" x="96" y="64" width="16" height="16"/>
   <object id="27" gid="29" x="48" y="48" width="16" height="16"/>
+  <object id="28" gid="65" x="96" y="128" width="16" height="16">
+   <properties>
+    <property name="type" value="rock"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="description"/>
 </map>

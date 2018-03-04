@@ -75,10 +75,24 @@
                     "properties": {
                       "type": "object",
                       "properties": {
-                        "activations": { "type": "string" },
-                        "activationtext": { "type": "string" },
-                        "deactivationtext": { "type": "string" },
-                        "text": { "type": "string" }
+                        "text": { "type": "string" },
+                        "icon": {"type":"integer"},
+                        "movable": {"type":"integer","minimum": 0,"maximum": 21,"default":false},
+                        "type": {"type":"string"},
+                        "maxsize": {"type":"integer","minimum": 0,"maximum": 21,"default":0},
+                        "damage": {"type":"integer","minimum": 0},
+                        "activation": {"type":"string"},
+                        "useractivation": {"type":"string"},
+                        "useractivationtext": {"type":"string"},
+                        "requireitem": {"type":"boolean"},
+                        "activationtarget":{"type":"array","items": {
+                            "type":"array",
+                            "items": {
+                                "type":"integer",
+                                "minItems":2,
+                                "maxItems": 2
+                            }
+                        }}
                       },
                       "additionalProperties": false
                     }
