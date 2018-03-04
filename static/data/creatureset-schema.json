@@ -17,7 +17,11 @@
                     "willpower": {"type":"integer","minimum": 0},
                     "spiritpower": {"type":"integer","minimum": 0},
                     "spiritstability": {"type":"integer","minimum": 0},
-                    "size": {"type":"integer","minimum": 1,"maximum": 20}
+                    "size": {"type":"integer","minimum": 1,"maximum": 20},
+                    "inventoryslots": {"type":"integer","minimum": 0},
+                    "inventory":{"type":"array","items": {
+                        "$ref":"itemset-schema.json#/definitions/item"
+                    }}
                 }
             }
         }

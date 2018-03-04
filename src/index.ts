@@ -1,6 +1,7 @@
 import * as $ from "jquery";
 import { GameData } from "./data";
 import { ICreatureset } from "./interface/creatureset-schema";
+import { IItemset } from "./interface/itemset-schema";
 import { IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 import { ITileset } from "./interface/tileset-schema";
 import { Level } from "./level";
@@ -27,6 +28,8 @@ export class Game {
         const tilesetSchema = await this.loadJSON<ITileset>("data/tileset-schema.json");
         const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
         const creaturesetSchema = await this.loadJSON<ICreatureset>("data/creatureset-schema.json");
+        const itemset = await this.loadJSON<IItemset>("data/itemset.json");
+        const itemsetSchema = await this.loadJSON<IItemset>("data/itemset-schema.json");
 
         const testmap = await this.loadJSON<IPuzzleRoom>("data/testmap.json");
 
@@ -35,6 +38,10 @@ export class Game {
         // Load the creatures to data
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
+        }
+
+        for (const ent of itemset.items) {
+            this.data.items[ent.id] = ent;
         }
 
         for (const layer of testmap.layers) {
@@ -53,6 +60,7 @@ export class Game {
 
     public assetsLoaded(): void {
         console.log("loaded");
+        console.log(this.data.creatures);
         this.refreshDisplay();
     }
 

@@ -1,3 +1,4 @@
+import { IItem } from "./Item-schema";
 export interface ICreature {
     id: number;
     type: string;
@@ -9,4 +10,6 @@ export interface ICreature {
     spiritpower?: number;
     spiritstability?: number;
     size?: number;
+    inventoryslots?: number;
+    inventory?: IItem[];
   }
