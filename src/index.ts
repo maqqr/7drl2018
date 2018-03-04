@@ -1,7 +1,7 @@
 import * as $ from "jquery";
 import { GameData } from "./data";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
-import { ICreatureset, IItemset, ITileset } from "./interface/set-schema";
+import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { Renderer } from "./renderer";
 
@@ -23,11 +23,13 @@ export class Game {
 
     public async loadData(): Promise<void> {
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
-        const tilesetSchema = await this.loadJSON<ITileset>("data/creatureset-schema.json");
+        // const tilesetSchema = await this.loadJSON<ITileset>("data/creatureset-schema.json");
         const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
-        const creaturesetSchema = await this.loadJSON<ICreatureset>("data/itemset-schema.json");
+        // const creaturesetSchema = await this.loadJSON<ICreatureset>("data/itemset-schema.json");
         const itemset = await this.loadJSON<IItemset>("data/itemset.json");
-        const itemsetSchema = await this.loadJSON<IItemset>("data/tileset-schema.json");
+        // const itemsetSchema = await this.loadJSON<IItemset>("data/tileset-schema.json");
+        const furnitureset = await this.loadJSON<IFurnitureset>("data/furnitureset.json");
+
 
         const testmap = await this.loadJSON<IPuzzleRoom>("data/testmap.json");
 
@@ -55,6 +57,18 @@ export class Game {
             if (!("requireitem" in tile)) { this.data.tiles[tile.id].requireitem = null; }
             if (!("useractivation" in tile)) { this.data.tiles[tile.id].useractivation = null; }
             if (!("useractivationtext" in tile)) { this.data.tiles[tile.id].useractivationtext = null; }
+        }
+
+        for (const furry of furnitureset.furnitures) {
+            this.data.furnitures[furry.icon] = furry;
+            if (!("movable" in furry)) { this.data.furnitures[furry.icon].movable = 21; }
+            if (!("maxsize" in furry)) { this.data.furnitures[furry.icon].maxsize = 0; }
+            if (!("damage" in furry)) { this.data.furnitures[furry.icon].damage = 0; }
+            if (!("activation" in furry)) { this.data.furnitures[furry.icon].activation = null; }
+            if (!("useractivation" in furry)) { this.data.furnitures[furry.icon].useractivation = null; }
+            if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
+            if (!("requireitem" in furry)) { this.data.furnitures[furry.icon].requireitem = null; }
+            if (!("activationtarget" in furry)) { this.data.furnitures[furry.icon].activationtarget = null; }
         }
 
         // Place test puzzle map into current level
