@@ -42,5 +42,5 @@ fs.writeFile(outputPath, JSON.stringify(outputObject), function (err) {
     if (err) {
         return console.log(err);
     }
-    console.log("Saved tilemap to " + output);
+    console.log("Saved tilemap to " + outputPath);
 }); 
