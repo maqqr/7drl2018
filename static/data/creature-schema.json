@@ -3,7 +3,8 @@
     "type":"object",
     "required": ["id","maxhp","strength","speed"],
     "properties": {
-        "id": {"type":"string"},
+        "id": {"type":"integer"},
+        "type": {"type":"string"},
         "maxhp": {"type":"integer","minimum": 0},
         "currrenthp": {"type": "integer"},
         "strength": {"type":"integer","minimum": 0},
