@@ -1,5 +1,18 @@
 {
     "compilerOptions": {
-        "sourceMap": true
-    }
+        "sourceMap": true,
+        "module": "commonjs",
+        "target": "es5",
+        "moduleResolution": "Node",
+        "lib": [
+            "dom",
+            "es2015",
+            "es5",
+            "es6"
+        ]
+    },
+    "exclude": [
+        "./node_modules",
+        "./tiled"
+    ]
 }

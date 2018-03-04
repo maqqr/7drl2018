@@ -21,5 +21,8 @@
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
     "xml-parser": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/es6-promise": "^3.3.0"
   }
 }
