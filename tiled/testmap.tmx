@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="10">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="12" height="12">
+  <data encoding="csv">
+9,9,7,7,8,8,9,6,8,6,8,8,
+7,2,2,2,2,2,2,2,2,2,2,9,
+9,2,9,6,6,8,2,9,9,8,2,8,
+7,2,7,8,8,6,2,8,6,6,2,7,
+6,2,8,6,9,49,2,7,9,6,2,6,
+7,2,2,6,2,2,2,6,7,9,2,8,
+9,2,6,8,9,2,6,9,8,6,6,9,
+9,2,9,51,9,8,8,6,9,8,2,8,
+9,2,7,9,6,2,6,7,7,8,2,7,
+7,2,9,8,7,2,6,6,9,7,2,7,
+9,2,2,2,2,2,2,2,2,2,2,6,
+7,6,8,6,9,8,9,6,9,8,9,6
+</data>
+ </layer>
+ <layer name="furniture" width="12" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,65,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#00ff7f" name="switch">
+  <object id="6" x="80" y="64" width="16" height="16">
+   <properties>
+    <property name="activations" value="[[2,5], [5,5]]"/>
+    <property name="activationtext" value="You hear a deep grinding sound of moving stone."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ff0000" name="pressureplate">
+  <object id="7" x="48" y="112" width="16" height="16">
+   <properties>
+    <property name="activations" value="[[2,5], [6,1]]"/>
+    <property name="activationtext" value="Click. You hear a door open somewhere."/>
+    <property name="deactivationtext" value="You hear a door closing somewhere."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="description">
+  <object id="9" x="144" y="96" width="16" height="16">
+   <properties>
+    <property name="text" value="You step into a test room. Here should be a description of the room."/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

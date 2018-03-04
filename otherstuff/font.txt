@@ -1,0 +1,5 @@
+To get the top and left corner of each character, the formula would be something similar to this:
+
+top = (ascii - 32) / 16 * 12;
+
+left = (ascii - 32) % 16 * 8;
