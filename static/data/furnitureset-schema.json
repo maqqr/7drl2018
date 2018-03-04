@@ -9,7 +9,7 @@
             ],
             "properties": {
                 "icon": {"type":"integer"},
-                "movable": {"type":"integer","minimum": 0,"maximum": 21,"default":false},
+                "movable": {"type":"integer","minimum": 0,"maximum": 21,"default":21},
                 "type": {"type":"string"},
                 "maxsize": {"type":"integer","minimum": 0,"maximum": 21,"default":0},
                 "damage": {"type":"integer","minimum": 0},
@@ -19,10 +19,10 @@
                 "requireitem": {"type":"boolean"},
                 "activationtarget":{"type":"array","items": {
                     "type":"array",
+                    "minItems":2,
+                    "maxItems":2,
                     "items": {
-                        "type":"integer",
-                        "minItems":2,
-                        "maxItems": 2
+                        "type":"integer"
                     }
                 }}
             }

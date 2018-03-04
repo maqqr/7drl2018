@@ -29,7 +29,7 @@ export interface IItem {
     category: string;
 }
 export interface IFurniture {
-    id: number;
+    icon: number;
     type: string;
     movable?: number;
     maxsize?: number;
