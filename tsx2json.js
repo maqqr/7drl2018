@@ -31,7 +31,7 @@ var obj = parse(xml);
 // console.log(inspect(obj.root.children, { colors: true, depth: Infinity }));
 var tiles = filterTiles(obj.root.children);
 
-var outputPath = 'data/tileset.json';
+var outputPath = 'static/data/tileset.json';
 
 var outputObject = {
     '$schema': './tileset-schema.json',
