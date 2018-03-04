@@ -1,7 +1,6 @@
 {
     "$schema": "./furnitureset-schema.json",
     "furnitures": [
-        {"icon": 0,"type": "empty","movable": 21,"maxsize": 0,"description": "This is empty."},
         {"icon": 9,"type": "door","movable": 21,"maxsize": 0,"description": "This is a closed door."},
         {"icon": 10,"type": "dooropen","movable": 21,"maxsize": 20,"description": "This is a opened door."},
         {"icon": 11,"type": "doormechanised","movable": 21,"maxsize": 0,"description": "This is a closed door.","activation": "doormechanisedopen"},
