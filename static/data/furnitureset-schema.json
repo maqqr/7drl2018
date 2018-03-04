@@ -15,7 +15,11 @@
                 "damage": {"type":"integer","minimum": 0},
                 "activation": {"type":"string"},
                 "useractivation": {"type":"string"},
-                "useractivationtext": {"type":"string"}
+                "useractivationtext": {"type":"string"},
+                "requireitem": {"type":"boolean"},
+                "activationtarget":{"type":"array","items": {
+                    "type":"integer"
+                }}
             }
         }
     },

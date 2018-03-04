@@ -37,4 +37,6 @@ export interface IFurniture {
     activation?: string;
     useractivation?: string;
     useractivationtext?: string;
+    requireitem?: boolean;
+    activationtarget?: number[];
 }
