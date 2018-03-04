@@ -1,5 +1,5 @@
 export interface ITile {
-    id: string;
+    id: number;
     type: string;
     maxsize: number;
     activation?: string;

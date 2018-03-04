@@ -1,5 +1,6 @@
 export interface ICreature {
-    id: string;
+    id: number;
+    type: string;
     maxhp?: number;
     currrenthp?: number;
     strength: number;
