@@ -18,7 +18,12 @@
                 "useractivationtext": {"type":"string"},
                 "requireitem": {"type":"boolean"},
                 "activationtarget":{"type":"array","items": {
-                    "type":"integer"
+                    "type":"array",
+                    "items": {
+                        "type":"integer",
+                        "minItems":2,
+                        "maxItems": 2
+                    }
                 }}
             }
         }
