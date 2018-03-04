@@ -1,0 +1,6 @@
+{
+    "$schema": "./furnitureset-schema.json",
+    "furnitures": [
+        {"icon": 64,"type": "rock","movable": 21,"maxsize": 0}
+    ]
+}
