@@ -8,5 +8,5 @@ export class GameData {
 
     public tiles: { [id: number]: ITile } = {};
 
-    public creatureTypes: { [id: number]: ICreature } = {};
+    public creatures: { [id: number]: ICreature } = {};
 }

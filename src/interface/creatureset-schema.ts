@@ -1,5 +1,5 @@
 import { ICreature } from "./creature-schema";
 
-export interface ICreatureSet {
+export interface ICreatureset {
     creatures: ICreature[];
 }
