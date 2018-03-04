@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "required": ["tiles"],
+    "properties": {
+        "tiles":{
+            "type": "array","items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id","type", "maxsize"],
+                "properties": {
+                    "id": {"type": "string"},
+                    "type": {"type": "string"},
+                    "maxsize": {"type": "integer", "default": 0, "minimum":0, "maximum":20},
+                    "activation": {"type": "string"},
+                    "requireitem": {"type": "string"},
+                    "useractivation": {"type": "string"},
+                    "useractivationtext": {"type": "string"},
+                    "transparent": {"type": "boolean","default":"false"},
+                    "damage": {"type": "integer"}
+                }
+            }
+        }
+   }
+   
+}
