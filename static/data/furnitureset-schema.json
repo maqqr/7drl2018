@@ -12,7 +12,10 @@
                 "movable": {"type":"integer","minimum": 0,"maximum": 21,"default":false},
                 "type": {"type":"string"},
                 "maxsize": {"type":"integer","minimum": 0,"maximum": 21,"default":0},
-                "damage": {"type":"integer","minimum": 0}
+                "damage": {"type":"integer","minimum": 0},
+                "activation": {"type":"string"},
+                "useractivation": {"type":"string"},
+                "useractivationtext": {"type":"string"}
             }
         }
     },

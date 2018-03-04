@@ -34,4 +34,7 @@ export interface IFurniture {
     movable?: number;
     maxsize?: number;
     damage?: number;
+    activation?: string;
+    useractivation?: string;
+    useractivationtext?: string;
 }
