@@ -1,4 +1,5 @@
 import { Game } from "./index";
+import { Level } from "./level";
 import { PixiRenderer } from "./pixirenderer";
 
 export class Renderer {
@@ -16,19 +17,20 @@ export class Renderer {
 
     public async loadGraphics() {
         return new Promise((resolve, reject) => {
-            this.renderer.loadAssets(["font.png"], resolve);
+            this.renderer.loadAssets(["font.png", "tileset.png"], resolve);
         });
     }
 
     public renderGame() {
-        this.renderer.clear();
-        this.renderer.drawTexture(30, 30);
-        this.renderer.drawTexture(60, 60);
-        this.renderer.drawTexture(90, 90);
-        this.renderer.render();
+        const level = this.game.getCurrentLevel();
 
         this.renderer.clear();
-        this.renderer.drawTexture(250, 30);
+        for (let y = 0; y < level.height; y++) {
+            for (let x = 0; x < level.width; x++) {
+                const tile = level.get(x, y);
+                this.renderer.drawTexture(x * 16, y * 16, 5);
+            }
+        }
         this.renderer.drawRect(0, 0, 64, 64, true);
         this.renderer.render();
     }

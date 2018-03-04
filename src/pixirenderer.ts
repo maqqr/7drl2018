@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import { Color } from "./color";
 
 abstract class RenderPool<T extends PIXI.DisplayObject> {
     protected drawn: number = 0;
@@ -103,9 +104,11 @@ export class PixiRenderer {
         this.grapgicsPool.clear();
     }
 
-    public drawTexture(x: number, y: number, tint = 0xFFFFFF): void {
-        const fontTex = PIXI.utils.TextureCache["font.png"];
-        const tex = new PIXI.Texture(fontTex, new PIXI.Rectangle(0, 0, 16, 16));
+    public drawTexture(x: number, y: number, index: number, tint = 0xFFFFFF): void {
+        const fontTex = PIXI.utils.TextureCache["tileset.png"];
+        const tx = Math.floor(index % 16) * 16;
+        const ty = Math.floor(index / 16) * 16;
+        const tex = new PIXI.Texture(fontTex, new PIXI.Rectangle(tx, ty, 16, 16));
 
         const sprite = this.spritePool.get();
         sprite.texture = tex;
@@ -116,9 +119,9 @@ export class PixiRenderer {
 
     public drawRect(x: number, y: number, width: number, height: number, border = false): void {
         const rect = this.grapgicsPool.get();
-        rect.beginFill(0x140c1c);
+        rect.beginFill(Color.black);
         if (border) {
-            rect.lineStyle(2, 0xdeeed6);
+            rect.lineStyle(2, Color.white);
         }
         rect.drawRect(x, y, width, height);
     }
