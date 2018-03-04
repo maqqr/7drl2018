@@ -67,6 +67,10 @@ export class Level {
                 furniture.x = furnitureDefinition.x / 16;
                 furniture.y = furnitureDefinition.y / 16 - 1;
                 furniture.dataType = furnitureDefinition.type;
+                if (furnitureDefinition.type === "") {
+                    console.error("Furniture object is missing type.");
+                    continue;
+                }
                 this.furnitures.push(furniture);
             }
         }

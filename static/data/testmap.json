@@ -165,16 +165,8 @@
                  "height":16,
                  "id":28,
                  "name":"",
-                 "properties":
-                    {
-                     "type":"rock"
-                    },
-                 "propertytypes":
-                    {
-                     "type":"string"
-                    },
                  "rotation":0,
-                 "type":"",
+                 "type":"rock",
                  "visible":true,
                  "width":16,
                  "x":96,
@@ -196,7 +188,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":29,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

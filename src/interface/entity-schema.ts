@@ -1,6 +1,9 @@
-export interface ITile {
-    id: number;
+export interface IHasType {
     type: string;
+}
+
+export interface ITile extends IHasType {
+    id: number;
     maxsize?: number;
     activation?: string;
     requireitem?: string;
@@ -10,9 +13,8 @@ export interface ITile {
     damage?: number;
     description: string;
  }
-export interface ICreature {
+export interface ICreature extends IHasType {
    id: number;
-   type: string;
    maxhp: number;
    currenthp?: number;
    strength: number;
@@ -25,15 +27,13 @@ export interface ICreature {
    inventory?: IItem[];
    description: string;
 }
-export interface IItem {
+export interface IItem extends IHasType {
     id: number;
-    type: string;
     category: string;
     description: string;
 }
-export interface IFurniture {
+export interface IFurniture extends IHasType {
     icon: number;
-    type: string;
     movable?: number;
     maxsize?: number;
     damage?: number;

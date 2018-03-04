@@ -9,9 +9,10 @@ export class Game {
     public static readonly WIDTH: number = 600;
     public static readonly HEIGHT: number = 400;
 
+    public data: GameData;
+
     private renderer: Renderer;
     private currentLevel: Level;
-    private data: GameData;
 
     public start(): void {
         this.data = new GameData();
