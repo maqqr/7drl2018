@@ -63,13 +63,13 @@
    <property name="useractivationtext" value="You pull the lever."/>
   </properties>
  </tile>
- <tile id="49">
+ <tile id="49" type="leverright">
   <properties>
    <property name="activationtarget" value="[[0,0]]"/>
    <property name="useractivationtext" value="You pull the lever."/>
   </properties>
  </tile>
- <tile id="50">
+ <tile id="50" type="pressureplate">
   <properties>
    <property name="activationtarget" value="[[0,0]]"/>
   </properties>
@@ -93,7 +93,7 @@
  </tile>
  <tile id="59" type="doorgoldopen"/>
  <tile id="64" type="rock"/>
- <tile id="66">
+ <tile id="66" type="pressureplatedown">
   <properties>
    <property name="activationtarget" value="[[0,0]]"/>
   </properties>
