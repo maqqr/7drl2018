@@ -41,7 +41,7 @@
                 "enum": ["tilelayer"]
               },
               "name": {
-                "enum": ["tile", "furniture"]
+                "enum": ["tile"]
               },
               "x": { "enum": [0] },
               "y": { "enum": [0] },
@@ -57,7 +57,7 @@
                 "enum": ["objectgroup"]
               },
               "name": {
-                "enum": ["description", "pressureplate", "switch"]
+                "enum": ["description", "furniture"]
               },
               "x": { "enum": [0] },
               "y": { "enum": [0] },

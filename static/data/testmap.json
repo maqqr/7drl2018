@@ -1,8 +1,9 @@
-{ "height":12,
+{ "$schema": "./puzzle-schema.json",
+  "height":12,
  "infinite":false,
  "layers":[
         {
-         "data":[9, 9, 7, 7, 8, 8, 9, 6, 8, 6, 8, 8, 7, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 9, 9, 2, 9, 6, 6, 8, 2, 9, 9, 8, 2, 8, 7, 2, 7, 8, 8, 6, 2, 8, 6, 6, 2, 7, 6, 2, 8, 6, 9, 49, 2, 7, 9, 6, 2, 6, 7, 2, 2, 6, 2, 2, 2, 6, 7, 9, 2, 8, 9, 2, 6, 8, 9, 2, 6, 9, 8, 6, 6, 9, 9, 2, 9, 51, 9, 8, 8, 6, 9, 8, 2, 8, 9, 2, 7, 9, 6, 2, 6, 7, 7, 8, 2, 7, 7, 2, 9, 8, 7, 2, 6, 6, 9, 7, 2, 7, 9, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 7, 6, 8, 6, 9, 8, 9, 6, 9, 8, 9, 6],
+         "data":[9, 9, 7, 7, 8, 8, 9, 6, 8, 6, 8, 8, 7, 5, 2, 2, 5, 2, 3, 2, 4, 5, 5, 9, 9, 2, 9, 6, 6, 8, 5, 9, 9, 8, 4, 8, 7, 2, 7, 8, 8, 6, 6, 8, 6, 6, 4, 7, 6, 3, 8, 6, 9, 6, 3, 7, 9, 6, 5, 6, 7, 3, 4, 6, 4, 3, 4, 6, 7, 9, 5, 8, 9, 3, 6, 8, 9, 3, 6, 9, 8, 6, 6, 9, 9, 2, 9, 6, 9, 8, 8, 6, 9, 8, 3, 8, 9, 4, 7, 9, 6, 2, 6, 7, 7, 8, 3, 7, 7, 2, 15, 15, 15, 2, 14, 14, 14, 14, 2, 7, 9, 3, 2, 3, 2, 3, 2, 4, 3, 5, 2, 6, 7, 6, 8, 6, 9, 8, 9, 6, 9, 8, 9, 6],
          "height":12,
          "name":"tile",
          "opacity":1,
@@ -13,75 +14,152 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-         "height":12,
-         "name":"furniture",
-         "opacity":1,
-         "type":"tilelayer",
-         "visible":true,
-         "width":12,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "color":"#00ff7f",
          "draworder":"topdown",
-         "name":"switch",
+         "name":"furniture",
          "objects":[
                 {
+                 "gid":49,
                  "height":16,
-                 "id":6,
+                 "id":16,
                  "name":"",
-                 "properties":
-                    {
-                     "activations":"[[2,5], [5,5]]",
-                     "activationtext":"You hear a deep grinding sound of moving stone."
-                    },
-                 "propertytypes":
-                    {
-                     "activations":"string",
-                     "activationtext":"string"
-                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
                  "x":80,
-                 "y":64
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "color":"#ff0000",
-         "draworder":"topdown",
-         "name":"pressureplate",
-         "objects":[
+                 "y":80
+                }, 
                 {
+                 "gid":10,
                  "height":16,
-                 "id":7,
+                 "id":17,
                  "name":"",
-                 "properties":
-                    {
-                     "activations":"[[2,5], [6,1]]",
-                     "activationtext":"Click. You hear a door open somewhere.",
-                     "deactivationtext":"You hear a door closing somewhere."
-                    },
-                 "propertytypes":
-                    {
-                     "activations":"string",
-                     "activationtext":"string",
-                     "deactivationtext":"string"
-                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":160,
+                 "y":112
+                }, 
+                {
+                 "gid":52,
+                 "height":16,
+                 "id":18,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":96
+                }, 
+                {
+                 "gid":31,
+                 "height":16,
+                 "id":19,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":48
+                }, 
+                {
+                 "gid":32,
+                 "height":16,
+                 "id":20,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":48
+                }, 
+                {
+                 "gid":47,
+                 "height":16,
+                 "id":21,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":64
+                }, 
+                {
+                 "gid":48,
+                 "height":16,
+                 "id":22,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":64
+                }, 
+                {
+                 "gid":74,
+                 "height":16,
+                 "id":23,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":144
+                }, 
+                {
+                 "gid":54,
+                 "height":16,
+                 "id":24,
+                 "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
                  "x":48,
-                 "y":112
+                 "y":128
+                }, 
+                {
+                 "gid":51,
+                 "height":16,
+                 "id":25,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":128
+                }, 
+                {
+                 "gid":56,
+                 "height":16,
+                 "id":26,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":64
+                }, 
+                {
+                 "gid":29,
+                 "height":16,
+                 "id":27,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":48
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -92,42 +170,18 @@
         {
          "draworder":"topdown",
          "name":"description",
-         "objects":[
-                {
-                 "height":16,
-                 "id":9,
-                 "name":"",
-                 "properties":
-                    {
-                     "text":"You step into a test room. Here should be a description of the room."
-                    },
-                 "propertytypes":
-                    {
-                     "text":"string"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":144,
-                 "y":96
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
  "tileheight":16,
- "tilesets":[
-        {
-         "firstgid":1,
-         "source":"C:\/git\/7drl-matskua\/7drl2018\/tiled\/tileset.tsx"
-        }],
  "tilewidth":16,
  "type":"map",
  "version":1,

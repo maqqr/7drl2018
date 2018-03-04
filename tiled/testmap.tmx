@@ -1,60 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="10">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="28">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
 9,9,7,7,8,8,9,6,8,6,8,8,
-7,2,2,2,2,2,2,2,2,2,2,9,
-9,2,9,6,6,8,2,9,9,8,2,8,
-7,2,7,8,8,6,2,8,6,6,2,7,
-6,2,8,6,9,49,2,7,9,6,2,6,
-7,2,2,6,2,2,2,6,7,9,2,8,
-9,2,6,8,9,2,6,9,8,6,6,9,
-9,2,9,51,9,8,8,6,9,8,2,8,
-9,2,7,9,6,2,6,7,7,8,2,7,
-7,2,9,8,7,2,6,6,9,7,2,7,
-9,2,2,2,2,2,2,2,2,2,2,6,
+7,5,2,2,5,2,3,2,4,5,5,9,
+9,2,9,6,6,8,5,9,9,8,4,8,
+7,2,7,8,8,6,6,8,6,6,4,7,
+6,3,8,6,9,6,3,7,9,6,5,6,
+7,3,4,6,4,3,4,6,7,9,5,8,
+9,3,6,8,9,3,6,9,8,6,6,9,
+9,2,9,6,9,8,8,6,9,8,3,8,
+9,4,7,9,6,2,6,7,7,8,3,7,
+7,2,15,15,15,2,14,14,14,14,2,7,
+9,3,2,3,2,3,2,4,3,5,2,6,
 7,6,8,6,9,8,9,6,9,8,9,6
 </data>
  </layer>
- <layer name="furniture" width="12" height="12">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,65,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <objectgroup color="#00ff7f" name="switch">
-  <object id="6" x="80" y="64" width="16" height="16">
-   <properties>
-    <property name="activations" value="[[2,5], [5,5]]"/>
-    <property name="activationtext" value="You hear a deep grinding sound of moving stone."/>
-   </properties>
-  </object>
+ <objectgroup name="furniture">
+  <object id="16" gid="49" x="80" y="80" width="16" height="16"/>
+  <object id="17" gid="10" x="160" y="112" width="16" height="16"/>
+  <object id="18" gid="52" x="128" y="96" width="16" height="16"/>
+  <object id="19" gid="31" x="128" y="48" width="16" height="16"/>
+  <object id="20" gid="32" x="144" y="48" width="16" height="16"/>
+  <object id="21" gid="47" x="128" y="64" width="16" height="16"/>
+  <object id="22" gid="48" x="144" y="64" width="16" height="16"/>
+  <object id="23" gid="74" x="112" y="144" width="16" height="16"/>
+  <object id="24" gid="54" x="48" y="128" width="16" height="16"/>
+  <object id="25" gid="51" x="128" y="128" width="16" height="16"/>
+  <object id="26" gid="56" x="96" y="64" width="16" height="16"/>
+  <object id="27" gid="29" x="48" y="48" width="16" height="16"/>
  </objectgroup>
- <objectgroup color="#ff0000" name="pressureplate">
-  <object id="7" x="48" y="112" width="16" height="16">
-   <properties>
-    <property name="activations" value="[[2,5], [6,1]]"/>
-    <property name="activationtext" value="Click. You hear a door open somewhere."/>
-    <property name="deactivationtext" value="You hear a door closing somewhere."/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup name="description">
-  <object id="9" x="144" y="96" width="16" height="16">
-   <properties>
-    <property name="text" value="You step into a test room. Here should be a description of the room."/>
-   </properties>
-  </object>
- </objectgroup>
+ <objectgroup name="description"/>
 </map>
