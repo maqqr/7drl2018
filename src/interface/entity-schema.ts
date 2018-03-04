@@ -28,4 +28,10 @@ export interface IItem {
     type: string;
     category: string;
 }
-
+export interface IFurniture {
+    id: number;
+    type: string;
+    movable?: number;
+    maxsize?: number;
+    damage?: number;
+}

@@ -1,11 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "type": "object",
-    "required": ["tiles"],
-    "properties": {
-        "tiles":{
-            "type": "array","items": {
-                "type": "object",
+    "definitions": {
+        "tile": {
+            "$id": "tile",
+            "type": "object",
                 "additionalProperties": false,
                 "required": ["id","type", "maxsize"],
                 "properties": {
@@ -19,8 +17,15 @@
                     "transparent": {"type": "boolean","default":"false"},
                     "damage": {"type": "integer"}
                 }
+        }
+    },
+    "type": "object",
+    "required": ["tiles"],
+    "properties": {
+        "tiles":{
+            "type": "array","items": {
+                "$ref": "#definitions/tile"
+                }
             }
         }
    }
-   
-}
