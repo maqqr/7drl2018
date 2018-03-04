@@ -1,22 +1,10 @@
 {
     "$schema": "./furnitureset-schema.json",
     "furnitures": [
-        {"icon": 0,"type": "empty","movable": 21,"maxsize": 0,"description": "This is empty."},
-        {"icon": 1,"type": "wall","movable": 21,"maxsize": 0,"description": "This is a wall."},
-        {"icon": 2,"type": "wall","movable": 21,"maxsize": 0,"description": "This is a wall."},
-        {"icon": 3,"type": "wall","movable": 21,"maxsize": 0,"description": "This is a wall."},
-        {"icon": 4,"type": "wall","movable": 21,"maxsize": 0,"description": "This is a wall."},
-        {"icon": 5,"type": "floor","movable": 21,"maxsize": 0,"description": "This is a floor."},
-        {"icon": 6,"type": "floor","movable": 21,"maxsize": 0,"description": "This is a floor."},
-        {"icon": 7,"type": "floor","movable": 21,"maxsize": 0,"description": "This is a floor."},
-        {"icon": 8,"type": "floor","movable": 21,"maxsize": 0,"description": "This is a floor."},
         {"icon": 9,"type": "door","movable": 21,"maxsize": 0,"description": "This is a closed door."},
         {"icon": 10,"type": "dooropen","movable": 21,"maxsize": 20,"description": "This is a opened door."},
         {"icon": 11,"type": "doormechanised","movable": 21,"maxsize": 0,"description": "This is a closed door.","activation": "doormechanisedopen"},
         {"icon": 12,"type": "doormechanisedopen","movable": 21,"maxsize": 20,"description": "This is a opened door."},
-        {"icon": 13,"type": "water","movable": 21,"maxsize": 20,"description": "This is water."},
-        {"icon": 14,"type": "lava","movable": 21,"maxsize": 20,"description": "This is lava.", "damage": 1000},
-        {"icon": 15,"type": "acid","movable": 21,"maxsize": 20,"description": "This is acid.", "damage": 2},
         {"icon": 25,"type": "doorbronzelocked","movable": 21,"maxsize": 0,"description": "This is a locked bronze door.","useractivation": "doorbronze"},
         {"icon": 26,"type": "doorbronze","movable": 21,"maxsize": 0,"description": "This is a locked bronze door.","useractivation": "doorbronzeopen"},
         {"icon": 27,"type": "doorbronzeopen","movable": 21,"maxsize": 20,"description": "This is a locked bronze door."},
@@ -56,13 +44,6 @@
         {"icon": 80,"type": "trapspike","movable": 21,"maxsize": 20,"description": "This is a spike trap.","activation": "trapspikeactivated"},
         {"icon": 81,"type": "trapspikeactivated","movable": 21,"maxsize": 20,"description": "This is a spike trap.","activation": "trapspike", "damage": 10},
         {"icon": 82,"type": "trapteleportin","movable": 21,"maxsize": 20,"description": "This is a teleport trap."},
-        {"icon": 83,"type": "trapteleportout","movable": 21,"maxsize": 20,"description": "This is a teleport trap."},
-        {"icon": 96,"type": "tunnelleftright","movable": 21,"maxsize": 1,"description": "This is a tunnel."},
-        {"icon": 97,"type": "tunnelbottomup","movable": 21,"maxsize": 1,"description": "This is a tunnel."},
-        {"icon": 98,"type": "tunnelbottomright","movable": 21,"maxsize": 1,"description": "This is a tunnel."},
-        {"icon": 99,"type": "tunnelbottomleft","movable": 21,"maxsize": 1,"description": "This is a tunnel."},
-        {"icon": 112,"type": "tunnelentrance","movable": 21,"maxsize": 1,"description": "This is a tunnel."},
-        {"icon": 114,"type": "tunnelupright","movable": 21,"maxsize": 1,"description": "This is a tunnel."},
-        {"icon": 115,"type": "tunnelupleft","movable": 21,"maxsize": 1,"description": "This is a tunnel."}
+        {"icon": 83,"type": "trapteleportout","movable": 21,"maxsize": 20,"description": "This is a teleport trap."}
     ]
 }

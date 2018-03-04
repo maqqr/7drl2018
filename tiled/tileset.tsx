@@ -1,22 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset name="tileset" tilewidth="16" tileheight="16" tilecount="256" columns="16">
  <image source="../static/tileset.png" width="256" height="256"/>
- <tile id="0" type="empty"/>
- <tile id="1" type="wall1"/>
- <tile id="2" type="wall2"/>
- <tile id="3" type="wall3"/>
- <tile id="4" type="wall4"/>
- <tile id="5" type="floor1"/>
- <tile id="6" type="floor2"/>
- <tile id="7" type="floor3"/>
- <tile id="8" type="floor4"/>
+ <tile id="0" type="empty">
+  <properties>
+   <property name="description" value="So much empty."/>
+  </properties>
+ </tile>
+ <tile id="1" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="2" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="3" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="4" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="5" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="6" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="7" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="8" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
  <tile id="9" type="door"/>
  <tile id="10" type="dooropen"/>
  <tile id="11" type="doormechanised"/>
  <tile id="12" type="doormechanisedopen"/>
- <tile id="13" type="water"/>
- <tile id="14" type="lava"/>
- <tile id="15" type="acid"/>
+ <tile id="13" type="water">
+  <properties>
+   <property name="description" value="This is water."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="14" type="lava">
+  <properties>
+   <property name="damage" value="1000"/>
+   <property name="description" value="This is lava."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="15" type="acid">
+  <properties>
+   <property name="damage" value="2"/>
+   <property name="description" value="This is acid."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
  <tile id="25" type="doorbronzelocked">
   <properties>
    <property name="requireitem" value="keybronze"/>
@@ -110,11 +167,46 @@
  <tile id="81" type="traspikeactivated"/>
  <tile id="82" type="trapteleportin"/>
  <tile id="83" type="trapteleportout"/>
- <tile id="96" type="tunnelleftright"/>
- <tile id="97" type="tunnelbottomup"/>
- <tile id="98" type="tunnelbottomright"/>
- <tile id="99" type="tunnelbottomleft"/>
- <tile id="112" type="tunnelentrance"/>
- <tile id="114" type="tunnelupright"/>
- <tile id="115" type="tunnelleftup"/>
+ <tile id="96" type="tunnelleftright">
+  <properties>
+   <property name="description" value="This is part of a tunnel."/>
+   <property name="maxsize" value="1"/>
+  </properties>
+ </tile>
+ <tile id="97" type="tunnelbottomup">
+  <properties>
+   <property name="description" value="This is part of a tunnel."/>
+   <property name="maxsize" value="1"/>
+  </properties>
+ </tile>
+ <tile id="98" type="tunnelbottomright">
+  <properties>
+   <property name="description" value="This is part of a tunnel."/>
+   <property name="maxsize" value="1"/>
+  </properties>
+ </tile>
+ <tile id="99" type="tunnelbottomleft">
+  <properties>
+   <property name="description" value="This is part of a tunnel."/>
+   <property name="maxsize" value="1"/>
+  </properties>
+ </tile>
+ <tile id="112" type="tunnelentrance">
+  <properties>
+   <property name="description" value="This is part of a tunnel."/>
+   <property name="maxsize" value="1"/>
+  </properties>
+ </tile>
+ <tile id="114" type="tunnelupright">
+  <properties>
+   <property name="description" value="This is part of a tunnel."/>
+   <property name="maxsize" value="1"/>
+  </properties>
+ </tile>
+ <tile id="115" type="tunnelleftup">
+  <properties>
+   <property name="description" value="This is part of a tunnel."/>
+   <property name="maxsize" value="1"/>
+  </properties>
+ </tile>
 </tileset>
