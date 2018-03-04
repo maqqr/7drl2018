@@ -36,10 +36,28 @@ export class Game {
         // Load the creatures to data
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
+            if (!("currenthp" in ent)) { this.data.creatures[ent.id].currenthp = ent.maxhp; }
+            if (!("willpower" in ent)) { this.data.creatures[ent.id].willpower = null; }
+            if (!("spiritpower" in ent)) { this.data.creatures[ent.id].spiritpower = null; }
+            if (!("spiritstability" in ent)) { this.data.creatures[ent.id].spiritstability = null; }
+            if (!("inventoryslots" in ent)) { this.data.creatures[ent.id].inventoryslots = null; }
+            if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
         }
 
         for (const ent of itemset.items) {
             this.data.items[ent.id] = ent;
+        }
+
+        // Fill empty fields with default values
+        for (const tile of tileset.tiles) {
+            this.data.tiles[tile.id] = tile;
+            if (!("damage" in tile)) { this.data.tiles[tile.id].damage = 0; }
+            if (!("maxsize" in tile)) { this.data.tiles[tile.id].maxsize = 0; }
+            if (!("transparent" in tile)) { this.data.tiles[tile.id].transparent = false; }
+            if (!("activation" in tile)) { this.data.tiles[tile.id].activation = null; }
+            if (!("requireitem" in tile)) { this.data.tiles[tile.id].requireitem = null; }
+            if (!("useractivation" in tile)) { this.data.tiles[tile.id].useractivation = null; }
+            if (!("useractivationtext" in tile)) { this.data.tiles[tile.id].useractivationtext = null; }
         }
 
         for (const layer of testmap.layers) {

@@ -5,7 +5,7 @@
             "$id": "tile",
             "type": "object",
                 "additionalProperties": false,
-                "required": ["id","type", "maxsize"],
+                "required": ["id","type"],
                 "properties": {
                     "id": {"type": "integer"},
                     "type": {"type": "string"},
