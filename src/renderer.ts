@@ -28,10 +28,10 @@ export class Renderer {
         for (let y = 0; y < level.height; y++) {
             for (let x = 0; x < level.width; x++) {
                 const tile = level.get(x, y);
-                this.renderer.drawTexture(x * 16, y * 16, 5);
+                this.renderer.drawTexture(x * 16, y * 16, tile);
             }
         }
-        this.renderer.drawRect(0, 0, 64, 64, true);
+        // this.renderer.drawRect(0, 0, 64, 64, true);
         this.renderer.render();
     }
 }

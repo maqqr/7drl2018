@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "definitions": {
+    "tileLayer": {
+      "$id": "tileLayer",
+      "type": "object"
+    },
+    "objectLayer": {
+      "$id": "objectLayer",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "height": {
+      "$id": "/properties/height",
+      "type": "integer",
+      "enum": [12]
+    },
+    "width": {
+      "$id": "/properties/width",
+      "type": "integer",
+      "enum": [12]
+    },
+    "infinite": {
+      "$id": "/properties/infinite",
+      "type": "boolean",
+      "enum": [false]
+    },
+    "layers": {
+      "$id": "/properties/layers",
+      "type": "array",
+      "items": {
+        "$id": "/properties/layers/items",
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": ["tilelayer"]
+              },
+              "name": {
+                "enum": ["tile", "furniture"]
+              },
+              "x": { "enum": [0] },
+              "y": { "enum": [0] },
+              "properties": {
+                "enum": ["OLET LAITTANUT PROPERTYN VÄÄRÄÄN PAIKKAAN! SE PITÄÄ OLLA TILESSÄ EIKÄ ITSE LAYERISSÄ"]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": ["objectgroup"]
+              },
+              "name": {
+                "enum": ["description", "pressureplate", "switch"]
+              },
+              "x": { "enum": [0] },
+              "y": { "enum": [0] },
+              "properties": {
+                "enum": ["OLET LAITTANUT PROPERTYN VÄÄRÄÄN PAIKKAAN! SE PITÄÄ OLLA OBJEKTISSA EIKÄ ITSE LAYERISSÄ"]
+              },
+              "objects": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "width": { "enum": [16] },
+                    "height": { "enum": [16] },
+                    "rotation": { "enum": [0] },
+                    "properties": {
+                      "type": "object",
+                      "properties": {
+                        "activations": { "type": "string" },
+                        "activationtext": { "type": "string" },
+                        "deactivationtext": { "type": "string" },
+                        "text": { "type": "string" }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "nextobjectid": {
+      "$id": "/properties/nextobjectid",
+      "type": "integer"
+    },
+    "orientation": {
+      "$id": "/properties/orientation",
+      "type": "string",
+      "enum": ["orthogonal"]
+    },
+    "renderorder": {
+      "$id": "/properties/renderorder",
+      "type": "string",
+      "enum": ["right-down"]
+    },
+    "tiledversion": {
+      "$id": "/properties/tiledversion",
+      "type": "string",
+      "examples": [
+        "1.1.2"
+      ]
+    },
+    "tileheight": {
+      "$id": "/properties/tileheight",
+      "type": "integer",
+      "enum": [16]
+    },
+    "tilesets": {
+      "$id": "/properties/tilesets",
+      "enum": ["POISTA KOKO 'tilesets' KOHTA KOKONAAN!"]
+    },
+    "tilewidth": {
+      "$id": "/properties/tilewidth",
+      "type": "integer",
+      "enum": [16]
+    },
+    "type": {
+      "$id": "/properties/type",
+      "type": "string",
+      "enum": ["map"]
+    },
+    "version": {
+      "$id": "/properties/version",
+      "type": "integer"
+    }
+  }
+}

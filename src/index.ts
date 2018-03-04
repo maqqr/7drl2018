@@ -2,6 +2,7 @@ import * as $ from "jquery";
 import { ITileset } from "./interface/tileset-schema";
 import { Level } from "./level";
 import { Renderer } from "./renderer";
+import { IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
 export class Game {
     public static readonly WIDTH: number = 600;
@@ -21,6 +22,22 @@ export class Game {
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
         const tilesetSchema = await this.loadJSON<ITileset>("data/tileset-schema.json");
         const creatureSchema = await this.loadJSON<ITileset>("data/creature-schema.json");
+
+        const testmap = await this.loadJSON<IPuzzleRoom>("data/testmap.json");
+
+        // TODO: move this code somewhere else
+        for (const layer of testmap.layers) {
+            if (layer.type === "tilelayer") {
+                const tilelayer = layer as ITileLayer;
+                for (let y = 0; y < testmap.height; y++) {
+                    for (let x = 0; x < testmap.width; x++) {
+                        const tile = tilelayer.data[x + y * testmap.width];
+                        this.currentLevel.set(x, y, tile - 1);
+                    }
+                }
+                return;
+            }
+        }
     }
 
     public assetsLoaded(): void {
