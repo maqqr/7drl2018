@@ -73,7 +73,7 @@ export class Game {
         }
 
         // Place test puzzle map into current level
-        this.currentLevel.placePuzzleAt(0, 0, testmap);
+        this.currentLevel.placePuzzleAt(this, 0, 0, testmap);
     }
 
     public assetsLoaded(): void {
