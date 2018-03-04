@@ -1,3 +1,5 @@
+import * as $ from "jquery";
+import { ITileset } from "./interface/tileset-schema";
 import { Renderer } from "./renderer";
 
 export class Game {
@@ -8,7 +10,14 @@ export class Game {
 
     public start(): void {
         this.renderer = new Renderer(this);
-        this.renderer.loadGraphics().then(this.assetsLoaded.bind(this));
+        Promise.all([this.loadData(), this.renderer.loadGraphics()])
+          .then(this.assetsLoaded.bind(this));
+    }
+
+    public async loadData(): Promise<void> {
+        const tileset = await this.loadJSON<ITileset>("data/tileset.json");
+        const tilesetSchema = await this.loadJSON<ITileset>("data/tileset-schema.json");
+        console.log(tilesetSchema.tiles);
     }
 
     public assetsLoaded(): void {
@@ -18,6 +27,14 @@ export class Game {
 
     public refreshDisplay() {
         this.renderer.renderGame();
+    }
+
+    private loadJSON<T>(path: string): Promise<T> {
+        return new Promise((resolve, reject) => {
+            $.getJSON(path, (data: any, textStatus: string, jqXHR: JQueryXHR) => {
+                resolve(data);
+            });
+        });
     }
 }
 
