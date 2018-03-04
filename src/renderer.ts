@@ -34,7 +34,7 @@ export class Renderer {
 
         const furnitures = this.game.getCurrentLevel().furnitures;
         for (const furniture of furnitures) {
-            this.renderer.drawTexture(furniture.x * 16, furniture.y * 16, 1);
+            this.renderer.drawTexture(furniture.x * 16, furniture.y * 16, 53);
         }
 
         // this.renderer.drawRect(0, 0, 64, 64, true);

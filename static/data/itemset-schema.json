@@ -5,12 +5,13 @@
         "$id": "item",
         "type":"object",
         "required":[
-            "id","type"
+            "id","type","description"
         ],
         "properties": {
           "id":{"type":"integer"},
           "type":{"type":"string"},
-          "category":{"type":"string"}
+          "category":{"type":"string"},
+          "description":{"type":"string"}
         }
       }
   },
