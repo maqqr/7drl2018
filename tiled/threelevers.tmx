@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="53">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="64">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -20,27 +20,27 @@
  <objectgroup name="furniture">
   <object id="36" gid="49" x="48" y="160" width="16" height="16">
    <properties>
-    <property name="activationtarget" value="[[6, 3]]"/>
+    <property name="activationtarget" value="[[2, 5]]"/>
    </properties>
   </object>
   <object id="37" gid="49" x="32" y="64" width="16" height="16">
    <properties>
-    <property name="activationtarget" value="[[6, 10]]"/>
+    <property name="activationtarget" value="[[9, 5]]"/>
    </properties>
   </object>
   <object id="38" gid="49" x="144" y="64" width="16" height="16">
    <properties>
-    <property name="activationtarget" value="[[6, 7]]"/>
+    <property name="activationtarget" value="[[6, 5]]"/>
    </properties>
   </object>
   <object id="40" gid="12" x="96" y="96" width="16" height="16">
    <properties>
-    <property name="activation" value="openDoor"/>
+    <property name="activation" value="doormechanisedopen"/>
    </properties>
   </object>
   <object id="41" gid="12" x="32" y="96" width="16" height="16">
    <properties>
-    <property name="activation" value="openDoor"/>
+    <property name="activation" value="doormechanisedopen"/>
    </properties>
   </object>
   <object id="43" gid="54" x="96" y="48" width="16" height="16"/>
@@ -50,7 +50,7 @@
   <object id="47" gid="68" x="80" y="48" width="16" height="16"/>
   <object id="52" gid="12" x="144" y="96" width="16" height="16">
    <properties>
-    <property name="activation" value="openDoor"/>
+    <property name="activation" value="doormechanisedopen"/>
    </properties>
   </object>
  </objectgroup>
