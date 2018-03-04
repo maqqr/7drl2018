@@ -20,7 +20,7 @@ export class Game {
     public async loadData(): Promise<void> {
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
         const tilesetSchema = await this.loadJSON<ITileset>("data/tileset-schema.json");
-        console.log(tileset.tiles);
+        const creatureSchema = await this.loadJSON<ITileset>("data/creature-schema.json");
     }
 
     public assetsLoaded(): void {
