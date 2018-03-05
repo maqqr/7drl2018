@@ -119,7 +119,7 @@ export class Level {
                     console.error("Furniture with type " + foundType + " not found.");
                     continue;
                 }
-                furniture.dataRef = data as IFurniture;
+                furniture.dataRef = data;
 
                 this.furnitures.push(furniture);
             }

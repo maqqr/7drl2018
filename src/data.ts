@@ -25,11 +25,11 @@ export class GameData {
             }
         }
 
-        console.error("GameData.getByType unknown type: \"" + searchedType + "\"");
+        console.error("GameData.getIdByType unknown type: \"" + searchedType + "\"");
         return 0;
     }
 
-    public getByType(collection: {[id: number]: IHasType}, searchedType: string): IHasType {
+    public getByType<T extends IHasType>(collection: {[id: number]: T}, searchedType: string): T {
         const key = this.getIdByType(collection, searchedType);
         return collection[key];
     }
