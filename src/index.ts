@@ -1,9 +1,11 @@
 import * as $ from "jquery";
 import { GameData } from "./data";
+import { Player } from "./entity";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { IMouseEvent, Renderer } from "./renderer";
+
 
 
 
@@ -14,6 +16,7 @@ export class Game {
     public static readonly HEIGHT: number = 400;
 
     public data: GameData;
+    public player: Player;
 
     private renderer: Renderer;
     private currentLevel: Level;
@@ -23,7 +26,9 @@ export class Game {
 
     private keyDownCallBack;
 
+
     public start(): void {
+
         this.keyDownCallBack = this.handleKeyPress.bind(this);
         this.data = new GameData();
         this.renderer = new Renderer(this);
@@ -31,7 +36,13 @@ export class Game {
         this.currentLevel = new Level(28, 28, this.data);
         Promise.all([this.loadData(), this.renderer.loadGraphics()])
           .then(this.assetsLoaded.bind(this));
-        this.nextTurn();
+        this.player = new Player();
+        this.player.dataRef  = this.data.player;
+        this.player.x = 160;
+        this.player.y = 160;
+        this.player.currentbody = null;
+        this.player.currenthp = this.player.dataRef.maxhp;
+        this.player.currentstability = this.player.dataRef.spiritstability;
     }
 
     public async loadData(): Promise<void> {
@@ -49,7 +60,6 @@ export class Game {
         // Load the creatures to data
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
-            if (!("currenthp" in ent)) { this.data.creatures[ent.id].currenthp = ent.maxhp; }
             if (!("inventoryslots" in ent)) { this.data.creatures[ent.id].inventoryslots = null; }
             if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
         }
@@ -108,21 +118,25 @@ export class Game {
         window.addEventListener("keydown", this.keyDownCallBack);
     }
     private handleKeyPress(e: KeyboardEvent) {
-        // const code = e.keyCode;
-        console.log(e);
+        const code = e.keyCode;
+        console.log(code === 87);
+        if (code === 87) {
+            this.player.y += 16;
+            console.log(this.player.y);
+        }
         window.removeEventListener("keydown", this.keyDownCallBack);
-        this.nextTurn();
+        this.updateLoop();
     }
     private handleClick(mouseEvent: IMouseEvent) {
         console.log(mouseEvent);
-        this.currentLevel.activate(mouseEvent.tx, mouseEvent.ty);
+        this.currentLevel.activate(mouseEvent.tx, mouseEvent.ty, true);
+        this.renderer.renderGame();
     }
-    private nextTurn() { this.updateLoop(); }
     private updateLoop() {
         // for (const char of this.currentLevel.characters) {
             // this.updateAI(char)
         // }
-        // this.renderer.renderGame();
+        this.renderer.renderGame();
         this.playerTurn();
     }
 }

@@ -13,5 +13,11 @@ export class Item extends Entity<IItem> {
 
 }
 export class Creature extends Entity<ICreature> {
+    public currenthp: number;
 
+}
+export class Player extends Entity<IPlayer> {
+    public currenthp: number;
+    public currentstability: number;
+    public currentbody: Creature;
 }

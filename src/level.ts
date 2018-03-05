@@ -1,7 +1,7 @@
 import { Game } from ".";
 import { GameData } from "./data";
-import { Entity, Furniture } from "./entity";
-import { IFurniture } from "./interface/entity-schema";
+import { Creature, Entity, Furniture } from "./entity";
+import { ICreature, IFurniture } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
 
@@ -29,6 +29,9 @@ export class Level {
 
     public furnitures: Furniture[] = [];
     public descriptions: DescriptionObject[] = [];
+
+    public creatures: Creature[] = [];
+
 
     private tiles: TileID[] = [];
     private nextLevel: Level;
@@ -61,17 +64,50 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
-    public activate(x: number, y: number) {
+    public activate(x: number, y: number, userInitiated = true) {
         const tileId = this.get(x, y);
         // const tile = this.game.
 
         for (const fur of this.furnitures) {
             if (fur.x === x && fur.y === y) {
-                // TODO
-                // fur.dataRef.
-                // console.log(fur);
+                console.log(fur);
+
+                // Handle activation targets
+                if (fur.dataRef.activationtarget) {
+                    // TODO
+                }
+
+                // Activate tile mechanically
+                if (!userInitiated && fur.dataRef.activation) {
+                    const newData = this.data.getByType(this.data.furnitures, fur.dataRef.activation);
+                    this.assignNewDataToFurniture(fur, newData);
+                }
+
+                // User initiated tile activation
+                if (userInitiated && fur.dataRef.useractivation) {
+                    const newData = this.data.getByType(this.data.furnitures, fur.dataRef.useractivation);
+                    this.assignNewDataToFurniture(fur, newData);
+                }
             }
         }
+    }
+
+    public assignNewDataToFurniture(furniture: Furniture, newData: IFurniture) {
+        for (const prop in newData) {
+            if (newData.hasOwnProperty(prop)) {
+                if (prop !== "activationtarget") {
+                    furniture.dataRef[prop] = newData[prop];
+                }
+            }
+        }
+    }
+
+    public addCreatureAt(newCreature: ICreature, x: number, y: number ) {
+        const addedCreature = new Creature();
+        addedCreature.x = x;
+        addedCreature.y = y;
+        addedCreature.dataRef = newCreature;
+        this.creatures.push(addedCreature);
     }
 
     public placePuzzleAt(px: number, py: number, puzzle: IPuzzleRoom): void {
@@ -138,11 +174,23 @@ export class Level {
                     console.error("Furniture with type " + foundType + " not found.");
                     continue;
                 }
-                furniture.dataRef = data;
 
-                // Copy properties that override default properties.
-                // TODO
-                // console.log(furnitureDefinition);
+                // Create copy of furniture data
+                furniture.dataRef = Object.assign({}, data, {});
+
+                // Copy properties that override default properties
+                if ("properties" in furnitureDefinition) {
+                    for (const prop in furnitureDefinition.properties) {
+                        if (furnitureDefinition.properties.hasOwnProperty(prop)) {
+                            if (prop === "activationtarget") {
+                                const parsed = JSON.parse(furnitureDefinition.properties[prop]);
+                                furniture.dataRef.activationtarget = parsed;
+                            } else {
+                                furniture.dataRef[prop] = furnitureDefinition.properties[prop];
+                            }
+                        }
+                    }
+                }
 
                 this.furnitures.push(furniture);
             }

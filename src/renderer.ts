@@ -63,6 +63,13 @@ export class Renderer {
             this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
         }
 
+        const player = this.game.player;
+        if (player.currentbody === null) {
+            this.renderer.drawTexture(player.x, player.y, player.dataRef.id);
+        } else {
+            this.renderer.drawTexture(player.x, player.y, player.currentbody.dataRef.id);
+        }
+
         // this.renderer.drawRect(0, 0, 64, 64, true);
         this.renderer.render();
     }
