@@ -145,40 +145,41 @@ export class Game {
         let yy = this.player.y;
         let keyAccepted = false;
         const code = e.code;
-        const moving = code === "KeyD" || code === "KeyA" || code === "KeyW" || code === "KeyS" ? true : false;
-        xx = code === "KeyD" ? xx += 1 : (code === "KeyA") ? xx -= 1 : xx;
-        yy = code === "KeyS" ? yy += 1 : (code === "KeyW") ? yy -= 1 : yy;
+        const moving = code === "ArrowUp" || code === "ArrowDown" ||
+         code === "ArrowLeft" || code === "ArrowRight" || code === "Space" ? true : false;
+        xx = code === "ArrowRight" ? xx += 1 : (code === "ArrowLeft") ? xx -= 1 : xx;
+        yy = code === "ArrowDown" ? yy += 1 : (code === "ArrowUp") ? yy -= 1 : yy;
         console.log(e.code);
         // Player tries to move. Switch?
         // Tried to move into a tile with a creature
         // TODO fight?
-        if (moving && !this.isCurrable(xx, yy)) {
+        if (moving && !this.isCurrable(xx, yy) && !(this.player.currentbody === null) && !e.shiftKey
+        && !(code === "Space")) {
             const action =
-             (e.shiftKey ? "You try to possess the " : "You try to hit the ").
+             ("You try to hit the ").
              concat(this.currentLevel.getCreatureAt(xx, yy).dataRef.type);
             console.log(action);
-            if (e.shiftKey) {
-                // Possessing
-                this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
-                this.player.x = xx;
-                this.player.y = yy;
-            }
+            keyAccepted = true;
+        } else if (moving && !this.isCurrable(xx, yy) && e.shiftKey) {
+            // Possessing
+            const action =
+             ("You try to possess the ").
+             concat(this.currentLevel.getCreatureAt(xx, yy).dataRef.type);
+            console.log(action);
+            this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
+            this.player.x = xx;
+            this.player.y = yy;
             keyAccepted = true;
         } else if (moving && this.isPassable(xx, yy)
         && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy), xx, yy)) {
+            this.player.x = xx;
+            this.player.y = yy;
             if (e.shiftKey) {
-                this.player.x = xx;
-                this.player.y = yy;
                 this.player.currentbody = null;
-            } else {
-                this.player.x = xx;
-                this.player.y = yy;
-                if (!(this.player.currentbody === null)) {
-                    this.player.currentbody.x = xx;
-                    this.player.currentbody.y = yy;
-                }
+            } else if (!(this.player.currentbody === null)) {
+                this.player.currentbody.x = xx;
+                this.player.currentbody.y = yy;
             }
-            
             keyAccepted = true;
         }
         if (keyAccepted) {
