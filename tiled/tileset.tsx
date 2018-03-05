@@ -74,6 +74,50 @@
    <property name="maxsize" value="20"/>
   </properties>
  </tile>
+ <tile id="17" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="18" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="19" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="20" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="21" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="22" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="23" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="24" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
  <tile id="25" type="doorbronzelocked"/>
  <tile id="26" type="doorbronze"/>
  <tile id="27" type="doorbronzeopen"/>
@@ -81,6 +125,50 @@
  <tile id="29" type="chestopen"/>
  <tile id="30" type="pentagram1"/>
  <tile id="31" type="pentagram2"/>
+ <tile id="33" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="34" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="35" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="36" type="wall">
+  <properties>
+   <property name="description" value="This is a wall."/>
+  </properties>
+ </tile>
+ <tile id="37" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="38" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="39" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
+ <tile id="40" type="floor">
+  <properties>
+   <property name="description" value="This is a floor."/>
+   <property name="maxsize" value="20"/>
+  </properties>
+ </tile>
  <tile id="41" type="doorsilverlocked"/>
  <tile id="42" type="doorsilver"/>
  <tile id="43" type="doorsilveropen"/>
