@@ -28,7 +28,12 @@ export class GameData {
         type: "player",
         willpower: 10};
 
-    public getByType(collection: {[id: number]: IHasType}, searchedType: string): number {
+    public getByType<T extends IHasType>(collection: {[id: number]: T}, searchedType: string): T {
+        const key = this.getIdByType(collection, searchedType);
+        return collection[key];
+    }
+
+    public getIdByType(collection: {[id: number]: IHasType}, searchedType: string): number {
         for (const key in collection) {
             if (collection.hasOwnProperty(key)) {
                 const item = collection[key];
@@ -38,7 +43,7 @@ export class GameData {
             }
         }
 
-        console.error("GameData.getByType unknown type: \"" + searchedType + "\"");
+        console.error("GameData.getIdByType unknown type: \"" + searchedType + "\"");
         return 0;
     }
 }

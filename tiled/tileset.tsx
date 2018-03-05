@@ -74,56 +74,28 @@
    <property name="maxsize" value="20"/>
   </properties>
  </tile>
- <tile id="25" type="doorbronzelocked">
-  <properties>
-   <property name="requireitem" value="keybronze"/>
-   <property name="useractivationtext" value="You open door."/>
-  </properties>
- </tile>
- <tile id="26" type="doorbronze">
-  <properties>
-   <property name="useractivationtext" value="You open door."/>
-  </properties>
- </tile>
+ <tile id="25" type="doorbronzelocked"/>
+ <tile id="26" type="doorbronze"/>
  <tile id="27" type="doorbronzeopen"/>
- <tile id="28" type="chest">
-  <properties>
-   <property name="useractivationtext" value="You open chest."/>
-  </properties>
- </tile>
+ <tile id="28" type="chest"/>
  <tile id="29" type="chestopen"/>
  <tile id="30" type="pentagram1"/>
  <tile id="31" type="pentagram2"/>
- <tile id="41" type="doorsilverlocked">
-  <properties>
-   <property name="requireitem" value="keysilver"/>
-   <property name="useractivationtext" value="You unlock door."/>
-  </properties>
- </tile>
- <tile id="42" type="doorsilver">
-  <properties>
-   <property name="useractivationtext" value="You open door."/>
-  </properties>
- </tile>
+ <tile id="41" type="doorsilverlocked"/>
+ <tile id="42" type="doorsilver"/>
  <tile id="43" type="doorsilveropen"/>
- <tile id="44" type="chestgold">
-  <properties>
-   <property name="useractivationtext" value="You open fancy chest."/>
-  </properties>
- </tile>
+ <tile id="44" type="chestgold"/>
  <tile id="45" type="chestgoldopen"/>
  <tile id="46" type="pentagram3"/>
  <tile id="47" type="pentagram4"/>
  <tile id="48" type="leverleft">
   <properties>
    <property name="activationtarget" value="[[0,0]]"/>
-   <property name="useractivationtext" value="You pull the lever."/>
   </properties>
  </tile>
  <tile id="49" type="leverright">
   <properties>
    <property name="activationtarget" value="[[0,0]]"/>
-   <property name="useractivationtext" value="You pull the lever."/>
   </properties>
  </tile>
  <tile id="50" type="pressureplate">
@@ -137,17 +109,8 @@
  <tile id="54" type="tombbroken"/>
  <tile id="55" type="doorbar"/>
  <tile id="56" type="doorbaropen"/>
- <tile id="57" type="doorgoldlocked">
-  <properties>
-   <property name="requireitem" value="keygold"/>
-   <property name="useractivationtext" value="You unlock door."/>
-  </properties>
- </tile>
- <tile id="58" type="doorgold">
-  <properties>
-   <property name="useractivationtext" value="You open door."/>
-  </properties>
- </tile>
+ <tile id="57" type="doorgoldlocked"/>
+ <tile id="58" type="doorgold"/>
  <tile id="59" type="doorgoldopen"/>
  <tile id="64" type="rock"/>
  <tile id="66" type="pressureplatedown">

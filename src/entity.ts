@@ -3,7 +3,7 @@ import { ICreature, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interf
 export class Entity {
     public x: number;
     public y: number;
-    public dataType: string;
+    public dataRef: IHasType;
 }
 
 export class Furniture extends Entity {
