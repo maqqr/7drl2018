@@ -1,17 +1,17 @@
 import { ICreature, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interface/entity-schema";
 
-export class Entity {
+export class Entity<T extends IHasType> {
     public x: number;
     public y: number;
-    public dataRef: IHasType;
+    public dataRef: T;
 }
 
-export class Furniture extends Entity {
+export class Furniture extends Entity<IFurniture> {
 
 }
-export class Item extends Entity {
+export class Item extends Entity<IItem> {
 
 }
-export class Character extends Entity {
+export class Creature extends Entity<ICreature> {
 
 }

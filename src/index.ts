@@ -3,7 +3,7 @@ import { GameData } from "./data";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
-import { Renderer } from "./renderer";
+import { IMouseEvent, Renderer } from "./renderer";
 
 
 
@@ -27,6 +27,7 @@ export class Game {
         this.keyDownCallBack = this.handleKeyPress.bind(this);
         this.data = new GameData();
         this.renderer = new Renderer(this);
+        this.renderer.addClickListener(this.handleClick.bind(this));
         this.currentLevel = new Level(24, 24);
         Promise.all([this.loadData(), this.renderer.loadGraphics()])
           .then(this.assetsLoaded.bind(this));
@@ -111,6 +112,9 @@ export class Game {
         console.log(e);
         window.removeEventListener("keydown", this.keyDownCallBack);
         this.nextTurn();
+    }
+    private handleClick(mouseEvent: IMouseEvent) {
+        console.log(mouseEvent);
     }
     private nextTurn() { this.updateLoop(); }
     private updateLoop() {

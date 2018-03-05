@@ -1,7 +1,14 @@
+import { Color } from "./color";
 import { Game } from "./index";
 import { Level } from "./level";
 import { PixiRenderer } from "./pixirenderer";
-import { Color } from "./color";
+
+export interface IMouseEvent {
+    mx: number; // Mouse X
+    my: number; // Mouse Y
+    tx: number; // Tile X
+    ty: number; // Tile Y
+}
 
 export class Renderer {
     private game: Game;
@@ -14,6 +21,17 @@ export class Renderer {
 
         window.addEventListener("resize", this.renderer.resize.bind(this.renderer));
         this.renderer.resize();
+    }
+
+    public addClickListener(callback: (e: IMouseEvent) => void) {
+        this.renderer.getCanvas().addEventListener("click", (event) => {
+            const rect = this.renderer.getCanvas().getBoundingClientRect();
+            const mx = event.clientX - rect.left;
+            const my = event.clientY - rect.top;
+            const tx = Math.floor(mx / 16);
+            const ty = Math.floor(my / 16);
+            callback({ mx, my, tx, ty });
+        });
     }
 
     public async loadGraphics() {
