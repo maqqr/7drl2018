@@ -93,13 +93,13 @@
   <object id="42" gid="52" x="304" y="240" width="16" height="16"/>
   <object id="43" gid="52" x="224" y="96" width="16" height="16"/>
   <object id="44" gid="68" x="336" y="352" width="16" height="16"/>
-  <object id="46" gid="3" x="64" y="208" width="16" height="16"/>
-  <object id="47" gid="3" x="64" y="192" width="16" height="16"/>
-  <object id="48" gid="3" x="176" y="80" width="16" height="16"/>
-  <object id="49" gid="3" x="192" y="80" width="16" height="16"/>
-  <object id="50" gid="3" x="304" y="208" width="16" height="16"/>
-  <object id="51" gid="3" x="304" y="192" width="16" height="16"/>
-  <object id="52" gid="3" x="304" y="336" width="16" height="16"/>
+  <object id="46" type="crumblingwall1" gid="3" x="64" y="208" width="16" height="16"/>
+  <object id="47" type="crumblingwall1" gid="3" x="64" y="192" width="16" height="16"/>
+  <object id="48" type="crumblingwall1" gid="3" x="176" y="80" width="16" height="16"/>
+  <object id="49" type="crumblingwall1" gid="3" x="192" y="80" width="16" height="16"/>
+  <object id="50" type="crumblingwall1" gid="3" x="304" y="208" width="16" height="16"/>
+  <object id="51" type="crumblingwall1" gid="3" x="304" y="192" width="16" height="16"/>
+  <object id="52" type="crumblingwall1" gid="3" x="304" y="336" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description"/>
 </map>
