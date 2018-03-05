@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="74">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="24" height="24">
+  <data encoding="csv">
+8,8,9,9,9,8,8,8,7,8,9,6,7,6,9,7,6,7,7,6,6,9,7,8,
+9,4,5,2,2,6,5,2,5,2,3,4,2,2,3,4,2,5,4,2,3,3,3,6,
+7,5,3,5,3,6,2,2,4,5,5,2,2,5,4,4,2,5,5,3,4,5,2,6,
+8,4,5,4,5,6,4,3,3,5,4,5,3,4,2,3,2,3,2,4,2,2,3,7,
+8,2,4,2,9,6,9,8,7,9,9,8,7,6,7,8,6,9,6,6,5,3,2,9,
+9,4,5,5,9,9,6,7,6,7,7,8,8,6,7,9,6,7,9,9,3,2,4,6,
+7,3,2,2,9,6,9,6,9,8,9,8,8,9,7,6,9,6,8,9,4,4,5,7,
+6,5,3,3,6,6,6,9,7,8,9,6,9,9,7,9,8,8,8,7,5,3,2,6,
+9,4,4,5,2,9,2,8,3,8,2,7,3,9,5,8,4,7,3,2,5,5,5,8,
+7,5,4,4,2,6,3,4,4,2,2,4,4,4,3,3,5,5,3,2,3,5,4,6,
+9,2,4,2,2,7,5,3,3,2,4,3,2,2,4,4,4,5,5,3,4,5,5,7,
+7,2,3,4,5,6,2,3,5,4,3,2,2,2,5,5,4,4,3,2,2,5,2,7,
+7,3,5,2,4,6,5,2,4,5,3,2,3,2,2,4,3,3,5,2,4,3,2,9,
+8,3,4,4,7,8,6,6,6,9,6,8,7,6,7,7,7,7,7,8,3,5,4,8,
+9,3,5,3,6,9,6,7,7,7,8,6,7,6,9,9,9,9,6,6,5,3,2,6,
+9,3,2,3,9,6,8,6,8,6,6,6,6,6,7,9,8,6,7,7,5,5,2,6,
+6,5,3,5,7,7,9,7,8,7,6,6,6,9,9,8,7,6,8,8,4,2,2,9,
+7,2,3,2,7,7,8,8,8,8,7,7,8,8,7,9,8,6,9,9,4,2,5,9,
+8,2,2,5,8,7,7,8,7,9,7,8,7,8,6,8,7,7,6,6,3,4,4,6,
+7,3,5,5,6,9,8,9,8,9,6,8,8,7,9,8,8,6,8,9,3,4,2,6,
+6,3,4,5,2,3,2,3,5,3,4,2,5,2,3,2,2,4,5,2,3,2,4,8,
+8,3,3,5,4,2,3,2,3,2,4,3,4,5,3,3,4,5,3,5,3,5,2,6,
+9,4,5,2,2,2,3,5,2,2,5,3,2,2,3,5,5,2,2,4,2,4,5,6,
+6,6,7,9,8,7,6,7,9,8,7,6,6,8,9,9,9,6,9,9,7,6,8,6
+</data>
+ </layer>
+ <objectgroup name="furniture">
+  <object id="1" gid="10" x="80" y="48" width="16" height="16"/>
+  <object id="2" gid="49" x="112" y="96" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[5,11]]"/>
+    <property name="useractivationtext" value="You hear a grinding sound as you pull the lever."/>
+   </properties>
+  </object>
+  <object id="3" gid="49" x="144" y="96" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[5,8],[5,3]]"/>
+    <property name="useractivationtext" value="You pull the lever. Huge stone blocks drop from the ceiling blocking all doorways in the room!"/>
+   </properties>
+  </object>
+  <object id="4" gid="49" x="176" y="96" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[5,8],[5,3]]"/>
+    <property name="useractivationtext" value="You pull the lever. Huge stone blocks drop from the ceiling blocking all doorways in the room!"/>
+   </properties>
+  </object>
+  <object id="5" gid="49" x="208" y="96" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[5,10]]"/>
+    <property name="useractivationtext" value="You hear a grinding sound as you pull the lever."/>
+   </properties>
+  </object>
+  <object id="6" gid="49" x="240" y="96" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[5,8],[5,3]]"/>
+    <property name="useractivationtext" value="You pull the lever. Huge stone blocks drop from the ceiling blocking all doorways in the room!"/>
+   </properties>
+  </object>
+  <object id="9" gid="49" x="272" y="96" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[5,9]]"/>
+    <property name="useractivationtext" value="You hear a grinding sound as you pull the lever."/>
+   </properties>
+  </object>
+  <object id="23" gid="52" x="96" y="240" width="16" height="16"/>
+  <object id="24" gid="52" x="96" y="304" width="16" height="16"/>
+  <object id="26" gid="52" x="144" y="240" width="16" height="16"/>
+  <object id="27" gid="52" x="144" y="304" width="16" height="16"/>
+  <object id="28" gid="52" x="192" y="240" width="16" height="16"/>
+  <object id="29" gid="52" x="192" y="304" width="16" height="16"/>
+  <object id="30" gid="52" x="240" y="240" width="16" height="16"/>
+  <object id="31" gid="52" x="240" y="304" width="16" height="16"/>
+  <object id="32" gid="52" x="288" y="240" width="16" height="16"/>
+  <object id="33" gid="52" x="288" y="304" width="16" height="16"/>
+  <object id="34" gid="54" x="304" y="272" width="16" height="16">
+   <properties>
+    <property name="description" value="A tomb of Sir Arthur Grimwin. You don't recognize the name."/>
+   </properties>
+  </object>
+  <object id="37" gid="53" x="112" y="144" width="16" height="16">
+   <properties>
+    <property name="description" value="Statue of a rabbit."/>
+   </properties>
+  </object>
+  <object id="38" gid="53" x="144" y="144" width="16" height="16">
+   <properties>
+    <property name="description" value="Statue of a wolf."/>
+   </properties>
+  </object>
+  <object id="40" gid="53" x="208" y="144" width="16" height="16">
+   <properties>
+    <property name="description" value="Statue of a iguana."/>
+   </properties>
+  </object>
+  <object id="41" gid="53" x="240" y="144" width="16" height="16">
+   <properties>
+    <property name="description" value="Statue of a mouse."/>
+   </properties>
+  </object>
+  <object id="42" gid="53" x="272" y="144" width="16" height="16">
+   <properties>
+    <property name="description" value="Statue of a armadillo."/>
+   </properties>
+  </object>
+  <object id="43" gid="53" x="304" y="96" width="16" height="16"/>
+  <object id="44" gid="12" x="80" y="160" width="16" height="16"/>
+  <object id="45" gid="12" x="80" y="176" width="16" height="16"/>
+  <object id="46" gid="12" x="80" y="192" width="16" height="16"/>
+  <object id="47" gid="73" x="64" y="112" width="16" height="16"/>
+  <object id="48" gid="73" x="240" y="80" width="16" height="16"/>
+  <object id="49" gid="74" x="64" y="240" width="16" height="16"/>
+  <object id="50" gid="74" x="112" y="320" width="16" height="16"/>
+  <object id="51" gid="74" x="128" y="320" width="16" height="16"/>
+  <object id="52" gid="74" x="160" y="320" width="16" height="16"/>
+  <object id="53" gid="74" x="176" y="320" width="16" height="16"/>
+  <object id="54" gid="74" x="208" y="320" width="16" height="16"/>
+  <object id="55" gid="74" x="224" y="320" width="16" height="16"/>
+  <object id="56" gid="74" x="256" y="320" width="16" height="16"/>
+  <object id="57" gid="74" x="272" y="320" width="16" height="16"/>
+  <object id="58" gid="74" x="112" y="224" width="16" height="16"/>
+  <object id="59" gid="74" x="128" y="224" width="16" height="16"/>
+  <object id="60" gid="74" x="160" y="224" width="16" height="16"/>
+  <object id="61" gid="74" x="176" y="224" width="16" height="16"/>
+  <object id="62" gid="74" x="208" y="224" width="16" height="16"/>
+  <object id="63" gid="74" x="224" y="224" width="16" height="16"/>
+  <object id="64" gid="74" x="256" y="224" width="16" height="16"/>
+  <object id="65" gid="74" x="272" y="224" width="16" height="16"/>
+  <object id="67" gid="75" x="176" y="144" width="16" height="16">
+   <properties>
+    <property name="description" value="Destroyed statue."/>
+   </properties>
+  </object>
+  <object id="68" gid="69" x="64" y="256" width="16" height="16"/>
+  <object id="69" gid="69" x="64" y="288" width="16" height="16"/>
+  <object id="71" gid="6" x="80" y="144" width="16" height="16">
+   <properties>
+    <property name="activation" value="wall"/>
+    <property name="description" value="There are strange scrapings on the walls."/>
+   </properties>
+  </object>
+  <object id="72" gid="7" x="80" y="64" width="16" height="16">
+   <properties>
+    <property name="activation" value="wall"/>
+    <property name="description" value="There are strange scrapings on the walls."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="description"/>
+</map>
