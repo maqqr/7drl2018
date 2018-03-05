@@ -26,8 +26,8 @@ export class Renderer {
     public addClickListener(callback: (e: IMouseEvent) => void) {
         this.renderer.getCanvas().addEventListener("click", (event) => {
             const rect = this.renderer.getCanvas().getBoundingClientRect();
-            const mx = event.clientX - rect.left;
-            const my = event.clientY - rect.top;
+            const mx = Math.floor(((event.clientX - rect.left) / rect.width) * Game.WIDTH);
+            const my = Math.floor(((event.clientY - rect.top) / rect.height) * Game.HEIGHT);
             const tx = Math.floor(mx / 16);
             const ty = Math.floor(my / 16);
             callback({ mx, my, tx, ty });
@@ -61,6 +61,13 @@ export class Renderer {
         // Draw descriptions (for debugging purposes)
         for (const desc of this.game.getCurrentLevel().descriptions) {
             this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
+        }
+
+        const player = this.game.player;
+        if (player.currentbody === null) {
+            this.renderer.drawTexture(player.x, player.y, player.dataRef.id);
+        } else {
+            this.renderer.drawTexture(player.x, player.y, player.currentbody.dataRef.id);
         }
 
         // this.renderer.drawRect(0, 0, 64, 64, true);

@@ -45,7 +45,7 @@
         {"icon": 53,"type": "tomb","maxsize": 20,"description": "This is a tomb."},
         {"icon": 54,"type": "tombbroken","maxsize": 20,"description": "This is a broken tomb."},
         {"icon": 55,"type": "doorbar","maxsize": 20,"description": "This is a bar door.","useractivationtext": "You open a door."},
-        {"icon": 52,"type": "doorbaropen","description": "This is a opened bar door."},
+        {"icon": 56,"type": "doorbaropen","description": "This is a opened bar door."},
         {"icon": 57,"type": "doorgoldlocked","description": "This is a locked gold door.","requireitem": "golden key","useractivation": "doorgold","useractivationtext": "You unlock a door."},
         {"icon": 58,"type": "doorgold","description": "This is a gold door.","useractivation": "doorgoldopen","useractivationtext": "You open a door."},
         {"icon": 59,"type": "doorgoldopen","maxsize": 20,"description": "This is a opened gold door."},
