@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="92">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="95">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -122,5 +122,16 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="description"/>
+ <objectgroup name="description">
+  <object id="92" x="80" y="208" width="48" height="16">
+   <properties>
+    <property name="text" value="You step in a room filled with statues and pillars. At the end of the room you see two coffins side by side. You also notice that all the statues are looking towars the coffins."/>
+   </properties>
+  </object>
+  <object id="93" x="272" y="96" width="48" height="80">
+   <properties>
+    <property name="text" value="The names on the coffins somehow feels very nostaltig to you."/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
