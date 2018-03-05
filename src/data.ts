@@ -1,4 +1,4 @@
-import { ICreature, IFurniture, IHasType, IItem, ITile } from "./interface/entity-schema";
+import { ICreature, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interface/entity-schema";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 
 
@@ -15,6 +15,24 @@ export class GameData {
 
     public furnitures: {[id: number]: IFurniture} = {};
 
+    public player: IPlayer = {
+        currentbody: null,
+        currenthp: 20,
+        currentstability: 10,
+        description: "This is me.",
+        id: 255,
+        maxhp: 20,
+        speed: 10,
+        spiritpower: 10,
+        spiritstability: 10,
+        type: "player",
+        willpower: 10};
+
+    public getByType<T extends IHasType>(collection: {[id: number]: T}, searchedType: string): T {
+        const key = this.getIdByType(collection, searchedType);
+        return collection[key];
+    }
+
     public getIdByType(collection: {[id: number]: IHasType}, searchedType: string): number {
         for (const key in collection) {
             if (collection.hasOwnProperty(key)) {
@@ -25,12 +43,7 @@ export class GameData {
             }
         }
 
-        console.error("GameData.getByType unknown type: \"" + searchedType + "\"");
+        console.error("GameData.getIdByType unknown type: \"" + searchedType + "\"");
         return 0;
-    }
-
-    public getByType(collection: {[id: number]: IHasType}, searchedType: string): IHasType {
-        const key = this.getIdByType(collection, searchedType);
-        return collection[key];
     }
 }

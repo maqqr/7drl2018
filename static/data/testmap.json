@@ -181,14 +181,33 @@
         {
          "draworder":"topdown",
          "name":"description",
-         "objects":[],
+         "objects":[
+                {
+                 "height":48,
+                 "id":32,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"asddaasd"
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":16,
+                 "y":16
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
         }],
- "nextobjectid":32,
+ "nextobjectid":34,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

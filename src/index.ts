@@ -3,7 +3,11 @@ import { GameData } from "./data";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
-import { Renderer } from "./renderer";
+import { IMouseEvent, Renderer } from "./renderer";
+
+
+
+
 
 export class Game {
     public static readonly WIDTH: number = 600;
@@ -14,12 +18,20 @@ export class Game {
     private renderer: Renderer;
     private currentLevel: Level;
 
+    private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
+
+
+    private keyDownCallBack;
+
     public start(): void {
+        this.keyDownCallBack = this.handleKeyPress.bind(this);
         this.data = new GameData();
         this.renderer = new Renderer(this);
-        this.currentLevel = new Level(12, 12);
+        this.renderer.addClickListener(this.handleClick.bind(this));
+        this.currentLevel = new Level(24, 24);
         Promise.all([this.loadData(), this.renderer.loadGraphics()])
           .then(this.assetsLoaded.bind(this));
+        this.nextTurn();
     }
 
     public async loadData(): Promise<void> {
@@ -38,9 +50,6 @@ export class Game {
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
             if (!("currenthp" in ent)) { this.data.creatures[ent.id].currenthp = ent.maxhp; }
-            if (!("willpower" in ent)) { this.data.creatures[ent.id].willpower = null; }
-            if (!("spiritpower" in ent)) { this.data.creatures[ent.id].spiritpower = null; }
-            if (!("spiritstability" in ent)) { this.data.creatures[ent.id].spiritstability = null; }
             if (!("inventoryslots" in ent)) { this.data.creatures[ent.id].inventoryslots = null; }
             if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
         }
@@ -73,16 +82,13 @@ export class Game {
         }
 
         // Place test puzzle map into current level
-        this.currentLevel.placePuzzleAt(this, 0, 0, testmap);
+        this.currentLevel.placePuzzleAt(this, 2, 2, testmap);
     }
 
     public assetsLoaded(): void {
         console.log("loaded");
         console.log(this.data.creatures);
-        this.refreshDisplay();
-    }
-
-    public refreshDisplay() {
+        console.log(this.data.player);
         this.renderer.renderGame();
     }
 
@@ -96,6 +102,27 @@ export class Game {
                 resolve(data);
             });
         });
+    }
+
+    private playerTurn() {
+        window.addEventListener("keydown", this.keyDownCallBack);
+    }
+    private handleKeyPress(e: KeyboardEvent) {
+        // const code = e.keyCode;
+        console.log(e);
+        window.removeEventListener("keydown", this.keyDownCallBack);
+        this.nextTurn();
+    }
+    private handleClick(mouseEvent: IMouseEvent) {
+        console.log(mouseEvent);
+    }
+    private nextTurn() { this.updateLoop(); }
+    private updateLoop() {
+        // for (const char of this.currentLevel.characters) {
+            // this.updateAI(char)
+        // }
+        // this.renderer.renderGame();
+        this.playerTurn();
     }
 }
 

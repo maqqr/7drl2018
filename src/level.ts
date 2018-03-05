@@ -1,15 +1,33 @@
 import { Game } from ".";
-import { Furniture } from "./furniture";
+import { Entity, Furniture } from "./entity";
 import { IFurniture } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
+
 type TileID = number;
+
+class DescriptionObject {
+    public x: number;
+    public y: number;
+    public w: number;
+    public h: number;
+    public text: string;
+
+    constructor(x: number, y: number, w: number, h: number, text: string) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.text = text;
+    }
+}
 
 export class Level {
     public readonly width: number;
     public readonly height: number;
 
     public furnitures: Furniture[] = [];
+    public descriptions: DescriptionObject[] = [];
 
     private tiles: TileID[] = [];
     private nextLevel: Level;
@@ -61,13 +79,24 @@ export class Level {
             }
         }
 
+        // Place descriptions
+        const descLayer = getLayerByName("description");
+        if ("objects" in descLayer) {
+            for (const desc of descLayer.objects) {
+                const convert = (x) => Math.floor(x / 16);
+                this.descriptions.push(new DescriptionObject(
+                    convert(desc.x) + px, convert(desc.y) + px,
+                    convert(desc.width), convert(desc.height), desc.properties.text));
+            }
+        }
+
         // Place furniture
         const furnitureLayer = getLayerByName("furniture");
         if ("objects" in furnitureLayer) {
             for (const furnitureDefinition of furnitureLayer.objects) {
                 const furniture = new Furniture();
-                furniture.x = furnitureDefinition.x / 16;
-                furniture.y = furnitureDefinition.y / 16 - 1;
+                furniture.x = px + (furnitureDefinition.x / 16);
+                furniture.y = py + (furnitureDefinition.y / 16 - 1);
                 furniture.dataRef = null;
 
                 // If type if missing, get type from the corresponding tile
@@ -91,7 +120,7 @@ export class Level {
                     console.error("Furniture with type " + foundType + " not found.");
                     continue;
                 }
-                furniture.dataRef = data as IFurniture;
+                furniture.dataRef = data;
 
                 this.furnitures.push(furniture);
             }
