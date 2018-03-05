@@ -90,7 +90,11 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
+<<<<<<< HEAD
     public activate(x: number, y: number, userInitiated = true): void {
+=======
+    public activate(x: number, y: number, userInitiated: boolean = true): void {
+>>>>>>> a8c20fd44c3fc0f216f5cbbb404431dadddb5dbb
         console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
         // const tile = this.game.
@@ -136,6 +140,17 @@ export class Level {
         }
     }
 
+<<<<<<< HEAD
+=======
+    public addCreatureAt(newCreature: ICreature, x: number, y: number): void {
+        const addedCreature = new Creature();
+        addedCreature.x = x;
+        addedCreature.y = y;
+        addedCreature.dataRef = newCreature;
+        this.creatures.push(addedCreature);
+    }
+
+>>>>>>> a8c20fd44c3fc0f216f5cbbb404431dadddb5dbb
     public placePuzzleAt(px: number, py: number, puzzle: IPuzzleRoom): void {
         const getLayerByName = (name: string) => {
             for (const layer of puzzle.layers) {

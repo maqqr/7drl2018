@@ -64,13 +64,16 @@
         {"icon": 58,"type": "doorgold","description": "This is a gold door.","useractivation": "doorgoldopen","useractivationtext": "You open a door."},
         {"icon": 59,"type": "doorgoldopen","size": 0,"maxsize": 20,"description": "This is a opened gold door."},
         
+        {"icon": 60,"type": "candle","size": 1,"maxsize": 20,"description": "This is a candle."},
+        {"icon": 61,"type": "candlelight","size": 1,"maxsize": 20,"description": "This is a light candle."},
+
         {"icon": 64,"type": "rock","movable": 8,"description": "This is a rock."},
         
         {"icon": 66,"type": "pressureplatedown","size": 0,"maxsize": 20,"description": "This is a pressed pressure plate."},
         
         {"icon": 67,"type": "pedestal","size": 2,"maxsize": 20,"description": "This is a pedestal."},
         
-        {"icon": 68,"type": "vase","maxsize": 20,"description": "This is a vase."},
+        {"icon": 68,"type": "vase","size": 5,"maxsize": 20,"description": "This is a vase."},
         
         {"icon": 69,"type": "table","maxsize": 10,"description": "This is a table.","useractivation": "tablebroken"},
         {"icon": 70,"type": "tablebroken","maxsize": 10,"description": "This is a broken table."},
@@ -80,11 +83,26 @@
         {"icon": 73,"type": "skullpile","size": 4,"maxsize": 20,"description": "This is a pile skulls."},
         
         {"icon": 74,"type": "statuebroken","maxsize": 5,"description": "This is a broken statue."},
+
+        {"icon": 75,"type": "stool","maxsize": 5,"description": "This is a stool.","useractivation": "tablebroken"},
        
         {"icon": 80,"type": "trapspike","size": 0,"maxsize": 20,"description": "This is a spike trap.","activation": "trapspikeactivated"},
         {"icon": 81,"type": "trapspikeactivated","size": 0,"maxsize": 20,"description": "This is a spike trap.","activation": "trapspike", "damage": 10},
        
         {"icon": 82,"type": "trapteleportin","size": 0,"maxsize": 20,"description": "This is a teleport trap."},
-        {"icon": 83,"type": "trapteleportout","size": 0,"maxsize": 20,"description": "This is a teleport trap."}
+        {"icon": 83,"type": "trapteleportout","size": 0,"maxsize": 20,"description": "This is a teleport trap."},
+
+        {"icon": 84,"type": "vasebroken","size": 5,"maxsize": 20,"description": "This is a broken vase."},
+
+        {"icon": 51,"type": "pillarbroken","maxsize": 6,"description": "This is a broken pillar."},
+
+        {"icon": 86,"type": "rockpile","size": 4,"maxsize": 20,"description": "This is a pile rocks."},
+        {"icon": 87,"type": "rockpile","size": 4,"maxsize": 20,"description": "This is a pile rocks."},
+        {"icon": 88,"type": "rockpile","size": 4,"maxsize": 20,"description": "This is a pile rocks."},
+
+        {"icon": 89,"type": "headlessskeleton","size": 4,"maxsize": 20,"description": "This is a headless skeleton."},
+
+        {"icon": 90,"type": "skullpile","size": 4,"maxsize": 20,"description": "This is a pile skulls."},
+        {"icon": 91,"type": "skull","size": 2,"maxsize": 20,"description": "This is a skull."}
     ]
 }

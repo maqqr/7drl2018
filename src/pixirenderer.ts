@@ -10,7 +10,7 @@ abstract class RenderPool<T extends PIXI.DisplayObject> {
         this.stage = stage;
     }
 
-    public clear() {
+    public clear(): void {
         this.pool.forEach(this.clearElement.bind(this));
         this.drawn = 0;
     }
@@ -34,7 +34,7 @@ abstract class RenderPool<T extends PIXI.DisplayObject> {
 }
 
 class SpritePool extends RenderPool<PIXI.Sprite> {
-    public clearElement(sprite: PIXI.Sprite) {
+    public clearElement(sprite: PIXI.Sprite): void {
         sprite.visible = false;
     }
 
@@ -44,7 +44,7 @@ class SpritePool extends RenderPool<PIXI.Sprite> {
 }
 
 class GraphicsPool extends RenderPool<PIXI.Graphics> {
-    public clearElement(g: PIXI.Graphics) {
+    public clearElement(g: PIXI.Graphics): void {
         g.clear();
         g.visible = false;
     }
@@ -91,7 +91,7 @@ export class PixiRenderer {
         return this.pixirenderer.view;
     }
 
-    public loadAssets(paths, doneCallback): void {
+    public loadAssets(paths: string[], doneCallback: () => void): void {
         PIXI.loader.add(paths).load(doneCallback);
     }
 
@@ -109,7 +109,7 @@ export class PixiRenderer {
         this.grapgicsPool.clear();
     }
 
-    public drawTexture(x: number, y: number, index: number, tint = 0xFFFFFF): void {
+    public drawTexture(x: number, y: number, index: number, tint: number = 0xFFFFFF): void {
         const fontTex = PIXI.utils.TextureCache["tileset.png"];
         const tx = Math.floor(index % 16) * 16;
         const ty = Math.floor(index / 16) * 16;
@@ -123,7 +123,7 @@ export class PixiRenderer {
     }
 
     public drawRect(x: number, y: number, width: number, height: number,
-                    border = false, backgroundColor = Color.black): void {
+                    border: boolean = false, backgroundColor: number = Color.black): void {
         const rect = this.grapgicsPool.get();
         rect.beginFill(backgroundColor);
         if (border) {
