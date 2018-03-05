@@ -16,7 +16,6 @@ export interface ITile extends IHasType {
 export interface ICreature extends IHasType {
    id: number;
    maxhp: number;
-   currenthp?: number;
    strength: number;
    speed: number;
    willpower: number;
@@ -43,11 +42,8 @@ export interface IFurniture extends IHasType {
 export interface IPlayer extends IHasType {
     id: number;
     maxhp: number;
-    currenthp: number;
     spiritpower: number;
     spiritstability: number;
-    currentstability: number;
     willpower: number;
     speed: number;
-    currentbody: ICreature;
 }

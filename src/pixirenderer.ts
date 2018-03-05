@@ -63,6 +63,7 @@ export class PixiRenderer {
 
     private spritePool: SpritePool;
     private grapgicsPool: GraphicsPool;
+    private zoomFactor: number;
 
     constructor(width: number, height: number) {
         this.width = width;

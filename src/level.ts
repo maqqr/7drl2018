@@ -1,6 +1,7 @@
 import { Game } from ".";
-import { Entity, Furniture } from "./entity";
-import { IFurniture } from "./interface/entity-schema";
+import { GameData } from "./data";
+import { Creature, Entity, Furniture } from "./entity";
+import { ICreature, IFurniture } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
 
@@ -29,11 +30,16 @@ export class Level {
     public furnitures: Furniture[] = [];
     public descriptions: DescriptionObject[] = [];
 
+    public creatures: Creature[] = [];
+
+
     private tiles: TileID[] = [];
     private nextLevel: Level;
     private prevLevel: Level;
+    private readonly data: GameData;
 
-    constructor(width: number, height: number) {
+    constructor(width: number, height: number, data: GameData) {
+        this.data = data;
         this.width = width;
         this.height = height;
         this.nextLevel = null;
@@ -58,7 +64,53 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
-    public placePuzzleAt(game: Game, px: number, py: number, puzzle: IPuzzleRoom): void {
+    public activate(x: number, y: number, userInitiated = true) {
+        const tileId = this.get(x, y);
+        // const tile = this.game.
+
+        for (const fur of this.furnitures) {
+            if (fur.x === x && fur.y === y) {
+                console.log(fur);
+
+                // Handle activation targets
+                if (fur.dataRef.activationtarget) {
+                    // TODO
+                }
+
+                // Activate tile mechanically
+                if (!userInitiated && fur.dataRef.activation) {
+                    const newData = this.data.getByType(this.data.furnitures, fur.dataRef.activation);
+                    this.assignNewDataToFurniture(fur, newData);
+                }
+
+                // User initiated tile activation
+                if (userInitiated && fur.dataRef.useractivation) {
+                    const newData = this.data.getByType(this.data.furnitures, fur.dataRef.useractivation);
+                    this.assignNewDataToFurniture(fur, newData);
+                }
+            }
+        }
+    }
+
+    public assignNewDataToFurniture(furniture: Furniture, newData: IFurniture) {
+        for (const prop in newData) {
+            if (newData.hasOwnProperty(prop)) {
+                if (prop !== "activationtarget") {
+                    furniture.dataRef[prop] = newData[prop];
+                }
+            }
+        }
+    }
+
+    public addCreatureAt(newCreature: ICreature, x: number, y: number ) {
+        const addedCreature = new Creature();
+        addedCreature.x = x;
+        addedCreature.y = y;
+        addedCreature.dataRef = newCreature;
+        this.creatures.push(addedCreature);
+    }
+
+    public placePuzzleAt(px: number, py: number, puzzle: IPuzzleRoom): void {
         const getLayerByName = (name: string) => {
             for (const layer of puzzle.layers) {
                 if (layer.name === name) {
@@ -90,6 +142,8 @@ export class Level {
             }
         }
 
+        // console.log(this.data.furnitures);
+
         // Place furniture
         const furnitureLayer = getLayerByName("furniture");
         if ("objects" in furnitureLayer) {
@@ -106,7 +160,7 @@ export class Level {
                 if (foundType === "") {
                     if ("gid" in furnitureDefinition) {
                         const tileIndex = furnitureDefinition.gid - 1;
-                        const tile = game.data.tiles[tileIndex];
+                        const tile = this.data.tiles[tileIndex];
                         if (tile === undefined) {
                             console.error("Tile " + furnitureDefinition.gid + " not found.");
                             continue;
@@ -115,12 +169,28 @@ export class Level {
                     }
                 }
 
-                const data = game.data.getByType(game.data.furnitures, foundType);
+                const data = this.data.getByType(this.data.furnitures, foundType);
                 if (data === undefined) {
                     console.error("Furniture with type " + foundType + " not found.");
                     continue;
                 }
-                furniture.dataRef = data;
+
+                // Create copy of furniture data
+                furniture.dataRef = Object.assign({}, data, {});
+
+                // Copy properties that override default properties
+                if ("properties" in furnitureDefinition) {
+                    for (const prop in furnitureDefinition.properties) {
+                        if (furnitureDefinition.properties.hasOwnProperty(prop)) {
+                            if (prop === "activationtarget") {
+                                const parsed = JSON.parse(furnitureDefinition.properties[prop]);
+                                furniture.dataRef.activationtarget = parsed;
+                            } else {
+                                furniture.dataRef[prop] = furnitureDefinition.properties[prop];
+                            }
+                        }
+                    }
+                }
 
                 this.furnitures.push(furniture);
             }
