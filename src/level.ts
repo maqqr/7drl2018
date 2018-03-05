@@ -1,5 +1,5 @@
 import { Game } from ".";
-import { Entity, Furniture } from "./entity";
+import { Creature, Entity, Furniture } from "./entity";
 import { IFurniture } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
@@ -28,6 +28,9 @@ export class Level {
 
     public furnitures: Furniture[] = [];
     public descriptions: DescriptionObject[] = [];
+
+    public creatures: Creature[] = [];
+
 
     private tiles: TileID[] = [];
     private nextLevel: Level;
@@ -125,5 +128,6 @@ export class Level {
                 this.furnitures.push(furniture);
             }
         }
+
     }
 }

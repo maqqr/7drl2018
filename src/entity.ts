@@ -12,6 +12,9 @@ export class Furniture extends Entity {
 export class Item extends Entity {
 
 }
-export class Character extends Entity {
+export class Creature extends Entity {
+
+}
+export class Player extends Entity {
 
 }
