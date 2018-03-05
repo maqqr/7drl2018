@@ -143,23 +143,48 @@ export class Game {
     private handleKeyPress(e: KeyboardEvent): void {
         let xx = this.player.x;
         let yy = this.player.y;
-        const code = e.keyCode;
-        const moving = code === 68 || code === 65 || code === 83 || code === 87 ? true : false;
-        xx = code === 68 ? xx += 1 : (code === 65) ? xx -= 1 : xx;
-        yy = code === 83 ? yy += 1 : (code === 87) ? yy -= 1 : yy;
-        console.log(code);
+        let keyAccepted = false;
+        const code = e.code;
+        const moving = code === "KeyD" || code === "KeyA" || code === "KeyW" || code === "KeyS" ? true : false;
+        xx = code === "KeyD" ? xx += 1 : (code === "KeyA") ? xx -= 1 : xx;
+        yy = code === "KeyS" ? yy += 1 : (code === "KeyW") ? yy -= 1 : yy;
+        console.log(e.code);
         // Player tries to move. Switch?
         // Tried to move into a tile with a creature
         // TODO fight?
         if (moving && !this.isCurrable(xx, yy)) {
-            console.log("You bump into ".concat(this.currentLevel.getCreatureAt(xx, yy).dataRef.type));
+            const action =
+             (e.shiftKey ? "You try to possess the " : "You try to hit the ").
+             concat(this.currentLevel.getCreatureAt(xx, yy).dataRef.type);
+            console.log(action);
+            if (e.shiftKey) {
+                // Possessing
+                this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
+                this.player.x = xx;
+                this.player.y = yy;
+            }
+            keyAccepted = true;
         } else if (moving && this.isPassable(xx, yy)
         && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy), xx, yy)) {
-            this.player.x = xx;
-            this.player.y = yy;
+            if (e.shiftKey) {
+                this.player.x = xx;
+                this.player.y = yy;
+                this.player.currentbody = null;
+            } else {
+                this.player.x = xx;
+                this.player.y = yy;
+                if (!(this.player.currentbody === null)) {
+                    this.player.currentbody.x = xx;
+                    this.player.currentbody.y = yy;
+                }
+            }
+            
+            keyAccepted = true;
         }
-        window.removeEventListener("keydown", this.keyDownCallBack);
-        this.updateLoop();
+        if (keyAccepted) {
+            window.removeEventListener("keydown", this.keyDownCallBack);
+            this.updateLoop();
+        }
     }
     private handleClick(mouseEvent: IMouseEvent): void {
         console.log(mouseEvent);
