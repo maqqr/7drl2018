@@ -117,9 +117,10 @@ export class PixiRenderer {
         sprite.tint = tint;
     }
 
-    public drawRect(x: number, y: number, width: number, height: number, border = false): void {
+    public drawRect(x: number, y: number, width: number, height: number,
+                    border = false, backgroundColor = Color.black): void {
         const rect = this.grapgicsPool.get();
-        rect.beginFill(Color.black);
+        rect.beginFill(backgroundColor);
         if (border) {
             rect.lineStyle(2, Color.white);
         }

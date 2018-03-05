@@ -8,6 +8,8 @@ export interface IObjectLayerObject {
     x: number;
     y: number;
     type: string;
+    width?: number;
+    height?: number;
     gid?: number;
     properties?: {
         activations?: string;

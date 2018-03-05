@@ -1,6 +1,7 @@
 import { Game } from "./index";
 import { Level } from "./level";
 import { PixiRenderer } from "./pixirenderer";
+import { Color } from "./color";
 
 export class Renderer {
     private game: Game;
@@ -37,6 +38,11 @@ export class Renderer {
             // const furId = this.game.data.getByType(this.game.data.furnitures, furniture.dataType);
             // const furDef = this.game.data.furnitures[furId];
             this.renderer.drawTexture(furniture.x * 16, furniture.y * 16, furniture.dataRef.icon);
+        }
+
+        // Draw descriptions (for debugging purposes)
+        for (const desc of this.game.getCurrentLevel().descriptions) {
+            this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
         }
 
         // this.renderer.drawRect(0, 0, 64, 64, true);

@@ -17,7 +17,7 @@ export class Game {
     public start(): void {
         this.data = new GameData();
         this.renderer = new Renderer(this);
-        this.currentLevel = new Level(12, 12);
+        this.currentLevel = new Level(24, 24);
         Promise.all([this.loadData(), this.renderer.loadGraphics()])
           .then(this.assetsLoaded.bind(this));
     }
@@ -73,7 +73,7 @@ export class Game {
         }
 
         // Place test puzzle map into current level
-        this.currentLevel.placePuzzleAt(this, 0, 0, testmap);
+        this.currentLevel.placePuzzleAt(this, 2, 2, testmap);
     }
 
     public assetsLoaded(): void {
