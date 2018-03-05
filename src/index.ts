@@ -100,6 +100,8 @@ export class Game {
         console.log("loaded");
         console.log(this.data.creatures);
         console.log(this.data.player);
+        console.log(this.data.creatures[253]);
+        this.currentLevel.addCreatureAt(this.data.creatures[253], 9, 9);
         this.updateLoop();
 
     }
@@ -108,9 +110,12 @@ export class Game {
         return this.currentLevel;
     }
 
-    private isPassable(x: number, y: number, lvl: Level): boolean {
+    private isPassable(x: number, y: number): boolean {
         const plSize = this.player.currentbody === null ? 10 : this.player.currentbody.dataRef.size;
         return plSize <= this.data.tiles[this.currentLevel.get(x, y)].maxsize;
+    }
+    private isCurrable(x: number, y: number): boolean {
+        return this.currentLevel.getCreatureAt(x, y) === null;
     }
     private isFurrable(furs: Furniture[], x: number, y: number): boolean {
         let val = true;
@@ -137,24 +142,24 @@ export class Game {
     private playerTurn() {
         window.addEventListener("keydown", this.keyDownCallBack);
     }
-    private handleKeyPress(e: KeyboardEvent) {
+    private handleKeyPress(e: KeyboardEvent): void {
         const xx = this.player.x;
         const yy = this.player.y;
         const code = e.keyCode;
         console.log(code);
-        if (code === 87 && this.isPassable(xx, yy - 1, this.currentLevel)
+        if (code === 87 && this.isPassable(xx, yy - 1) && this.isCurrable(xx, yy - 1)
                 && (this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy - 1), xx, yy - 1))) {
             this.player.y -= 1;
         }
-        if (code === 68 && this.isPassable(xx + 1, yy, this.currentLevel)
+        if (code === 68 && this.isPassable(xx + 1, yy) && this.isCurrable(xx + 1, yy)
             && (this.isFurrable(this.currentLevel.getFurnituresAt(xx + 1, yy), xx + 1, yy))) {
             this.player.x += 1;
         }
-        if (code === 83 && this.isPassable(xx, yy + 1, this.currentLevel)
+        if (code === 83 && this.isPassable(xx, yy + 1) && this.isCurrable(xx, yy + 1)
             && (this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy + 1), xx, yy + 1))) {
             this.player.y += 1;
         }
-        if (code === 65 && this.isPassable(xx - 1, yy, this.currentLevel)
+        if (code === 65 && this.isPassable(xx - 1, yy) && this.isCurrable(xx - 1, yy)
             && (this.isFurrable(this.currentLevel.getFurnituresAt(xx - 1, yy), xx - 1, yy))) {
             this.player.x -= 1;
         }

@@ -63,6 +63,11 @@ export class Renderer {
             this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
         }
 
+        const creatures = this.game.getCurrentLevel().creatures;
+        for (const furry of creatures) {
+            this.renderer.drawTexture(furry.x * 16, furry.y * 16, furry.dataRef.id);
+        }
+
         const player = this.game.player;
         if (player.currentbody === null) {
             this.renderer.drawTexture(player.x * 16, player.y * 16, player.dataRef.id);
