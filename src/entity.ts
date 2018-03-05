@@ -7,7 +7,8 @@ export class Entity<T extends IHasType> {
 }
 
 export class Furniture extends Entity<IFurniture> {
-
+    public offsetX: number;
+    public offsetY: number;
 }
 export class Item extends Entity<IItem> {
 
