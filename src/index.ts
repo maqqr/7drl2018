@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 import { GameData } from "./data";
-import { Player } from "./entity";
+import { Furniture, Player } from "./entity";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
@@ -38,8 +38,8 @@ export class Game {
           .then(this.assetsLoaded.bind(this));
         this.player = new Player();
         this.player.dataRef  = this.data.player;
-        this.player.x = 160;
-        this.player.y = 160;
+        this.player.x = 10;
+        this.player.y = 10;
         this.player.currentbody = null;
         this.player.currenthp = this.player.dataRef.maxhp;
         this.player.currentstability = this.player.dataRef.spiritstability;
@@ -83,6 +83,7 @@ export class Game {
             this.data.furnitures[furry.icon] = furry;
             if (!("movable" in furry)) { this.data.furnitures[furry.icon].movable = 21; }
             if (!("maxsize" in furry)) { this.data.furnitures[furry.icon].maxsize = 0; }
+            if (!("size" in furry)) { this.data.furnitures[furry.icon].maxsize = 21; }
             if (!("damage" in furry)) { this.data.furnitures[furry.icon].damage = 0; }
             if (!("activation" in furry)) { this.data.furnitures[furry.icon].activation = null; }
             if (!("useractivation" in furry)) { this.data.furnitures[furry.icon].useractivation = null; }
@@ -99,11 +100,26 @@ export class Game {
         console.log("loaded");
         console.log(this.data.creatures);
         console.log(this.data.player);
-        this.renderer.renderGame();
+        this.updateLoop();
+
     }
 
     public getCurrentLevel(): Level {
         return this.currentLevel;
+    }
+
+    private isPassable(x: number, y: number, lvl: Level): boolean {
+        const plSize = this.player.currentbody === null ? 10 : this.player.currentbody.dataRef.size;
+        return plSize <= this.data.tiles[this.currentLevel.get(x, y)].maxsize;
+    }
+    private isFurrable(furs: Furniture[]): boolean {
+        let val = true;
+        const plSize = this.player.currentbody === null ? 10 : this.player.currentbody.dataRef.size;
+        for (const fur of furs) {
+            // if (fur === null) { continue; }
+            val = fur.dataRef.maxsize >= plSize ? true : false;
+        }
+        return val;
     }
 
     private loadJSON<T>(path: string): Promise<T> {
@@ -119,9 +135,25 @@ export class Game {
     }
     private handleKeyPress(e: KeyboardEvent) {
         const code = e.keyCode;
-        console.log(code === 87);
-        if (code === 87) {
-            this.player.y += 16;
+        console.log(code);
+        if (code === 87 && this.isPassable(this.player.x, this.player.y - 1, this.currentLevel)
+                && (this.isFurrable(this.currentLevel.getFurnituresAt(this.player.x, this.player.y - 1)))) {
+            this.player.y -= 1;
+            console.log(this.player.y);
+        }
+        if (code === 68 && this.isPassable(this.player.x + 1, this.player.y, this.currentLevel)
+            && (this.isFurrable(this.currentLevel.getFurnituresAt(this.player.x + 1, this.player.y)))) {
+            this.player.x += 1;
+            console.log(this.player.y);
+        }
+        if (code === 83 && this.isPassable(this.player.x, this.player.y + 1, this.currentLevel)
+            && (this.isFurrable(this.currentLevel.getFurnituresAt(this.player.x, this.player.y + 1)))) {
+            this.player.y += 1;
+            console.log(this.player.y);
+        }
+        if (code === 65 && this.isPassable(this.player.x - 1, this.player.y, this.currentLevel)
+            && (this.isFurrable(this.currentLevel.getFurnituresAt(this.player.x, this.player.y - 1)))) {
+            this.player.x -= 1;
             console.log(this.player.y);
         }
         window.removeEventListener("keydown", this.keyDownCallBack);

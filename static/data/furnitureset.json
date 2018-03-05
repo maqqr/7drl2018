@@ -4,64 +4,87 @@
         {"icon": 1,"type": "fakewall1","description": "Strangely smooth wall.","activation": "fakefloor1"},
         {"icon": 2,"type": "crumblingwall1","description": "Strangely cracked wall.","activation": "rockpile"},
         {"icon": 3,"type": "transwall1","description": "Large slab of stone."},
-        {"icon": 5,"type": "fakefloor1","description": "Strangely smooth floor.","activation": "fakewall1"},
-        {"icon": 6,"type": "transfloor1","description": "Strangely crushed floor.","activation": "transwall1"},
+        {"icon": 5,"type": "fakefloor1","size": 0,"description": "Strangely smooth floor.","activation": "fakewall1"},
+        {"icon": 6,"type": "transfloor1","size": 0,"description": "Strangely crushed floor.","activation": "transwall1"},
 
         {"icon": 17,"type": "fakewall2","description": "Strangely smooth wall.","activation": "fakefloor2"},
         {"icon": 18,"type": "crumblingwall2","description": "Strangely cracked wall.","activation": "rockpile"},
         {"icon": 19,"type": "transwall2","description": "Large slab of stone."},
-        {"icon": 21,"type": "fakefloor2","description": "Strangely smooth floor.","activation": "fakewall2"},
-        {"icon": 22,"type": "transfloor2","description": "Strangely crushed floor.","activation": "transwall2"},
+        {"icon": 21,"type": "fakefloor2","size": 0,"description": "Strangely smooth floor.","activation": "fakewall2"},
+        {"icon": 22,"type": "transfloor2","size": 0,"description": "Strangely crushed floor.","activation": "transwall2"},
 
         {"icon": 33,"type": "fakewall3","description": "Strangely smooth wall.","activation": "fakefloor3"},
         {"icon": 34,"type": "crumblingwall3","description": "Strangely cracked wall.","activation": "rockpile"},
         {"icon": 35,"type": "transwall3","description": "Large slab of stone."},
-        {"icon": 37,"type": "fakefloor3","description": "Strangely smooth floor.","activation": "fakewall3"},
-        {"icon": 38,"type": "transfloor3","description": "Strangely crushed floor.","activation": "transwall3"},
+        {"icon": 37,"type": "fakefloor3","size": 0,"description": "Strangely smooth floor.","activation": "fakewall3"},
+        {"icon": 38,"type": "transfloor3","size": 0,"description": "Strangely crushed floor.","activation": "transwall3"},
 
         {"icon": 9,"type": "door","description": "This is a closed door.","useractivation": "dooropen","useractivationtext": "You open a door."},
-        {"icon": 10,"type": "dooropen","maxsize": 20,"description": "This is a opened door."},
+        {"icon": 10,"type": "dooropen","size": 0,"maxsize": 20,"description": "This is a opened door."},
+        
         {"icon": 11,"type": "doormechanised","description": "This is a closed door.","activation": "doormechanisedopen"},
-        {"icon": 12,"type": "doormechanisedopen","maxsize": 20,"description": "This is a opened door.","activation": "doormechanised"},
+        {"icon": 12,"type": "doormechanisedopen","size": 0,"maxsize": 20,"description": "This is a opened door.","activation": "doormechanised"},
+        
         {"icon": 25,"type": "doorbronzelocked","description": "This is a locked bronze door.","requireitem": "bronze key","useractivation": "doorbronze","useractivationtext": "You unlock a door."},
         {"icon": 26,"type": "doorbronze","description": "This is a bronze door.","useractivation": "doorbronzeopen","useractivationtext": "You open a door."},
-        {"icon": 27,"type": "doorbronzeopen","maxsize": 20,"description": "This is a opened bronze door."},
+        {"icon": 27,"type": "doorbronzeopen","size": 0,"maxsize": 20,"description": "This is a opened bronze door."},
+        
         {"icon": 28,"type": "chest","maxsize": 20,"description": "This is a chest.","useractivation": "chestopen","useractivationtext": "You open a chest."},
         {"icon": 29,"type": "chestopen","maxsize": 20,"description": "This is a opened chest."},
-        {"icon": 30,"type": "pentagram1","maxsize": 20,"description": "This is a part of pentagram."},
-        {"icon": 31,"type": "pentagram2","maxsize": 20,"description": "This is a part of pentagram."},
+        
+        {"icon": 30,"type": "pentagram1","size": 0,"maxsize": 20,"description": "This is a part of pentagram."},
+        {"icon": 31,"type": "pentagram2","size": 0,"maxsize": 20,"description": "This is a part of pentagram."},
+        
         {"icon": 41,"type": "doorsilverlocked","description": "This is a locked silver door.","requireitem": "silver key","useractivation": "doorsilver","useractivationtext": "You unlock a door."},
         {"icon": 42,"type": "doorsilver","description": "This is a silver door.","useractivation": "doorsilveropen","useractivationtext": "You open a door."},
-        {"icon": 43,"type": "doorsilveropen","maxsize": 20,"description": "This is a opened silver door."},
+        {"icon": 43,"type": "doorsilveropen","size": 0,"maxsize": 20,"description": "This is a opened silver door."},
+        
         {"icon": 44,"type": "chestgold","maxsize": 20,"description": "This is a fancy chest.","useractivation": "chestgoldenopen","useractivationtext": "You open a chest."},
         {"icon": 45,"type": "chestgoldopen","maxsize": 20,"description": "This is a opened fancy chest."},
-        {"icon": 46,"type": "pentagram3","maxsize": 20,"description": "This is a part of pentagram."},
-        {"icon": 47,"type": "pentagram4","maxsize": 20,"description": "This is a part of pentagram."},
-        {"icon": 48,"type": "leverleft","maxsize": 20,"description": "This is a lever.","useractivation": "leverright","useractivationtext": "You pull the lever."},
-        {"icon": 49,"type": "leverright","maxsize": 20,"description": "This is a lever.","useractivation": "leverleft","useractivationtext": "You pull the lever."},
-        {"icon": 50,"type": "pressureplate","maxsize": 20,"description": "This is a pressure plate."},
-        {"icon": 51,"type": "pillar","description": "This is a pillar."},
-        {"icon": 52,"type": "statue","description": "This is a statue."},
-        {"icon": 53,"type": "tomb","maxsize": 20,"description": "This is a tomb."},
-        {"icon": 54,"type": "tombbroken","maxsize": 20,"description": "This is a broken tomb."},
-        {"icon": 55,"type": "doorbar","maxsize": 20,"description": "This is a bar door.","useractivationtext": "You open a door."},
-        {"icon": 56,"type": "doorbaropen","description": "This is a opened bar door."},
+        
+        {"icon": 46,"type": "pentagram3","size": 0,"maxsize": 20,"description": "This is a part of pentagram."},
+        {"icon": 47,"type": "pentagram4","size": 0,"maxsize": 20,"description": "This is a part of pentagram."},
+        
+        {"icon": 48,"type": "leverleft","size": 2,"maxsize": 20,"description": "This is a lever.","useractivation": "leverright","useractivationtext": "You pull the lever."},
+        {"icon": 49,"type": "leverright","size": 2,"maxsize": 20,"description": "This is a lever.","useractivation": "leverleft","useractivationtext": "You pull the lever."},
+        
+        {"icon": 50,"type": "pressureplate","size": 0,"maxsize": 20,"description": "This is a pressure plate."},
+        
+        {"icon": 51,"type": "pillar","maxsize": 3,"description": "This is a pillar."},
+        
+        {"icon": 52,"type": "statue","maxsize": 3,"description": "This is a statue."},
+        
+        {"icon": 53,"type": "tomb","maxsize": 14,"description": "This is a tomb."},
+        {"icon": 54,"type": "tombbroken","maxsize": 14,"description": "This is a broken tomb."},
+        
+        {"icon": 55,"type": "doorbar","description": "This is a bar door.","activation": "doorbaropen"},
+        {"icon": 56,"type": "doorbaropen","maxsize": 20,"description": "This is a opened bar door.","activation": "doorbar"},
+        
         {"icon": 57,"type": "doorgoldlocked","description": "This is a locked gold door.","requireitem": "golden key","useractivation": "doorgold","useractivationtext": "You unlock a door."},
         {"icon": 58,"type": "doorgold","description": "This is a gold door.","useractivation": "doorgoldopen","useractivationtext": "You open a door."},
-        {"icon": 59,"type": "doorgoldopen","maxsize": 20,"description": "This is a opened gold door."},
+        {"icon": 59,"type": "doorgoldopen","size": 0,"maxsize": 20,"description": "This is a opened gold door."},
+        
         {"icon": 64,"type": "rock","movable": 8,"description": "This is a rock."},
-        {"icon": 66,"type": "pressureplatedown","maxsize": 20,"description": "This is a pressed pressure plate."},
-        {"icon": 67,"type": "pedestal","maxsize": 20,"description": "This is a pedestal."},
+        
+        {"icon": 66,"type": "pressureplatedown","size": 0,"maxsize": 20,"description": "This is a pressed pressure plate."},
+        
+        {"icon": 67,"type": "pedestal","size": 2,"maxsize": 20,"description": "This is a pedestal."},
+        
         {"icon": 68,"type": "vase","maxsize": 20,"description": "This is a vase."},
-        {"icon": 69,"type": "table","maxsize": 20,"description": "This is a table.","useractivation": "tablebroken"},
-        {"icon": 70,"type": "tablebroken","maxsize": 20,"description": "This is a broken table."},
-        {"icon": 71,"type": "tablevertical","maxsize": 20,"description": "This is a table.","useractivation": "tablebroken"},
-        {"icon": 72,"type": "rockpile","maxsize": 20,"description": "This is a pile rocks."},
-        {"icon": 73,"type": "skullpile","maxsize": 20,"description": "This is a pile skulls."},
-        {"icon": 74,"type": "statuebroken","maxsize": 10,"description": "This is a broken statue."},
-        {"icon": 80,"type": "trapspike","maxsize": 20,"description": "This is a spike trap.","activation": "trapspikeactivated"},
-        {"icon": 81,"type": "trapspikeactivated","maxsize": 20,"description": "This is a spike trap.","activation": "trapspike", "damage": 10},
-        {"icon": 82,"type": "trapteleportin","maxsize": 20,"description": "This is a teleport trap."},
-        {"icon": 83,"type": "trapteleportout","maxsize": 20,"description": "This is a teleport trap."}
+        
+        {"icon": 69,"type": "table","maxsize": 10,"description": "This is a table.","useractivation": "tablebroken"},
+        {"icon": 70,"type": "tablebroken","maxsize": 10,"description": "This is a broken table."},
+        {"icon": 71,"type": "tablevertical","maxsize": 10,"description": "This is a table.","useractivation": "tablebroken"},
+        
+        {"icon": 72,"type": "rockpile","size": 4,"maxsize": 20,"description": "This is a pile rocks."},
+        {"icon": 73,"type": "skullpile","size": 4,"maxsize": 20,"description": "This is a pile skulls."},
+        
+        {"icon": 74,"type": "statuebroken","maxsize": 5,"description": "This is a broken statue."},
+       
+        {"icon": 80,"type": "trapspike","size": 0,"maxsize": 20,"description": "This is a spike trap.","activation": "trapspikeactivated"},
+        {"icon": 81,"type": "trapspikeactivated","size": 0,"maxsize": 20,"description": "This is a spike trap.","activation": "trapspike", "damage": 10},
+       
+        {"icon": 82,"type": "trapteleportin","size": 0,"maxsize": 20,"description": "This is a teleport trap."},
+        {"icon": 83,"type": "trapteleportout","size": 0,"maxsize": 20,"description": "This is a teleport trap."}
     ]
 }
