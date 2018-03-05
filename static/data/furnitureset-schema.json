@@ -11,7 +11,7 @@
                 "icon": {"type":"integer"},
                 "movable": {"type":"integer","minimum": 0,"maximum": 21,"default":21},
                 "type": {"type":"string"},
-                "size": {"type":"integer","minimum": 0,"maximum": 0,"default":21},
+                "size": {"type":"integer","minimum": 0,"maximum": 21,"default":21},
                 "maxsize": {"type":"integer","minimum": 0,"maximum": 21,"default":0},
                 "damage": {"type":"integer","minimum": 0},
                 "activation": {"type":"string"},

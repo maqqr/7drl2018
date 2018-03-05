@@ -83,7 +83,7 @@ export class Game {
             this.data.furnitures[furry.icon] = furry;
             if (!("movable" in furry)) { this.data.furnitures[furry.icon].movable = 21; }
             if (!("maxsize" in furry)) { this.data.furnitures[furry.icon].maxsize = 0; }
-            if (!("size" in furry)) { this.data.furnitures[furry.icon].maxsize = 21; }
+            if (!("size" in furry)) { this.data.furnitures[furry.icon].size = 21; }
             if (!("damage" in furry)) { this.data.furnitures[furry.icon].damage = 0; }
             if (!("activation" in furry)) { this.data.furnitures[furry.icon].activation = null; }
             if (!("useractivation" in furry)) { this.data.furnitures[furry.icon].useractivation = null; }
@@ -112,14 +112,18 @@ export class Game {
         const plSize = this.player.currentbody === null ? 10 : this.player.currentbody.dataRef.size;
         return plSize <= this.data.tiles[this.currentLevel.get(x, y)].maxsize;
     }
-    private isFurrable(furs: Furniture[]): boolean {
+    private isFurrable(furs: Furniture[], x: number, y: number): boolean {
         let val = true;
+        let pile = 0;
         const plSize = this.player.currentbody === null ? 10 : this.player.currentbody.dataRef.size;
         for (const fur of furs) {
             // if (fur === null) { continue; }
             val = fur.dataRef.maxsize >= plSize ? true : false;
+            pile += fur.dataRef.size;
         }
-        return val;
+        console.log(pile + plSize);
+        console.log(this.data.tiles[this.currentLevel.get(x, y)].maxsize);
+        return val && ((pile + plSize) <= this.data.tiles[this.currentLevel.get(x, y)].maxsize);
     }
 
     private loadJSON<T>(path: string): Promise<T> {
@@ -134,27 +138,25 @@ export class Game {
         window.addEventListener("keydown", this.keyDownCallBack);
     }
     private handleKeyPress(e: KeyboardEvent) {
+        const xx = this.player.x;
+        const yy = this.player.y;
         const code = e.keyCode;
         console.log(code);
-        if (code === 87 && this.isPassable(this.player.x, this.player.y - 1, this.currentLevel)
-                && (this.isFurrable(this.currentLevel.getFurnituresAt(this.player.x, this.player.y - 1)))) {
+        if (code === 87 && this.isPassable(xx, yy - 1, this.currentLevel)
+                && (this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy - 1), xx, yy - 1))) {
             this.player.y -= 1;
-            console.log(this.player.y);
         }
-        if (code === 68 && this.isPassable(this.player.x + 1, this.player.y, this.currentLevel)
-            && (this.isFurrable(this.currentLevel.getFurnituresAt(this.player.x + 1, this.player.y)))) {
+        if (code === 68 && this.isPassable(xx + 1, yy, this.currentLevel)
+            && (this.isFurrable(this.currentLevel.getFurnituresAt(xx + 1, yy), xx + 1, yy))) {
             this.player.x += 1;
-            console.log(this.player.y);
         }
-        if (code === 83 && this.isPassable(this.player.x, this.player.y + 1, this.currentLevel)
-            && (this.isFurrable(this.currentLevel.getFurnituresAt(this.player.x, this.player.y + 1)))) {
+        if (code === 83 && this.isPassable(xx, yy + 1, this.currentLevel)
+            && (this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy + 1), xx, yy + 1))) {
             this.player.y += 1;
-            console.log(this.player.y);
         }
-        if (code === 65 && this.isPassable(this.player.x - 1, this.player.y, this.currentLevel)
-            && (this.isFurrable(this.currentLevel.getFurnituresAt(this.player.x, this.player.y - 1)))) {
+        if (code === 65 && this.isPassable(xx - 1, yy, this.currentLevel)
+            && (this.isFurrable(this.currentLevel.getFurnituresAt(xx - 1, yy), xx - 1, yy))) {
             this.player.x -= 1;
-            console.log(this.player.y);
         }
         window.removeEventListener("keydown", this.keyDownCallBack);
         this.updateLoop();
