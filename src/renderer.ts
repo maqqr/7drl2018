@@ -26,8 +26,8 @@ export class Renderer {
     public addClickListener(callback: (e: IMouseEvent) => void) {
         this.renderer.getCanvas().addEventListener("click", (event) => {
             const rect = this.renderer.getCanvas().getBoundingClientRect();
-            const mx = event.clientX - rect.left;
-            const my = event.clientY - rect.top;
+            const mx = Math.floor(((event.clientX - rect.left) / rect.width) * Game.WIDTH);
+            const my = Math.floor(((event.clientY - rect.top) / rect.height) * Game.HEIGHT);
             const tx = Math.floor(mx / 16);
             const ty = Math.floor(my / 16);
             callback({ mx, my, tx, ty });

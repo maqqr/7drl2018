@@ -1,4 +1,5 @@
 import { Game } from ".";
+import { GameData } from "./data";
 import { Entity, Furniture } from "./entity";
 import { IFurniture } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
@@ -32,8 +33,10 @@ export class Level {
     private tiles: TileID[] = [];
     private nextLevel: Level;
     private prevLevel: Level;
+    private readonly data: GameData;
 
-    constructor(width: number, height: number) {
+    constructor(width: number, height: number, data: GameData) {
+        this.data = data;
         this.width = width;
         this.height = height;
         this.nextLevel = null;
@@ -58,7 +61,20 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
-    public placePuzzleAt(game: Game, px: number, py: number, puzzle: IPuzzleRoom): void {
+    public activate(x: number, y: number) {
+        const tileId = this.get(x, y);
+        // const tile = this.game.
+
+        for (const fur of this.furnitures) {
+            if (fur.x === x && fur.y === y) {
+                // TODO
+                // fur.dataRef.
+                // console.log(fur);
+            }
+        }
+    }
+
+    public placePuzzleAt(px: number, py: number, puzzle: IPuzzleRoom): void {
         const getLayerByName = (name: string) => {
             for (const layer of puzzle.layers) {
                 if (layer.name === name) {
@@ -90,6 +106,8 @@ export class Level {
             }
         }
 
+        // console.log(this.data.furnitures);
+
         // Place furniture
         const furnitureLayer = getLayerByName("furniture");
         if ("objects" in furnitureLayer) {
@@ -106,7 +124,7 @@ export class Level {
                 if (foundType === "") {
                     if ("gid" in furnitureDefinition) {
                         const tileIndex = furnitureDefinition.gid - 1;
-                        const tile = game.data.tiles[tileIndex];
+                        const tile = this.data.tiles[tileIndex];
                         if (tile === undefined) {
                             console.error("Tile " + furnitureDefinition.gid + " not found.");
                             continue;
@@ -115,12 +133,16 @@ export class Level {
                     }
                 }
 
-                const data = game.data.getByType(game.data.furnitures, foundType);
+                const data = this.data.getByType(this.data.furnitures, foundType);
                 if (data === undefined) {
                     console.error("Furniture with type " + foundType + " not found.");
                     continue;
                 }
                 furniture.dataRef = data;
+
+                // Copy properties that override default properties.
+                // TODO
+                // console.log(furnitureDefinition);
 
                 this.furnitures.push(furniture);
             }

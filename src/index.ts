@@ -28,7 +28,7 @@ export class Game {
         this.data = new GameData();
         this.renderer = new Renderer(this);
         this.renderer.addClickListener(this.handleClick.bind(this));
-        this.currentLevel = new Level(24, 24);
+        this.currentLevel = new Level(28, 28, this.data);
         Promise.all([this.loadData(), this.renderer.loadGraphics()])
           .then(this.assetsLoaded.bind(this));
         this.nextTurn();
@@ -82,7 +82,7 @@ export class Game {
         }
 
         // Place test puzzle map into current level
-        this.currentLevel.placePuzzleAt(this, 2, 2, testmap);
+        this.currentLevel.placePuzzleAt(2, 2, testmap);
     }
 
     public assetsLoaded(): void {
@@ -115,6 +115,7 @@ export class Game {
     }
     private handleClick(mouseEvent: IMouseEvent) {
         console.log(mouseEvent);
+        this.currentLevel.activate(mouseEvent.tx, mouseEvent.ty);
     }
     private nextTurn() { this.updateLoop(); }
     private updateLoop() {
