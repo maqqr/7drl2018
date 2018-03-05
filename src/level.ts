@@ -1,6 +1,7 @@
-import { Furniture } from "./furniture";
-import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 import { Game } from ".";
+import { Furniture } from "./furniture";
+import { IFurniture } from "./interface/entity-schema";
+import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
 type TileID = number;
 
@@ -67,23 +68,31 @@ export class Level {
                 const furniture = new Furniture();
                 furniture.x = furnitureDefinition.x / 16;
                 furniture.y = furnitureDefinition.y / 16 - 1;
-                furniture.dataType = furnitureDefinition.type;
+                furniture.dataRef = null;
 
-                // Get type from the corresponding tile
-                if (furnitureDefinition.type === "") {
+                // If type if missing, get type from the corresponding tile
+                // (because Tiled editor leaves it empty if the furniture was created
+                // using the "Insert Tile" tool)
+                let foundType = furnitureDefinition.type;
+                if (foundType === "") {
                     if ("gid" in furnitureDefinition) {
                         const tileIndex = furnitureDefinition.gid - 1;
                         const tile = game.data.tiles[tileIndex];
                         if (tile === undefined) {
                             console.error("Tile " + furnitureDefinition.gid + " not found.");
+                            continue;
                         }
-                        furniture.dataType = tile.type;
+                        foundType = tile.type;
                     }
                 }
-                if (furniture.dataType === "") {
-                    console.error("Furniture object is missing type.");
+
+                const data = game.data.getByType(game.data.furnitures, foundType);
+                if (data === undefined) {
+                    console.error("Furniture with type " + foundType + " not found.");
                     continue;
                 }
+                furniture.dataRef = data as IFurniture;
+
                 this.furnitures.push(furniture);
             }
         }
