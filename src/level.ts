@@ -1,6 +1,7 @@
-import { Furniture } from "./furniture";
-import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 import { Game } from ".";
+import { Furniture } from "./entity";
+import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
+
 
 type TileID = number;
 

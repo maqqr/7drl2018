@@ -5,6 +5,10 @@ import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set
 import { Level } from "./level";
 import { Renderer } from "./renderer";
 
+
+
+
+
 export class Game {
     public static readonly WIDTH: number = 600;
     public static readonly HEIGHT: number = 400;
@@ -14,12 +18,18 @@ export class Game {
     private renderer: Renderer;
     private currentLevel: Level;
 
+    private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
+
+
+
+
     public start(): void {
         this.data = new GameData();
         this.renderer = new Renderer(this);
         this.currentLevel = new Level(12, 12);
         Promise.all([this.loadData(), this.renderer.loadGraphics()])
           .then(this.assetsLoaded.bind(this));
+        this.nextTurn();
     }
 
     public async loadData(): Promise<void> {
@@ -38,9 +48,6 @@ export class Game {
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
             if (!("currenthp" in ent)) { this.data.creatures[ent.id].currenthp = ent.maxhp; }
-            if (!("willpower" in ent)) { this.data.creatures[ent.id].willpower = null; }
-            if (!("spiritpower" in ent)) { this.data.creatures[ent.id].spiritpower = null; }
-            if (!("spiritstability" in ent)) { this.data.creatures[ent.id].spiritstability = null; }
             if (!("inventoryslots" in ent)) { this.data.creatures[ent.id].inventoryslots = null; }
             if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
         }
@@ -79,10 +86,7 @@ export class Game {
     public assetsLoaded(): void {
         console.log("loaded");
         console.log(this.data.creatures);
-        this.refreshDisplay();
-    }
-
-    public refreshDisplay() {
+        console.log(this.data.player);
         this.renderer.renderGame();
     }
 
@@ -96,6 +100,24 @@ export class Game {
                 resolve(data);
             });
         });
+    }
+
+    private playerTurn() {
+        window.addEventListener("keydown", this.handleKeyPress.bind(this));
+    }
+    private handleKeyPress(e: KeyboardEvent) {
+        // const code = e.keyCode;
+        console.log(e);
+        window.removeEventListener("keydown", this.handleKeyPress.bind(this));
+        this.nextTurn();
+    }
+    private nextTurn() { this.updateLoop(); }
+    private updateLoop() {
+        // for (const char of this.currentLevel.characters) {
+            // this.updateAI(char)
+        // }
+        // this.renderer.renderGame();
+        this.playerTurn();
     }
 }
 
