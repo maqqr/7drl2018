@@ -1,5 +1,6 @@
 export interface IHasType {
     type: string;
+    description: string;
 }
 
 export interface ITile extends IHasType {
@@ -11,7 +12,6 @@ export interface ITile extends IHasType {
     useractivationtext?: string;
     transparent?: boolean;
     damage?: number;
-    description: string;
  }
 export interface ICreature extends IHasType {
    id: number;
@@ -19,18 +19,14 @@ export interface ICreature extends IHasType {
    currenthp?: number;
    strength: number;
    speed: number;
-   willpower?: number;
-   spiritpower?: number;
-   spiritstability?: number;
+   willpower: number;
    size: number;
    inventoryslots?: number;
    inventory?: IItem[];
-   description: string;
 }
 export interface IItem extends IHasType {
     id: number;
     category: string;
-    description: string;
 }
 export interface IFurniture extends IHasType {
     icon: number;
@@ -42,5 +38,16 @@ export interface IFurniture extends IHasType {
     useractivationtext?: string;
     requireitem?: string;
     activationtarget?: number[][];
-    description: string;
+}
+
+export interface IPlayer extends IHasType {
+    id: number;
+    maxhp: number;
+    currenthp: number;
+    spiritpower: number;
+    spiritstability: number;
+    currentstability: number;
+    willpower: number;
+    speed: number;
+    currentbody: ICreature;
 }

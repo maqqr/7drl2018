@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type":"object",
+    "required": ["id","maxhp","currenthp","spiritpower","spiritstability", "currentstability","willpower","speed"],
+    "properties":{
+        "id": {"type":"integer"},
+        "maxhp": {"type":"integer","minimum": 0},
+        "currenthp": {"type":"integer"},
+        "spiritpower": {"type":"integer","minimum": 0},
+        "spiritstability": {"type":"integer","minimum": 0},
+        "currentstability": {"type":"integer"},
+        "willpower": {"type":"integer","minimum": 0},
+        "speed": {"type":"integer","minimum": 0}
+    }
+}

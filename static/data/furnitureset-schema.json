@@ -17,7 +17,7 @@
                 "useractivation": {"type":"string"},
                 "useractivationtext": {"type":"string"},
                 "description":{"type":"string"},
-                "requireitem": {"type":"boolean"},
+                "requireitem": {"type":"string"},
                 "activationtarget":{"type":"array","items": {
                     "type":"array",
                     "minItems":2,

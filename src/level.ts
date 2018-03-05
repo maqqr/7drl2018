@@ -1,7 +1,8 @@
 import { Game } from ".";
-import { Furniture } from "./furniture";
+import { Entity, Furniture } from "./entity";
 import { IFurniture } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
+
 
 type TileID = number;
 
