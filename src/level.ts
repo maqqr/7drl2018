@@ -65,6 +65,7 @@ export class Level {
     }
 
     public activate(x: number, y: number, userInitiated = true) {
+        console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
         // const tile = this.game.
 
@@ -72,9 +73,16 @@ export class Level {
             if (fur.x === x && fur.y === y) {
                 console.log(fur);
 
+                // Inform the player with description texts
+                if (userInitiated && fur.dataRef.useractivationtext) {
+                    console.log(fur.dataRef.useractivationtext);
+                }
+
                 // Handle activation targets
                 if (fur.dataRef.activationtarget) {
-                    // TODO
+                    for (const coord of fur.dataRef.activationtarget) {
+                        this.activate(coord[0] + fur.offsetX, coord[1] + fur.offsetY, false);
+                    }
                 }
 
                 // Activate tile mechanically
@@ -192,6 +200,8 @@ export class Level {
                     }
                 }
 
+                furniture.offsetX = px;
+                furniture.offsetY = py;
                 this.furnitures.push(furniture);
             }
         }
