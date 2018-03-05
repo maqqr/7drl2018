@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="95">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="97">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -121,6 +121,8 @@
     <property name="description" value="Here lies headless skeleton. From all the broken bones you suspect it died by smashing against the wall. Clean cut at the neck makes you think that someone cutted the head off after death."/>
    </properties>
   </object>
+  <object id="95" gid="76" x="272" y="304" width="16" height="16"/>
+  <object id="96" gid="76" x="272" y="272" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description">
   <object id="92" x="80" y="208" width="48" height="16">

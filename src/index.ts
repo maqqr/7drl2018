@@ -41,7 +41,6 @@ export class Game {
         this.player.x = 10;
         this.player.y = 10;
         this.player.currentbody = null;
-        this.player.currenthp = this.player.dataRef.maxhp;
         this.player.currentstability = this.player.dataRef.spiritstability;
     }
 
@@ -142,25 +141,22 @@ export class Game {
         window.addEventListener("keydown", this.keyDownCallBack);
     }
     private handleKeyPress(e: KeyboardEvent): void {
-        const xx = this.player.x;
-        const yy = this.player.y;
+        let xx = this.player.x;
+        let yy = this.player.y;
         const code = e.keyCode;
+        const moving = code === 68 || code === 65 || code === 83 || code === 87 ? true : false;
+        xx = code === 68 ? xx += 1 : (code === 65) ? xx -= 1 : xx;
+        yy = code === 83 ? yy += 1 : (code === 87) ? yy -= 1 : yy;
         console.log(code);
-        if (code === 87 && this.isPassable(xx, yy - 1) && this.isCurrable(xx, yy - 1)
-                && (this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy - 1), xx, yy - 1))) {
-            this.player.y -= 1;
-        }
-        if (code === 68 && this.isPassable(xx + 1, yy) && this.isCurrable(xx + 1, yy)
-            && (this.isFurrable(this.currentLevel.getFurnituresAt(xx + 1, yy), xx + 1, yy))) {
-            this.player.x += 1;
-        }
-        if (code === 83 && this.isPassable(xx, yy + 1) && this.isCurrable(xx, yy + 1)
-            && (this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy + 1), xx, yy + 1))) {
-            this.player.y += 1;
-        }
-        if (code === 65 && this.isPassable(xx - 1, yy) && this.isCurrable(xx - 1, yy)
-            && (this.isFurrable(this.currentLevel.getFurnituresAt(xx - 1, yy), xx - 1, yy))) {
-            this.player.x -= 1;
+        // Player tries to move. Switch?
+        // Tried to move into a tile with a creature
+        // TODO fight?
+        if (moving && !this.isCurrable(xx, yy)) {
+            console.log("You bump into ".concat(this.currentLevel.getCreatureAt(xx, yy).dataRef.type));
+        } else if (moving && this.isPassable(xx, yy)
+        && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy), xx, yy)) {
+            this.player.x = xx;
+            this.player.y = yy;
         }
         window.removeEventListener("keydown", this.keyDownCallBack);
         this.updateLoop();

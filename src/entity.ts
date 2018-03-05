@@ -18,7 +18,6 @@ export class Creature extends Entity<ICreature> {
 
 }
 export class Player extends Entity<IPlayer> {
-    public currenthp: number;
     public currentstability: number;
     public currentbody: Creature;
 }

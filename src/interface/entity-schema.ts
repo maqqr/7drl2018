@@ -42,7 +42,6 @@ export interface IFurniture extends IHasType {
 
 export interface IPlayer extends IHasType {
     id: number;
-    maxhp: number;
     spiritpower: number;
     spiritstability: number;
     willpower: number;
