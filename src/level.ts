@@ -75,7 +75,7 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
-    public activate(x: number, y: number, userInitiated = true) {
+    public activate(x: number, y: number, userInitiated: boolean = true): void {
         console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
         // const tile = this.game.
@@ -111,7 +111,7 @@ export class Level {
         }
     }
 
-    public assignNewDataToFurniture(furniture: Furniture, newData: IFurniture) {
+    public assignNewDataToFurniture(furniture: Furniture, newData: IFurniture): void {
         for (const prop in newData) {
             if (newData.hasOwnProperty(prop)) {
                 if (prop !== "activationtarget") {
@@ -121,7 +121,7 @@ export class Level {
         }
     }
 
-    public addCreatureAt(newCreature: ICreature, x: number, y: number ) {
+    public addCreatureAt(newCreature: ICreature, x: number, y: number): void {
         const addedCreature = new Creature();
         addedCreature.x = x;
         addedCreature.y = y;

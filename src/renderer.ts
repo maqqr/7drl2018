@@ -23,7 +23,7 @@ export class Renderer {
         this.renderer.resize();
     }
 
-    public addClickListener(callback: (e: IMouseEvent) => void) {
+    public addClickListener(callback: (e: IMouseEvent) => void): void {
         this.renderer.getCanvas().addEventListener("click", (event) => {
             const rect = this.renderer.getCanvas().getBoundingClientRect();
             const mx = Math.floor(((event.clientX - rect.left) / rect.width) * Game.WIDTH);
@@ -34,13 +34,13 @@ export class Renderer {
         });
     }
 
-    public async loadGraphics() {
+    public async loadGraphics(): Promise<{}> {
         return new Promise((resolve, reject) => {
             this.renderer.loadAssets(["font.png", "tileset.png"], resolve);
         });
     }
 
-    public renderGame() {
+    public renderGame(): void {
         const level = this.game.getCurrentLevel();
 
         this.renderer.clear();

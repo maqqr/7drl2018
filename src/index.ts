@@ -24,7 +24,7 @@ export class Game {
     private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
 
 
-    private keyDownCallBack;
+    private keyDownCallBack: any;
 
 
     public start(): void {
@@ -101,7 +101,6 @@ export class Game {
         console.log(this.data.creatures);
         console.log(this.data.player);
         this.updateLoop();
-
     }
 
     public getCurrentLevel(): Level {
@@ -134,10 +133,10 @@ export class Game {
         });
     }
 
-    private playerTurn() {
+    private playerTurn(): void {
         window.addEventListener("keydown", this.keyDownCallBack);
     }
-    private handleKeyPress(e: KeyboardEvent) {
+    private handleKeyPress(e: KeyboardEvent): void {
         const xx = this.player.x;
         const yy = this.player.y;
         const code = e.keyCode;
@@ -161,12 +160,12 @@ export class Game {
         window.removeEventListener("keydown", this.keyDownCallBack);
         this.updateLoop();
     }
-    private handleClick(mouseEvent: IMouseEvent) {
+    private handleClick(mouseEvent: IMouseEvent): void {
         console.log(mouseEvent);
         this.currentLevel.activate(mouseEvent.tx, mouseEvent.ty, true);
         this.renderer.renderGame();
     }
-    private updateLoop() {
+    private updateLoop(): void {
         // for (const char of this.currentLevel.characters) {
             // this.updateAI(char)
         // }
