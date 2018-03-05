@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="70">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="24" height="24">
+  <data encoding="csv">
+9,8,8,9,9,8,8,8,7,8,9,6,7,6,9,7,6,7,7,6,6,9,7,8,
+8,3,5,3,4,5,5,2,2,3,5,5,4,4,5,3,5,2,2,5,4,4,4,6,
+9,2,3,5,4,4,2,2,5,5,3,3,5,4,2,5,4,2,4,4,2,3,3,6,
+6,2,5,2,9,7,8,8,6,6,7,9,8,8,9,6,9,8,6,8,2,2,3,7,
+6,4,4,6,6,7,8,8,6,9,7,9,8,6,9,6,7,9,8,8,9,2,3,6,
+8,4,4,2,5,5,2,5,4,3,9,3,5,3,3,2,2,2,3,6,7,5,3,9,
+8,6,8,7,9,5,3,3,4,3,7,5,4,2,3,5,5,3,4,6,9,5,2,6,
+9,4,3,6,6,4,5,4,14,14,6,14,14,14,14,14,3,5,4,6,7,4,5,8,
+8,3,3,7,7,4,5,14,14,8,9,7,6,6,9,14,14,5,5,9,7,4,5,9,
+7,5,2,7,9,3,4,14,8,6,9,7,8,9,9,8,14,4,4,8,6,3,5,8,
+8,4,2,6,8,4,4,14,6,6,9,7,6,8,9,6,14,5,5,8,8,4,2,9,
+7,4,4,7,7,2,2,14,9,7,9,8,9,9,8,9,14,3,3,8,6,4,2,9,
+6,2,4,7,7,3,2,14,9,6,7,9,9,8,9,6,14,5,5,6,9,4,5,6,
+8,5,2,6,6,3,3,14,8,9,9,8,7,8,9,7,14,2,5,7,7,2,4,8,
+9,3,5,6,6,5,2,14,7,8,7,7,9,8,6,7,14,2,3,8,6,2,5,6,
+7,2,4,9,7,5,5,14,14,6,6,6,7,8,6,14,14,3,2,8,6,3,3,6,
+8,2,4,7,6,4,3,3,14,14,14,14,14,14,14,14,3,3,3,9,7,4,4,7,
+8,2,3,7,7,2,2,4,2,4,4,3,4,5,4,3,2,6,3,9,8,3,2,7,
+7,2,5,6,7,2,2,3,2,5,5,4,2,2,5,4,5,4,3,6,9,5,2,6,
+7,5,5,9,8,8,9,9,7,7,9,7,8,9,8,8,8,6,9,6,8,4,4,9,
+6,2,4,4,6,9,6,9,6,6,9,9,7,7,8,6,7,7,8,9,3,2,5,6,
+8,2,3,2,2,4,3,5,3,2,3,2,5,5,5,5,2,3,3,2,5,4,5,7,
+6,3,2,2,5,3,5,3,5,5,2,3,5,4,3,5,5,2,4,4,5,2,2,9,
+6,7,6,7,6,7,8,6,7,9,6,9,7,9,8,6,8,7,8,9,6,6,6,9
+</data>
+ </layer>
+ <objectgroup name="furniture">
+  <object id="1" gid="81" x="48" y="176" width="16" height="16"/>
+  <object id="2" gid="81" x="64" y="240" width="16" height="16"/>
+  <object id="3" gid="81" x="64" y="288" width="16" height="16"/>
+  <object id="4" gid="81" x="48" y="320" width="16" height="16"/>
+  <object id="5" gid="81" x="48" y="208" width="16" height="16"/>
+  <object id="6" gid="81" x="96" y="336" width="16" height="16"/>
+  <object id="7" gid="81" x="128" y="320" width="16" height="16"/>
+  <object id="8" gid="81" x="176" y="336" width="16" height="16"/>
+  <object id="9" gid="81" x="208" y="320" width="16" height="16"/>
+  <object id="10" gid="81" x="240" y="320" width="16" height="16"/>
+  <object id="11" gid="81" x="272" y="336" width="16" height="16"/>
+  <object id="12" gid="81" x="320" y="304" width="16" height="16"/>
+  <object id="13" gid="81" x="304" y="240" width="16" height="16"/>
+  <object id="14" gid="81" x="320" y="176" width="16" height="16"/>
+  <object id="15" gid="81" x="304" y="128" width="16" height="16"/>
+  <object id="16" gid="81" x="256" y="64" width="16" height="16"/>
+  <object id="17" gid="81" x="208" y="80" width="16" height="16"/>
+  <object id="18" gid="81" x="96" y="64" width="16" height="16"/>
+  <object id="20" gid="81" x="176" y="64" width="16" height="16"/>
+  <object id="21" gid="81" x="288" y="80" width="16" height="16"/>
+  <object id="22" gid="81" x="320" y="80" width="16" height="16"/>
+  <object id="23" gid="81" x="320" y="96" width="16" height="16"/>
+  <object id="24" gid="81" x="320" y="208" width="16" height="16"/>
+  <object id="25" gid="81" x="128" y="80" width="16" height="16"/>
+  <object id="27" gid="81" x="80" y="80" width="16" height="16"/>
+  <object id="28" gid="81" x="320" y="272" width="16" height="16"/>
+  <object id="29" gid="81" x="304" y="288" width="16" height="16"/>
+  <object id="30" gid="49" x="48" y="80" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[10,5]]"/>
+   </properties>
+  </object>
+  <object id="32" gid="81" x="64" y="128" width="16" height="16"/>
+  <object id="35" gid="10" x="16" y="112" width="16" height="16"/>
+  <object id="39" gid="84" x="64" y="112" width="16" height="16"/>
+  <object id="40" gid="52" x="144" y="160" width="16" height="16"/>
+  <object id="41" gid="52" x="224" y="160" width="16" height="16"/>
+  <object id="42" gid="52" x="224" y="240" width="16" height="16"/>
+  <object id="43" gid="52" x="144" y="240" width="16" height="16"/>
+  <object id="44" gid="12" x="160" y="96" width="16" height="16"/>
+  <object id="45" gid="81" x="320" y="144" width="16" height="16"/>
+  <object id="46" gid="83" x="192" y="240" width="16" height="16"/>
+  <object id="49" gid="68" x="176" y="192" width="16" height="16"/>
+  <object id="50" gid="73" x="64" y="144" width="16" height="16"/>
+  <object id="51" gid="73" x="48" y="224" width="16" height="16"/>
+  <object id="52" gid="73" x="80" y="320" width="16" height="16"/>
+  <object id="53" gid="73" x="160" y="336" width="16" height="16"/>
+  <object id="54" gid="73" x="224" y="336" width="16" height="16"/>
+  <object id="55" gid="73" x="272" y="320" width="16" height="16"/>
+  <object id="56" gid="73" x="320" y="256" width="16" height="16"/>
+  <object id="57" gid="73" x="304" y="176" width="16" height="16"/>
+  <object id="58" gid="73" x="304" y="80" width="16" height="16"/>
+  <object id="59" gid="73" x="224" y="80" width="16" height="16"/>
+  <object id="60" gid="73" x="144" y="64" width="16" height="16"/>
+  <object id="61" gid="73" x="80" y="64" width="16" height="16"/>
+  <object id="62" gid="70" x="192" y="192" width="16" height="16">
+   <properties>
+    <property name="description" value=""/>
+   </properties>
+  </object>
+  <object id="64" gid="83" x="176" y="240" width="16" height="16"/>
+  <object id="65" gid="84" x="272" y="288" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="description">
+  <object id="67" x="48" y="96" width="16" height="16">
+   <properties>
+    <property name="text" value="You step in a narrow corridor. The floor is covered with small stones and holes."/>
+   </properties>
+  </object>
+  <object id="68" x="160" y="112" width="16" height="16">
+   <properties>
+    <property name="text" value="You see two teleportation circles at the back of the room."/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
