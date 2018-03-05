@@ -23,7 +23,7 @@ export class Renderer {
         this.renderer.resize();
     }
 
-    public addClickListener(callback: (e: IMouseEvent) => void) {
+    public addClickListener(callback: (e: IMouseEvent) => void): void {
         this.renderer.getCanvas().addEventListener("click", (event) => {
             const rect = this.renderer.getCanvas().getBoundingClientRect();
             const mx = Math.floor(((event.clientX - rect.left) / rect.width) * Game.WIDTH);
@@ -34,13 +34,13 @@ export class Renderer {
         });
     }
 
-    public async loadGraphics() {
+    public async loadGraphics(): Promise<{}> {
         return new Promise((resolve, reject) => {
             this.renderer.loadAssets(["font.png", "tileset.png"], resolve);
         });
     }
 
-    public renderGame() {
+    public renderGame(): void {
         const level = this.game.getCurrentLevel();
 
         this.renderer.clear();
@@ -61,6 +61,11 @@ export class Renderer {
         // Draw descriptions (for debugging purposes)
         for (const desc of this.game.getCurrentLevel().descriptions) {
             this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
+        }
+
+        const creatures = this.game.getCurrentLevel().creatures;
+        for (const furry of creatures) {
+            this.renderer.drawTexture(furry.x * 16, furry.y * 16, furry.dataRef.id);
         }
 
         const player = this.game.player;

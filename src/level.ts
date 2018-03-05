@@ -66,6 +66,21 @@ export class Level {
         return furs;
     }
 
+    public getCreatureAt(x: number, y: number): Creature {
+        for (const critter of this.creatures) {
+            if (critter.x === x && critter.y === y) { return critter; }
+        }
+        return null;
+    }
+
+    public addCreatureAt(newCreature: ICreature, x: number, y: number ): void {
+        const addedCreature = new Creature();
+        addedCreature.x = x;
+        addedCreature.y = y;
+        addedCreature.dataRef = newCreature;
+        this.creatures.push(addedCreature);
+    }
+
     public set(x: number, y: number, tile: TileID): void {
         if (x >= 0 && y >= 0 && x < this.width && y < this.height) {
             const index = x + y * this.width;
@@ -75,7 +90,7 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
-    public activate(x: number, y: number, userInitiated = true) {
+    public activate(x: number, y: number, userInitiated: boolean = true): void {
         console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
         // const tile = this.game.
@@ -111,7 +126,7 @@ export class Level {
         }
     }
 
-    public assignNewDataToFurniture(furniture: Furniture, newData: IFurniture) {
+    public assignNewDataToFurniture(furniture: Furniture, newData: IFurniture): void {
         for (const prop in newData) {
             if (newData.hasOwnProperty(prop)) {
                 if (prop !== "activationtarget") {
@@ -119,14 +134,6 @@ export class Level {
                 }
             }
         }
-    }
-
-    public addCreatureAt(newCreature: ICreature, x: number, y: number ) {
-        const addedCreature = new Creature();
-        addedCreature.x = x;
-        addedCreature.y = y;
-        addedCreature.dataRef = newCreature;
-        this.creatures.push(addedCreature);
     }
 
     public placePuzzleAt(px: number, py: number, puzzle: IPuzzleRoom): void {
