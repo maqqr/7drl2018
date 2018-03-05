@@ -18,7 +18,6 @@ export class GameData {
     public player: IPlayer = {
         description: "This is me.",
         id: 255,
-        maxhp: 20,
         speed: 10,
         spiritpower: 10,
         spiritstability: 10,

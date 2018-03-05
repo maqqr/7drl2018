@@ -94,7 +94,7 @@
 
         {"icon": 84,"type": "vasebroken","size": 5,"maxsize": 20,"description": "This is a broken vase."},
 
-        {"icon": 51,"type": "pillarbroken","maxsize": 6,"description": "This is a broken pillar."},
+        {"icon": 85,"type": "pillarbroken","maxsize": 6,"description": "This is a broken pillar."},
 
         {"icon": 86,"type": "rockpile","size": 4,"maxsize": 20,"description": "This is a pile rocks."},
         {"icon": 87,"type": "rockpile","size": 4,"maxsize": 20,"description": "This is a pile rocks."},
