@@ -55,6 +55,17 @@ export class Level {
         console.error("Level.get index out of bounds : " + JSON.stringify({ x, y }));
     }
 
+    public getFurnituresAt(x: number, y: number): Furniture[] {
+        const furs: Furniture[] = [];
+        for (const fur of this.furnitures) {
+            if (fur.x === x && fur.y === y) {
+                furs.push(fur);
+            }
+        }
+        console.log(furs);
+        return furs;
+    }
+
     public set(x: number, y: number, tile: TileID): void {
         if (x >= 0 && y >= 0 && x < this.width && y < this.height) {
             const index = x + y * this.width;
