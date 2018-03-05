@@ -21,9 +21,10 @@ export class Game {
     private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
 
 
-
+    private keyDownCallBack;
 
     public start(): void {
+        this.keyDownCallBack = this.handleKeyPress.bind(this);
         this.data = new GameData();
         this.renderer = new Renderer(this);
         this.currentLevel = new Level(24, 24);
@@ -103,12 +104,12 @@ export class Game {
     }
 
     private playerTurn() {
-        window.addEventListener("keydown", this.handleKeyPress.bind(this));
+        window.addEventListener("keydown", this.keyDownCallBack);
     }
     private handleKeyPress(e: KeyboardEvent) {
         // const code = e.keyCode;
         console.log(e);
-        window.removeEventListener("keydown", this.handleKeyPress.bind(this));
+        window.removeEventListener("keydown", this.keyDownCallBack);
         this.nextTurn();
     }
     private nextTurn() { this.updateLoop(); }
