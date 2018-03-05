@@ -1,7 +1,14 @@
+import { Color } from "./color";
 import { Game } from "./index";
 import { Level } from "./level";
 import { PixiRenderer } from "./pixirenderer";
-import { Color } from "./color";
+
+export interface IMouseEvent {
+    mx: number; // Mouse X
+    my: number; // Mouse Y
+    tx: number; // Tile X
+    ty: number; // Tile Y
+}
 
 export class Renderer {
     private game: Game;
@@ -14,6 +21,17 @@ export class Renderer {
 
         window.addEventListener("resize", this.renderer.resize.bind(this.renderer));
         this.renderer.resize();
+    }
+
+    public addClickListener(callback: (e: IMouseEvent) => void) {
+        this.renderer.getCanvas().addEventListener("click", (event) => {
+            const rect = this.renderer.getCanvas().getBoundingClientRect();
+            const mx = event.clientX - rect.left;
+            const my = event.clientY - rect.top;
+            const tx = Math.floor(mx / 16);
+            const ty = Math.floor(my / 16);
+            callback({ mx, my, tx, ty });
+        });
     }
 
     public async loadGraphics() {
@@ -43,6 +61,13 @@ export class Renderer {
         // Draw descriptions (for debugging purposes)
         for (const desc of this.game.getCurrentLevel().descriptions) {
             this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
+        }
+
+        const player = this.game.player;
+        if (player.currentbody === null) {
+            this.renderer.drawTexture(player.x, player.y, player.dataRef.id);
+        } else {
+            this.renderer.drawTexture(player.x, player.y, player.currentbody.dataRef.id);
         }
 
         // this.renderer.drawRect(0, 0, 64, 64, true);

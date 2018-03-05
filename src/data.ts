@@ -16,9 +16,6 @@ export class GameData {
     public furnitures: {[id: number]: IFurniture} = {};
 
     public player: IPlayer = {
-        currentbody: null,
-        currenthp: 20,
-        currentstability: 10,
         description: "This is me.",
         id: 255,
         maxhp: 20,

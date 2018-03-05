@@ -1,6 +1,6 @@
 import { Game } from ".";
 import { Creature, Entity, Furniture } from "./entity";
-import { IFurniture } from "./interface/entity-schema";
+import { ICreature, IFurniture } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
 
@@ -59,6 +59,14 @@ export class Level {
             return;
         }
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
+    }
+
+    public addCreatureAt(newCreature: ICreature, x: number, y: number ) {
+        const addedCreature = new Creature();
+        addedCreature.x = x;
+        addedCreature.y = y;
+        addedCreature.dataRef = newCreature;
+        this.creatures.push(addedCreature);
     }
 
     public placePuzzleAt(game: Game, px: number, py: number, puzzle: IPuzzleRoom): void {
@@ -128,6 +136,5 @@ export class Level {
                 this.furnitures.push(furniture);
             }
         }
-
     }
 }

@@ -86,6 +86,10 @@ export class PixiRenderer {
         this.pixirenderer.backgroundColor = 0x140c1c;
     }
 
+    public getCanvas(): HTMLCanvasElement {
+        return this.pixirenderer.view;
+    }
+
     public loadAssets(paths, doneCallback): void {
         PIXI.loader.add(paths).load(doneCallback);
     }
