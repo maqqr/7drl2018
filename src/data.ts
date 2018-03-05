@@ -15,7 +15,7 @@ export class GameData {
 
     public furnitures: {[id: number]: IFurniture} = {};
 
-    public getByType(collection: {[id: number]: IHasType}, searchedType: string): number {
+    public getIdByType(collection: {[id: number]: IHasType}, searchedType: string): number {
         for (const key in collection) {
             if (collection.hasOwnProperty(key)) {
                 const item = collection[key];
@@ -27,5 +27,10 @@ export class GameData {
 
         console.error("GameData.getByType unknown type: \"" + searchedType + "\"");
         return 0;
+    }
+
+    public getByType(collection: {[id: number]: IHasType}, searchedType: string): IHasType {
+        const key = this.getIdByType(collection, searchedType);
+        return collection[key];
     }
 }
