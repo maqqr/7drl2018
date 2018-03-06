@@ -19,10 +19,7 @@ export class GameData {
         description: "This is me.",
         id: 255,
         speed: 10,
-        spiritpower: 10,
-        spiritstability: 10,
-        type: "player",
-        willpower: 10};
+        type: "player"};
 
     public getByType<T extends IHasType>(collection: {[id: number]: T}, searchedType: string): T {
         const key = this.getIdByType(collection, searchedType);

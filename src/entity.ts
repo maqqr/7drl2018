@@ -15,9 +15,13 @@ export class Item extends Entity<IItem> {
 }
 export class Creature extends Entity<ICreature> {
     public currenthp: number;
+    public willpower: number;
 
 }
 export class Player extends Entity<IPlayer> {
     public currentstability: number;
     public currentbody: Creature;
+    public spiritpower: number;
+    public spiritstability: number;
+    public willpower: number;
 }

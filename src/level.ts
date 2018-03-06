@@ -73,11 +73,12 @@ export class Level {
         return null;
     }
 
-    public addCreatureAt(newCreature: ICreature, x: number, y: number ): void {
+    public addCreatureAt(newCreature: ICreature, x: number, y: number, wp: number ): void {
         const addedCreature = new Creature();
         addedCreature.x = x;
         addedCreature.y = y;
         addedCreature.dataRef = newCreature;
+        addedCreature.willpower = wp;
         this.creatures.push(addedCreature);
     }
 
