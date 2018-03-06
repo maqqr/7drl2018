@@ -54,16 +54,18 @@ export class Renderer {
             for (let x = 0; x < level.width; x++) {
                 const tile = level.get(x, y);
                 const tileState = level.getTileState(x, y);
+                const drawX = (this.game.mapOffsetX + x) * 16;
+                const drawY = (this.game.mapOffsetY + y) * 16;
                 if (tileState.state === TileVisibility.Visible) {
-                    this.renderer.drawTexture(x * 16, y * 16, tile, this.game.currentTintColor);
+                    this.renderer.drawTexture(drawX, drawY, tile, this.game.currentTintColor);
                 } else if (tileState.state === TileVisibility.Remembered) {
                     const rememberTint = 0x4444AA;
-                    this.renderer.drawTexture(x * 16, y * 16, tileState.rememberedTile, rememberTint);
+                    this.renderer.drawTexture(drawX, drawY, tileState.rememberedTile, rememberTint);
                     if (tileState.rememberedFurniture !== 0) {
-                        this.renderer.drawTexture(x * 16, y * 16, tileState.rememberedFurniture, rememberTint);
+                        this.renderer.drawTexture(drawX, drawY, tileState.rememberedFurniture, rememberTint);
                     }
                 } else {
-                    this.renderer.drawTexture(x * 16, y * 16, tile, 1);
+                    this.renderer.drawTexture(drawX, drawY, tile, 1);
                 }
             }
         }
@@ -74,7 +76,9 @@ export class Renderer {
             // const furId = this.game.data.getByType(this.game.data.furnitures, furniture.dataType);
             // const furDef = this.game.data.furnitures[furId];
             if (tileState.state === TileVisibility.Visible) {
-                this.renderer.drawTexture(furniture.x * 16, furniture.y * 16,
+                this.renderer.drawTexture(
+                    (this.game.mapOffsetX + furniture.x) * 16,
+                    (this.game.mapOffsetY + furniture.y) * 16,
                     furniture.dataRef.icon, this.game.currentTintColor);
             }
         }
@@ -88,19 +92,22 @@ export class Renderer {
         for (const furry of creatures) {
             const tileState = level.getTileState(furry.x, furry.y);
             if (tileState.state === TileVisibility.Visible) {
-                this.renderer.drawTexture(furry.x * 16, furry.y * 16, furry.dataRef.id, this.game.currentTintColor);
+                this.renderer.drawTexture((this.game.mapOffsetX + furry.x) * 16, (this.game.mapOffsetY + furry.y) * 16,
+                    furry.dataRef.id, this.game.currentTintColor);
             }
         }
 
         const player = this.game.player;
+        const playerDrawX = (this.game.mapOffsetX + this.game.player.x) * 16;
+        const playerDrawY = (this.game.mapOffsetY + this.game.player.y) * 16;
         if (player.currentbody === null) {
             const playerIcon = this.game.spiritAnimationIndices[this.game.spiritAnimationIndex];
-            this.renderer.drawTexture(player.x * 16, player.y * 16, playerIcon);
-            this.renderer.drawCircle(this.game.player.x * 16 + 8, this.game.player.y * 16 + 4, 30, Color.blue, 0.08);
-            this.renderer.drawCircle(this.game.player.x * 16 + 8, this.game.player.y * 16 + 4, 15, Color.blue, 0.10);
-            this.renderer.drawCircle(this.game.player.x * 16 + 8, this.game.player.y * 16 + 4, 9, Color.blue, 0.15);
+            this.renderer.drawTexture(playerDrawX, playerDrawY, playerIcon);
+            this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 4, 30, Color.blue, 0.08);
+            this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 4, 15, Color.blue, 0.10);
+            this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 4, 9, Color.blue, 0.15);
         } else {
-            this.renderer.drawTexture(player.x * 16, player.y * 16, player.currentbody.dataRef.id);
+            this.renderer.drawTexture(playerDrawX, playerDrawY, player.currentbody.dataRef.id);
         }
 
         this.renderer.render();

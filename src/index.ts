@@ -29,6 +29,13 @@ export class Game {
 
     private keyDownCallBack: any;
 
+    public get mapOffsetX(): number {
+        return 19 - this.player.x;
+    }
+
+    public get mapOffsetY(): number {
+        return 12 - this.player.y;
+    }
 
     public start(): void {
         this.keyDownCallBack = this.handleKeyPress.bind(this);
@@ -259,7 +266,7 @@ export class Game {
     }
     private handleClick(mouseEvent: IMouseEvent): void {
         console.log(mouseEvent);
-        this.currentLevel.activate(mouseEvent.tx, mouseEvent.ty, true);
+        this.currentLevel.activate(mouseEvent.tx - this.mapOffsetX, mouseEvent.ty - this.mapOffsetY, true);
         this.renderer.renderGame();
     }
     private updateLoop(): void {
