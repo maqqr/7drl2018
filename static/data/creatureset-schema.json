@@ -21,7 +21,7 @@
                     "description": {"type":"string"},
                     "inventoryslots": {"type":"integer","minimum": 0},
                     "inventory":{"type":"array","items": {
-                        "$ref":"itemset-schema.json#/definitions/item"
+                        "type": "string"
                     }}
                 }
             }

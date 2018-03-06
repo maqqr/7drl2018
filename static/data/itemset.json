@@ -1,7 +1,7 @@
 {
     "$schema":"./itemset-schema.json",
     "items":[
-        {"id":0,"type":"Healing potion","category": "Potion"},
-        {"id":1,"type":"Liquid courage","category":"Potion"}
+        { "id":0,"type":"Healing potion","category": "potion", "description": "A small red vial." },
+        { "id":1,"type":"Liquid courage","category": "potion", "description": "Just looking at it makes me more brave." }
     ]
 }
