@@ -43,11 +43,14 @@ export class Renderer {
     public renderGame(): void {
         const level = this.game.getCurrentLevel();
 
+        // const playerInsideBody = this.game.player.currentbody === null;
+        // const colorTint = playerInsideBody ? Color.blue : 0xFFFFFF;
+
         this.renderer.clear();
         for (let y = 0; y < level.height; y++) {
             for (let x = 0; x < level.width; x++) {
                 const tile = level.get(x, y);
-                this.renderer.drawTexture(x * 16, y * 16, tile);
+                this.renderer.drawTexture(x * 16, y * 16, tile, this.game.currentTintColor);
             }
         }
 
@@ -55,24 +58,30 @@ export class Renderer {
         for (const furniture of furnitures) {
             // const furId = this.game.data.getByType(this.game.data.furnitures, furniture.dataType);
             // const furDef = this.game.data.furnitures[furId];
-            this.renderer.drawTexture(furniture.x * 16, furniture.y * 16, furniture.dataRef.icon);
+            this.renderer.drawTexture(furniture.x * 16, furniture.y * 16,
+                furniture.dataRef.icon, this.game.currentTintColor);
         }
 
         // Draw descriptions (for debugging purposes)
-        for (const desc of this.game.getCurrentLevel().descriptions) {
-            this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
-        }
+        // for (const desc of this.game.getCurrentLevel().descriptions) {
+        //     this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
+        // }
 
         const creatures = this.game.getCurrentLevel().creatures;
         for (const furry of creatures) {
-            this.renderer.drawTexture(furry.x * 16, furry.y * 16, furry.dataRef.id);
+            this.renderer.drawTexture(furry.x * 16, furry.y * 16, furry.dataRef.id, this.game.currentTintColor);
         }
 
         const player = this.game.player;
         if (player.currentbody === null) {
-            this.renderer.drawTexture(player.x * 16, player.y * 16, player.dataRef.id);
+            const playerIcon = this.game.spiritAnimationIndices[this.game.spiritAnimationIndex];
+            this.renderer.drawTexture(player.x * 16, player.y * 16, playerIcon);
         } else {
             this.renderer.drawTexture(player.x * 16, player.y * 16, player.currentbody.dataRef.id);
+        }
+
+        if (this.game.spiritFadeTimer === 1.0) {
+            this.renderer.drawRect(0, 0, 600, 400, false, this.game.currentTintColor, 0.1);
         }
 
         // this.renderer.drawRect(0, 0, 64, 64, true);
