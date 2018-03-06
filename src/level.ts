@@ -75,7 +75,7 @@ export class Level {
             return false;
         }
         const tile = this.data.tiles[this.get(x, y)];
-        console.log(tile);
+        // console.log(tile);
         if (tile && tile.transparent) {
             return true;
         }
