@@ -5,6 +5,7 @@ import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { IMouseEvent, Renderer } from "./renderer";
+import { Color } from "./color";
 
 
 
@@ -17,6 +18,14 @@ export class Game {
 
     public data: GameData;
     public player: Player;
+
+    // Animation variables
+    public spiritFadeTimer: number = 0;
+    public spiritTintColors: number[] = [0xFFFFFF, Color.white, Color.blue];
+    public currentTintColor: number = 0xFFFFFF;
+
+    public spiritAnimationIndex: 0 = 0;
+    public spiritAnimationIndices: number[] = [255, 239, 255, 223, 207, 255, 191];
 
     private renderer: Renderer;
     private currentLevel: Level;
@@ -103,8 +112,31 @@ export class Game {
         console.log(this.data.creatures);
         console.log(this.data.player);
         console.log(this.data.creatures[253]);
+        setInterval(this.updateTinting.bind(this), 60);
+        setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
         this.currentLevel.addCreatureAt(this.data.creatures[253], 9, 9, 10);
         this.updateLoop();
+    }
+
+    public updateTinting(): void {
+        const playerInsideBody = this.player.currentbody === null;
+        if (playerInsideBody) {
+            this.spiritFadeTimer = Math.min(1.0, this.spiritFadeTimer + 0.2);
+        } else {
+            this.spiritFadeTimer = Math.max(0.0, this.spiritFadeTimer - 0.2);
+        }
+        const tintColor = this.spiritTintColors[Math.floor(this.spiritFadeTimer * (this.spiritTintColors.length - 1))];
+        if (tintColor !== this.currentTintColor) {
+            this.currentTintColor = tintColor;
+            this.renderer.renderGame();
+        }
+    }
+    public updatePlayerAnimation(): void {
+        this.spiritAnimationIndex++;
+        if (this.spiritAnimationIndex >= this.spiritAnimationIndices.length) {
+            this.spiritAnimationIndex = 0;
+        }
+        this.renderer.renderGame();
     }
 
     public getCurrentLevel(): Level {
