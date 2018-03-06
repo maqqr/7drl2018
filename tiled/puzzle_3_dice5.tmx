@@ -110,10 +110,10 @@
   <object id="81" gid="52" x="160" y="272" width="16" height="16"/>
   <object id="82" gid="52" x="208" y="272" width="16" height="16"/>
   <object id="83" gid="52" x="144" y="176" width="16" height="16"/>
-  <object id="84" gid="34" x="192" y="192" width="16" height="16"/>
-  <object id="85" gid="34" x="208" y="192" width="16" height="16"/>
-  <object id="86" gid="34" x="208" y="208" width="16" height="16"/>
-  <object id="87" gid="34" x="224" y="208" width="16" height="16"/>
+  <object id="84" type="fakewall3" gid="34" x="192" y="192" width="16" height="16"/>
+  <object id="85" type="fakewall3" gid="34" x="208" y="192" width="16" height="16"/>
+  <object id="86" type="fakewall3" gid="34" x="208" y="208" width="16" height="16"/>
+  <object id="87" type="fakewall3" gid="34" x="224" y="208" width="16" height="16"/>
   <object id="88" gid="68" x="176" y="208" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description"/>

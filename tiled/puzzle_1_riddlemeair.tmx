@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="80">
  <tileset firstgid="1" source="tileset.tsx"/>
- <layer name="tile" width="24" height="24" visible="0">
+ <layer name="tile" width="24" height="24">
   <data encoding="csv">
 8,8,9,9,9,8,8,8,7,8,9,6,7,6,9,7,6,7,7,6,6,9,7,8,
 9,4,5,2,2,6,5,2,5,2,3,4,2,2,3,4,2,5,4,2,3,3,3,6,

@@ -61,8 +61,8 @@
     <property name="activationtarget" value="[[12,8],[12,15]]"/>
    </properties>
   </object>
-  <object id="61" gid="18" x="192" y="144" width="16" height="16"/>
-  <object id="62" gid="18" x="192" y="256" width="16" height="16"/>
+  <object id="61" type="fakewall2" gid="18" x="192" y="144" width="16" height="16"/>
+  <object id="62" type="fakewall2" gid="18" x="192" y="256" width="16" height="16"/>
   <object id="63" gid="68" x="176" y="208" width="16" height="16"/>
   <object id="64" gid="82" x="64" y="128" width="16" height="16"/>
   <object id="65" gid="82" x="80" y="96" width="16" height="16"/>
