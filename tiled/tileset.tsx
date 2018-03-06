@@ -212,6 +212,8 @@
  <tile id="57" type="doorgoldlocked"/>
  <tile id="58" type="doorgold"/>
  <tile id="59" type="doorgoldopen"/>
+ <tile id="60" type="candle"/>
+ <tile id="61" type="candlelight"/>
  <tile id="64" type="rock"/>
  <tile id="66" type="pressureplatedown">
   <properties>
@@ -226,10 +228,19 @@
  <tile id="72" type="rockpile"/>
  <tile id="73" type="skullpile"/>
  <tile id="74" type="statuebroken"/>
+ <tile id="75" type="stool"/>
  <tile id="80" type="trapspike"/>
  <tile id="81" type="traspikeactivated"/>
  <tile id="82" type="trapteleportin"/>
  <tile id="83" type="trapteleportout"/>
+ <tile id="84" type="brokenvase"/>
+ <tile id="85" type="brokenpillar"/>
+ <tile id="86" type="rockpile"/>
+ <tile id="87" type="rockpile"/>
+ <tile id="88" type="rockpile"/>
+ <tile id="89" type="headlessskeleton"/>
+ <tile id="90" type="skullpile"/>
+ <tile id="91" type="skull"/>
  <tile id="96" type="tunnelleftright">
   <properties>
    <property name="description" value="This is part of a tunnel."/>
@@ -272,4 +283,14 @@
    <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
+ <tile id="245" type="giantspider"/>
+ <tile id="246" type="bat"/>
+ <tile id="247" type="ghoul"/>
+ <tile id="248" type="mummy"/>
+ <tile id="249" type="skeleton"/>
+ <tile id="250" type="rat"/>
+ <tile id="251" type="slime"/>
+ <tile id="252" type="graverobber"/>
+ <tile id="253" type="goblin"/>
+ <tile id="254" type="kobold"/>
 </tileset>
