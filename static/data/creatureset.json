@@ -2,14 +2,54 @@
     "$schema":"./creatureset-schema.json",
     "creatures":[
         {
-            "id":253, "type": "goblin", "description": "A foul green creature",
-            "maxhp": 10, "strength": 3, "speed": 5, "size": 8, "inventoryslots": 2,
-            "inventory": ["healingpotion", "liquidcourage"]
+            "id":245, "type": "giantspider", "description": "Monstrously big spider.",
+            "maxhp": 16, "strength": 4, "speed": 6, "size": 8, "inventoryslots": 1,
+            "inventory": []
         },
         {
-            "id":254, "type": "kobold", "description": "Looks like my mother-in-law.",
-            "maxhp": 8, "strength": 2, "speed": 8, "size": 7, "inventoryslots": 1,
-            "inventory": ["healingpotion", "liquidcourage"]
+            "id":246, "type": "bat", "description": "Pesky flying rat.",
+            "maxhp": 2, "strength": 1, "speed": 10, "size": 2, "inventoryslots": 1,
+            "inventory": []
+        },
+        {
+            "id":247, "type": "ghoul", "description": "A foul green creature.",
+            "maxhp": 10, "strength": 3, "speed": 5, "size": 10, "inventoryslots": 2,
+            "inventory": []
+        },
+        {
+            "id":248, "type": "mummy", "description": "A foul green creature.",
+            "maxhp": 20, "strength": 6, "speed": 2, "size": 10, "inventoryslots": 2,
+            "inventory": []
+        },
+        {
+            "id":249, "type": "skeleton", "description": "A foul green creature.",
+            "maxhp": 12, "strength": 4, "speed": 4, "size": 9, "inventoryslots": 2,
+            "inventory": []
+        },
+        {
+            "id":250, "type": "rat", "description": "A foul green creature.",
+            "maxhp": 4, "strength": 1, "speed": 8, "size": 1, "inventoryslots": 2,
+            "inventory": []
+        },
+        {
+            "id":251, "type": "slime", "description": "A foul green creature.",
+            "maxhp": 25, "strength": 3, "speed": 1, "size": 12, "inventoryslots": 0,
+            "inventory": []
+        },
+        {
+            "id":252, "type": "graverobber", "description": "Filthy human dares to rob my family crypt.",
+            "maxhp": 15, "strength": 5, "speed": 5, "size": 10, "inventoryslots": 3,
+            "inventory": []
+        },
+        {
+            "id":253, "type": "goblin", "description": "A foul green creature.",
+            "maxhp": 12, "strength": 3, "speed": 6, "size": 8, "inventoryslots": 3,
+            "inventory": []
+        },
+        {
+            "id":254, "type": "kobold", "description": "Looks like inbreed of a goblin and a rat.",
+            "maxhp": 10, "strength": 2, "speed": 7, "size": 7, "inventoryslots": 3,
+            "inventory": []
         }
     ]
 }

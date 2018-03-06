@@ -75,8 +75,9 @@ export class Level {
             return false;
         }
         const tile = this.data.tiles[this.get(x, y)];
-        if (tile) {
-            return tile.transparent;
+        console.log(tile);
+        if (tile && tile.transparent) {
+            return true;
         }
         return false;
     }
@@ -85,7 +86,7 @@ export class Level {
         // TODO: mark all nearby visible tiles as remembered before recalculating fov
         // TODO: set rememberedTile and furniture
         this.fov.compute(px, py, 7, (x, y, radius, visibility) => {
-            if (this.isInLevelBounds(x, y)) {
+            if (visibility && this.isInLevelBounds(x, y)) {
                 this.tilestate[x + y * this.width].state = TileVisibility.Visible;
             }
         });

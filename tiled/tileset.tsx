@@ -9,21 +9,25 @@
  <tile id="1" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="2" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="3" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="4" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="5" type="floor">
@@ -77,21 +81,25 @@
  <tile id="17" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="18" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="19" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="20" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="21" type="floor">
@@ -128,21 +136,25 @@
  <tile id="33" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="34" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="35" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="36" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
+   <property name="transparent" value="false"/>
   </properties>
  </tile>
  <tile id="37" type="floor">
