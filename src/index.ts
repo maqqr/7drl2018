@@ -16,7 +16,7 @@ export class Game {
 
     // Animation variables
     public spiritFadeTimer: number = 0;
-    public spiritTintColors: number[] = [0xFFFFFF, Color.white, Color.blue];
+    public spiritTintColors: number[] = [0xFFFFFF, Color.white, 0x7777FF];
     public currentTintColor: number = 0xFFFFFF;
 
     public spiritAnimationIndex: 0 = 0;
