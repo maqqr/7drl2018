@@ -63,7 +63,7 @@ export class Level {
             this.tilestate.push(new TileState());
             this.tiles.push(1);
         }
-        this.fov = new ROT.FOV.PreciseShadowcasting(this.isTransparent.bind(this));
+        this.fov = new ROT.FOV.RecursiveShadowcasting(this.isTransparent.bind(this));
     }
 
     public isInLevelBounds(x: number, y: number): boolean {
@@ -74,22 +74,56 @@ export class Level {
         if (!this.isInLevelBounds(x, y)) {
             return false;
         }
+
+        // Check tile transparency
+        let transparentTile: boolean = false;
         const tile = this.data.tiles[this.get(x, y)];
-        // console.log(tile);
         if (tile && tile.transparent) {
-            return true;
+            transparentTile = tile.transparent;
         }
-        return false;
+
+        // Check furniture transparency
+        let transparentFurniture: boolean = true;
+        for (const fur of this.getFurnituresAt(x, y)) {
+            if (!fur.dataRef.transparent) {
+                transparentFurniture = false;
+                break;
+            }
+        }
+
+        return transparentTile && transparentFurniture;
     }
 
-    public calculateFov(px: number, py: number): void {
+    public calculateFov(px: number, py: number, visionRadius: number): void {
         // TODO: mark all nearby visible tiles as remembered before recalculating fov
         // TODO: set rememberedTile and furniture
+
         this.fov.compute(px, py, 7, (x, y, radius, visibility) => {
             if (visibility && this.isInLevelBounds(x, y)) {
-                this.tilestate[x + y * this.width].state = TileVisibility.Visible;
+                const tileState = this.tilestate[x + y * this.width];
+                tileState.state = TileVisibility.Visible;
+                tileState.rememberedTile = this.get(x, y);
+
+                const furries = this.getFurnituresAt(x, y);
+                if (furries.length > 0) {
+                    tileState.rememberedFurniture = furries[0].dataRef.icon;
+                }
             }
         });
+    }
+
+    public markRememberedTiles(px: number, py: number, visionRadius: number): void {
+        for (let yy = -visionRadius - 1; yy < visionRadius + 1; yy++) {
+            for (let xx = -visionRadius - 1; xx < visionRadius + 1; xx++) {
+                const tx = px + xx;
+                const ty = py + yy;
+                if (this.isInLevelBounds(tx, ty)) {
+                    if (this.tilestate[tx + ty * this.width].state === TileVisibility.Visible) {
+                        this.tilestate[tx + ty * this.width].state = TileVisibility.Remembered;
+                    }
+                }
+            }
+        }
     }
 
     public get(x: number, y: number): TileID {
@@ -115,7 +149,6 @@ export class Level {
                 furs.push(fur);
             }
         }
-        console.log(furs);
         return furs;
     }
 

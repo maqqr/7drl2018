@@ -42,7 +42,9 @@ export class Renderer {
 
     public renderGame(): void {
         const level = this.game.getCurrentLevel();
-        level.calculateFov(this.game.player.x, this.game.player.y);
+        const visionRadius = 7;
+
+        level.calculateFov(this.game.player.x, this.game.player.y, visionRadius);
 
         // const playerInsideBody = this.game.player.currentbody === null;
         // const colorTint = playerInsideBody ? Color.blue : 0xFFFFFF;
@@ -55,7 +57,11 @@ export class Renderer {
                 if (tileState.state === TileVisibility.Visible) {
                     this.renderer.drawTexture(x * 16, y * 16, tile, this.game.currentTintColor);
                 } else if (tileState.state === TileVisibility.Remembered) {
-                    this.renderer.drawTexture(x * 16, y * 16, tile, this.game.currentTintColor);
+                    const rememberTint = 0x4444AA;
+                    this.renderer.drawTexture(x * 16, y * 16, tileState.rememberedTile, rememberTint);
+                    if (tileState.rememberedFurniture !== 0) {
+                        this.renderer.drawTexture(x * 16, y * 16, tileState.rememberedFurniture, rememberTint);
+                    }
                 } else {
                     this.renderer.drawTexture(x * 16, y * 16, tile, 1);
                 }
@@ -64,10 +70,13 @@ export class Renderer {
 
         const furnitures = this.game.getCurrentLevel().furnitures;
         for (const furniture of furnitures) {
+            const tileState = level.getTileState(furniture.x, furniture.y);
             // const furId = this.game.data.getByType(this.game.data.furnitures, furniture.dataType);
             // const furDef = this.game.data.furnitures[furId];
-            this.renderer.drawTexture(furniture.x * 16, furniture.y * 16,
-                furniture.dataRef.icon, this.game.currentTintColor);
+            if (tileState.state === TileVisibility.Visible) {
+                this.renderer.drawTexture(furniture.x * 16, furniture.y * 16,
+                    furniture.dataRef.icon, this.game.currentTintColor);
+            }
         }
 
         // Draw descriptions (for debugging purposes)
@@ -77,22 +86,25 @@ export class Renderer {
 
         const creatures = this.game.getCurrentLevel().creatures;
         for (const furry of creatures) {
-            this.renderer.drawTexture(furry.x * 16, furry.y * 16, furry.dataRef.id, this.game.currentTintColor);
+            const tileState = level.getTileState(furry.x, furry.y);
+            if (tileState.state === TileVisibility.Visible) {
+                this.renderer.drawTexture(furry.x * 16, furry.y * 16, furry.dataRef.id, this.game.currentTintColor);
+            }
         }
 
         const player = this.game.player;
         if (player.currentbody === null) {
             const playerIcon = this.game.spiritAnimationIndices[this.game.spiritAnimationIndex];
             this.renderer.drawTexture(player.x * 16, player.y * 16, playerIcon);
+            this.renderer.drawCircle(this.game.player.x * 16 + 8, this.game.player.y * 16 + 4, 30, Color.blue, 0.08);
+            this.renderer.drawCircle(this.game.player.x * 16 + 8, this.game.player.y * 16 + 4, 15, Color.blue, 0.10);
+            this.renderer.drawCircle(this.game.player.x * 16 + 8, this.game.player.y * 16 + 4, 9, Color.blue, 0.15);
         } else {
             this.renderer.drawTexture(player.x * 16, player.y * 16, player.currentbody.dataRef.id);
         }
 
-        if (this.game.spiritFadeTimer === 1.0) {
-            this.renderer.drawRect(0, 0, 600, 400, false, this.game.currentTintColor, 0.1);
-        }
-
-        // this.renderer.drawRect(0, 0, 64, 64, true);
         this.renderer.render();
+
+        level.markRememberedTiles(this.game.player.x, this.game.player.y, visionRadius);
     }
 }

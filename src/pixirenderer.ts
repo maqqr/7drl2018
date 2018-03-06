@@ -56,6 +56,8 @@ class GraphicsPool extends RenderPool<PIXI.Graphics> {
 
 export class PixiRenderer {
     private stage: PIXI.Container;
+    private spriteStage: PIXI.Container;
+    private graphicsStage: PIXI.Container;
     private pixirenderer: PIXI.WebGLRenderer | PIXI.CanvasRenderer;
 
     private readonly width: number;
@@ -78,9 +80,14 @@ export class PixiRenderer {
         this.pixirenderer.view.id = "pixi-canvas";
         PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
         this.stage = new PIXI.Container();
+        this.spriteStage = new PIXI.Container();
+        this.graphicsStage = new PIXI.Container();
 
-        this.spritePool = new SpritePool(this.stage);
-        this.grapgicsPool = new GraphicsPool(this.stage);
+        this.stage.addChild(this.spriteStage);
+        this.stage.addChild(this.graphicsStage);
+
+        this.spritePool = new SpritePool(this.spriteStage);
+        this.grapgicsPool = new GraphicsPool(this.graphicsStage);
 
         const app = document.getElementById("app");
         app.appendChild(this.pixirenderer.view);
@@ -130,6 +137,13 @@ export class PixiRenderer {
             rect.lineStyle(2, Color.white);
         }
         rect.drawRect(x, y, width, height);
+    }
+
+    public drawCircle(x: number, y: number, radius: number, color: number, alpha: number): void {
+        const rect = this.grapgicsPool.get();
+        console.log(alpha);
+        rect.beginFill(color, alpha);
+        rect.drawCircle(x, y, radius);
     }
 
     public render(): void {
