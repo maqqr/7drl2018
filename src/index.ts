@@ -60,6 +60,34 @@ export class Game {
 
         const testmap = await this.loadJSON<IPuzzleRoom>("data/testmap.json");
 
+        const convertInt = (x: string): number => {
+            const value = parseInt(x, 10);
+            if (value !== value) {
+                console.error("Failed to convert prop '" + x + "' to integer");
+                return 0;
+            }
+            return value;
+        };
+
+        const convertBool = (x: string): boolean => {
+            if (x === "true") {
+                return true;
+            }
+            if (x === "false") {
+                return false;
+            }
+            console.error("Failed to convert prop '" + x + "' to boolean");
+            return false;
+        };
+
+        const getProp = (object, name, defaultValue, converter: any): any => {
+            if (name in object) {
+                const value = object[name];
+                return converter(value);
+            }
+            return defaultValue;
+        };
+
         // Load the creatures to data
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
@@ -73,10 +101,14 @@ export class Game {
 
         // Fill empty fields with default values
         for (const tile of tileset.tiles) {
+            tile.damage = getProp(tile, "damage", 0, convertInt);
+            tile.maxsize = getProp(tile, "maxsize", 0, convertInt);
+            tile.transparent = getProp(tile, "transparent", true, convertBool);
             this.data.tiles[tile.id] = tile;
-            if (!("damage" in tile)) { this.data.tiles[tile.id].damage = 0; }
-            if (!("maxsize" in tile)) { this.data.tiles[tile.id].maxsize = 0; }
-            if (!("transparent" in tile)) { this.data.tiles[tile.id].transparent = true; }
+            // this.data.tiles[tile.id] = tile;
+            // if (!("damage" in tile)) { this.data.tiles[tile.id].damage = 0; }
+            // if (!("maxsize" in tile)) { this.data.tiles[tile.id].maxsize = 0; }
+            // if (!("transparent" in tile)) { this.data.tiles[tile.id].transparent = true; }
             if (!("activation" in tile)) { this.data.tiles[tile.id].activation = null; }
             if (!("requireitem" in tile)) { this.data.tiles[tile.id].requireitem = null; }
             if (!("useractivation" in tile)) { this.data.tiles[tile.id].useractivation = null; }
@@ -84,16 +116,22 @@ export class Game {
         }
 
         for (const furry of furnitureset.furnitures) {
+            furry.movable = getProp(furry, "movable", 21, convertInt);
+            furry.size = getProp(furry, "size", 21, convertInt);
+            furry.maxsize = getProp(furry, "maxsize", 0, convertInt);
+            furry.damage = getProp(furry, "damage", 0, convertInt);
+            furry.transparent = getProp(furry, "transparent", true, convertBool);
             this.data.furnitures[furry.icon] = furry;
-            if (!("movable" in furry)) { this.data.furnitures[furry.icon].movable = 21; }
-            if (!("maxsize" in furry)) { this.data.furnitures[furry.icon].maxsize = 0; }
-            if (!("size" in furry)) { this.data.furnitures[furry.icon].size = 21; }
-            if (!("damage" in furry)) { this.data.furnitures[furry.icon].damage = 0; }
+            // if (!("movable" in furry)) { this.data.furnitures[furry.icon].movable = 21; }
+            // if (!("maxsize" in furry)) { this.data.furnitures[furry.icon].maxsize = 0; }
+            // if (!("size" in furry)) { this.data.furnitures[furry.icon].size = 21; }
+            // if (!("damage" in furry)) { this.data.furnitures[furry.icon].damage = 0; }
             if (!("activation" in furry)) { this.data.furnitures[furry.icon].activation = null; }
             if (!("useractivation" in furry)) { this.data.furnitures[furry.icon].useractivation = null; }
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
             if (!("requireitem" in furry)) { this.data.furnitures[furry.icon].requireitem = null; }
             if (!("activationtarget" in furry)) { this.data.furnitures[furry.icon].activationtarget = null; }
+            console.log(furry);
         }
 
         // Place test puzzle map into current level

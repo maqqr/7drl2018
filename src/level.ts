@@ -63,7 +63,7 @@ export class Level {
             this.tilestate.push(new TileState());
             this.tiles.push(1);
         }
-        this.fov = new ROT.FOV.PreciseShadowcasting(this.isTransparent.bind(this));
+        this.fov = new ROT.FOV.RecursiveShadowcasting(this.isTransparent.bind(this));
     }
 
     public isInLevelBounds(x: number, y: number): boolean {
@@ -74,12 +74,24 @@ export class Level {
         if (!this.isInLevelBounds(x, y)) {
             return false;
         }
+
+        // Check tile transparency
+        let transparentTile: boolean = false;
         const tile = this.data.tiles[this.get(x, y)];
-        // console.log(tile);
         if (tile && tile.transparent) {
-            return true;
+            transparentTile = tile.transparent;
         }
-        return false;
+
+        // Check furniture transparency
+        let transparentFurniture: boolean = true;
+        for (const fur of this.getFurnituresAt(x, y)) {
+            if (!fur.dataRef.transparent) {
+                transparentFurniture = false;
+                break;
+            }
+        }
+
+        return transparentTile && transparentFurniture;
     }
 
     public calculateFov(px: number, py: number): void {
@@ -115,7 +127,6 @@ export class Level {
                 furs.push(fur);
             }
         }
-        console.log(furs);
         return furs;
     }
 

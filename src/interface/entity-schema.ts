@@ -37,6 +37,7 @@ export interface IFurniture extends IHasType {
     useractivationtext?: string;
     requireitem?: string;
     activationtarget?: number[][];
+    transparent: boolean;
 }
 
 export interface IPlayer extends IHasType {

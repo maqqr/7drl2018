@@ -64,10 +64,13 @@ export class Renderer {
 
         const furnitures = this.game.getCurrentLevel().furnitures;
         for (const furniture of furnitures) {
+            const tileState = level.getTileState(furniture.x, furniture.y);
             // const furId = this.game.data.getByType(this.game.data.furnitures, furniture.dataType);
             // const furDef = this.game.data.furnitures[furId];
-            this.renderer.drawTexture(furniture.x * 16, furniture.y * 16,
-                furniture.dataRef.icon, this.game.currentTintColor);
+            if (tileState.state === TileVisibility.Visible) {
+                this.renderer.drawTexture(furniture.x * 16, furniture.y * 16,
+                    furniture.dataRef.icon, this.game.currentTintColor);
+            }
         }
 
         // Draw descriptions (for debugging purposes)
@@ -89,7 +92,7 @@ export class Renderer {
         }
 
         if (this.game.spiritFadeTimer === 1.0) {
-            this.renderer.drawRect(0, 0, 600, 400, false, this.game.currentTintColor, 0.1);
+            // this.renderer.drawRect(0, 0, 600, 400, false, this.game.currentTintColor, 0.1);
         }
 
         // this.renderer.drawRect(0, 0, 64, 64, true);
