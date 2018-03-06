@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="91">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="24" height="24">
+  <data encoding="csv">
+7,6,7,7,7,9,9,8,9,6,9,9,9,7,8,9,7,9,6,6,7,6,7,6,
+7,6,6,2,2,3,4,5,4,2,3,4,5,4,4,2,4,5,5,3,3,6,6,9,
+7,8,4,4,2,2,5,4,5,2,5,4,5,2,4,2,3,5,4,4,4,5,9,8,
+7,5,5,4,2,2,5,2,4,3,2,5,2,5,3,2,5,3,3,5,5,3,4,9,
+9,4,2,5,2,2,9,8,9,6,7,3,4,3,2,9,7,8,6,6,5,3,4,9,
+7,5,4,4,3,9,9,8,6,7,6,8,3,4,4,7,6,9,7,8,4,2,3,7,
+6,3,2,5,7,7,8,6,9,6,8,6,6,3,5,9,7,7,6,8,3,5,5,6,
+6,5,4,2,8,9,7,9,8,7,7,6,7,2,4,9,8,7,8,9,5,5,5,6,
+8,2,3,4,8,6,8,7,8,7,9,6,9,2,5,6,6,9,6,8,3,2,3,7,
+7,3,3,4,9,8,7,6,9,6,7,9,6,5,3,8,5,4,2,4,5,3,5,8,
+7,5,2,4,7,7,7,7,9,6,6,9,7,4,2,7,2,5,4,5,4,2,2,9,
+8,9,8,9,7,8,7,9,7,8,9,7,9,7,6,8,3,4,4,8,3,2,2,6,
+7,6,6,7,9,6,7,9,6,6,6,8,7,6,7,7,3,2,6,8,3,3,4,8,
+6,5,3,5,7,8,7,9,6,6,6,7,6,6,7,7,4,5,6,6,5,5,5,7,
+8,2,3,3,8,6,7,9,8,9,7,9,7,6,7,8,5,3,6,5,5,3,2,7,
+7,3,2,2,8,6,8,6,7,9,8,7,7,2,5,8,3,5,4,5,3,2,5,6,
+7,5,4,3,7,6,7,8,9,9,7,9,8,5,2,6,2,4,3,3,5,4,2,8,
+6,4,2,5,6,6,9,9,7,8,7,7,9,7,9,6,6,9,6,7,4,4,4,9,
+7,4,5,4,5,6,7,8,7,9,7,7,9,8,7,9,7,8,8,7,2,3,5,8,
+6,5,4,5,2,5,8,7,9,6,8,9,6,7,9,6,7,9,9,8,4,3,5,9,
+9,2,3,5,3,2,5,4,4,4,2,3,5,5,3,5,3,2,3,3,3,2,5,7,
+7,7,3,4,2,2,3,3,4,3,4,4,2,5,2,5,5,4,2,4,4,2,8,6,
+7,8,7,3,2,4,2,2,4,3,5,5,4,2,2,5,2,3,2,5,2,7,8,9,
+7,7,9,7,8,9,7,9,9,8,6,9,8,7,6,7,7,7,9,9,8,8,9,8
+</data>
+ </layer>
+ <objectgroup name="furniture">
+  <object id="37" gid="56" x="224" y="192" width="16" height="16"/>
+  <object id="38" gid="56" x="224" y="208" width="16" height="16"/>
+  <object id="39" gid="56" x="224" y="224" width="16" height="16"/>
+  <object id="40" gid="56" x="224" y="240" width="16" height="16"/>
+  <object id="41" gid="12" x="240" y="192" width="16" height="16"/>
+  <object id="42" gid="12" x="240" y="208" width="16" height="16"/>
+  <object id="43" gid="12" x="240" y="224" width="16" height="16"/>
+  <object id="44" gid="12" x="240" y="240" width="16" height="16"/>
+  <object id="45" gid="69" x="304" y="288" width="16" height="16"/>
+  <object id="46" gid="69" x="304" y="320" width="16" height="16"/>
+  <object id="47" gid="72" x="304" y="304" width="16" height="16"/>
+  <object id="48" gid="72" x="304" y="128" width="16" height="16"/>
+  <object id="49" gid="72" x="304" y="96" width="16" height="16"/>
+  <object id="50" gid="29" x="304" y="112" width="16" height="16"/>
+  <object id="51" gid="68" x="272" y="80" width="16" height="16"/>
+  <object id="52" gid="70" x="288" y="80" width="16" height="16"/>
+  <object id="53" gid="70" x="256" y="80" width="16" height="16"/>
+  <object id="54" gid="52" x="304" y="80" width="16" height="16"/>
+  <object id="55" gid="52" x="240" y="80" width="16" height="16"/>
+  <object id="56" gid="52" x="304" y="144" width="16" height="16"/>
+  <object id="57" gid="52" x="272" y="112" width="16" height="16"/>
+  <object id="58" gid="70" x="288" y="144" width="16" height="16"/>
+  <object id="59" gid="70" x="256" y="144" width="16" height="16"/>
+  <object id="60" gid="29" x="272" y="144" width="16" height="16"/>
+  <object id="61" gid="10" x="16" y="192" width="16" height="16"/>
+  <object id="62" gid="10" x="16" y="208" width="16" height="16"/>
+  <object id="63" gid="51" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[15,11],[15,13],[15,14]]"/>
+   </properties>
+  </object>
+  <object id="64" gid="51" x="160" y="112" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[15,14],[15,12]]"/>
+   </properties>
+  </object>
+  <object id="65" gid="51" x="96" y="288" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[15,14]]"/>
+   </properties>
+  </object>
+  <object id="66" gid="51" x="128" y="112" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[15,12],[15,13]]"/>
+   </properties>
+  </object>
+  <object id="67" gid="52" x="96" y="96" width="16" height="16"/>
+  <object id="68" gid="52" x="128" y="96" width="16" height="16"/>
+  <object id="69" gid="52" x="160" y="96" width="16" height="16"/>
+  <object id="70" gid="52" x="80" y="288" width="16" height="16"/>
+  <object id="79" gid="52" x="64" y="176" width="16" height="16"/>
+  <object id="80" gid="52" x="64" y="224" width="16" height="16"/>
+  <object id="81" gid="52" x="224" y="288" width="16" height="16"/>
+  <object id="82" gid="52" x="256" y="288" width="16" height="16"/>
+  <object id="87" gid="65" x="160" y="176" width="16" height="16"/>
+  <object id="88" gid="65" x="144" y="192" width="16" height="16"/>
+  <object id="89" gid="65" x="128" y="208" width="16" height="16"/>
+  <object id="90" gid="65" x="112" y="224" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="description"/>
+</map>
