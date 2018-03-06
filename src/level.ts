@@ -1,3 +1,4 @@
+import * as ROT from "rot-js";
 import { Game } from ".";
 import { GameData } from "./data";
 import { Creature, Entity, Furniture } from "./entity";
@@ -23,6 +24,18 @@ class DescriptionObject {
     }
 }
 
+export enum TileVisibility {
+    Unknown,
+    Visible,
+    Remembered,
+}
+
+export class TileState {
+    public state: TileVisibility = TileVisibility.Unknown;
+    public rememberedTile: number = 0;
+    public rememberedFurniture: number = 0;
+}
+
 export class Level {
     public readonly width: number;
     public readonly height: number;
@@ -31,9 +44,11 @@ export class Level {
     public descriptions: DescriptionObject[] = [];
 
     public creatures: Creature[] = [];
-
+    public fov: ROT.FOV;
 
     private tiles: TileID[] = [];
+    private tilestate: TileState[] = [];
+
     private nextLevel: Level;
     private prevLevel: Level;
     private readonly data: GameData;
@@ -44,15 +59,52 @@ export class Level {
         this.height = height;
         this.nextLevel = null;
         this.prevLevel = null;
-        this.tiles.fill(1, 0, width * height);
+        for (let index = 0; index < width * height; index++) {
+            this.tilestate.push(new TileState());
+            this.tiles.push(1);
+        }
+        this.fov = new ROT.FOV.PreciseShadowcasting(this.isTransparent.bind(this));
+    }
+
+    public isInLevelBounds(x: number, y: number): boolean {
+        return x >= 0 && y >= 0 && x < this.width && y < this.height;
+    }
+
+    public isTransparent(x: number, y: number): boolean {
+        if (!this.isInLevelBounds(x, y)) {
+            return false;
+        }
+        const tile = this.data.tiles[this.get(x, y)];
+        if (tile) {
+            return tile.transparent;
+        }
+        return false;
+    }
+
+    public calculateFov(px: number, py: number): void {
+        // TODO: mark all nearby visible tiles as remembered before recalculating fov
+        // TODO: set rememberedTile and furniture
+        this.fov.compute(px, py, 7, (x, y, radius, visibility) => {
+            if (this.isInLevelBounds(x, y)) {
+                this.tilestate[x + y * this.width].state = TileVisibility.Visible;
+            }
+        });
     }
 
     public get(x: number, y: number): TileID {
-        if (x >= 0 && y >= 0 && x < this.width && y < this.height) {
+        if (this.isInLevelBounds(x, y)) {
             const index = x + y * this.width;
             return this.tiles[index];
         }
         console.error("Level.get index out of bounds : " + JSON.stringify({ x, y }));
+    }
+
+    public getTileState(x: number, y: number): TileState {
+        if (this.isInLevelBounds(x, y)) {
+            const index = x + y * this.width;
+            return this.tilestate[index];
+        }
+        console.error("Level.getTileState index out of bounds : " + JSON.stringify({ x, y }));
     }
 
     public getFurnituresAt(x: number, y: number): Furniture[] {

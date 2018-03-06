@@ -1,16 +1,11 @@
 import * as $ from "jquery";
+import { Color } from "./color";
 import { GameData } from "./data";
 import { Furniture, Player } from "./entity";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { IMouseEvent, Renderer } from "./renderer";
-import { Color } from "./color";
-
-
-
-
-
 
 export class Game {
     public static readonly WIDTH: number = 600;
@@ -32,12 +27,10 @@ export class Game {
 
     private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
 
-
     private keyDownCallBack: any;
 
 
     public start(): void {
-
         this.keyDownCallBack = this.handleKeyPress.bind(this);
         this.data = new GameData();
         this.renderer = new Renderer(this);
@@ -83,7 +76,7 @@ export class Game {
             this.data.tiles[tile.id] = tile;
             if (!("damage" in tile)) { this.data.tiles[tile.id].damage = 0; }
             if (!("maxsize" in tile)) { this.data.tiles[tile.id].maxsize = 0; }
-            if (!("transparent" in tile)) { this.data.tiles[tile.id].transparent = false; }
+            if (!("transparent" in tile)) { this.data.tiles[tile.id].transparent = true; }
             if (!("activation" in tile)) { this.data.tiles[tile.id].activation = null; }
             if (!("requireitem" in tile)) { this.data.tiles[tile.id].requireitem = null; }
             if (!("useractivation" in tile)) { this.data.tiles[tile.id].useractivation = null; }

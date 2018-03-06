@@ -1,6 +1,6 @@
 import { Color } from "./color";
 import { Game } from "./index";
-import { Level } from "./level";
+import { Level, TileVisibility } from "./level";
 import { PixiRenderer } from "./pixirenderer";
 
 export interface IMouseEvent {
@@ -42,6 +42,7 @@ export class Renderer {
 
     public renderGame(): void {
         const level = this.game.getCurrentLevel();
+        level.calculateFov(this.game.player.x, this.game.player.y);
 
         // const playerInsideBody = this.game.player.currentbody === null;
         // const colorTint = playerInsideBody ? Color.blue : 0xFFFFFF;
@@ -50,7 +51,14 @@ export class Renderer {
         for (let y = 0; y < level.height; y++) {
             for (let x = 0; x < level.width; x++) {
                 const tile = level.get(x, y);
-                this.renderer.drawTexture(x * 16, y * 16, tile, this.game.currentTintColor);
+                const tileState = level.getTileState(x, y);
+                if (tileState.state === TileVisibility.Visible) {
+                    this.renderer.drawTexture(x * 16, y * 16, tile, this.game.currentTintColor);
+                } else if (tileState.state === TileVisibility.Remembered) {
+                    this.renderer.drawTexture(x * 16, y * 16, tile, this.game.currentTintColor);
+                } else {
+                    this.renderer.drawTexture(x * 16, y * 16, tile, 1);
+                }
             }
         }
 
