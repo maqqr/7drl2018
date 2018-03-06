@@ -18,7 +18,6 @@ export interface ICreature extends IHasType {
    maxhp: number;
    strength: number;
    speed: number;
-   willpower: number;
    size: number;
    inventoryslots?: number;
    inventory?: IItem[];
@@ -42,8 +41,5 @@ export interface IFurniture extends IHasType {
 
 export interface IPlayer extends IHasType {
     id: number;
-    spiritpower: number;
-    spiritstability: number;
-    willpower: number;
     speed: number;
 }

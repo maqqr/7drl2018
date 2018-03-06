@@ -41,7 +41,9 @@ export class Game {
         this.player.x = 10;
         this.player.y = 10;
         this.player.currentbody = null;
-        this.player.currentstability = this.player.dataRef.spiritstability;
+        this.player.currentstability = this.player.spiritstability;
+        this.player.spiritpower = 10;
+        this.player.willpower = 10;
     }
 
     public async loadData(): Promise<void> {
@@ -100,7 +102,7 @@ export class Game {
         console.log(this.data.creatures);
         console.log(this.data.player);
         console.log(this.data.creatures[253]);
-        this.currentLevel.addCreatureAt(this.data.creatures[253], 9, 9);
+        this.currentLevel.addCreatureAt(this.data.creatures[253], 9, 9, 10);
         this.updateLoop();
     }
 
@@ -166,9 +168,15 @@ export class Game {
              ("You try to possess the ").
              concat(this.currentLevel.getCreatureAt(xx, yy).dataRef.type);
             console.log(action);
-            this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
-            this.player.x = xx;
-            this.player.y = yy;
+            if (this.player.spiritpower >= this.currentLevel.getCreatureAt(xx, yy).willpower) {
+                console.log("You were more potent and overcame the feeble creature.");
+                this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
+                this.player.x = xx;
+                this.player.y = yy;
+            } else {
+                console.log("The creature did not submit to you.");
+                console.log(this.currentLevel.getCreatureAt(xx, yy).willpower);
+            }
             keyAccepted = true;
         } else if (moving && this.isPassable(xx, yy)
         && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy), xx, yy)) {

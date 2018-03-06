@@ -1,11 +1,11 @@
 {
     "$schema":"./creatureset-schema.json",
     "creatures":[
-        {"id":254,"description":"A foul green creature","type":"Goblin","maxhp": 10,"strength": 3,"speed": 5,"size": 8,"inventoryslots":2,"inventory": [
+        {"id":254,"description":"A foul green creature","type":"Goblin", "maxhp": 10,"strength": 3,"speed": 5,"size": 8,"inventoryslots":2,"inventory": [
             {"id":0,"description":"A small red vial.","type":"Healing potion","category":"Potion"},
             {"id":1,"description":"Just looking at it makes me more brave.","type":"Liquid courage","category":"Potion"}
         ]},
-        {"id":253,"type":"Kobold","description":"Looks like my mother-in-law.","maxhp": 8,"strength": 2,"speed": 8,"size": 7,"inventoryslots":1,"inventory": [
+        {"id":253,"type":"Kobold","description":"Looks like my mother-in-law.", "maxhp": 8,"strength": 2,"speed": 8,"size": 7,"inventoryslots":1,"inventory": [
             {"id":0,"description":"A small red vial.","type":"Healing potion","category":"Potion"}
         ]}
     ]
