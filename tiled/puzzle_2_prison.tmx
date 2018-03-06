@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="150">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="24" height="24">
+  <data encoding="csv">
+23,24,22,24,25,24,24,24,23,24,22,24,24,22,23,25,23,23,22,25,23,25,25,23,
+23,19,21,20,20,21,22,21,18,21,18,21,19,20,19,18,19,23,20,18,20,18,18,23,
+24,21,23,24,19,20,22,21,20,21,20,18,18,18,21,18,20,24,18,21,22,22,21,25,
+25,18,25,23,20,18,24,22,20,21,23,25,23,23,18,20,24,24,19,18,23,24,18,24,
+25,21,21,23,20,18,23,22,23,22,25,24,24,23,23,22,23,25,20,19,22,19,21,24,
+22,21,19,24,25,20,25,24,19,21,25,23,24,25,19,21,24,23,21,24,25,21,20,22,
+24,19,21,23,23,23,22,25,20,18,25,23,22,23,20,19,22,22,25,25,23,21,21,22,
+22,19,20,23,23,19,23,22,21,18,23,24,25,24,20,21,25,24,20,22,23,19,18,25,
+22,20,18,18,18,20,23,24,19,18,25,24,23,25,19,20,25,22,20,21,21,18,20,24,
+22,20,19,22,23,19,24,25,19,18,25,25,24,24,20,18,23,23,20,23,23,20,18,25,
+24,21,19,22,25,25,22,25,21,19,23,24,23,25,21,20,22,22,24,22,23,19,19,22,
+22,18,19,24,23,18,23,24,21,21,22,24,24,23,21,18,22,25,21,23,24,21,21,23,
+23,19,18,19,19,19,25,23,20,18,23,25,22,25,19,21,25,24,20,21,18,21,19,22,
+24,20,19,23,24,18,25,25,21,21,25,24,24,24,21,21,24,22,21,23,23,21,20,23,
+23,20,21,23,22,23,25,25,20,18,21,21,20,20,20,20,22,25,25,25,22,20,19,23,
+25,18,19,22,23,21,22,24,19,20,19,19,21,20,19,19,22,24,21,23,24,18,18,24,
+25,21,21,18,21,18,24,23,24,23,24,24,22,25,22,23,23,24,18,20,18,19,21,23,
+23,18,21,24,24,24,25,22,23,22,24,24,22,23,23,22,22,24,25,22,22,21,19,25,
+25,21,19,23,25,21,23,20,19,21,22,20,18,23,18,21,20,23,21,24,22,19,20,24,
+25,18,20,22,21,19,23,24,19,22,24,18,19,22,24,18,24,23,18,20,22,19,21,23,
+23,19,24,24,19,19,23,23,18,24,25,19,18,24,24,18,25,22,18,20,23,25,19,25,
+24,18,25,23,19,19,21,19,21,21,18,20,18,18,18,19,19,21,18,21,23,24,21,25,
+24,21,18,20,21,21,19,20,18,21,18,20,20,18,20,18,21,20,18,21,21,19,19,23,
+22,25,24,23,25,24,22,23,25,22,23,25,25,23,22,25,24,22,25,23,25,23,23,25
+</data>
+ </layer>
+ <objectgroup name="furniture">
+  <object id="44" gid="56" x="80" y="176" width="16" height="16"/>
+  <object id="46" gid="56" x="288" y="176" width="16" height="16"/>
+  <object id="47" gid="56" x="288" y="240" width="16" height="16"/>
+  <object id="49" gid="56" x="80" y="288" width="16" height="16"/>
+  <object id="50" gid="56" x="96" y="304" width="16" height="16"/>
+  <object id="51" gid="56" x="160" y="304" width="16" height="16"/>
+  <object id="52" gid="56" x="208" y="304" width="16" height="16"/>
+  <object id="53" gid="56" x="272" y="304" width="16" height="16"/>
+  <object id="54" gid="56" x="288" y="288" width="16" height="16"/>
+  <object id="55" gid="10" x="96" y="32" width="16" height="16"/>
+  <object id="56" gid="10" x="128" y="80" width="16" height="16"/>
+  <object id="57" gid="10" x="240" y="80" width="16" height="16"/>
+  <object id="58" gid="10" x="272" y="32" width="16" height="16"/>
+  <object id="59" gid="70" x="176" y="64" width="16" height="16"/>
+  <object id="60" gid="70" x="192" y="64" width="16" height="16"/>
+  <object id="61" gid="72" x="176" y="128" width="16" height="16"/>
+  <object id="62" gid="72" x="192" y="112" width="16" height="16"/>
+  <object id="65" gid="76" x="304" y="96" width="16" height="16"/>
+  <object id="66" gid="76" x="64" y="128" width="16" height="16"/>
+  <object id="67" gid="76" x="64" y="160" width="16" height="16"/>
+  <object id="68" gid="76" x="64" y="224" width="16" height="16"/>
+  <object id="69" gid="76" x="64" y="304" width="16" height="16"/>
+  <object id="70" gid="76" x="112" y="320" width="16" height="16"/>
+  <object id="71" gid="76" x="144" y="336" width="16" height="16"/>
+  <object id="72" gid="76" x="208" y="336" width="16" height="16"/>
+  <object id="73" gid="76" x="256" y="336" width="16" height="16"/>
+  <object id="74" gid="76" x="304" y="304" width="16" height="16"/>
+  <object id="75" gid="76" x="320" y="240" width="16" height="16"/>
+  <object id="76" gid="76" x="320" y="160" width="16" height="16"/>
+  <object id="86" gid="49" x="176" y="224" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[5,6],[5,10],[5,14],[5,17],[18,6],[18,10],[18,14],[18,17]]"/>
+   </properties>
+  </object>
+  <object id="87" gid="49" x="192" y="224" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[6,18],[10,18],[13,18],[17,18]]"/>
+   </properties>
+  </object>
+  <object id="90" gid="72" x="192" y="176" width="16" height="16"/>
+  <object id="91" gid="12" x="320" y="80" width="16" height="16"/>
+  <object id="92" gid="12" x="320" y="320" width="16" height="16"/>
+  <object id="93" gid="12" x="48" y="320" width="16" height="16"/>
+  <object id="94" gid="12" x="48" y="80" width="16" height="16"/>
+  <object id="95" gid="68" x="336" y="352" width="16" height="16"/>
+  <object id="96" gid="74" x="48" y="128" width="16" height="16"/>
+  <object id="97" gid="74" x="48" y="176" width="16" height="16"/>
+  <object id="98" gid="74" x="48" y="224" width="16" height="16"/>
+  <object id="99" gid="74" x="64" y="288" width="16" height="16"/>
+  <object id="100" gid="74" x="96" y="336" width="16" height="16"/>
+  <object id="101" gid="74" x="144" y="320" width="16" height="16"/>
+  <object id="102" gid="74" x="208" y="320" width="16" height="16"/>
+  <object id="103" gid="74" x="256" y="320" width="16" height="16"/>
+  <object id="104" gid="74" x="320" y="304" width="16" height="16"/>
+  <object id="105" gid="74" x="304" y="240" width="16" height="16"/>
+  <object id="106" gid="74" x="320" y="176" width="16" height="16"/>
+  <object id="107" gid="74" x="304" y="112" width="16" height="16"/>
+  <object id="108" gid="74" x="336" y="48" width="16" height="16"/>
+  <object id="109" gid="74" x="320" y="48" width="16" height="16"/>
+  <object id="110" gid="74" x="32" y="64" width="16" height="16"/>
+  <object id="111" gid="74" x="32" y="48" width="16" height="16"/>
+  <object id="112" gid="74" x="48" y="64" width="16" height="16"/>
+  <object id="116" gid="74" x="32" y="352" width="16" height="16"/>
+  <object id="117" gid="74" x="32" y="336" width="16" height="16"/>
+  <object id="118" gid="74" x="48" y="336" width="16" height="16"/>
+  <object id="120" gid="70" x="176" y="192" width="16" height="16"/>
+  <object id="121" gid="70" x="192" y="192" width="16" height="16"/>
+  <object id="122" gid="65" x="176" y="208" width="16" height="16"/>
+  <object id="123" gid="65" x="160" y="176" width="16" height="16"/>
+  <object id="124" gid="73" x="160" y="208" width="16" height="16"/>
+  <object id="125" gid="73" x="192" y="208" width="16" height="16"/>
+  <object id="126" gid="73" x="208" y="208" width="16" height="16"/>
+  <object id="127" gid="73" x="208" y="192" width="16" height="16"/>
+  <object id="128" gid="73" x="192" y="176" width="16" height="16"/>
+  <object id="129" gid="73" x="208" y="144" width="16" height="16"/>
+  <object id="130" gid="73" x="176" y="128" width="16" height="16"/>
+  <object id="131" gid="65" x="208" y="208" width="16" height="16"/>
+  <object id="132" gid="65" x="160" y="208" width="16" height="16"/>
+  <object id="133" gid="51" x="48" y="192" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[3,4]]"/>
+   </properties>
+  </object>
+  <object id="134" gid="51" x="320" y="128" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[20,4]]"/>
+   </properties>
+  </object>
+  <object id="135" gid="57" x="288" y="112" width="16" height="16"/>
+  <object id="136" gid="57" x="80" y="240" width="16" height="16"/>
+  <object id="137" gid="51" x="320" y="192" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[20,19]]"/>
+   </properties>
+  </object>
+  <object id="138" gid="51" x="48" y="256" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[3,19]]"/>
+   </properties>
+  </object>
+  <object id="139" gid="71" x="176" y="160" width="16" height="16"/>
+  <object id="140" gid="57" x="80" y="112" width="16" height="16"/>
+  <object id="141" gid="72" x="176" y="144" width="16" height="16"/>
+  <object id="142" gid="71" x="192" y="128" width="16" height="16"/>
+  <object id="143" gid="71" x="192" y="144" width="16" height="16"/>
+  <object id="144" gid="52" x="272" y="144" width="16" height="16"/>
+  <object id="145" gid="52" x="96" y="208" width="16" height="16"/>
+  <object id="146" gid="52" x="144" y="288" width="16" height="16"/>
+  <object id="147" gid="52" x="224" y="288" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="description">
+  <object id="148" x="96" y="48" width="192" height="16">
+   <properties>
+    <property name="text" value="A prison. People, who were thrown down here, did not survive long."/>
+   </properties>
+  </object>
+  <object id="149" x="-10.3333" y="104.667"/>
+ </objectgroup>
+</map>
