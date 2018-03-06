@@ -67,22 +67,22 @@
   </object>
   <object id="38" gid="10" x="352" y="192" width="16" height="16"/>
   <object id="39" gid="10" x="352" y="208" width="16" height="16"/>
-  <object id="41" gid="18" x="288" y="208" width="16" height="16"/>
-  <object id="42" gid="18" x="208" y="192" width="16" height="16"/>
-  <object id="43" gid="18" x="208" y="208" width="16" height="16"/>
+  <object id="41" type="fakewall2" gid="18" x="288" y="208" width="16" height="16"/>
+  <object id="42" type="fakewall2" gid="18" x="208" y="192" width="16" height="16"/>
+  <object id="43" type="fakewall2" gid="18" x="208" y="208" width="16" height="16"/>
   <object id="50" gid="68" x="176" y="192" width="16" height="16"/>
   <object id="51" gid="74" x="176" y="208" width="16" height="16"/>
-  <object id="52" gid="23" x="320" y="160" width="16" height="16"/>
-  <object id="53" gid="23" x="320" y="240" width="16" height="16"/>
-  <object id="54" gid="22" x="144" y="128" width="16" height="16"/>
-  <object id="55" gid="18" x="144" y="64" width="16" height="16"/>
-  <object id="56" gid="18" x="176" y="112" width="16" height="16"/>
-  <object id="57" gid="22" x="96" y="208" width="16" height="16"/>
-  <object id="58" gid="22" x="176" y="288" width="16" height="16"/>
-  <object id="59" gid="18" x="48" y="240" width="16" height="16"/>
-  <object id="60" gid="22" x="144" y="336" width="16" height="16"/>
-  <object id="61" gid="22" x="224" y="272" width="16" height="16"/>
-  <object id="62" gid="18" x="256" y="240" width="16" height="16"/>
+  <object id="52" type="transfloor2" gid="23" x="320" y="160" width="16" height="16"/>
+  <object id="53" type="transfloor2" gid="23" x="320" y="240" width="16" height="16"/>
+  <object id="54" type="fakefloor2" gid="22" x="144" y="128" width="16" height="16"/>
+  <object id="55" type="fakewall2" gid="18" x="144" y="64" width="16" height="16"/>
+  <object id="56" type="fakewall2" gid="18" x="176" y="112" width="16" height="16"/>
+  <object id="57" type="fakefloor2" gid="22" x="96" y="208" width="16" height="16"/>
+  <object id="58" type="fakefloor2" gid="22" x="176" y="288" width="16" height="16"/>
+  <object id="59" type="fakewall2" gid="18" x="48" y="240" width="16" height="16"/>
+  <object id="60" type="fakefloor2" gid="22" x="144" y="336" width="16" height="16"/>
+  <object id="61" type="fakefloor2" gid="22" x="224" y="272" width="16" height="16"/>
+  <object id="62" type="fakewall2" gid="18" x="256" y="240" width="16" height="16"/>
   <object id="63" gid="74" x="240" y="320" width="16" height="16"/>
   <object id="64" gid="74" x="48" y="128" width="16" height="16"/>
   <object id="65" gid="74" x="64" y="144" width="16" height="16"/>

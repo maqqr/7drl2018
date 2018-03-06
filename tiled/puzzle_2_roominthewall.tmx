@@ -74,10 +74,10 @@
   <object id="73" gid="65" x="96" y="256" width="16" height="16"/>
   <object id="74" gid="65" x="192" y="256" width="16" height="16"/>
   <object id="75" gid="73" x="192" y="80" width="16" height="16"/>
-  <object id="76" gid="18" x="192" y="64" width="16" height="16"/>
-  <object id="77" gid="18" x="192" y="48" width="16" height="16"/>
-  <object id="78" gid="18" x="208" y="48" width="16" height="16"/>
-  <object id="79" gid="18" x="224" y="48" width="16" height="16"/>
+  <object id="76" type="fakewall2" gid="18" x="192" y="64" width="16" height="16"/>
+  <object id="77" type="fakewall2" gid="18" x="192" y="48" width="16" height="16"/>
+  <object id="78" type="fakewall2" gid="18" x="208" y="48" width="16" height="16"/>
+  <object id="79" type="fakewall2" gid="18" x="224" y="48" width="16" height="16"/>
   <object id="80" gid="73" x="240" y="48" width="16" height="16"/>
   <object id="81" gid="73" x="256" y="48" width="16" height="16"/>
   <object id="82" gid="73" x="208" y="80" width="16" height="16"/>

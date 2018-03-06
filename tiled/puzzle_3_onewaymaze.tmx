@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="131">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="133">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -165,37 +165,43 @@
     <property name="activationtarget" value="[[14,6]]"/>
    </properties>
   </object>
-  <object id="83" gid="39" x="176" y="80" width="16" height="16"/>
-  <object id="85" gid="39" x="96" y="80" width="16" height="16"/>
-  <object id="87" gid="39" x="256" y="80" width="16" height="16"/>
-  <object id="90" gid="39" x="256" y="160" width="16" height="16"/>
-  <object id="91" gid="39" x="192" y="160" width="16" height="16"/>
-  <object id="93" gid="39" x="112" y="160" width="16" height="16"/>
-  <object id="96" gid="39" x="112" y="240" width="16" height="16"/>
-  <object id="98" gid="39" x="112" y="320" width="16" height="16"/>
-  <object id="100" gid="39" x="192" y="240" width="16" height="16"/>
-  <object id="102" gid="39" x="192" y="320" width="16" height="16"/>
-  <object id="104" gid="39" x="272" y="320" width="16" height="16"/>
-  <object id="105" gid="39" x="256" y="240" width="16" height="16"/>
-  <object id="108" gid="39" x="64" y="128" width="16" height="16"/>
-  <object id="110" gid="39" x="144" y="128" width="16" height="16"/>
-  <object id="112" gid="39" x="224" y="128" width="16" height="16"/>
-  <object id="113" gid="39" x="304" y="112" width="16" height="16"/>
-  <object id="115" gid="39" x="304" y="192" width="16" height="16"/>
-  <object id="117" gid="39" x="224" y="192" width="16" height="16"/>
-  <object id="119" gid="39" x="144" y="192" width="16" height="16"/>
-  <object id="120" gid="39" x="144" y="208" width="16" height="16"/>
-  <object id="122" gid="39" x="64" y="208" width="16" height="16"/>
+  <object id="83" type="transfloor3" gid="39" x="176" y="80" width="16" height="16"/>
+  <object id="85" type="transfloor3" gid="39" x="96" y="80" width="16" height="16"/>
+  <object id="87" type="transfloor3" gid="39" x="256" y="80" width="16" height="16"/>
+  <object id="90" type="transfloor3" gid="39" x="256" y="160" width="16" height="16"/>
+  <object id="91" type="transfloor3" gid="39" x="192" y="160" width="16" height="16"/>
+  <object id="93" type="transfloor3" gid="39" x="112" y="160" width="16" height="16"/>
+  <object id="96" type="transfloor3" gid="39" x="112" y="240" width="16" height="16"/>
+  <object id="98" type="transfloor3" gid="39" x="112" y="320" width="16" height="16"/>
+  <object id="100" type="transfloor3" gid="39" x="192" y="240" width="16" height="16"/>
+  <object id="102" type="transfloor3" gid="39" x="192" y="320" width="16" height="16"/>
+  <object id="104" type="transfloor3" gid="39" x="272" y="320" width="16" height="16"/>
+  <object id="105" type="transfloor3" gid="39" x="256" y="240" width="16" height="16"/>
+  <object id="108" type="transfloor3" gid="39" x="64" y="128" width="16" height="16"/>
+  <object id="110" type="transfloor3" gid="39" x="144" y="128" width="16" height="16"/>
+  <object id="112" type="transfloor3" gid="39" x="224" y="128" width="16" height="16"/>
+  <object id="113" type="transfloor3" gid="39" x="304" y="112" width="16" height="16"/>
+  <object id="115" type="transfloor3" gid="39" x="304" y="192" width="16" height="16"/>
+  <object id="117" type="transfloor3" gid="39" x="224" y="192" width="16" height="16"/>
+  <object id="119" type="transfloor3" gid="39" x="144" y="192" width="16" height="16"/>
+  <object id="120" type="transfloor3" gid="39" x="144" y="208" width="16" height="16"/>
+  <object id="122" type="transfloor3" gid="39" x="64" y="208" width="16" height="16"/>
   <object id="124" gid="51" x="80" y="80" width="16" height="16">
    <properties>
     <property name="activationtarget" value="[[6,4]]"/>
    </properties>
   </object>
-  <object id="126" gid="39" x="64" y="288" width="16" height="16"/>
-  <object id="127" gid="39" x="144" y="272" width="16" height="16"/>
-  <object id="128" gid="39" x="224" y="272" width="16" height="16"/>
-  <object id="129" gid="39" x="304" y="272" width="16" height="16"/>
+  <object id="126" type="transfloor3" gid="39" x="64" y="288" width="16" height="16"/>
+  <object id="127" type="transfloor3" gid="39" x="144" y="272" width="16" height="16"/>
+  <object id="128" type="transfloor3" gid="39" x="224" y="272" width="16" height="16"/>
+  <object id="129" type="transfloor3" gid="39" x="304" y="272" width="16" height="16"/>
   <object id="130" gid="10" x="224" y="32" width="16" height="16"/>
+  <object id="131" gid="12" x="272" y="80" width="16" height="16"/>
+  <object id="132" gid="49" x="288" y="64" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[17,4]]"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="description"/>
 </map>
