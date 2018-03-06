@@ -233,8 +233,8 @@
  <tile id="81" type="traspikeactivated"/>
  <tile id="82" type="trapteleportin"/>
  <tile id="83" type="trapteleportout"/>
- <tile id="84" type="brokenvase"/>
- <tile id="85" type="brokenpillar"/>
+ <tile id="84" type="vasebroken"/>
+ <tile id="85" type="pillarbroken"/>
  <tile id="86" type="rockpile"/>
  <tile id="87" type="rockpile"/>
  <tile id="88" type="rockpile"/>
