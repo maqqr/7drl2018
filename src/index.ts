@@ -68,6 +68,7 @@ export class Game {
         for (const ent of itemset.items) {
             this.data.items[ent.id] = ent;
         }
+
         // Fill empty fields with default values
         for (const tile of tileset.tiles) {
             this.data.tiles[tile.id] = tile;

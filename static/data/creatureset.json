@@ -2,12 +2,12 @@
     "$schema":"./creatureset-schema.json",
     "creatures":[
         {
-            "id":254, "type": "goblin", "description": "A foul green creature",
+            "id":253, "type": "goblin", "description": "A foul green creature",
             "maxhp": 10, "strength": 3, "speed": 5, "size": 8, "inventoryslots": 2,
             "inventory": ["healingpotion", "liquidcourage"]
         },
         {
-            "id":253, "type": "kobold", "description": "Looks like my mother-in-law.",
+            "id":254, "type": "kobold", "description": "Looks like my mother-in-law.",
             "maxhp": 8, "strength": 2, "speed": 8, "size": 7, "inventoryslots": 1,
             "inventory": ["healingpotion", "liquidcourage"]
         }

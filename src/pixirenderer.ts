@@ -123,9 +123,9 @@ export class PixiRenderer {
     }
 
     public drawRect(x: number, y: number, width: number, height: number,
-                    border: boolean = false, backgroundColor: number = Color.black): void {
+                    border: boolean = false, backgroundColor: number = Color.black, alpha: number = 1): void {
         const rect = this.grapgicsPool.get();
-        rect.beginFill(backgroundColor);
+        rect.beginFill(backgroundColor, alpha);
         if (border) {
             rect.lineStyle(2, Color.white);
         }
