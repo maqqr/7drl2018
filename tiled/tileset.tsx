@@ -9,49 +9,49 @@
  <tile id="1" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="2" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="3" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="4" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="5" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="6" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="7" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="8" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="9" type="door"/>
@@ -61,69 +61,69 @@
  <tile id="13" type="water">
   <properties>
    <property name="description" value="This is water."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="14" type="lava">
   <properties>
-   <property name="damage" value="1000"/>
+   <property name="damage" type="int" value="1000"/>
    <property name="description" value="This is lava."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="15" type="acid">
   <properties>
-   <property name="damage" value="2"/>
+   <property name="damage" type="int" value="2"/>
    <property name="description" value="This is acid."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="17" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="18" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="19" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="20" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="21" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="22" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="23" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="24" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="25" type="doorbronzelocked"/>
@@ -136,49 +136,49 @@
  <tile id="33" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="34" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="35" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="36" type="wall">
   <properties>
    <property name="description" value="This is a wall."/>
-   <property name="transparent" value="false"/>
+   <property name="transparent" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="37" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="38" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="39" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="40" type="floor">
   <properties>
    <property name="description" value="This is a floor."/>
-   <property name="maxsize" value="20"/>
+   <property name="maxsize" type="int" value="20"/>
   </properties>
  </tile>
  <tile id="41" type="doorsilverlocked"/>
@@ -233,43 +233,43 @@
  <tile id="96" type="tunnelleftright">
   <properties>
    <property name="description" value="This is part of a tunnel."/>
-   <property name="maxsize" value="1"/>
+   <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
  <tile id="97" type="tunnelbottomup">
   <properties>
    <property name="description" value="This is part of a tunnel."/>
-   <property name="maxsize" value="1"/>
+   <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
  <tile id="98" type="tunnelbottomright">
   <properties>
    <property name="description" value="This is part of a tunnel."/>
-   <property name="maxsize" value="1"/>
+   <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
  <tile id="99" type="tunnelbottomleft">
   <properties>
    <property name="description" value="This is part of a tunnel."/>
-   <property name="maxsize" value="1"/>
+   <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
  <tile id="112" type="tunnelentrance">
   <properties>
    <property name="description" value="This is part of a tunnel."/>
-   <property name="maxsize" value="1"/>
+   <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
  <tile id="114" type="tunnelupright">
   <properties>
    <property name="description" value="This is part of a tunnel."/>
-   <property name="maxsize" value="1"/>
+   <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
  <tile id="115" type="tunnelleftup">
   <properties>
    <property name="description" value="This is part of a tunnel."/>
-   <property name="maxsize" value="1"/>
+   <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
 </tileset>
