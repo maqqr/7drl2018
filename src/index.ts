@@ -69,13 +69,11 @@ export class Game {
             return value;
         };
 
-        const convertBool = (x: string): boolean => {
-            if (x === "true") {
-                return true;
-            }
-            if (x === "false") {
-                return false;
-            }
+        const convertBool = (x: any): boolean => {
+            if (x === "true") { return true; }
+            if (x === "false") { return false; }
+            if (x === true) { return true; }
+            if (x === false) { return false; }
             console.error("Failed to convert prop '" + x + "' to boolean");
             return false;
         };
@@ -145,7 +143,7 @@ export class Game {
         console.log(this.data.creatures[253]);
         setInterval(this.updateTinting.bind(this), 60);
         setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
-        this.currentLevel.addCreatureAt(this.data.creatures[253], 9, 9, 10);
+        this.currentLevel.addCreatureAt(this.data.creatures[253], 13, 9, 10);
         this.updateLoop();
     }
 

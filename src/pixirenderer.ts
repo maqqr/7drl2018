@@ -141,7 +141,6 @@ export class PixiRenderer {
 
     public drawCircle(x: number, y: number, radius: number, color: number, alpha: number): void {
         const rect = this.grapgicsPool.get();
-        console.log(alpha);
         rect.beginFill(color, alpha);
         rect.drawCircle(x, y, radius);
     }
