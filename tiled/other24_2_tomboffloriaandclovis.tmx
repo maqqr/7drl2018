@@ -36,7 +36,7 @@
   <object id="34" gid="10" x="208" y="288" width="16" height="16"/>
   <object id="37" gid="54" x="288" y="128" width="16" height="16">
    <properties>
-    <property name="description" value="&quot;Here lies Floria Grimwin, daughter of Nikola and Ylaria Grimwin. Died from illness in #%&quot;#&amp;.&quot; You inspect coffin more closely and it someone scraped the time of dead from the coffin."/>
+    <property name="description" value="&quot;Here lies Floria Grimwin, daughter of Nikola and Ylaria Grimwin. Died from illness in #%&quot;#&amp;.&quot; You inspect coffin more closely and it seems that someone scraped the time of dead from the coffin."/>
    </properties>
   </object>
   <object id="38" gid="54" x="288" y="160" width="16" height="16">

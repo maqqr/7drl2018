@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="73">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="12" height="12">
+  <data encoding="csv">
+9,6,7,7,9,6,7,9,8,7,6,9,
+9,8,9,8,8,6,9,9,9,9,7,9,
+7,9,8,9,7,6,7,9,8,6,7,9,
+7,6,7,8,6,7,9,7,8,6,9,6,
+8,9,9,9,9,6,8,9,7,6,8,8,
+7,6,9,8,7,9,8,8,6,9,6,9,
+7,8,6,8,9,9,6,9,7,8,6,9,
+6,6,8,7,9,6,9,6,8,9,9,6,
+8,9,7,6,9,9,6,6,8,9,8,7,
+7,6,6,8,8,8,7,8,7,8,6,7,
+9,7,9,6,7,6,6,6,6,8,8,6,
+6,8,8,6,7,7,8,8,9,9,8,6
+</data>
+ </layer>
+ <objectgroup name="furniture">
+  <object id="31" gid="52" x="48" y="32" width="16" height="16"/>
+  <object id="32" gid="52" x="128" y="32" width="16" height="16"/>
+  <object id="33" gid="52" x="48" y="176" width="16" height="16"/>
+  <object id="34" gid="52" x="128" y="176" width="16" height="16"/>
+  <object id="35" gid="52" x="16" y="144" width="16" height="16"/>
+  <object id="36" gid="52" x="16" y="64" width="16" height="16"/>
+  <object id="37" gid="52" x="160" y="64" width="16" height="16"/>
+  <object id="38" gid="52" x="160" y="144" width="16" height="16"/>
+  <object id="42" gid="74" x="128" y="64" width="16" height="16">
+   <properties>
+    <property name="description" value="Pile of mixed animal skulls and bones."/>
+   </properties>
+  </object>
+  <object id="43" gid="71" x="96" y="64" width="16" height="16"/>
+  <object id="44" gid="71" x="32" y="144" width="16" height="16"/>
+  <object id="45" gid="88" x="32" y="64" width="16" height="16"/>
+  <object id="49" gid="73" x="48" y="128" width="16" height="16"/>
+  <object id="51" gid="89" x="32" y="48" width="16" height="16"/>
+  <object id="52" gid="89" x="144" y="96" width="16" height="16"/>
+  <object id="53" gid="73" x="112" y="112" width="16" height="16"/>
+  <object id="54" gid="73" x="64" y="176" width="16" height="16"/>
+  <object id="55" gid="73" x="64" y="48" width="16" height="16"/>
+  <object id="57" gid="87" x="16" y="80" width="16" height="16"/>
+  <object id="58" gid="85" x="48" y="48" width="16" height="16"/>
+  <object id="59" gid="69" x="80" y="64" width="16" height="16"/>
+  <object id="60" gid="76" x="96" y="96" width="16" height="16"/>
+  <object id="61" gid="76" x="112" y="64" width="16" height="16"/>
+  <object id="62" gid="63" x="96" y="80" width="16" height="16"/>
+  <object id="63" gid="87" x="32" y="128" width="16" height="16"/>
+  <object id="65" gid="77" x="144" y="64" width="16" height="16"/>
+  <object id="66" gid="78" x="128" y="48" width="16" height="16"/>
+  <object id="67" gid="89" x="112" y="128" width="16" height="16"/>
+  <object id="68" gid="73" x="144" y="160" width="16" height="16"/>
+  <object id="69" gid="87" x="128" y="160" width="16" height="16"/>
+  <object id="70" gid="87" x="96" y="112" width="16" height="16"/>
+  <object id="71" gid="87" x="48" y="80" width="16" height="16"/>
+  <object id="72" gid="87" x="48" y="160" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="description"/>
+</map>
