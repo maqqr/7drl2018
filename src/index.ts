@@ -16,6 +16,7 @@ export class Game {
     public player: Player;
 
     public indexForTestPuzzle: number = 0;
+    public waitForPushKey: boolean = false;
 
     // Animation variables
     public spiritFadeTimer: number = 0;
@@ -235,10 +236,10 @@ export class Game {
         for (const fur of furs) {
             pile += fur.dataRef.size;
         }
-        console.log(furs);
-        console.log(tile);
-        console.log("pile: " + pile + " / " + tile.maxsize);
-        console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
+        // console.log(furs);
+        // console.log(tile);
+        // console.log("pile: " + pile + " / " + tile.maxsize);
+        // console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
         return (pile + playerSize) <= tile.maxsize;
     }
 
@@ -255,59 +256,86 @@ export class Game {
     }
 
     private handleKeyPress(e: KeyboardEvent): void {
-        let xx = this.player.x;
-        let yy = this.player.y;
+        let px = this.player.x;
+        let py = this.player.y;
         let keyAccepted = false;
+
         const code = e.code;
-        const moving = code === "ArrowUp" || code === "ArrowDown" ||
-         code === "ArrowLeft" || code === "ArrowRight" || code === "Space" ? true : false;
-        xx = code === "ArrowRight" ? xx += 1 : (code === "ArrowLeft") ? xx -= 1 : xx;
-        yy = code === "ArrowDown" ? yy += 1 : (code === "ArrowUp") ? yy -= 1 : yy;
         console.log(e.code);
+
+        const dx = code === "ArrowRight" ? 1 : (code === "ArrowLeft") ? -1 : 0;
+        const dy = code === "ArrowDown" ? 1 : (code === "ArrowUp") ? -1 : 0;
+        const xx = px + dx;
+        const yy = py + dy;
+        let moving = !(dx === 0 && dy === 0);
+
+        // let moving = code === "ArrowUp" || code === "ArrowDown" ||
+        //  code === "ArrowLeft" || code === "ArrowRight" || code === "Space" ? true : false;
+        // xx = code === "ArrowRight" ? xx += 1 : (code === "ArrowLeft") ? xx -= 1 : xx;
+        // yy = code === "ArrowDown" ? yy += 1 : (code === "ArrowUp") ? yy -= 1 : yy;
 
         if (e.code === "KeyQ") {
             this.loadLevel();
         }
 
+        if (e.code === "KeyP") {
+            this.waitForPushKey = true;
+            keyAccepted = true;
+        }
+
+        const creatureBlocking = !this.isCurrable(xx, yy);
+        const spiritMode = this.player.currentbody === null;
+
+        if (this.waitForPushKey && moving) {
+            this.waitForPushKey = false;
+            console.log("push");
+            for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
+                // TODO: strength check
+                fur.x = xx + dx;
+                fur.y = yy + dy;
+                break;
+            }
+            moving = false;
+            keyAccepted = true;
+        }
+
         // Player tries to move. Switch?
         // Tried to move into a tile with a creature
         // TODO fight?
-        if (moving && !this.isCurrable(xx, yy) && !(this.player.currentbody === null) && !e.shiftKey
-        && !(code === "Space")) {
-            const action =
-             ("You try to hit the ").
-             concat(this.currentLevel.getCreatureAt(xx, yy).dataRef.type);
-            console.log(action);
-            keyAccepted = true;
-        } else if (moving && !this.isCurrable(xx, yy) && e.shiftKey) {
-            // Possessing
-            const action =
-             ("You try to possess the ").
-             concat(this.currentLevel.getCreatureAt(xx, yy).dataRef.type);
-            console.log(action);
-            if (this.player.spiritpower >= this.currentLevel.getCreatureAt(xx, yy).willpower) {
-                console.log("You were more potent and overcame the feeble creature.");
-                this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
+
+        if (moving) {
+            if (creatureBlocking && !spiritMode && !e.shiftKey && code !== "Space") {
+                const action = "You try to hit the " + this.currentLevel.getCreatureAt(xx, yy).dataRef.type;
+                console.log(action);
+                keyAccepted = true;
+            } else if (creatureBlocking && e.shiftKey) {
+                // Possessing
+                const action = "You try to possess the " + this.currentLevel.getCreatureAt(xx, yy).dataRef.type;
+                console.log(action);
+                if (this.player.spiritpower >= this.currentLevel.getCreatureAt(xx, yy).willpower) {
+                    console.log("You were more potent and overcame the feeble creature.");
+                    this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
+                    this.player.x = xx;
+                    this.player.y = yy;
+                } else {
+                    console.log("The creature did not submit to you.");
+                    console.log(this.currentLevel.getCreatureAt(xx, yy).willpower);
+                }
+                keyAccepted = true;
+            } else if (this.isPassable(xx, yy) &&
+                       this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
+                                       this.currentLevel.getTile(xx, yy), xx, yy)) {
                 this.player.x = xx;
                 this.player.y = yy;
-            } else {
-                console.log("The creature did not submit to you.");
-                console.log(this.currentLevel.getCreatureAt(xx, yy).willpower);
+                if (e.shiftKey) {
+                    this.player.currentbody = null;
+                } else if (!spiritMode) {
+                    this.moveCreature(this.player.currentbody, xx, yy);
+                }
+                keyAccepted = true;
             }
-            keyAccepted = true;
-        } else if (moving && this.isPassable(xx, yy)
-        && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
-                           this.currentLevel.getTile(xx, yy), xx, yy)) {
-            this.player.x = xx;
-            this.player.y = yy;
-            if (e.shiftKey) {
-                this.player.currentbody = null;
-            } else if (!(this.player.currentbody === null)) {
-                this.player.currentbody.x = xx;
-                this.player.currentbody.y = yy;
-            }
-            keyAccepted = true;
         }
+
         if (keyAccepted) {
             window.removeEventListener("keydown", this.keyDownCallBack);
             this.updateLoop();
@@ -315,7 +343,12 @@ export class Game {
     }
 
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
-        //
+        const oldX = cre.x;
+        const oldY = cre.y;
+        cre.x = targetX;
+        cre.y = targetY;
+        this.currentLevel.checkPressureActivation(oldX, oldY, "pressureplatedown", (size) => size < 8);
+        this.currentLevel.checkPressureActivation(targetX, targetY, "pressureplate", (size) => size >= 8);
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {

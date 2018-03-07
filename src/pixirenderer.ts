@@ -78,7 +78,7 @@ export class PixiRenderer {
         "f": 5, "g": 6, "h": 6, "i": 3, "j": 4, "k": 6, "l": 3, "m": 7, "n": 6, "o": 6,
         "p": 6, "q": 7, "r": 6, "s": 6, "t": 6, "u": 6, "v": 7, "w": 7, "x": 7, "y": 7,
         "z": 6, "{": 5, "|": 3, "}": 5, "~": 7,
-    }
+    };
 
     constructor(width: number, height: number) {
         this.width = width;

@@ -110,6 +110,10 @@ export class Renderer {
             this.renderer.drawTexture(playerDrawX, playerDrawY, player.currentbody.dataRef.id);
         }
 
+        if (this.game.waitForPushKey) {
+            this.renderer.drawString(0, 16, "Press a direction where to push");
+        }
+
         this.renderer.drawString(0, 0, this.game.data.puzzleRooms[this.game.indexForTestPuzzle - 1].puzzlename);
         this.renderer.render();
 

@@ -183,6 +183,29 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
+    public checkPressureActivation(x: number, y: number, typeName: string,
+                                   isCorrectSize: (size: number) => boolean): void {
+        let plate: Furniture = null;
+        let sum = 0;
+        for (const fur of this.getFurnituresAt(x, y)) {
+            sum += fur.dataRef.size;
+            if (fur.dataRef.type === "pressureplate") {
+                plate = fur;
+            }
+        }
+        if (plate === null) {
+            return;
+        }
+        sum += (this.getCreatureAt(x, y) || { dataRef: { size: 0 } }).dataRef.size;
+        if (isCorrectSize(sum) && plate.dataRef.activationtarget) {
+            for (const place of plate.dataRef.activationtarget) {
+                const ax = place[0];
+                const ay = place[1];
+                this.activate(ax, ay, false);
+            }
+        }
+    }
+
     public activate(x: number, y: number, userInitiated: boolean = true): void {
         console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
