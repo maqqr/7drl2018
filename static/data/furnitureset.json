@@ -4,20 +4,20 @@
         {"icon": 1,"draworder": 10,"type": "fakewall1","transparent": false,"size": 20,"description": "Strangely smooth wall.","activation": "fakefloor1"},
         {"icon": 2,"draworder": 10,"type": "crumblingwall1","transparent": false,"size": 20,"description": "Strangely cracked wall.","activation": "rockpile"},
         {"icon": 3,"draworder": 10,"type": "transwall1","transparent": false,"size": 20,"description": "Large slab of stone."},
-        {"icon": 5,"draworder": 10,"type": "fakefloor1","size": 0,"description": "Strangely smooth floor.","activation": "fakewall1"},
-        {"icon": 6,"draworder": 10,"type": "transfloor1","size": 0,"description": "Strangely crushed floor.","activation": "transwall1"},
+        {"icon": 5,"draworder": 8,"type": "fakefloor1","size": 0,"description": "Strangely smooth floor.","activation": "fakewall1"},
+        {"icon": 6,"draworder": 8,"type": "transfloor1","size": 0,"description": "Strangely crushed floor.","activation": "transwall1"},
 
         {"icon": 17,"draworder": 10,"type": "fakewall2","transparent": false,"size": 20,"description": "Strangely smooth wall.","activation": "fakefloor2"},
         {"icon": 18,"draworder": 10,"type": "crumblingwall2","transparent": false,"size": 20,"description": "Strangely cracked wall.","activation": "rockpile"},
         {"icon": 19,"draworder": 10,"type": "transwall2","transparent": false,"size": 20,"description": "Large slab of stone."},
-        {"icon": 21,"draworder": 10,"type": "fakefloor2","size": 0,"description": "Strangely smooth floor.","activation": "fakewall2"},
-        {"icon": 22,"draworder": 10,"type": "transfloor2","size": 0,"description": "Strangely crushed floor.","activation": "transwall2"},
+        {"icon": 21,"draworder": 8,"type": "fakefloor2","size": 0,"description": "Strangely smooth floor.","activation": "fakewall2"},
+        {"icon": 22,"draworder": 8,"type": "transfloor2","size": 0,"description": "Strangely crushed floor.","activation": "transwall2"},
 
         {"icon": 33,"draworder": 10,"type": "fakewall3","transparent": false,"size": 20,"description": "Strangely smooth wall.","activation": "fakefloor3"},
         {"icon": 34,"draworder": 10,"type": "crumblingwall3","transparent": false,"size": 20,"description": "Strangely cracked wall.","activation": "rockpile"},
         {"icon": 35,"draworder": 10,"type": "transwall3","transparent": false,"size": 20,"description": "Large slab of stone."},
-        {"icon": 37,"draworder": 10,"type": "fakefloor3","size": 0,"description": "Strangely smooth floor.","activation": "fakewall3"},
-        {"icon": 38,"draworder": 10,"type": "transfloor3","size": 0,"description": "Strangely crushed floor.","activation": "transwall3"},
+        {"icon": 37,"draworder": 8,"type": "fakefloor3","size": 0,"description": "Strangely smooth floor.","activation": "fakewall3"},
+        {"icon": 38,"draworder": 8,"type": "transfloor3","size": 0,"description": "Strangely crushed floor.","activation": "transwall3"},
 
         {"icon": 9,"draworder": 10,"type": "door","transparent": false,"size": 19,"description": "This is a closed door.","useractivation": "dooropen","useractivationtext": "You open a door."},
         {"icon": 10,"draworder": 10,"type": "dooropen","size": 0,"description": "This is a opened door."},
@@ -50,11 +50,11 @@
         {"icon": 46,"draworder": 10,"type": "pentagram3","size": 0,"description": "This is a part of pentagram."},
         {"icon": 47,"draworder": 10,"type": "pentagram4","size": 0,"description": "This is a part of pentagram."},
         
-        {"icon": 48,"draworder": 13,"type": "leverleft","size": 6,"description": "This is a lever.","useractivation": "leverright","useractivationtext": "You pull the lever."},
-        {"icon": 49,"draworder": 13,"type": "leverright","size": 6,"description": "This is a lever.","useractivation": "leverleft","useractivationtext": "You pull the lever."},
+        {"icon": 48,"draworder": 11,"type": "leverleft","size": 6,"description": "This is a lever.","useractivation": "leverright","useractivationtext": "You pull the lever."},
+        {"icon": 49,"draworder": 11,"type": "leverright","size": 6,"description": "This is a lever.","useractivation": "leverleft","useractivationtext": "You pull the lever."},
         
-        {"icon": 50,"draworder": 10,"type": "pressureplate","size": 0,"description": "This is a pressure plate."},
-        {"icon": 66,"draworder": 10,"type": "pressureplatedown","size": 0,"description": "This is a pressed pressure plate."},
+        {"icon": 50,"draworder": 9,"type": "pressureplate","size": 0,"description": "This is a pressure plate."},
+        {"icon": 66,"draworder": 9,"type": "pressureplatedown","size": 0,"description": "This is a pressed pressure plate."},
         
         {"icon": 51,"draworder": 10,"type": "pillar","transparent": false,"size": 16,"description": "This is a pillar."},
         {"icon": 85,"draworder": 10,"type": "pillarbroken","size": 12,"description": "This is a broken pillar."},
@@ -71,17 +71,17 @@
         {"icon": 62,"draworder": 10,"type": "campfire","size": 5,"description": "This is a burnt campfire."},
         {"icon": 63,"draworder": 10,"type": "campfireburning","size": 18,"description": "This is a burning campfire.","useractivation": "campfire","useractivationtext": "You extinquish the fire."},
 
-        {"icon": 64,"draworder": 19,"type": "rock","movable": 8,"size": 15,"description": "This is a rock."},
+        {"icon": 64,"draworder": 17,"type": "rock","movable": 8,"size": 15,"description": "This is a rock."},
         
         {"icon": 67,"draworder": 10,"type": "pedestal","size": 8,"description": "This is a pedestal."},
         
-        {"icon": 68,"draworder": 13,"type": "vase","movable": 2,"size": 5,"description": "This is a vase.","useractivation": "vasebroken","useractivationtext": "You break the vase."},
+        {"icon": 68,"draworder": 18,"type": "vase","movable": 2,"size": 5,"description": "This is a vase.","useractivation": "vasebroken","useractivationtext": "You break the vase."},
         {"icon": 84,"draworder": 10,"type": "vasebroken","size": 0,"description": "This is a broken vase."},
         
-        {"icon": 69,"draworder": 11,"type": "table","size": 10,"description": "This is a table.","useractivation": "tablebroken","useractivationtext": "You break the table."},
-        {"icon": 70,"draworder": 10,"type": "tablebroken","size": 10,"description": "This is a broken table."},
-        {"icon": 71,"draworder": 11,"type": "tablevertical","size": 10,"description": "This is a table.","useractivation": "tablebroken","useractivationtext": "You break the table."},
-        {"icon": 75,"draworder": 11,"type": "stool","size": 3,"description": "This is a stool.","useractivation": "tablebroken","useractivationtext": "You break the stool."},
+        {"icon": 69,"draworder": 16,"type": "table","size": 10,"description": "This is a table.","useractivation": "tablebroken","useractivationtext": "You break the table."},
+        {"icon": 70,"draworder": 10,"type": "tablebroken","size": 3,"description": "This is a broken table."},
+        {"icon": 71,"draworder": 16,"type": "tablevertical","size": 10,"description": "This is a table.","useractivation": "tablebroken","useractivationtext": "You break the table."},
+        {"icon": 75,"draworder": 16,"type": "stool","size": 5,"description": "This is a stool.","useractivation": "tablebroken","useractivationtext": "You break the stool."},
         
         {"icon": 72,"draworder": 10,"type": "rockpile","size": 0,"description": "This is a pile of rocks."},
         {"icon": 86,"draworder": 10,"type": "rockpile","size": 0,"description": "This is a pile of rocks."},
@@ -89,13 +89,13 @@
         {"icon": 88,"draworder": 10,"type": "rockpile","size": 0,"description": "This is a pile of rocks."},
         {"icon": 73,"draworder": 10,"type": "skullpile","size": 0,"description": "This is a pile of skulls."},
         {"icon": 90,"draworder": 10,"type": "skullpile","size": 0,"description": "This is a pile of skulls."},
-        {"icon": 91,"draworder": 14,"type": "skull","movable": 2,"size": 2,"description": "This is a skull."},
+        {"icon": 91,"draworder": 19,"type": "skull","movable": 2,"size": 2,"description": "This is a skull."},
 
-        {"icon": 76,"draworder": 12,"type": "barrel","movable": 5,"size": 5,"description": "This is a barrel.","useractivation": "tablebroken","useractivationtext": "You break the barrel."},
-        {"icon": 77,"draworder": 12,"type": "box","movable": 5,"size": 5,"description": "This is a box.","useractivation": "tablebroken","useractivationtext": "You break the box."},
+        {"icon": 76,"draworder": 17,"type": "barrel","movable": 5,"size": 5,"description": "This is a barrel.","useractivation": "tablebroken","useractivationtext": "You break the barrel."},
+        {"icon": 77,"draworder": 17,"type": "box","movable": 5,"size": 5,"description": "This is a box.","useractivation": "tablebroken","useractivationtext": "You break the box."},
        
-        {"icon": 80,"draworder": 10,"type": "trapspike","size": 0,"description": "This is a spike trap.","activation": "trapspikeactivated"},
-        {"icon": 81,"draworder": 10,"type": "trapspikeactivated","size": 0,"description": "This is a spike trap.","activation": "trapspike", "damage": 10},
+        {"icon": 80,"draworder": 9,"type": "trapspike","size": 0,"description": "This is a spike trap.","activation": "trapspikeactivated"},
+        {"icon": 81,"draworder": 9,"type": "trapspikeactivated","size": 0,"description": "This is a spike trap. Ouch, very sharp.","activation": "trapspike", "damage": 10},
        
         {"icon": 82,"draworder": 10,"type": "trapteleportin","size": 0,"description": "This is a active teleport circle."},
         {"icon": 83,"draworder": 10,"type": "trapteleportout","size": 0,"description": "This is a inactive teleport circle."},
