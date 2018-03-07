@@ -169,7 +169,11 @@ export class Game {
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
 
-        this.currentLevel.addCreatureAt(this.data.creatures[253], 2, 0, 10);
+        // Transfer player's current body
+        if (this.player.currentbody !== null) {
+            this.currentLevel.addCreatureAt(this.player.currentbody, this.player.x, this.player.y);
+        }
+        this.currentLevel.createCreatureAt(this.data.creatures[253], 2, 0, 10);
 
         this.indexForTestPuzzle++;
     }
