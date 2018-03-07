@@ -41,10 +41,12 @@
 
     "other": [
         [
-            "other12_1_tombofmslina.json"
+            "other12_1_tombofmslina.json",
+            "other12_1_tombofvitaliuspayne.json"
         ],
         [
-            "other24_2_tomboffloriaandclovis.json"
+            "other24_2_tomboffloriaandclovis.json",
+            "other12_2_tombofmsmina.json"
         ],
         []
     ],
@@ -58,15 +60,26 @@
             "pre12_1_ralaxationpond.json",
             "pre12_1_ratholevault.json",
             "pre12_1_threelevers.json",
+            "pre12_1_summoning.json",
+            "pre12_1_smallsecret.json",
             "pre24_1_statueofbattleofplecaplains.json"
         ],
         [
-            "pre12_2_statueofrofl.json"
+            "pre12_2_statueofrofl.json",
+            "pre12_2_storage1.json",
+            "pre12_2_storage2.json",
+            "pre12_2_summoning.json",
+            "pre12_2_smallstash.json",
+            "pre12_2_watersource1.json",
+            "pre12_2_watersource2.json",
+            "pre12_2_watersource3.json"
         ],
         [
             "pre12_3_bonecrypt1.json",
             "pre12_3_bonecrypt2.json",
             "pre12_3_bonecrypt3.json",
+            "pre12_3_summoning1.json",
+            "pre12_3_summoning2.json",
             "pre12_3_skullshrine.json"
         ]
     ],

@@ -23,7 +23,7 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"\"Here lies Mrs Agness Grimwin. Died from a plague in 995.\"\nYou don't have fond memories from the old hag, after she discovered that you broke one on her priced vase."
+                     "description":"\"Here lies Mrs Agnes Grimwin. Died from a plague in 995.\"\nYou don't have fond memories from the old hag, after she discovered that you broke one on her priced vase."
                     },
                  "propertytypes":
                     {
@@ -868,7 +868,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",
