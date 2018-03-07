@@ -291,8 +291,12 @@ export class Game {
             console.log("push");
             for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
                 // TODO: strength check
+                const oldX = fur.x;
+                const oldY = fur.y;
                 fur.x = xx + dx;
                 fur.y = yy + dy;
+                this.checkPressureDeactivation(oldX, oldY);
+                this.checkPressureActivation(fur.x, fur.y);
                 break;
             }
             moving = false;
@@ -347,8 +351,16 @@ export class Game {
         const oldY = cre.y;
         cre.x = targetX;
         cre.y = targetY;
-        this.currentLevel.checkPressureActivation(oldX, oldY, "pressureplatedown", (size) => size < 8);
-        this.currentLevel.checkPressureActivation(targetX, targetY, "pressureplate", (size) => size >= 8);
+        this.checkPressureDeactivation(oldX, oldY);
+        this.checkPressureActivation(targetX, targetY);
+    }
+
+    private checkPressureActivation(x: number, y: number): void {
+        this.currentLevel.checkPressureActivation(x, y, "pressureplate", (size) => size >= 8);
+    }
+
+    private checkPressureDeactivation(x: number, y: number): void {
+        this.currentLevel.checkPressureActivation(x, y, "pressureplatedown", (size) => size < 8);
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {

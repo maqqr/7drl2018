@@ -197,6 +197,7 @@ export class Level {
             return;
         }
         sum += (this.getCreatureAt(x, y) || { dataRef: { size: 0 } }).dataRef.size;
+        console.log("SUM: " + sum);
         if (isCorrectSize(sum) && plate.dataRef.activationtarget) {
             for (const place of plate.dataRef.activationtarget) {
                 const ax = place[0];
