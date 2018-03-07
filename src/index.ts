@@ -169,6 +169,8 @@ export class Game {
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
 
+        this.currentLevel.addCreatureAt(this.data.creatures[253], 2, 0, 10);
+
         this.indexForTestPuzzle++;
     }
 
@@ -180,7 +182,6 @@ export class Game {
         setInterval(this.updateTinting.bind(this), 60);
         setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
         setInterval(this.updateScrollAnim.bind(this), 1 / 30.0);
-        this.currentLevel.addCreatureAt(this.data.creatures[253], 2, 0, 10);
         this.updateLoop();
     }
 
