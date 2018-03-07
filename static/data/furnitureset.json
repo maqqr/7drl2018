@@ -75,8 +75,8 @@
         
         {"icon": 67,"type": "pedestal","size": 8,"description": "This is a pedestal."},
         
-        {"icon": 68,"type": "vase","movable": 2,"size": 5,"description": "This is a vase."},
-        {"icon": 84,"type": "vasebroken","size": 3,"description": "This is a broken vase."},
+        {"icon": 68,"type": "vase","movable": 2,"size": 5,"description": "This is a vase.","useractivation": "vasebroken","useractivationtext": "You break the vase."},
+        {"icon": 84,"type": "vasebroken","size": 0,"description": "This is a broken vase."},
         
         {"icon": 69,"type": "table","size": 10,"description": "This is a table.","useractivation": "tablebroken","useractivationtext": "You break the table."},
         {"icon": 70,"type": "tablebroken","size": 10,"description": "This is a broken table."},
