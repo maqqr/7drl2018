@@ -25,7 +25,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":224,
+                 "x":208,
                  "y":192
                 }, 
                 {
@@ -37,7 +37,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":224,
+                 "x":208,
                  "y":208
                 }, 
                 {
@@ -49,7 +49,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":224,
+                 "x":208,
                  "y":224
                 }, 
                 {
@@ -61,7 +61,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":224,
+                 "x":208,
                  "y":240
                 }, 
                 {
@@ -551,6 +551,30 @@
                  "width":16,
                  "x":112,
                  "y":224
+                }, 
+                {
+                 "gid":10,
+                 "height":16,
+                 "id":91,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":240,
+                 "y":176
+                }, 
+                {
+                 "gid":10,
+                 "height":16,
+                 "id":92,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":240,
+                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -568,7 +592,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":91,
+ "nextobjectid":93,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
@@ -576,7 +600,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",
