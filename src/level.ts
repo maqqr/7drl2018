@@ -82,8 +82,6 @@ export class Level {
     }
 
     public isTransparent(x: number, y: number): boolean {
-        return true; // TODO: remove
-
         if (!this.isInLevelBounds(x, y)) {
             return false;
         }

@@ -21,11 +21,15 @@ export class DungeonGenerator {
                                 roomsY: number): Level {
         const level = new Level(roomsX * 12 + 2, roomsY * 12 + 2, game.data);
 
-        const generatedRooms = this.makeLevelPlan(roomsX, roomsY, game.data.predefinedRooms.level[0]);
-        console.log(generatedRooms);
+        const rooms = game.data.predefinedRooms.level[0];
 
-        // const testpuzzle = game.data.predefinedRooms.level[0].base[0];
-        // level.placePuzzleAt(1, 1, testpuzzle.dataRef);
+        // Allow all pregen rooms to appear
+        for (const room of rooms.pre) {
+            room.hasAppeared = false;
+        }
+
+        const generatedRooms = this.makeLevelPlan(roomsX, roomsY, rooms);
+        console.log(generatedRooms);
 
         for (const posRoom of generatedRooms) {
             level.placePuzzleAt(1 + 12 * posRoom.x, 1 + 12 * posRoom.y, posRoom.room);
@@ -108,7 +112,7 @@ export class DungeonGenerator {
 
         // Place pregenerated rooms
         for (let index = 0; index < 8; index++) {
-            const room = this.getRandomRoom(rooms, "pre", false);
+            const room = this.getRandomRoom(rooms, "pre");
             const bigRoom = room.dataRef.width === 24;
             const pos = bigRoom ? randomFree2x2Position() : randomFreePosition();
             if (pos !== null) {
