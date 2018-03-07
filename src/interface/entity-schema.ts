@@ -30,6 +30,7 @@ export interface IFurniture extends IHasType {
     icon: number;
     size?: number;
     movable?: number;
+    draworder?: number;
     // maxsize?: number;
     damage?: number;
     activation?: string;

@@ -66,6 +66,17 @@ export class Level {
         this.fov = new ROT.FOV.RecursiveShadowcasting(this.isTransparent.bind(this));
     }
 
+    public addFurniture(fur: Furniture): void {
+        let index = 0;
+        for (; index < this.furnitures.length; index++) {
+            const element = this.furnitures[index];
+            if (fur.dataRef.draworder > element.dataRef.draworder) {
+                break;
+            }
+        }
+        this.furnitures.splice(index, 0, fur);
+    }
+
     public isInLevelBounds(x: number, y: number): boolean {
         return x >= 0 && y >= 0 && x < this.width && y < this.height;
     }
@@ -351,7 +362,8 @@ export class Level {
 
                 furniture.offsetX = px;
                 furniture.offsetY = py;
-                this.furnitures.push(furniture);
+                this.addFurniture(furniture);
+                // this.furnitures.push(furniture);
             }
         }
     }

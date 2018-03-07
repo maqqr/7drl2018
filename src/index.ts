@@ -143,6 +143,7 @@ export class Game {
             // furry.maxsize = getProp(furry, "maxsize", 0, convertInt);
             furry.damage = getProp(furry, "damage", 0, convertInt);
             furry.transparent = getProp(furry, "transparent", true, convertBool);
+            furry.draworder = getProp(furry, "draworder", 0, convertInt);
             this.data.furnitures[furry.icon] = furry;
             // if (!("movable" in furry)) { this.data.furnitures[furry.icon].movable = 21; }
             // if (!("maxsize" in furry)) { this.data.furnitures[furry.icon].maxsize = 0; }
@@ -153,7 +154,7 @@ export class Game {
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
             if (!("requireitem" in furry)) { this.data.furnitures[furry.icon].requireitem = null; }
             if (!("activationtarget" in furry)) { this.data.furnitures[furry.icon].activationtarget = null; }
-            console.log(furry);
+            // console.log(furry);
         }
 
         this.loadLevel();
