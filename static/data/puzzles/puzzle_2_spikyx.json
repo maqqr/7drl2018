@@ -615,30 +615,6 @@
                 {
                  "gid":81,
                  "height":16,
-                 "id":83,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":96,
-                 "y":240
-                }, 
-                {
-                 "gid":81,
-                 "height":16,
-                 "id":84,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":256,
-                 "y":224
-                }, 
-                {
-                 "gid":81,
-                 "height":16,
                  "id":85,
                  "name":"",
                  "rotation":0,
@@ -647,18 +623,6 @@
                  "width":16,
                  "x":224,
                  "y":208
-                }, 
-                {
-                 "gid":81,
-                 "height":16,
-                 "id":86,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":272,
-                 "y":240
                 }, 
                 {
                  "gid":81,
@@ -955,7 +919,7 @@
                  "name":"",
                  "properties":
                     {
-                     "activationtarget":"[[14,18],[15,19],[17,18],[18,18],[19,17],[19,16],[18,14],[17,14],[16,14],[16,13],[15,10],[17,9],[18,9],[19,8],[18,6],[16,5],[13,5]]"
+                     "activationtarget":"[[14,18],[15,19],[17,18],[18,18],[19,17],[19,16],[18,14],[16,14],[16,13],[15,10],[17,9],[18,9],[19,8],[18,6],[16,5],[13,5]]"
                     },
                  "propertytypes":
                     {
@@ -975,7 +939,7 @@
                  "name":"",
                  "properties":
                     {
-                     "activationtarget":"[[8,18],[6,19],[5,18],[4,17],[5,16],[5,15],[5,13],[6,14],[8,10],[6,10],[4,7],[5,5],[6,4]]"
+                     "activationtarget":"[[8,18],[6,19],[5,18],[4,17],[5,16],[5,15],[5,13],[8,10],[6,10],[4,7],[5,5],[6,4]]"
                     },
                  "propertytypes":
                     {
@@ -1083,6 +1047,18 @@
                  "width":16,
                  "x":112,
                  "y":240
+                }, 
+                {
+                 "gid":82,
+                 "height":16,
+                 "id":122,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":256,
+                 "y":224
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1100,7 +1076,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":122,
+ "nextobjectid":123,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
@@ -1108,7 +1084,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",
