@@ -188,7 +188,7 @@ export class Game {
         this.player.y = 1;
 
         // Place test puzzle map into current level
-        const testpuzzle = this.data.predefinedRooms.puzzles[0][0];
+        const testpuzzle = this.data.predefinedRooms.puzzles[0][this.indexForTestPuzzle];
         console.log("Loading puzzle " + testpuzzle.puzzlename);
         this.testPuzzleName = testpuzzle.puzzlename;
         this.currentLevel.placePuzzleAt(0, 0, testpuzzle);
