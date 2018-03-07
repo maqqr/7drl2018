@@ -32,7 +32,7 @@
  <objectgroup name="furniture">
   <object id="31" gid="54" x="176" y="64" width="16" height="16">
    <properties>
-    <property name="description">&quot;Here lies Mrs Agness Grimwin. Died from a plague in 995.&quot;
+    <property name="description">&quot;Here lies Mrs Agnes Grimwin. Died from a plague in 995.&quot;
 You don't have fond memories from the old hag, after she discovered that you broke one on her priced vase.</property>
    </properties>
   </object>
