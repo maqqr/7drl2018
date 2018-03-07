@@ -146,6 +146,30 @@ export class PixiRenderer {
         rect.drawCircle(x, y, radius);
     }
 
+    public drawString(x: number, y: number, str: string): void {
+        for (const ch of str) {
+            this.drawChar(x, y, ch);
+            x += 8;
+        }
+    }
+
+    public drawChar(x: number, y: number, ch: string, tint: number = Color.white): void {
+        const index = ch.charCodeAt(0);
+        const fontTex = PIXI.utils.TextureCache["font.png"];
+        const tx = Math.floor((index - 32) % 16) * 8;
+        const ty = Math.floor((index - 32) / 16) * 12;
+
+        const tex = new PIXI.Texture(fontTex, new PIXI.Rectangle(tx, ty, 8, 12));
+
+        const sprite = this.spritePool.get();
+        sprite.texture = tex;
+        sprite.x = x;
+        sprite.y = y;
+        // sprite.width = 12;
+        // sprite.height = 8;
+        sprite.tint = tint;
+    }
+
     public render(): void {
         this.pixirenderer.render(this.stage);
     }

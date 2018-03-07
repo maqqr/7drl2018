@@ -110,6 +110,7 @@ export class Renderer {
             this.renderer.drawTexture(playerDrawX, playerDrawY, player.currentbody.dataRef.id);
         }
 
+        this.renderer.drawString(0, 0, this.game.data.puzzleRooms[this.game.indexForTestPuzzle].puzzlename);
         this.renderer.render();
 
         level.markRememberedTiles(this.game.player.x, this.game.player.y, visionRadius);

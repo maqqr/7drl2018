@@ -1,7 +1,7 @@
 import * as $ from "jquery";
 import { Color } from "./color";
 import { GameData } from "./data";
-import { Furniture, Player, Creature } from "./entity";
+import { Creature, Furniture, Player } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
@@ -77,6 +77,7 @@ export class Game {
         console.log(puzzleList);
         for (const puzzleName of puzzleList.puzzles) {
             const puzzle = await this.loadJSON<IPuzzleRoom>("data/puzzles/" + puzzleName);
+            puzzle.puzzlename = puzzleName;
             this.data.puzzleRooms.push(puzzle);
         }
 
@@ -131,6 +132,8 @@ export class Game {
             if (!("requireitem" in tile)) { this.data.tiles[tile.id].requireitem = null; }
             if (!("useractivation" in tile)) { this.data.tiles[tile.id].useractivation = null; }
             if (!("useractivationtext" in tile)) { this.data.tiles[tile.id].useractivationtext = null; }
+
+            console.log(tile);
         }
 
         for (const furry of furnitureset.furnitures) {
@@ -149,7 +152,7 @@ export class Game {
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
             if (!("requireitem" in furry)) { this.data.furnitures[furry.icon].requireitem = null; }
             if (!("activationtarget" in furry)) { this.data.furnitures[furry.icon].activationtarget = null; }
-            console.log(furry);
+            // console.log(furry);
         }
 
         this.loadLevel();
@@ -161,7 +164,9 @@ export class Game {
         this.player.y = 1;
 
         // Place test puzzle map into current level
-        this.currentLevel.placePuzzleAt(0, 0, this.data.puzzleRooms[this.indexForTestPuzzle]);
+        const testpuzzle = this.data.puzzleRooms[this.indexForTestPuzzle];
+        console.log("Loading puzzle " + testpuzzle.puzzlename);
+        this.currentLevel.placePuzzleAt(0, 0, testpuzzle);
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
 
@@ -212,7 +217,7 @@ export class Game {
     }
 
     private isPassable(x: number, y: number): boolean {
-        const plSize = this.player.currentbody === null ? 10 : this.player.currentbody.dataRef.size;
+        const plSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
         return plSize <= this.data.tiles[this.currentLevel.get(x, y)].maxsize;
     }
     private isCurrable(x: number, y: number): boolean {
@@ -226,9 +231,10 @@ export class Game {
         for (const fur of furs) {
             pile += fur.dataRef.size;
         }
-        // console.log(furs);
-        // console.log("pile: " + pile + " / " + tile.maxsize);
-        // console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
+        console.log(furs);
+        console.log(tile);
+        console.log("pile: " + pile + " / " + tile.maxsize);
+        console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
         return (pile + playerSize) <= tile.maxsize;
     }
 
@@ -305,7 +311,7 @@ export class Game {
     }
 
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
-
+        //
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {
