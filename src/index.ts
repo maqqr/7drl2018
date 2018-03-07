@@ -1,7 +1,7 @@
 import * as $ from "jquery";
 import { Color } from "./color";
 import { GameData } from "./data";
-import { Furniture, Player } from "./entity";
+import { Furniture, Player, Creature } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
@@ -243,6 +243,7 @@ export class Game {
     private playerTurn(): void {
         window.addEventListener("keydown", this.keyDownCallBack);
     }
+
     private handleKeyPress(e: KeyboardEvent): void {
         let xx = this.player.x;
         let yy = this.player.y;
@@ -303,8 +304,8 @@ export class Game {
         }
     }
 
-    private moveCreature(cre: Creature, targetX: number, targetY: number) {
-        
+    private moveCreature(cre: Creature, targetX: number, targetY: number): void {
+
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {
