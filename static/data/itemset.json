@@ -1,7 +1,20 @@
 {
     "$schema":"./itemset-schema.json",
     "items":[
-        { "id": 0, "icon": 0, "type": "healingpotion", "category": "potion", "description": "A small red vial." },
-        { "id": 1, "icon": 0, "type": "liquidcourage", "category": "potion", "description": "Just looking at it makes me more brave." }
+        { "id": 1, "icon": 208, "type": "copperkey", "category": "key", "description": "A copper key." },
+        { "id": 2, "icon": 209, "type": "silverkey", "category": "key", "description": "A silver key." },
+        { "id": 3, "icon": 210, "type": "goldenkey", "category": "key", "description": "A golden key." },
+        { "id": 4, "icon": 211, "type": "healingpotion", "category": "potion", "description": "A small red vial." },
+        { "id": 5, "icon": 212, "type": "sword", "category": "weapon", "description": "A standard, well kept, sword." },
+        { "id": 6, "icon": 213, "type": "shield", "category": "weapon", "description": "A wooden shield with boss made of steel and rawhide edges." },
+        { "id": 7, "icon": 214, "type": "mace", "category": "weapon", "description": "A steel mace with wooden handle." },
+        { "id": 8, "icon": 215, "type": "", "category": "", "description": "" },
+        { "id": 9, "icon": 216, "type": "", "category": "", "description": "" },
+        { "id": 10, "icon": 217, "type": "", "category": "", "description": "" },
+        { "id": 11, "icon": 218, "type": "", "category": "", "description": "" },
+        { "id": 12, "icon": 219, "type": "", "category": "", "description": "" },
+        { "id": 13, "icon": 220, "type": "", "category": "", "description": "" },
+        { "id": 14, "icon": 221, "type": "", "category": "", "description": "" },
+        { "id": 15, "icon": 222, "type": "orb", "category": "orb", "description": "A shiny orb, pulsating with magic. Devouring this should make your spirit stronger." }
     ]
 }
