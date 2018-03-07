@@ -6,6 +6,7 @@ import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { IMouseEvent, Renderer } from "./renderer";
+import { ITile } from "./interface/entity-schema";
 
 export class Game {
     public static readonly WIDTH: number = 600;
@@ -127,7 +128,7 @@ export class Game {
         for (const furry of furnitureset.furnitures) {
             furry.movable = getProp(furry, "movable", 21, convertInt);
             furry.size = getProp(furry, "size", 21, convertInt);
-            furry.maxsize = getProp(furry, "maxsize", 0, convertInt);
+            // furry.maxsize = getProp(furry, "maxsize", 0, convertInt);
             furry.damage = getProp(furry, "damage", 0, convertInt);
             furry.transparent = getProp(furry, "transparent", true, convertBool);
             this.data.furnitures[furry.icon] = furry;
@@ -199,18 +200,20 @@ export class Game {
     private isCurrable(x: number, y: number): boolean {
         return this.currentLevel.getCreatureAt(x, y) === null;
     }
-    private isFurrable(furs: Furniture[], x: number, y: number): boolean {
-        let val = true;
+    private isFurrable(furs: Furniture[], tile: ITile, x: number, y: number): boolean {
+        // let val = true;
         let pile = 0;
-        const plSize = this.player.currentbody === null ? 10 : this.player.currentbody.dataRef.size;
+        const playerSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
+
         for (const fur of furs) {
             // if (fur === null) { continue; }
-            val = fur.dataRef.maxsize >= plSize ? true : false;
+            // val = fur.dataRef.maxsize >= plSize ? true : false;
             pile += fur.dataRef.size;
         }
-        console.log(pile + plSize);
-        console.log(this.data.tiles[this.currentLevel.get(x, y)].maxsize);
-        return val && ((pile + plSize) <= this.data.tiles[this.currentLevel.get(x, y)].maxsize);
+        console.log(furs);
+        console.log("pile: " + pile + " / " + tile.maxsize);
+        console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
+        return (pile + playerSize) <= tile.maxsize;
     }
 
     private loadJSON<T>(path: string): Promise<T> {
@@ -261,7 +264,8 @@ export class Game {
             }
             keyAccepted = true;
         } else if (moving && this.isPassable(xx, yy)
-        && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy), xx, yy)) {
+        && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
+                           this.currentLevel.getTile(xx, yy), xx, yy)) {
             this.player.x = xx;
             this.player.y = yy;
             if (e.shiftKey) {
