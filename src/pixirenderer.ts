@@ -103,11 +103,12 @@ export class PixiRenderer {
     }
 
     public resize(): void {
-        const ratioW = Math.floor(window.innerWidth / this.width);
-        const ratioH = Math.floor(window.innerHeight / this.height);
+        const ratioW = window.innerWidth / this.width;
+        const ratioH = window.innerHeight / this.height;
         const ratio = Math.max(1.0, Math.min(ratioW, ratioH));
         this.stage.scale.x = this.stage.scale.y = ratio;
-        this.pixirenderer.resize(Math.ceil(this.width * ratio), Math.ceil(this.height * ratio));
+        // this.pixirenderer.resize(Math.ceil(this.width * ratio), Math.ceil(this.height * ratio));
+        this.pixirenderer.resize(this.width * ratio, this.height * ratio);
         this.pixirenderer.render(this.stage);
     }
 

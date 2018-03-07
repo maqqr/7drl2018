@@ -302,11 +302,17 @@ export class Game {
             this.updateLoop();
         }
     }
+
+    private moveCreature(cre: Creature, targetX: number, targetY: number) {
+        
+    }
+
     private handleClick(mouseEvent: IMouseEvent): void {
         console.log(mouseEvent);
         this.currentLevel.activate(mouseEvent.tx - this.mapOffsetTargetX, mouseEvent.ty - this.mapOffsetTargetY, true);
         this.renderer.renderGame();
     }
+
     private updateLoop(): void {
         // for (const char of this.currentLevel.characters) {
             // this.updateAI(char)
