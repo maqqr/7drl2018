@@ -34,5 +34,8 @@ export interface IPuzzleRoom {
 }
 
 export interface IPuzzleList {
-    puzzles: string[];
+    puzzles: string[][];
+    other: string[][];
+    pre: string[][];
+    base: string[][];
 }

@@ -16,6 +16,7 @@ export class Game {
     public player: Player;
 
     public indexForTestPuzzle: number = 0;
+    public testPuzzleName: string = "";
     public waitForPushKey: boolean = false;
 
     // Animation variables
@@ -65,6 +66,7 @@ export class Game {
     }
 
     public async loadData(): Promise<void> {
+        console.log("Started loadData");
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
         // const tilesetSchema = await this.loadJSON<ITileset>("data/creatureset-schema.json");
         const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
@@ -76,11 +78,31 @@ export class Game {
         const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
 
         console.log(puzzleList);
-        for (const puzzleName of puzzleList.puzzles) {
-            const puzzle = await this.loadJSON<IPuzzleRoom>("data/puzzles/" + puzzleName);
-            puzzle.puzzlename = puzzleName;
-            this.data.puzzleRooms.push(puzzle);
-        }
+
+        const roomLoader = async (roomType: "puzzles"|"other"|"pre"|"base") => {
+            for (const roomLevels of puzzleList[roomType]) {
+                const rooms = [];
+                for (const levelName of roomLevels) {
+                    // console.log("loading " + levelName);
+                    const puzzle = await this.loadJSON<IPuzzleRoom>("data/puzzles/" + levelName);
+                    puzzle.puzzlename = levelName;
+                    rooms.push(puzzle);
+                }
+                this.data.predefinedRooms.addLevelRooms(roomType, rooms);
+            }
+        };
+
+        await roomLoader("puzzles");
+        await roomLoader("other");
+        await roomLoader("pre");
+        await roomLoader("base");
+        console.log(this.data);
+
+        // for (const puzzleName of puzzleList.puzzles) {
+        //     const puzzle = await this.loadJSON<IPuzzleRoom>("data/puzzles/" + puzzleName);
+        //     puzzle.puzzlename = puzzleName;
+        //     this.data.puzzleRooms.push(puzzle);
+        // }
 
         const convertInt = (x: string): number => {
             const value = parseInt(x, 10);
@@ -154,7 +176,7 @@ export class Game {
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
             if (!("requireitem" in furry)) { this.data.furnitures[furry.icon].requireitem = null; }
             if (!("activationtarget" in furry)) { this.data.furnitures[furry.icon].activationtarget = null; }
-            console.log(furry);
+            // console.log(furry);
         }
 
         this.loadLevel();
@@ -166,8 +188,9 @@ export class Game {
         this.player.y = 1;
 
         // Place test puzzle map into current level
-        const testpuzzle = this.data.puzzleRooms[this.indexForTestPuzzle];
+        const testpuzzle = this.data.predefinedRooms.puzzles[0][this.indexForTestPuzzle];
         console.log("Loading puzzle " + testpuzzle.puzzlename);
+        this.testPuzzleName = testpuzzle.puzzlename;
         this.currentLevel.placePuzzleAt(0, 0, testpuzzle);
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
@@ -249,6 +272,8 @@ export class Game {
         return new Promise((resolve, reject) => {
             $.getJSON(path, (data: any, textStatus: string, jqXHR: JQueryXHR) => {
                 resolve(data);
+            }).fail((jqXHR: JQueryXHR, textStatus, errorThrown) => {
+                console.log("loadJSON(" + path + ") failed: " + JSON.stringify(textStatus));
             });
         });
     }

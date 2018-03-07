@@ -114,7 +114,7 @@ export class Renderer {
             this.renderer.drawString(0, 16, "Press a direction where to push");
         }
 
-        this.renderer.drawString(0, 0, this.game.data.puzzleRooms[this.game.indexForTestPuzzle - 1].puzzlename);
+        this.renderer.drawString(0, 0, this.game.testPuzzleName);
         this.renderer.render();
 
         level.markRememberedTiles(this.game.player.x, this.game.player.y, visionRadius);
