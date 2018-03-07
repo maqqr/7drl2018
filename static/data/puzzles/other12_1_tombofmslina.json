@@ -2,7 +2,7 @@
  "infinite":false,
  "layers":[
         {
-         "data":[6, 7, 8, 8, 9, 9, 7, 8, 8, 7, 8, 8, 7, 4, 2, 2, 4, 2, 2, 5, 5, 2, 2, 8, 7, 4, 5, 4, 6, 8, 6, 9, 2, 3, 2, 8, 7, 5, 9, 3, 8, 6, 7, 7, 3, 7, 5, 7, 6, 3, 6, 4, 6, 8, 9, 7, 2, 6, 3, 6, 6, 5, 9, 2, 5, 4, 6, 4, 4, 7, 3, 7, 7, 3, 6, 8, 9, 8, 8, 6, 6, 8, 3, 7, 8, 5, 6, 8, 9, 7, 8, 8, 9, 7, 3, 6, 8, 4, 6, 6, 6, 7, 6, 9, 9, 9, 5, 7, 9, 3, 5, 7, 8, 6, 9, 7, 7, 3, 2, 8, 6, 5, 2, 3, 5, 3, 9, 3, 3, 4, 5, 8, 8, 8, 7, 8, 8, 6, 7, 6, 8, 7, 9, 6],
+         "data":[6, 7, 9, 8, 8, 7, 7, 7, 6, 6, 9, 7, 9, 6, 5, 5, 2, 3, 3, 3, 2, 4, 7, 6, 9, 5, 5, 4, 3, 4, 4, 2, 5, 3, 4, 6, 9, 5, 3, 9, 6, 8, 6, 9, 8, 4, 3, 8, 6, 2, 4, 7, 7, 6, 6, 6, 7, 4, 5, 6, 8, 3, 5, 8, 6, 9, 9, 8, 7, 2, 4, 8, 9, 5, 2, 7, 7, 8, 9, 6, 8, 3, 5, 9, 9, 4, 5, 5, 9, 2, 2, 7, 5, 4, 2, 7, 8, 6, 4, 5, 9, 5, 2, 6, 4, 3, 7, 9, 8, 6, 9, 9, 7, 7, 7, 9, 6, 7, 9, 9, 9, 9, 8, 9, 7, 9, 6, 8, 9, 6, 6, 9, 9, 7, 8, 9, 9, 7, 9, 6, 8, 9, 7, 8],
          "height":12,
          "name":"tile",
          "opacity":1,
@@ -17,141 +17,57 @@
          "name":"furniture",
          "objects":[
                 {
-                 "gid":49,
+                 "gid":52,
                  "height":16,
-                 "id":36,
+                 "id":31,
                  "name":"",
-                 "properties":
-                    {
-                     "activationtarget":"[[2, 5]]"
-                    },
-                 "propertytypes":
-                    {
-                     "activationtarget":"string"
-                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":48,
-                 "y":160
+                 "x":16,
+                 "y":32
                 }, 
                 {
-                 "gid":49,
+                 "gid":52,
                  "height":16,
-                 "id":37,
+                 "id":32,
                  "name":"",
-                 "properties":
-                    {
-                     "activationtarget":"[[9, 5]]"
-                    },
-                 "propertytypes":
-                    {
-                     "activationtarget":"string"
-                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":32,
-                 "y":64
+                 "x":160,
+                 "y":32
                 }, 
                 {
-                 "gid":49,
+                 "gid":52,
                  "height":16,
-                 "id":38,
+                 "id":33,
                  "name":"",
-                 "properties":
-                    {
-                     "activationtarget":"[[6, 5]]"
-                    },
-                 "propertytypes":
-                    {
-                     "activationtarget":"string"
-                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":144,
-                 "y":64
+                 "x":160,
+                 "y":144
                 }, 
                 {
-                 "gid":12,
+                 "gid":52,
                  "height":16,
-                 "id":40,
+                 "id":34,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":96,
-                 "y":96
-                }, 
-                {
-                 "gid":12,
-                 "height":16,
-                 "id":41,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":32,
-                 "y":96
+                 "x":16,
+                 "y":144
                 }, 
                 {
                  "gid":10,
                  "height":16,
-                 "id":44,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":96,
-                 "y":176
-                }, 
-                {
-                 "gid":52,
-                 "height":16,
-                 "id":45,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":48,
-                 "y":128
-                }, 
-                {
-                 "gid":52,
-                 "height":16,
-                 "id":46,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":128,
-                 "y":128
-                }, 
-                {
-                 "gid":12,
-                 "height":16,
-                 "id":52,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":144,
-                 "y":96
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":64,
+                 "id":35,
                  "name":"",
                  "rotation":0,
                  "type":"",
@@ -161,208 +77,236 @@
                  "y":144
                 }, 
                 {
-                 "gid":73,
+                 "gid":10,
                  "height":16,
-                 "id":65,
+                 "id":36,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":144
+                }, 
+                {
+                 "gid":54,
+                 "height":16,
+                 "id":41,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"\"Here lies Ms Lina Grimwin, daughter of Markus III and Agnes Grimwin. Died to old agein 1039.\" There is nearly decayed pile on top of the tomb, that could have been a diary or a book of somesort many many years ago. Somehow you feel quite nostalgic and sad suddenly."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":64
+                }, 
+                {
+                 "gid":53,
+                 "height":16,
+                 "id":42,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"On the statue there is a plate that reads: \"Lina Grimwin.\" She is sitting on a chair and reading a book. She has very friendly and comforting look on her face."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":64
+                }, 
+                {
+                 "gid":69,
+                 "height":16,
+                 "id":43,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":80
+                }, 
+                {
+                 "gid":85,
+                 "height":16,
+                 "id":45,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":96
+                }, 
+                {
+                 "gid":85,
+                 "height":16,
+                 "id":46,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":96
+                }, 
+                {
+                 "gid":85,
+                 "height":16,
+                 "id":47,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":80
+                }, 
+                {
+                 "gid":61,
+                 "height":16,
+                 "id":50,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":80
+                }, 
+                {
+                 "gid":52,
+                 "height":16,
+                 "id":52,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":64
+                }, 
+                {
+                 "gid":52,
+                 "height":16,
+                 "id":53,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":112
+                }, 
+                {
+                 "gid":52,
+                 "height":16,
+                 "id":54,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":112
+                }, 
+                {
+                 "gid":52,
+                 "height":16,
+                 "id":55,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":64
+                }, 
+                {
+                 "gid":53,
+                 "height":16,
+                 "id":56,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"Guardian statue that has shield in one hand and holds sword high up in the other hand. Behind the helmet, face of the statue looks extremely sad."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":176
+                }, 
+                {
+                 "gid":75,
+                 "height":16,
+                 "id":57,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"Broken statue. You look at the head of statue that sits in rock pile near the statue, head is almost intact and you could swear it looks like it's crying."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":176
+                }, 
+                {
+                 "gid":70,
+                 "height":16,
+                 "id":58,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"You see some nearly decayed books on the table.  They are unreadable, but you ascertain from the titles of book that most of them are about alchemy."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":112
+                }, 
+                {
+                 "gid":29,
+                 "height":16,
+                 "id":59,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
                  "x":96,
-                 "y":128
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":66,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":112,
                  "y":112
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":67,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":80
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":68,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":64,
-                 "y":64
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":69,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":128,
-                 "y":160
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":70,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":144,
-                 "y":80
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":71,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":192
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":72,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":128,
-                 "y":16
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":73,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":0,
-                 "y":64
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":74,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":112,
-                 "y":64
-                }, 
-                {
-                 "gid":73,
-                 "height":16,
-                 "id":75,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":32,
-                 "y":112
-                }, 
-                {
-                 "gid":72,
-                 "height":16,
-                 "id":76,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":64,
-                 "y":64
-                }, 
-                {
-                 "gid":72,
-                 "height":16,
-                 "id":77,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":112,
-                 "y":64
-                }, 
-                {
-                 "gid":29,
-                 "height":16,
-                 "id":78,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":48
-                }, 
-                {
-                 "gid":77,
-                 "height":16,
-                 "id":79,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":112,
-                 "y":48
-                }, 
-                {
-                 "gid":77,
-                 "height":16,
-                 "id":80,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":64,
-                 "y":80
-                }, 
-                {
-                 "gid":78,
-                 "height":16,
-                 "id":81,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":112,
-                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -373,14 +317,33 @@
         {
          "draworder":"topdown",
          "name":"description",
-         "objects":[],
+         "objects":[
+                {
+                 "height":16,
+                 "id":60,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"Door reads: \"Tomb of Lina Grimwin.\" You remeber seeing her when you were young. She was always reading books and smiling."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":64,
+                 "y":144
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
         }],
- "nextobjectid":82,
+ "nextobjectid":65,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

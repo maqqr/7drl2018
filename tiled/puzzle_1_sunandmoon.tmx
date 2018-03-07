@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="74">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="99">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -76,8 +76,31 @@
     <property name="activationtarget" value="[[5,11]]"/>
    </properties>
   </object>
-  <object id="72" gid="7" x="288" y="208" width="16" height="16"/>
+  <object id="72" type="transfloor1" gid="7" x="288" y="208" width="16" height="16"/>
   <object id="73" gid="74" x="272" y="224" width="16" height="16"/>
+  <object id="74" gid="88" x="224" y="64" width="16" height="16"/>
+  <object id="75" gid="88" x="304" y="256" width="16" height="16"/>
+  <object id="76" gid="88" x="272" y="272" width="16" height="16"/>
+  <object id="78" gid="88" x="112" y="64" width="16" height="16"/>
+  <object id="79" gid="88" x="96" y="64" width="16" height="16"/>
+  <object id="80" gid="88" x="48" y="288" width="16" height="16"/>
+  <object id="81" gid="88" x="48" y="256" width="16" height="16"/>
+  <object id="82" gid="88" x="48" y="272" width="16" height="16"/>
+  <object id="83" gid="88" x="320" y="160" width="16" height="16"/>
+  <object id="84" gid="88" x="304" y="176" width="16" height="16"/>
+  <object id="85" gid="90" x="288" y="240" width="16" height="16"/>
+  <object id="86" gid="69" x="304" y="64" width="16" height="16"/>
+  <object id="87" gid="69" x="48" y="80" width="16" height="16"/>
+  <object id="88" gid="69" x="144" y="224" width="16" height="16"/>
+  <object id="89" gid="69" x="160" y="240" width="16" height="16"/>
+  <object id="90" gid="85" x="320" y="320" width="16" height="16"/>
+  <object id="91" gid="85" x="208" y="240" width="16" height="16"/>
+  <object id="92" gid="52" x="240" y="304" width="16" height="16"/>
+  <object id="93" gid="52" x="288" y="256" width="16" height="16"/>
+  <object id="94" gid="52" x="288" y="144" width="16" height="16"/>
+  <object id="96" gid="52" x="240" y="96" width="16" height="16"/>
+  <object id="97" gid="52" x="80" y="144" width="16" height="16"/>
+  <object id="98" gid="52" x="128" y="96" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description">
   <object id="14" x="320" y="80" width="16" height="16">

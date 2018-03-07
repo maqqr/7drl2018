@@ -1,15 +1,17 @@
 {
     "puzzles": [
         "testmap.json",
-        "other12_1_mslinatomb.json",
+        "other12_1_tombofmslina.json",
         "other24_2_tomboffloriaandclovis.json",
         "pre12_1_3x3spiketrapwithpressureplates.json",
         "pre12_1_goblincamp.json",
         "pre12_1_goblincamp2.json",
+        "pre12_1_goblincamp3.json",
         "pre12_1_ralaxationpond.json",
         "pre12_1_ratholevault.json",
         "pre12_1_threelevers.json",
         "pre12_2_statueofrofl.json",
+        "pre24_1_statueofbattleofplecaplains.json",
         "pre12_3_bonecrypt1.json",
         "pre12_3_bonecrypt2.json",
         "pre12_3_bonecrypt3.json",

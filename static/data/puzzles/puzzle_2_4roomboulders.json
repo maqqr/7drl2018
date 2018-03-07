@@ -393,7 +393,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":144,
+                 "x":160,
                  "y":288
                 }, 
                 {
@@ -705,7 +705,7 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":256,
+                 "x":240,
                  "y":240
                 }, 
                 {
@@ -828,7 +828,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="122">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="123">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -83,10 +83,7 @@
   <object id="80" gid="81" x="64" y="288" width="16" height="16"/>
   <object id="81" gid="81" x="80" y="256" width="16" height="16"/>
   <object id="82" gid="81" x="80" y="224" width="16" height="16"/>
-  <object id="83" gid="81" x="96" y="240" width="16" height="16"/>
-  <object id="84" gid="81" x="256" y="224" width="16" height="16"/>
   <object id="85" gid="81" x="224" y="208" width="16" height="16"/>
-  <object id="86" gid="81" x="272" y="240" width="16" height="16"/>
   <object id="87" gid="81" x="288" y="240" width="16" height="16"/>
   <object id="88" gid="81" x="304" y="272" width="16" height="16"/>
   <object id="89" gid="81" x="304" y="288" width="16" height="16"/>
@@ -113,12 +110,12 @@
   <object id="110" gid="81" x="80" y="272" width="16" height="16"/>
   <object id="111" gid="51" x="272" y="208" width="16" height="16">
    <properties>
-    <property name="activationtarget" value="[[14,18],[15,19],[17,18],[18,18],[19,17],[19,16],[18,14],[17,14],[16,14],[16,13],[15,10],[17,9],[18,9],[19,8],[18,6],[16,5],[13,5]]"/>
+    <property name="activationtarget" value="[[14,18],[15,19],[17,18],[18,18],[19,17],[19,16],[18,14],[16,14],[16,13],[15,10],[17,9],[18,9],[19,8],[18,6],[16,5],[13,5]]"/>
    </properties>
   </object>
   <object id="112" gid="51" x="96" y="208" width="16" height="16">
    <properties>
-    <property name="activationtarget" value="[[8,18],[6,19],[5,18],[4,17],[5,16],[5,15],[5,13],[6,14],[8,10],[6,10],[4,7],[5,5],[6,4]]"/>
+    <property name="activationtarget" value="[[8,18],[6,19],[5,18],[4,17],[5,16],[5,15],[5,13],[8,10],[6,10],[4,7],[5,5],[6,4]]"/>
    </properties>
   </object>
   <object id="113" gid="65" x="272" y="224" width="16" height="16"/>
@@ -129,6 +126,7 @@
   <object id="119" gid="10" x="192" y="320" width="16" height="16"/>
   <object id="120" gid="81" x="256" y="240" width="16" height="16"/>
   <object id="121" gid="81" x="112" y="240" width="16" height="16"/>
+  <object id="122" gid="82" x="256" y="224" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description"/>
 </map>
