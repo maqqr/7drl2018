@@ -83,12 +83,12 @@
         {"icon": 71,"type": "tablevertical","size": 10,"description": "This is a table.","useractivation": "tablebroken","useractivationtext": "You break the table."},
         {"icon": 75,"type": "stool","size": 3,"description": "This is a stool.","useractivation": "tablebroken","useractivationtext": "You break the stool."},
         
-        {"icon": 72,"type": "rockpile","size": 0,"description": "This is a pile rocks."},
-        {"icon": 86,"type": "rockpile","size": 0,"description": "This is a pile rocks."},
-        {"icon": 87,"type": "rockpile","size": 0,"description": "This is a pile rocks."},
-        {"icon": 88,"type": "rockpile","size": 0,"description": "This is a pile rocks."},
-        {"icon": 73,"type": "skullpile","size": 0,"description": "This is a pile skulls."},
-        {"icon": 90,"type": "skullpile","size": 0,"description": "This is a pile skulls."},
+        {"icon": 72,"type": "rockpile","size": 0,"description": "This is a pile of rocks."},
+        {"icon": 86,"type": "rockpile","size": 0,"description": "This is a pile of rocks."},
+        {"icon": 87,"type": "rockpile","size": 0,"description": "This is a pile of rocks."},
+        {"icon": 88,"type": "rockpile","size": 0,"description": "This is a pile of rocks."},
+        {"icon": 73,"type": "skullpile","size": 0,"description": "This is a pile of skulls."},
+        {"icon": 90,"type": "skullpile","size": 0,"description": "This is a pile of skulls."},
         {"icon": 91,"type": "skull","movable": 2,"size": 2,"description": "This is a skull."},
 
         {"icon": 76,"type": "barrel","size": 5,"description": "This is a barrel.","useractivation": "tablebroken","useractivationtext": "You break the barrel."},
