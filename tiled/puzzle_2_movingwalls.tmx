@@ -62,7 +62,7 @@
   </object>
   <object id="37" gid="49" x="192" y="304" width="16" height="16">
    <properties>
-    <property name="activationtarget" value="[[9,20]]"/>
+    <property name="activationtarget" value="[[9,20],[14,16]]"/>
    </properties>
   </object>
   <object id="38" gid="10" x="352" y="192" width="16" height="16"/>
