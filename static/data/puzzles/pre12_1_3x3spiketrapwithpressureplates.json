@@ -239,7 +239,7 @@
                  "name":"",
                  "properties":
                     {
-                     "activationtarget":"[[5,3][7,4][5,5]]"
+                     "activationtarget":"[[5,3],[7,4],[5,5]]"
                     },
                  "propertytypes":
                     {
@@ -259,7 +259,7 @@
                  "name":"",
                  "properties":
                     {
-                     "activationtarget":"[[5,3][5,4][7,4]]"
+                     "activationtarget":"[[5,3],[5,4],[7,4]]"
                     },
                  "propertytypes":
                     {
@@ -279,7 +279,7 @@
                  "name":"",
                  "properties":
                     {
-                     "activationtarget":"[[6,3][6,4][7,4]]"
+                     "activationtarget":"[[6,3],[6,4],[7,4]]"
                     },
                  "propertytypes":
                     {
@@ -299,7 +299,7 @@
                  "name":"",
                  "properties":
                     {
-                     "activationtarget":"[[5,4][7,3][7,5]]"
+                     "activationtarget":"[[5,4],[7,3],[7,5]]"
                     },
                  "propertytypes":
                     {
@@ -336,7 +336,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",
