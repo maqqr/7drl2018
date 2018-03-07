@@ -206,13 +206,11 @@ export class Game {
         const playerSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
 
         for (const fur of furs) {
-            // if (fur === null) { continue; }
-            // val = fur.dataRef.maxsize >= plSize ? true : false;
             pile += fur.dataRef.size;
         }
-        console.log(furs);
-        console.log("pile: " + pile + " / " + tile.maxsize);
-        console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
+        // console.log(furs);
+        // console.log("pile: " + pile + " / " + tile.maxsize);
+        // console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
         return (pile + playerSize) <= tile.maxsize;
     }
 
