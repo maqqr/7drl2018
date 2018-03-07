@@ -146,6 +146,5 @@
     <property name="text" value="A prison. People, who were thrown down here, did not survive long."/>
    </properties>
   </object>
-  <object id="149" x="-10.3333" y="104.667"/>
  </objectgroup>
 </map>
