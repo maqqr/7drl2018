@@ -214,8 +214,6 @@
  <tile id="59" type="doorgoldopen"/>
  <tile id="60" type="candle"/>
  <tile id="61" type="candlelight"/>
- <tile id="62" type="campfire"/>
- <tile id="63" type="campfireburning"/>
  <tile id="64" type="rock"/>
  <tile id="66" type="pressureplatedown">
   <properties>
@@ -231,10 +229,8 @@
  <tile id="73" type="skullpile"/>
  <tile id="74" type="statuebroken"/>
  <tile id="75" type="stool"/>
- <tile id="76" type="barrel"/>
- <tile id="77" type="box"/>
  <tile id="80" type="trapspike"/>
- <tile id="81" type="traspikeactivated"/>
+ <tile id="81" type="trapspikeactivated"/>
  <tile id="82" type="trapteleportin"/>
  <tile id="83" type="trapteleportout"/>
  <tile id="84" type="vasebroken"/>
@@ -287,11 +283,6 @@
    <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
- <tile id="208" type="copperkey"/>
- <tile id="209" type="silverkey"/>
- <tile id="210" type="goldenkey"/>
- <tile id="211" type="healingpotion"/>
- <tile id="212" type="sword"/>
  <tile id="245" type="giantspider"/>
  <tile id="246" type="bat"/>
  <tile id="247" type="ghoul"/>

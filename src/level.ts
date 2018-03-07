@@ -95,9 +95,6 @@ export class Level {
     }
 
     public calculateFov(px: number, py: number, visionRadius: number): void {
-        // TODO: mark all nearby visible tiles as remembered before recalculating fov
-        // TODO: set rememberedTile and furniture
-
         this.fov.compute(px, py, 7, (x, y, radius, visibility) => {
             if (visibility && this.isInLevelBounds(x, y)) {
                 const tileState = this.tilestate[x + y * this.width];

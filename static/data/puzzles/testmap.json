@@ -53,6 +53,14 @@
                  "height":16,
                  "id":33,
                  "name":"",
+                 "properties":
+                    {
+                     "activationtarget":"[[4,7]]"
+                    },
+                 "propertytypes":
+                    {
+                     "activationtarget":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -1720,7 +1728,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/tiled\/tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",
