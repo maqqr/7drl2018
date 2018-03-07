@@ -69,6 +69,8 @@
             "pre12_2_storage2.json",
             "pre12_2_summoning.json",
             "pre12_2_smallstash.json",
+            "pre12_2_feast1.json",
+            "pre12_2_feast2.json",
             "pre12_2_watersource1.json",
             "pre12_2_watersource2.json",
             "pre12_2_watersource3.json"
@@ -77,8 +79,12 @@
             "pre12_3_bonecrypt1.json",
             "pre12_3_bonecrypt2.json",
             "pre12_3_bonecrypt3.json",
+            "pre12_3_massgrave1.json",
+            "pre12_3_massgrave2.json",
             "pre12_3_summoning1.json",
             "pre12_3_summoning2.json",
+            "pre12_3_storage1.json",
+            "pre12_3_storagelooted.json",
             "pre12_3_skullshrine.json"
         ]
     ],
