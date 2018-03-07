@@ -30,7 +30,11 @@
 </data>
  </layer>
  <objectgroup name="furniture">
-  <object id="31" gid="49" x="16" y="32" width="16" height="16"/>
+  <object id="31" gid="49" x="16" y="32" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[4,7]]"/>
+   </properties>
+  </object>
   <object id="32" gid="50" x="64" y="80" width="16" height="16">
    <properties>
     <property name="activationtarget" value="[[4,7]]"/>

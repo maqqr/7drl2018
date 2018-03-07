@@ -104,6 +104,8 @@ export class Level {
                 const furries = this.getFurnituresAt(x, y);
                 if (furries.length > 0) {
                     tileState.rememberedFurniture = furries[0].dataRef.icon;
+                } else {
+                    tileState.rememberedFurniture = 0;
                 }
             }
         });
@@ -154,6 +156,12 @@ export class Level {
         return furs;
     }
 
+    public getTotalFurnitureSizeAt(x: number, y: number): number {
+        let sum = 0;
+        this.getFurnituresAt(x, y).forEach((fur) => sum += fur.dataRef.size);
+        return sum;
+    }
+
     public getCreatureAt(x: number, y: number): Creature {
         for (const critter of this.creatures) {
             if (critter.x === x && critter.y === y) { return critter; }
@@ -183,13 +191,13 @@ export class Level {
         console.error("Level.set index out of bounds : " + JSON.stringify({ x, y }));
     }
 
-    public checkPressureActivation(x: number, y: number, typeName: string,
+    public checkPressureActivation(x: number, y: number, typeName: string, transformedName: string,
                                    isCorrectSize: (size: number) => boolean): void {
         let plate: Furniture = null;
         let sum = 0;
         for (const fur of this.getFurnituresAt(x, y)) {
             sum += fur.dataRef.size;
-            if (fur.dataRef.type === "pressureplate") {
+            if (fur.dataRef.type === typeName) {
                 plate = fur;
             }
         }
@@ -197,8 +205,11 @@ export class Level {
             return;
         }
         sum += (this.getCreatureAt(x, y) || { dataRef: { size: 0 } }).dataRef.size;
-        console.log("SUM: " + sum);
         if (isCorrectSize(sum) && plate.dataRef.activationtarget) {
+            // Press/release plate
+            this.assignNewDataToFurniture(plate, this.data.getByType(this.data.furnitures, transformedName));
+
+            // Activate targets
             for (const place of plate.dataRef.activationtarget) {
                 const ax = place[0];
                 const ay = place[1];
@@ -221,8 +232,11 @@ export class Level {
                     console.log(fur.dataRef.useractivationtext);
                 }
 
+                const canActivate = (userInitiated && fur.dataRef.useractivation) || !userInitiated;
+                console.log(canActivate);
+
                 // Handle activation targets
-                if (fur.dataRef.activationtarget) {
+                if (canActivate && fur.dataRef.activationtarget) {
                     for (const coord of fur.dataRef.activationtarget) {
                         this.activate(coord[0] + fur.offsetX, coord[1] + fur.offsetY, false);
                     }

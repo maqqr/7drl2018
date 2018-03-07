@@ -139,6 +139,7 @@ export class Game {
         for (const furry of furnitureset.furnitures) {
             furry.movable = getProp(furry, "movable", 21, convertInt);
             furry.size = getProp(furry, "size", 21, convertInt);
+            furry.movable = getProp(furry, "movable", 21, convertInt);
             // furry.maxsize = getProp(furry, "maxsize", 0, convertInt);
             furry.damage = getProp(furry, "damage", 0, convertInt);
             furry.transparent = getProp(furry, "transparent", true, convertBool);
@@ -152,7 +153,7 @@ export class Game {
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
             if (!("requireitem" in furry)) { this.data.furnitures[furry.icon].requireitem = null; }
             if (!("activationtarget" in furry)) { this.data.furnitures[furry.icon].activationtarget = null; }
-            // console.log(furry);
+            console.log(furry);
         }
 
         this.loadLevel();
@@ -256,8 +257,8 @@ export class Game {
     }
 
     private handleKeyPress(e: KeyboardEvent): void {
-        let px = this.player.x;
-        let py = this.player.y;
+        const px = this.player.x;
+        const py = this.player.y;
         let keyAccepted = false;
 
         const code = e.code;
@@ -274,30 +275,36 @@ export class Game {
         // xx = code === "ArrowRight" ? xx += 1 : (code === "ArrowLeft") ? xx -= 1 : xx;
         // yy = code === "ArrowDown" ? yy += 1 : (code === "ArrowUp") ? yy -= 1 : yy;
 
+        const creatureBlocking = !this.isCurrable(xx, yy);
+        const spiritMode = this.player.currentbody === null;
+
         if (e.code === "KeyQ") {
             this.loadLevel();
         }
 
-        if (e.code === "KeyP") {
+        if (e.code === "KeyP" && !spiritMode) {
             this.waitForPushKey = true;
             keyAccepted = true;
         }
 
-        const creatureBlocking = !this.isCurrable(xx, yy);
-        const spiritMode = this.player.currentbody === null;
-
         if (this.waitForPushKey && moving) {
             this.waitForPushKey = false;
-            console.log("push");
             for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
-                // TODO: strength check
-                const oldX = fur.x;
-                const oldY = fur.y;
-                fur.x = xx + dx;
-                fur.y = yy + dy;
-                this.checkPressureDeactivation(oldX, oldY);
-                this.checkPressureActivation(fur.x, fur.y);
-                break;
+                const furTargetX = fur.x + dx;
+                const furTargetY = fur.y + dy;
+                const targetTile = this.data.tiles[this.currentLevel.get(furTargetX, furTargetY)];
+                if (this.player.currentbody.dataRef.size >= fur.dataRef.movable) {
+                    const furSizeAtTile = this.currentLevel.getTotalFurnitureSizeAt(furTargetX, furTargetY);
+                    if (furSizeAtTile + fur.dataRef.size <= targetTile.maxsize) {
+                        const oldX = fur.x;
+                        const oldY = fur.y;
+                        fur.x = xx + dx;
+                        fur.y = yy + dy;
+                        this.checkPressureDeactivation(oldX, oldY);
+                        this.checkPressureActivation(fur.x, fur.y);
+                        break;
+                    }
+                }
             }
             moving = false;
             keyAccepted = true;
@@ -356,11 +363,11 @@ export class Game {
     }
 
     private checkPressureActivation(x: number, y: number): void {
-        this.currentLevel.checkPressureActivation(x, y, "pressureplate", (size) => size >= 8);
+        this.currentLevel.checkPressureActivation(x, y, "pressureplate", "pressureplatedown", (size) => size >= 8);
     }
 
     private checkPressureDeactivation(x: number, y: number): void {
-        this.currentLevel.checkPressureActivation(x, y, "pressureplatedown", (size) => size < 8);
+        this.currentLevel.checkPressureActivation(x, y, "pressureplatedown", "pressureplate", (size) => size < 8);
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {
