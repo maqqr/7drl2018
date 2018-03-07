@@ -154,7 +154,7 @@ export class Game {
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
             if (!("requireitem" in furry)) { this.data.furnitures[furry.icon].requireitem = null; }
             if (!("activationtarget" in furry)) { this.data.furnitures[furry.icon].activationtarget = null; }
-            // console.log(furry);
+            console.log(furry);
         }
 
         this.loadLevel();

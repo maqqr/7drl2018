@@ -70,11 +70,12 @@ export class Level {
         let index = 0;
         for (; index < this.furnitures.length; index++) {
             const element = this.furnitures[index];
-            if (fur.dataRef.draworder > element.dataRef.draworder) {
+            if (fur.dataRef.draworder <= element.dataRef.draworder) {
                 break;
             }
         }
         this.furnitures.splice(index, 0, fur);
+        console.log(this.furnitures);
     }
 
     public isInLevelBounds(x: number, y: number): boolean {
