@@ -58,10 +58,12 @@
             "pre12_1_ralaxationpond.json",
             "pre12_1_ratholevault.json",
             "pre12_1_threelevers.json",
+            "pre12_1_summoning.json",
             "pre24_1_statueofbattleofplecaplains.json"
         ],
         [
-            "pre12_2_statueofrofl.json"
+            "pre12_2_statueofrofl.json",
+            "pre12_2_summoning.json",
             "pre12_2_watersource1.json",
             "pre12_2_watersource2.json",
             "pre12_2_watersource3.json"
@@ -70,6 +72,8 @@
             "pre12_3_bonecrypt1.json",
             "pre12_3_bonecrypt2.json",
             "pre12_3_bonecrypt3.json",
+            "pre12_3_summoning1.json",
+            "pre12_3_summoning2.json",
             "pre12_3_skullshrine.json"
         ]
     ],
