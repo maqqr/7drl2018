@@ -75,7 +75,7 @@
         
         {"icon": 67,"type": "pedestal","size": 8,"description": "This is a pedestal."},
         
-        {"icon": 68,"type": "vase","size": 5,"description": "This is a vase."},
+        {"icon": 68,"type": "vase","movable": 2,"size": 5,"description": "This is a vase."},
         {"icon": 84,"type": "vasebroken","size": 3,"description": "This is a broken vase."},
         
         {"icon": 69,"type": "table","size": 10,"description": "This is a table.","useractivation": "tablebroken","useractivationtext": "You break the table."},
@@ -91,8 +91,8 @@
         {"icon": 90,"type": "skullpile","size": 0,"description": "This is a pile of skulls."},
         {"icon": 91,"type": "skull","movable": 2,"size": 2,"description": "This is a skull."},
 
-        {"icon": 76,"type": "barrel","size": 5,"description": "This is a barrel.","useractivation": "tablebroken","useractivationtext": "You break the barrel."},
-        {"icon": 77,"type": "box","size": 5,"description": "This is a box.","useractivation": "tablebroken","useractivationtext": "You break the box."},
+        {"icon": 76,"type": "barrel","movable": 5,"size": 5,"description": "This is a barrel.","useractivation": "tablebroken","useractivationtext": "You break the barrel."},
+        {"icon": 77,"type": "box","movable": 5,"size": 5,"description": "This is a box.","useractivation": "tablebroken","useractivationtext": "You break the box."},
        
         {"icon": 80,"type": "trapspike","size": 0,"description": "This is a spike trap.","activation": "trapspikeactivated"},
         {"icon": 81,"type": "trapspikeactivated","size": 0,"description": "This is a spike trap.","activation": "trapspike", "damage": 10},
