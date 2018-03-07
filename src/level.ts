@@ -75,7 +75,6 @@ export class Level {
             }
         }
         this.furnitures.splice(index, 0, fur);
-        console.log(this.furnitures);
     }
 
     public isInLevelBounds(x: number, y: number): boolean {
