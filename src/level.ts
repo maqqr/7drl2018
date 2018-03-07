@@ -82,6 +82,8 @@ export class Level {
     }
 
     public isTransparent(x: number, y: number): boolean {
+        return true; // TODO: remove
+
         if (!this.isInLevelBounds(x, y)) {
             return false;
         }
@@ -145,11 +147,15 @@ export class Level {
     }
 
     public getTile(x: number, y: number): ITile {
+        x = Math.floor(x);
+        y = Math.floor(y);
         const index = this.get(x, y);
         return this.data.tiles[index];
     }
 
     public getTileState(x: number, y: number): TileState {
+        x = Math.floor(x);
+        y = Math.floor(y);
         if (this.isInLevelBounds(x, y)) {
             const index = x + y * this.width;
             return this.tilestate[index];
@@ -158,6 +164,8 @@ export class Level {
     }
 
     public getFurnituresAt(x: number, y: number): Furniture[] {
+        x = Math.floor(x);
+        y = Math.floor(y);
         const furs: Furniture[] = [];
         for (const fur of this.furnitures) {
             if (fur.x === x && fur.y === y) {
@@ -168,12 +176,16 @@ export class Level {
     }
 
     public getTotalFurnitureSizeAt(x: number, y: number): number {
+        x = Math.floor(x);
+        y = Math.floor(y);
         let sum = 0;
         this.getFurnituresAt(x, y).forEach((fur) => sum += fur.dataRef.size);
         return sum;
     }
 
     public getCreatureAt(x: number, y: number): Creature {
+        x = Math.floor(x);
+        y = Math.floor(y);
         for (const critter of this.creatures) {
             if (critter.x === x && critter.y === y) { return critter; }
         }

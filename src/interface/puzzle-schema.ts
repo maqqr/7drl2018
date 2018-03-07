@@ -27,8 +27,8 @@ export interface IObjectLayer {
 
 export interface IPuzzleRoom {
     puzzlename: string;
-    height?: 12;
-    width?: 12;
+    height?: number;
+    width?: number;
     infinite?: false;
     layers?: Array<ITileLayer | IObjectLayer>;
 }

@@ -74,6 +74,9 @@ export class Renderer {
         const furnitures = this.game.getCurrentLevel().furnitures;
         for (const furniture of furnitures) {
             const tileState = level.getTileState(furniture.x, furniture.y);
+            if (tileState === undefined) {
+                console.log("error");
+            }
             if (tileState.state === TileVisibility.Visible) {
                 this.renderer.drawTexture(
                     toScreen(this.game.mapOffsetX + furniture.x),
