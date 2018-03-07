@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="55">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="12" height="12">
+  <data encoding="csv">
+39,36,34,37,34,41,38,37,37,36,37,41,
+36,35,34,37,37,41,41,35,35,35,36,37,
+37,35,35,37,36,39,40,37,35,36,35,34,
+37,37,37,35,36,41,38,37,35,35,35,34,
+35,35,36,36,40,41,40,39,34,36,34,36,
+41,39,41,40,40,38,40,41,41,39,38,41,
+38,41,41,38,40,40,40,38,41,38,38,39,
+35,35,36,34,41,40,39,38,34,34,37,35,
+37,37,35,35,34,40,40,34,35,36,37,35,
+34,34,36,37,37,39,40,37,34,36,34,35,
+37,36,34,37,37,39,40,35,35,35,35,37,
+39,35,35,36,34,39,38,36,34,34,37,41
+</data>
+ </layer>
+ <objectgroup name="furniture"/>
+ <objectgroup name="description"/>
+</map>
