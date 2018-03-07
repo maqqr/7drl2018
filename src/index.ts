@@ -1,6 +1,7 @@
 import * as $ from "jquery";
 import { Color } from "./color";
 import { GameData } from "./data";
+import { DungeonGenerator } from "./dungeongen";
 import { Creature, Furniture, Player } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
@@ -68,19 +69,16 @@ export class Game {
     public async loadData(): Promise<void> {
         console.log("Started loadData");
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
-        // const tilesetSchema = await this.loadJSON<ITileset>("data/creatureset-schema.json");
         const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
-        // const creaturesetSchema = await this.loadJSON<ICreatureset>("data/itemset-schema.json");
         const itemset = await this.loadJSON<IItemset>("data/itemset.json");
-        // const itemsetSchema = await this.loadJSON<IItemset>("data/tileset-schema.json");
         const furnitureset = await this.loadJSON<IFurnitureset>("data/furnitureset.json");
-
         const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
 
-        console.log(puzzleList);
+        // console.log(puzzleList);
 
         const roomLoader = async (roomType: "puzzles"|"other"|"pre"|"base") => {
-            for (const roomLevels of puzzleList[roomType]) {
+            for (let index = 0; index < puzzleList[roomType].length; index++) {
+                const roomLevels = puzzleList[roomType][index];
                 const rooms = [];
                 for (const levelName of roomLevels) {
                     // console.log("loading " + levelName);
@@ -88,7 +86,7 @@ export class Game {
                     puzzle.puzzlename = levelName;
                     rooms.push(puzzle);
                 }
-                this.data.predefinedRooms.addLevelRooms(roomType, rooms);
+                this.data.predefinedRooms.addLevelRooms(index, roomType, rooms);
             }
         };
 
@@ -97,12 +95,6 @@ export class Game {
         await roomLoader("pre");
         await roomLoader("base");
         console.log(this.data);
-
-        // for (const puzzleName of puzzleList.puzzles) {
-        //     const puzzle = await this.loadJSON<IPuzzleRoom>("data/puzzles/" + puzzleName);
-        //     puzzle.puzzlename = puzzleName;
-        //     this.data.puzzleRooms.push(puzzle);
-        // }
 
         const convertInt = (x: string): number => {
             const value = parseInt(x, 10);
@@ -183,15 +175,18 @@ export class Game {
     }
 
     public loadLevel(): void {
-        this.currentLevel = new Level(28, 28, this.data);
-        this.player.x = 1;
-        this.player.y = 1;
+        // this.currentLevel = new Level(28, 28, this.data);
+        this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5);
+
+        this.player.x = 6;
+        this.player.y = 6;
 
         // Place test puzzle map into current level
-        const testpuzzle = this.data.predefinedRooms.puzzles[0][this.indexForTestPuzzle];
-        console.log("Loading puzzle " + testpuzzle.puzzlename);
-        this.testPuzzleName = testpuzzle.puzzlename;
-        this.currentLevel.placePuzzleAt(0, 0, testpuzzle);
+        // const testpuzzle = this.data.predefinedRooms.level[0].base[0];
+        // console.log("Loading puzzle " + testpuzzle.dataRef.puzzlename);
+        // this.testPuzzleName = testpuzzle.dataRef.puzzlename;
+        // this.currentLevel.placePuzzleAt(0, 0, testpuzzle.dataRef);
+
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
 
@@ -359,9 +354,10 @@ export class Game {
                     console.log(this.currentLevel.getCreatureAt(xx, yy).willpower);
                 }
                 keyAccepted = true;
-            } else if (this.isPassable(xx, yy) &&
-                       this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
-                                       this.currentLevel.getTile(xx, yy), xx, yy)) {
+            // } else if (this.isPassable(xx, yy) &&
+            //            this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
+            //                            this.currentLevel.getTile(xx, yy), xx, yy)) {
+            } else {
                 this.player.x = xx;
                 this.player.y = yy;
                 if (e.shiftKey) {
