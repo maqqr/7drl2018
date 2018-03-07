@@ -22,6 +22,9 @@ export class Game {
     public spiritAnimationIndex: 0 = 0;
     public spiritAnimationIndices: number[] = [255, 239, 255, 223, 207, 255, 191];
 
+    public mapOffsetX: number;
+    public mapOffsetY: number;
+
     private renderer: Renderer;
     private currentLevel: Level;
 
@@ -29,11 +32,12 @@ export class Game {
 
     private keyDownCallBack: any;
 
-    public get mapOffsetX(): number {
+
+    public get mapOffsetTargetX(): number {
         return 19 - this.player.x;
     }
 
-    public get mapOffsetY(): number {
+    public get mapOffsetTargetY(): number {
         return 12 - this.player.y;
     }
 
@@ -141,6 +145,8 @@ export class Game {
 
         // Place test puzzle map into current level
         this.currentLevel.placePuzzleAt(2, 2, testmap);
+        this.mapOffsetX = this.mapOffsetTargetX;
+        this.mapOffsetY = this.mapOffsetTargetY;
     }
 
     public assetsLoaded(): void {
@@ -150,8 +156,15 @@ export class Game {
         console.log(this.data.creatures[253]);
         setInterval(this.updateTinting.bind(this), 60);
         setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
+        setInterval(this.updateScrollAnim.bind(this), 1 / 30.0);
         this.currentLevel.addCreatureAt(this.data.creatures[253], 13, 9, 10);
         this.updateLoop();
+    }
+
+    public updateScrollAnim(): void {
+        this.mapOffsetX += (this.mapOffsetTargetX - this.mapOffsetX) * (1 / 42.0);
+        this.mapOffsetY += (this.mapOffsetTargetY - this.mapOffsetY) * (1 / 42.0);
+        this.renderer.renderGame();
     }
 
     public updateTinting(): void {
@@ -266,7 +279,7 @@ export class Game {
     }
     private handleClick(mouseEvent: IMouseEvent): void {
         console.log(mouseEvent);
-        this.currentLevel.activate(mouseEvent.tx - this.mapOffsetX, mouseEvent.ty - this.mapOffsetY, true);
+        this.currentLevel.activate(mouseEvent.tx - this.mapOffsetTargetX, mouseEvent.ty - this.mapOffsetTargetY, true);
         this.renderer.renderGame();
     }
     private updateLoop(): void {

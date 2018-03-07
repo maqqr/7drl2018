@@ -48,14 +48,15 @@ export class Renderer {
 
         // const playerInsideBody = this.game.player.currentbody === null;
         // const colorTint = playerInsideBody ? Color.blue : 0xFFFFFF;
+        const toScreen = (x: number) => Math.floor(x * 16);
 
         this.renderer.clear();
         for (let y = 0; y < level.height; y++) {
             for (let x = 0; x < level.width; x++) {
                 const tile = level.get(x, y);
                 const tileState = level.getTileState(x, y);
-                const drawX = (this.game.mapOffsetX + x) * 16;
-                const drawY = (this.game.mapOffsetY + y) * 16;
+                const drawX = toScreen(this.game.mapOffsetX + x);
+                const drawY = toScreen(this.game.mapOffsetY + y);
                 if (tileState.state === TileVisibility.Visible) {
                     this.renderer.drawTexture(drawX, drawY, tile, this.game.currentTintColor);
                 } else if (tileState.state === TileVisibility.Remembered) {
@@ -73,12 +74,10 @@ export class Renderer {
         const furnitures = this.game.getCurrentLevel().furnitures;
         for (const furniture of furnitures) {
             const tileState = level.getTileState(furniture.x, furniture.y);
-            // const furId = this.game.data.getByType(this.game.data.furnitures, furniture.dataType);
-            // const furDef = this.game.data.furnitures[furId];
             if (tileState.state === TileVisibility.Visible) {
                 this.renderer.drawTexture(
-                    (this.game.mapOffsetX + furniture.x) * 16,
-                    (this.game.mapOffsetY + furniture.y) * 16,
+                    toScreen(this.game.mapOffsetX + furniture.x),
+                    toScreen(this.game.mapOffsetY + furniture.y),
                     furniture.dataRef.icon, this.game.currentTintColor);
             }
         }
@@ -92,14 +91,15 @@ export class Renderer {
         for (const furry of creatures) {
             const tileState = level.getTileState(furry.x, furry.y);
             if (tileState.state === TileVisibility.Visible) {
-                this.renderer.drawTexture((this.game.mapOffsetX + furry.x) * 16, (this.game.mapOffsetY + furry.y) * 16,
+                this.renderer.drawTexture(
+                    toScreen(this.game.mapOffsetX + furry.x), toScreen(this.game.mapOffsetY + furry.y),
                     furry.dataRef.id, this.game.currentTintColor);
             }
         }
 
         const player = this.game.player;
-        const playerDrawX = (this.game.mapOffsetX + this.game.player.x) * 16;
-        const playerDrawY = (this.game.mapOffsetY + this.game.player.y) * 16;
+        const playerDrawX = toScreen(this.game.mapOffsetX + this.game.player.x);
+        const playerDrawY = toScreen(this.game.mapOffsetY + this.game.player.y);
         if (player.currentbody === null) {
             const playerIcon = this.game.spiritAnimationIndices[this.game.spiritAnimationIndex];
             this.renderer.drawTexture(playerDrawX, playerDrawY, playerIcon);
