@@ -132,8 +132,7 @@ export class Game {
             if (!("requireitem" in tile)) { this.data.tiles[tile.id].requireitem = null; }
             if (!("useractivation" in tile)) { this.data.tiles[tile.id].useractivation = null; }
             if (!("useractivationtext" in tile)) { this.data.tiles[tile.id].useractivationtext = null; }
-
-            console.log(tile);
+            // console.log(tile);
         }
 
         for (const furry of furnitureset.furnitures) {
@@ -181,7 +180,7 @@ export class Game {
         setInterval(this.updateTinting.bind(this), 60);
         setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
         setInterval(this.updateScrollAnim.bind(this), 1 / 30.0);
-        this.currentLevel.addCreatureAt(this.data.creatures[253], 13, 9, 10);
+        this.currentLevel.addCreatureAt(this.data.creatures[253], 2, 0, 10);
         this.updateLoop();
     }
 
