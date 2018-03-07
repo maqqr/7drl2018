@@ -39,7 +39,7 @@
         {"icon": 42,"type": "doorsilver","transparent": false,"size": 20,"description": "This is a silver door.","useractivation": "doorsilveropen","useractivationtext": "You open a door."},
         {"icon": 43,"type": "doorsilveropen","size": 0,"description": "This is a opened silver door."},
         
-        {"icon": 44,"type": "chestgold","size": 8,"description": "This is a fancy chest.","useractivation": "chestgoldenopen","useractivationtext": "You open a chest."},
+        {"icon": 44,"type": "chestgold","size": 8,"description": "This is a fancy chest.","useractivation": "chestgoldopen","useractivationtext": "You open a chest."},
         {"icon": 45,"type": "chestgoldopen","size": 8,"description": "This is a opened fancy chest."},
         
         {"icon": 46,"type": "pentagram3","size": 0,"description": "This is a part of pentagram."},
