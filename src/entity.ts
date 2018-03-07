@@ -33,4 +33,15 @@ export class Player extends Entity<IPlayer> {
 export class PuzzleRoom {
     public hasAppeared: boolean = false;
     public dataRef: IPuzzleRoom;
+
+    constructor(ref: IPuzzleRoom) {
+        this.dataRef = ref;
+    }
+}
+
+export class LevelRooms {
+    public puzzles: PuzzleRoom[] = [];
+    public other: PuzzleRoom[] = [];
+    public pre: PuzzleRoom[] = [];
+    public base: PuzzleRoom[] = [];
 }

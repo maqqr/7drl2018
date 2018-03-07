@@ -1,20 +1,21 @@
-import { PuzzleRoom } from "./entity";
+import { LevelRooms, PuzzleRoom } from "./entity";
 import { ICreature, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 
 export class PredefinedRooms {
-    public puzzles: IPuzzleRoom[][] = [];
-    public other: IPuzzleRoom[][] = [];
-    public pre: IPuzzleRoom[][] = [];
-    public base: IPuzzleRoom[][] = [];
+    public level: LevelRooms[] = [];
 
-    public addLevelRooms(roomType: any, roomDefs: IPuzzleRoom[]): void {
-        this[roomType].push(roomDefs);
+    public addLevelRooms(index: number, roomType: any, roomDefs: IPuzzleRoom[]): void {
+        if (index >= this.level.length) {
+            this.level.push(new LevelRooms());
+        }
+        for (const roomDef of roomDefs) {
+            this.level[index][roomType].push(new PuzzleRoom(roomDef));
+        }
     }
 }
 
 export class GameData {
-    // public puzzleRooms: PuzzleRoom[] = [];
     public predefinedRooms: PredefinedRooms = new PredefinedRooms();
 
     public tiles: { [id: number]: ITile } = {};

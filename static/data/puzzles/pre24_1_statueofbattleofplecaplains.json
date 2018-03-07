@@ -350,7 +350,7 @@
                  "visible":true,
                  "width":16,
                  "x":160,
-                 "y":222.666666666667
+                 "y":224
                 }, 
                 {
                  "gid":53,
@@ -931,7 +931,7 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"Here is a plate on the pedestal that reads: \"Battle of Pleca plains, 1026.\""
+                     "description":"There is a plate on the pedestal that reads: \"Battle of Pleca plains, 1026.\""
                     },
                  "propertytypes":
                     {
