@@ -175,17 +175,24 @@ export class Game {
     }
 
     public loadLevel(): void {
-        // this.currentLevel = new Level(28, 28, this.data);
-        this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5);
+        const testMode = false;
+
+        if (!testMode) {
+            this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5);
+        } else {
+            this.currentLevel = new Level(25, 25, this.data);
+        }
 
         this.player.x = 6;
         this.player.y = 6;
 
         // Place test puzzle map into current level
-        // const testpuzzle = this.data.predefinedRooms.level[0].base[0];
-        // console.log("Loading puzzle " + testpuzzle.dataRef.puzzlename);
-        // this.testPuzzleName = testpuzzle.dataRef.puzzlename;
-        // this.currentLevel.placePuzzleAt(0, 0, testpuzzle.dataRef);
+        if (testMode) {
+            const testpuzzle = this.data.predefinedRooms.level[0].puzzles[0];
+            console.log("Loading puzzle " + testpuzzle.dataRef.puzzlename);
+            this.testPuzzleName = testpuzzle.dataRef.puzzlename;
+            this.currentLevel.placePuzzleAt(1, 1, testpuzzle.dataRef);
+        }
 
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;

@@ -234,7 +234,7 @@ export class Level {
             for (const place of plate.dataRef.activationtarget) {
                 const ax = place[0];
                 const ay = place[1];
-                this.activate(ax, ay, false);
+                this.activate(ax + plate.offsetX, ay + plate.offsetY, false);
             }
         }
     }
@@ -298,7 +298,7 @@ export class Level {
             console.error("Layer " + name + " not found in puzzle room");
         };
 
-        console.log(puzzle);
+        // console.log(puzzle);
 
         // Place tiles
         const tilelayer = getLayerByName("tile") as ITileLayer;
