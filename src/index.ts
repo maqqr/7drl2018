@@ -6,6 +6,7 @@ import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { IMouseEvent, Renderer } from "./renderer";
+import { ITile } from "./interface/entity-schema";
 
 export class Game {
     public static readonly WIDTH: number = 600;
@@ -22,6 +23,9 @@ export class Game {
     public spiritAnimationIndex: 0 = 0;
     public spiritAnimationIndices: number[] = [255, 239, 255, 223, 207, 255, 191];
 
+    public mapOffsetX: number;
+    public mapOffsetY: number;
+
     private renderer: Renderer;
     private currentLevel: Level;
 
@@ -29,11 +33,12 @@ export class Game {
 
     private keyDownCallBack: any;
 
-    public get mapOffsetX(): number {
+
+    public get mapOffsetTargetX(): number {
         return 19 - this.player.x;
     }
 
-    public get mapOffsetY(): number {
+    public get mapOffsetTargetY(): number {
         return 12 - this.player.y;
     }
 
@@ -123,7 +128,7 @@ export class Game {
         for (const furry of furnitureset.furnitures) {
             furry.movable = getProp(furry, "movable", 21, convertInt);
             furry.size = getProp(furry, "size", 21, convertInt);
-            furry.maxsize = getProp(furry, "maxsize", 0, convertInt);
+            // furry.maxsize = getProp(furry, "maxsize", 0, convertInt);
             furry.damage = getProp(furry, "damage", 0, convertInt);
             furry.transparent = getProp(furry, "transparent", true, convertBool);
             this.data.furnitures[furry.icon] = furry;
@@ -141,6 +146,8 @@ export class Game {
 
         // Place test puzzle map into current level
         this.currentLevel.placePuzzleAt(2, 2, testmap);
+        this.mapOffsetX = this.mapOffsetTargetX;
+        this.mapOffsetY = this.mapOffsetTargetY;
     }
 
     public assetsLoaded(): void {
@@ -150,8 +157,15 @@ export class Game {
         console.log(this.data.creatures[253]);
         setInterval(this.updateTinting.bind(this), 60);
         setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
+        setInterval(this.updateScrollAnim.bind(this), 1 / 30.0);
         this.currentLevel.addCreatureAt(this.data.creatures[253], 13, 9, 10);
         this.updateLoop();
+    }
+
+    public updateScrollAnim(): void {
+        this.mapOffsetX += (this.mapOffsetTargetX - this.mapOffsetX) * (1 / 42.0);
+        this.mapOffsetY += (this.mapOffsetTargetY - this.mapOffsetY) * (1 / 42.0);
+        this.renderer.renderGame();
     }
 
     public updateTinting(): void {
@@ -186,18 +200,18 @@ export class Game {
     private isCurrable(x: number, y: number): boolean {
         return this.currentLevel.getCreatureAt(x, y) === null;
     }
-    private isFurrable(furs: Furniture[], x: number, y: number): boolean {
-        let val = true;
+    private isFurrable(furs: Furniture[], tile: ITile, x: number, y: number): boolean {
+        // let val = true;
         let pile = 0;
-        const plSize = this.player.currentbody === null ? 10 : this.player.currentbody.dataRef.size;
+        const playerSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
+
         for (const fur of furs) {
-            // if (fur === null) { continue; }
-            val = fur.dataRef.maxsize >= plSize ? true : false;
             pile += fur.dataRef.size;
         }
-        console.log(pile + plSize);
-        console.log(this.data.tiles[this.currentLevel.get(x, y)].maxsize);
-        return val && ((pile + plSize) <= this.data.tiles[this.currentLevel.get(x, y)].maxsize);
+        // console.log(furs);
+        // console.log("pile: " + pile + " / " + tile.maxsize);
+        // console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
+        return (pile + playerSize) <= tile.maxsize;
     }
 
     private loadJSON<T>(path: string): Promise<T> {
@@ -248,7 +262,8 @@ export class Game {
             }
             keyAccepted = true;
         } else if (moving && this.isPassable(xx, yy)
-        && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy), xx, yy)) {
+        && this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
+                           this.currentLevel.getTile(xx, yy), xx, yy)) {
             this.player.x = xx;
             this.player.y = yy;
             if (e.shiftKey) {
@@ -266,7 +281,7 @@ export class Game {
     }
     private handleClick(mouseEvent: IMouseEvent): void {
         console.log(mouseEvent);
-        this.currentLevel.activate(mouseEvent.tx - this.mapOffsetX, mouseEvent.ty - this.mapOffsetY, true);
+        this.currentLevel.activate(mouseEvent.tx - this.mapOffsetTargetX, mouseEvent.ty - this.mapOffsetTargetY, true);
         this.renderer.renderGame();
     }
     private updateLoop(): void {

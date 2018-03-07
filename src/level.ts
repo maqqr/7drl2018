@@ -2,7 +2,7 @@ import * as ROT from "rot-js";
 import { Game } from ".";
 import { GameData } from "./data";
 import { Creature, Entity, Furniture } from "./entity";
-import { ICreature, IFurniture } from "./interface/entity-schema";
+import { ICreature, IFurniture, ITile } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
 
@@ -132,6 +132,11 @@ export class Level {
             return this.tiles[index];
         }
         console.error("Level.get index out of bounds : " + JSON.stringify({ x, y }));
+    }
+
+    public getTile(x: number, y: number): ITile {
+        const index = this.get(x, y);
+        return this.data.tiles[index];
     }
 
     public getTileState(x: number, y: number): TileState {
