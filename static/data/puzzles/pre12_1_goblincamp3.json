@@ -14,6 +14,52 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":254,
+                 "height":16,
+                 "id":78,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":96
+                }, 
+                {
+                 "gid":254,
+                 "height":16,
+                 "id":79,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":128
+                }, 
+                {
+                 "gid":254,
+                 "height":16,
+                 "id":80,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":96
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"furniture",
          "objects":[
                 {
@@ -368,7 +414,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":78,
+ "nextobjectid":81,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
