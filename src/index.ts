@@ -2,11 +2,11 @@ import * as $ from "jquery";
 import { Color } from "./color";
 import { GameData } from "./data";
 import { Furniture, Player } from "./entity";
-import { IPuzzleRoom } from "./interface/puzzle-schema";
+import { ITile } from "./interface/entity-schema";
+import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
 import { IMouseEvent, Renderer } from "./renderer";
-import { ITile } from "./interface/entity-schema";
 
 export class Game {
     public static readonly WIDTH: number = 600;
@@ -14,6 +14,8 @@ export class Game {
 
     public data: GameData;
     public player: Player;
+
+    public indexForTestPuzzle: number = 0;
 
     // Animation variables
     public spiritFadeTimer: number = 0;
@@ -47,9 +49,10 @@ export class Game {
         this.data = new GameData();
         this.renderer = new Renderer(this);
         this.renderer.addClickListener(this.handleClick.bind(this));
-        this.currentLevel = new Level(28, 28, this.data);
+
         Promise.all([this.loadData(), this.renderer.loadGraphics()])
           .then(this.assetsLoaded.bind(this));
+
         this.player = new Player();
         this.player.dataRef  = this.data.player;
         this.player.x = 10;
@@ -69,8 +72,13 @@ export class Game {
         // const itemsetSchema = await this.loadJSON<IItemset>("data/tileset-schema.json");
         const furnitureset = await this.loadJSON<IFurnitureset>("data/furnitureset.json");
 
+        const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
 
-        const testmap = await this.loadJSON<IPuzzleRoom>("data/testmap.json");
+        console.log(puzzleList);
+        for (const puzzleName of puzzleList.puzzles) {
+            const puzzle = await this.loadJSON<IPuzzleRoom>("data/puzzles/" + puzzleName);
+            this.data.puzzleRooms.push(puzzle);
+        }
 
         const convertInt = (x: string): number => {
             const value = parseInt(x, 10);
@@ -144,10 +152,20 @@ export class Game {
             console.log(furry);
         }
 
+        this.loadLevel();
+    }
+
+    public loadLevel(): void {
+        this.currentLevel = new Level(28, 28, this.data);
+        this.player.x = 1;
+        this.player.y = 1;
+
         // Place test puzzle map into current level
-        this.currentLevel.placePuzzleAt(2, 2, testmap);
+        this.currentLevel.placePuzzleAt(0, 0, this.data.puzzleRooms[this.indexForTestPuzzle]);
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
+
+        this.indexForTestPuzzle++;
     }
 
     public assetsLoaded(): void {
@@ -235,6 +253,11 @@ export class Game {
         xx = code === "ArrowRight" ? xx += 1 : (code === "ArrowLeft") ? xx -= 1 : xx;
         yy = code === "ArrowDown" ? yy += 1 : (code === "ArrowUp") ? yy -= 1 : yy;
         console.log(e.code);
+
+        if (e.code === "KeyQ") {
+            this.loadLevel();
+        }
+
         // Player tries to move. Switch?
         // Tried to move into a tile with a creature
         // TODO fight?

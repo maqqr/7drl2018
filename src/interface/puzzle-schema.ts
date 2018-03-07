@@ -31,3 +31,7 @@ export interface IPuzzleRoom {
     infinite?: false;
     layers?: Array<ITileLayer | IObjectLayer>;
 }
+
+export interface IPuzzleList {
+    puzzles: string[];
+}
