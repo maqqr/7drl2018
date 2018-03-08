@@ -410,6 +410,18 @@ export class Game {
         }
     }
 
+    private checkDeath(cre: Creature): void {
+        if (cre.currenthp <= 0) {
+            const your = cre === this.player.currentbody ? "your " : "";
+            this.messagebuffer.add(your + cre.dataRef.type + " died.");
+            this.currentLevel.removeCreature(cre);
+            if (this.player.currentbody === cre) {
+                this.player.currentbody = null;
+                this.messagebuffer.add("You detach from the corpse.", Color.red);
+            }
+        }
+    }
+
     private creatureFight(attacker: Creature, defender: Creature): void {
         console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
         console.log(attacker);
@@ -426,13 +438,7 @@ export class Game {
             attackerName + " hit" + extraS + " " + defenderName +
             " and deal" + extraS + " " + damage + " damage.", color);
 
-        if (defender.currenthp <= 0) {
-            this.messagebuffer.add(defender.dataRef.type + " died.");
-            this.currentLevel.removeCreature(defender);
-            if (this.player.currentbody === defender) {
-                this.player.currentbody = null;
-            }
-        }
+        this.checkDeath(defender);
     }
 
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
@@ -450,6 +456,16 @@ export class Game {
             cre.y = targetY;
             this.checkPressureDeactivation(oldX, oldY);
             this.checkPressureActivation(targetX, targetY);
+
+            const damage = this.currentLevel.getTileDamage(targetX, targetY);
+            if (damage > 0) {
+                cre.currenthp -= damage;
+                if (cre === this.player.currentbody) {
+                    const tileName = this.currentLevel.getTile(targetX, targetY).type;
+                    this.messagebuffer.add("You take " + damage + " from the " + tileName + "!", Color.red);
+                }
+                this.checkDeath(cre);
+            }
         }
     }
 

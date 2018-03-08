@@ -167,6 +167,17 @@ export class Level {
         console.error("Level.getTileState index out of bounds : " + JSON.stringify({ x, y }));
     }
 
+    public getTileDamage(x: number, y: number): number {
+        if (!this.isInLevelBounds(x, y)) {
+            return 0;
+        }
+        let furDamage = 0;
+        for (const fur of this.getFurnituresAt(x, y)) {
+            furDamage += fur.dataRef.damage;
+        }
+        return this.getTile(x, y).damage + furDamage;
+    }
+
     public getFurnituresAt(x: number, y: number): Furniture[] {
         x = Math.floor(x);
         y = Math.floor(y);
@@ -405,17 +416,18 @@ export class Level {
                     console.log(creDefinition);
 
                     // Check probability
+                    let prob = 50;
                     if ("properties" in creDefinition) {
                         for (const prop in creDefinition.properties) {
                             if (creDefinition.properties.hasOwnProperty(prop)) {
                                 if (prop === "probability") {
-                                    const prob = parseInt(creDefinition.properties.probability, 10);
-                                    if (Math.random() * 100 > prob) {
-                                        continue;
-                                    }
+                                    prob = parseInt(creDefinition.properties.probability, 10);
                                 }
                             }
                         }
+                    }
+                    if (Math.random() * 100 > prob) {
+                        continue;
                     }
 
                     // If type if missing, get type from the corresponding tile
