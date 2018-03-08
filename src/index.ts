@@ -459,7 +459,7 @@ export class Game {
     private updateAI(cre: Creature): void {
         const passable = (x: number, y: number) => {
             let canMove = this.creatureCanMoveTo(cre.dataRef.size, x, y);
-            if (!canMove) {
+            if (!canMove && cre.dataRef.size >= 5) {
                 for (const fur of this.currentLevel.getFurnituresAt(x, y)) {
                     if (fur.dataRef.useractivation) {
                         canMove = true;
