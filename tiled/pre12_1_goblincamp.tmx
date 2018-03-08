@@ -20,7 +20,11 @@
  <objectgroup name="creature">
   <object id="64" gid="254" x="80" y="96" width="16" height="16"/>
   <object id="65" gid="254" x="96" y="80" width="16" height="16"/>
-  <object id="66" gid="254" x="96" y="112" width="16" height="16"/>
+  <object id="66" gid="254" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="50"/>
+   </properties>
+  </object>
   <object id="67" gid="254" x="128" y="144" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="furniture">

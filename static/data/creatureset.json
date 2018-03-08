@@ -20,13 +20,13 @@
             "inventory": []
         },
         {
-            "id":666, "type": "giantworm","category": "beast", "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASSSSAAA",
+            "id":666, "type": "giantworm","category": "beast", "description": "A giant tunnel worm. A snakelike creature with no eyes.",
             "maxhp": 20, "strength": 8, "speed": 5, "willpower": 5, "size": 15,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 0,
             "inventory": []
         },
         {
-            "id":667, "type": "troll","category": "beast", "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "id":667, "type": "troll","category": "beast", "description": "A long limbed troll with sharp teeth.",
             "maxhp": 4, "strength": 1, "speed": 5, "willpower": 5, "size": 11,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
@@ -62,13 +62,28 @@
             "inventory": []
         },
         {
-            "id":668, "type": "golem","category": "magic", "description": "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+            "id":668, "type": "golem","category": "magic", "description": "A large humanlike construction, animated with magic.",
             "maxhp": 25, "strength": 3, "speed": 10, "willpower": 10, "size": 2,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
         {
-            "id":669, "type": "fireelemental","category": "magic", "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "id":669, "type": "fireelemental","category": "magic", "description": "A fire elemental, from another plane of existence.",
+            "maxhp": 25, "strength": 3, "speed": 10, "willpower": 10, "size": 2,
+            "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
+            "inventory": []
+        },
+
+
+
+        {
+            "id":469, "type": "imp","category": "demonic", "description": "A lesser demon, a small impish creature with long tail.",
+            "maxhp": 25, "strength": 3, "speed": 10, "willpower": 10, "size": 2,
+            "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
+            "inventory": []
+        },
+        {
+            "id":469, "type": "demon","category": "demonic", "description": "An abyssal demon with large horns and reddish scale covered body.",
             "maxhp": 25, "strength": 3, "speed": 10, "willpower": 10, "size": 2,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
@@ -98,7 +113,7 @@
 
 
         {
-            "id":644, "type": "cultist","category": "boss", "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "id":644, "type": "cultist","category": "boss", "description": "A hooded human clad in black robes filled with runes.",
             "maxhp": 25, "strength": 3, "speed": 10, "willpower": 10, "size": 2,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
