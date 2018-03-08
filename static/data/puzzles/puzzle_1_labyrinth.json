@@ -548,6 +548,106 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":222,
+                 "height":16,
+                 "id":39,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":176
+                }, 
+                {
+                 "gid":212,
+                 "height":16,
+                 "id":40,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"10"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":176
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":251,
+                 "height":16,
+                 "id":41,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":240,
+                 "y":208
+                }, 
+                {
+                 "gid":251,
+                 "height":16,
+                 "id":42,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":144
+                }, 
+                {
+                 "gid":247,
+                 "height":16,
+                 "id":43,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":192
+                }, 
+                {
+                 "gid":252,
+                 "height":16,
+                 "id":44,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":272
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"description",
          "objects":[],
          "opacity":1,
@@ -556,7 +656,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":39,
+ "nextobjectid":45,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
@@ -564,7 +664,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",
