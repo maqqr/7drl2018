@@ -17,6 +17,9 @@ export class Game {
     public data: GameData;
     public player: Player;
 
+    public testX: number;
+    public testY: number;
+
     public indexForTestPuzzle: number = 0;
     public testPuzzleName: string = "";
     public waitForPushKey: boolean = false;
@@ -427,6 +430,8 @@ export class Game {
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {
+        this.testX = mouseEvent.tx - this.mapOffsetTargetX;
+        this.testY = mouseEvent.ty - this.mapOffsetTargetY;
         console.log(mouseEvent);
         this.currentLevel.activate(mouseEvent.tx - this.mapOffsetTargetX, mouseEvent.ty - this.mapOffsetTargetY, true);
         this.renderer.renderGame();
@@ -453,17 +458,26 @@ export class Game {
 
     private updateAI(cre: Creature): void {
         const passable = (x: number, y: number) => {
-            return true;
+            let canMove = this.creatureCanMoveTo(cre.dataRef.size, x, y);
+            if (!canMove) {
+                for (const fur of this.currentLevel.getFurnituresAt(x, y)) {
+                    if (fur.dataRef.useractivation) {
+                        canMove = true;
+                        break;
+                    }
+                }
+            }
+            return canMove;
         };
 
-        const dijkstra = new ROT.Path.Dijkstra(this.player.x, this.player.y, passable, { topology: 4 });
+        const dijkstra = new ROT.Path.Dijkstra(this.testX, this.testY, passable, { topology: 4 });
 
         const path: Array<[number, number]> = [];
         dijkstra.compute(cre.x, cre.y, (x: number, y: number) => {
             path.push([x, y]);
         });
 
-        console.log(path);
+        // console.log(path);
 
         let dx = 0;
         let dy = 0;
@@ -474,7 +488,17 @@ export class Game {
             dx = Math.floor(Math.random() * 3) - 1;
             dy = Math.floor(Math.random() * 3) - 1;
         }
-        this.moveCreature(cre, cre.x + dx, cre.y + dy);
+
+        const targetX = cre.x + dx;
+        const targetY = cre.y + dy;
+        if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
+            // Move freely to target position
+            this.moveCreature(cre, cre.x + dx, cre.y + dy);
+        } else {
+            // Attempt to activate tile if movement failed
+            // TODO: suppress activation texts?
+            this.currentLevel.activate(targetX, targetY, true);
+        }
     }
 }
 
