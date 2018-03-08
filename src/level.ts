@@ -255,9 +255,10 @@ export class Level {
         }
     }
 
-    public activate(x: number, y: number, userInitiated: boolean = true): void {
+    public activate(x: number, y: number, userInitiated: boolean = true): string {
         console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
+        let message = null;
         // const tile = this.game.
 
         for (const fur of this.furnitures) {
@@ -266,11 +267,10 @@ export class Level {
 
                 // Inform the player with description texts
                 if (userInitiated && fur.dataRef.useractivationtext) {
-                    console.log(fur.dataRef.useractivationtext);
+                    message = fur.dataRef.useractivationtext;
                 }
 
                 const canActivate = (userInitiated && fur.dataRef.useractivation) || !userInitiated;
-                console.log(canActivate);
 
                 // Handle activation targets
                 if (canActivate && fur.dataRef.activationtarget) {
@@ -292,6 +292,7 @@ export class Level {
                 }
             }
         }
+        return message;
     }
 
     public assignNewDataToFurniture(furniture: Furniture, newData: IFurniture): void {
