@@ -25,10 +25,10 @@
             "stability": "Plead guilty, hoping your honesty will mitigate your sentence."
         },
         {
-            "question": " // tuomiosi on kuolema, millätavalla poistut tästä maailmasta?",
-            "willpower": "",
-            "power": "",
-            "stability": ""
+            "question": "But before you can make your desperate case, you are interrupted and informed that you will be executed the next day. Baffled for what is happening, you are locked in the dungeon and asked how you would like to be executed.",
+            "willpower": "Poison.",
+            "power": "Ritual duel.",
+            "stability": "Hanged."
         }
     ]
 }
