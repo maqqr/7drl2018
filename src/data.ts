@@ -5,6 +5,9 @@ import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 export class PredefinedRooms {
     public level: LevelRooms[] = [];
 
+    public startRoom: PuzzleRoom;
+    public finalRoom: PuzzleRoom;
+
     public addLevelRooms(index: number, roomType: any, roomDefs: IPuzzleRoom[]): void {
         if (index >= this.level.length) {
             this.level.push(new LevelRooms());

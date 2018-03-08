@@ -1,4 +1,5 @@
 import { Game } from ".";
+import { GameData } from "./data";
 import { Furniture, LevelRooms, PuzzleRoom } from "./entity";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { Level } from "./level";
@@ -18,9 +19,10 @@ class PositionedRoom {
 export class DungeonGenerator {
     public static generateLevel(game: Game,
                                 roomsX: number,
-                                roomsY: number): Level {
-        const level = new Level(roomsX * 12 + 2, roomsY * 12 + 2, game.data);
+                                roomsY: number, depth: number): Level {
+        const level = new Level(roomsX * 12 + 2, roomsY * 12 + 2, depth, game.data);
 
+        // TODO: get correct rooms
         const rooms = game.data.predefinedRooms.level[0];
 
         // Allow all pregen rooms to appear again
@@ -28,7 +30,7 @@ export class DungeonGenerator {
             room.hasAppeared = false;
         }
 
-        const result = this.makeLevelPlan(roomsX, roomsY, rooms);
+        const result = this.makeLevelPlan(roomsX, roomsY, rooms, depth, game.data);
         const generatedRooms = result[0];
         const up = result[1];
         const down = result[2];
@@ -53,7 +55,7 @@ export class DungeonGenerator {
         return level;
     }
 
-    private static makeLevelPlan(roomsX: number, roomsY: number, rooms: LevelRooms):
+    private static makeLevelPlan(roomsX: number, roomsY: number, rooms: LevelRooms, depth: number, data: GameData):
             [PositionedRoom[], { x: number, y: number}, { x: number, y: number}] {
 
         const generatedRooms: PositionedRoom[] = [];
@@ -110,12 +112,26 @@ export class DungeonGenerator {
             level.push(row);
         }
 
-        // Place one puzzle room
+        // Place at least one puzzle room
         const puzzlePos = randomFree2x2Position();
         const puzzle = this.getRandomRoom(rooms, "puzzles");
         generatedRooms.push(new PositionedRoom(puzzlePos.x, puzzlePos.y, puzzle.dataRef));
         // console.log("Generated puzzle name: " + puzzle.dataRef.puzzlename);
         putTile2x2(puzzlePos, "P");
+
+        // Place start room and final boss room
+        if (depth === 1) {
+            const startPos = randomFreePosition();
+            putTile(startPos, "S");
+            generatedRooms.push(new PositionedRoom(startPos.x, startPos.y, data.predefinedRooms.startRoom.dataRef));
+            Game.startRoomX = startPos.x;
+            Game.startRoomY = startPos.y;
+        }
+        if (depth === 2) {
+            const startPos = randomFree2x2Position();
+            putTile2x2(startPos, "S");
+            generatedRooms.push(new PositionedRoom(startPos.x, startPos.y, data.predefinedRooms.finalRoom.dataRef));
+        }
 
         // Place potential "other" room
         if (Math.random() > 0.5) {

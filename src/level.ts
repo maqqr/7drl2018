@@ -45,6 +45,7 @@ export class TileState {
 export class Level {
     public readonly width: number;
     public readonly height: number;
+    public readonly depth: number;
 
     public furnitures: Furniture[] = [];
     public descriptions: DescriptionObject[] = [];
@@ -63,7 +64,7 @@ export class Level {
 
     private readonly data: GameData;
 
-    constructor(width: number, height: number, data: GameData) {
+    constructor(width: number, height: number, depth: number, data: GameData) {
         this.data = data;
         this.width = width;
         this.height = height;
@@ -249,7 +250,7 @@ export class Level {
         addedCreature.willpower = newCreature.willpower;
         addedCreature.time = 0;
         addedCreature.inventory = [];
-        console.log(addedCreature);
+        // console.log(addedCreature);
 
         // Create inventory slots
         if (newCreature.offensiveslot) {

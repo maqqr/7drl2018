@@ -3,7 +3,7 @@ import * as ROT from "rot-js";
 import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
-import { Creature, Furniture, Player } from "./entity";
+import { Creature, Furniture, Player, PuzzleRoom } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
@@ -14,6 +14,10 @@ import { IMouseEvent, Renderer } from "./renderer";
 export class Game {
     public static readonly WIDTH: number = 600;
     public static readonly HEIGHT: number = 400;
+
+    // TODO: this is bad
+    public static startRoomX: number = 0;
+    public static startRoomY: number = 0;
 
     public data: GameData;
     public player: Player;
@@ -99,6 +103,12 @@ export class Game {
         await roomLoader("other");
         await roomLoader("pre");
         await roomLoader("base");
+        const startRoomDef = await this.loadJSON<IPuzzleRoom>("data/puzzles/other12_1_tombofplayer.json");
+        const finalRoomDef =
+            await this.loadJSON<IPuzzleRoom>("data/puzzles/other24_bossfloor_tombofceciliaandvictorii.json");
+        this.data.predefinedRooms.startRoom = new PuzzleRoom(startRoomDef);
+        this.data.predefinedRooms.finalRoom = new PuzzleRoom(finalRoomDef);
+
         console.log(this.data);
 
         const convertInt = (x: string): number => {
@@ -188,7 +198,7 @@ export class Game {
 
     public nextLevel(): void {
         if (this.currentLevel.nextLevel === null) {
-            this.currentLevel.nextLevel = DungeonGenerator.generateLevel(this, 5, 5);
+            this.currentLevel.nextLevel = DungeonGenerator.generateLevel(this, 5, 5, this.currentLevel.depth + 1);
             this.currentLevel.nextLevel.prevLevel = this.currentLevel;
         }
         this.currentLevel = this.currentLevel.nextLevel;
@@ -216,13 +226,13 @@ export class Game {
         const testMode = false;
 
         if (!testMode) {
-            this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5);
+            this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5, 1);
         } else {
-            this.currentLevel = new Level(26, 26, this.data);
+            this.currentLevel = new Level(26, 26, 1, this.data);
         }
 
-        this.player.x = 6;
-        this.player.y = 6;
+        this.player.x = Game.startRoomX * 12 + 9;
+        this.player.y = Game.startRoomY * 12 + 4;
 
         // Place test puzzle map into current level
         if (testMode) {
@@ -235,12 +245,10 @@ export class Game {
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
 
-        // Create test creatures
+        // Create initial grave robber
         const graveRobber = this.currentLevel.createCreatureAt(this.data.creatures[252],
-                                                               this.player.x + 1, this.player.y);
+                                                               this.player.x - 1, this.player.y);
         graveRobber.willpower = 1;
-        // this.currentLevel.createCreatureAt(this.data.creatures[253], this.player.x + 1, this.player.y + 2);
-        // this.currentLevel.createCreatureAt(this.data.creatures[254], this.player.x + 2, this.player.y + 2);
 
         this.currentLevel.createItemAt(this.data.items[1], this.player.x, this.player.y + 1);
         this.currentLevel.createItemAt(this.data.items[2], this.player.x, this.player.y + 1);
