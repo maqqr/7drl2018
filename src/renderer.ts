@@ -90,6 +90,16 @@ export class Renderer {
         //         desc.w * 16, desc.h * 16, true, Color.red);
         // }
 
+        const items = this.game.getCurrentLevel().items;
+        for (const item of items) {
+            const tileState = level.getTileState(item.x, item.y);
+            if (tileState.state === TileVisibility.Visible) {
+                this.renderer.drawTexture(
+                    toScreen(this.game.mapOffsetX + item.x), toScreen(this.game.mapOffsetY + item.y),
+                    item.dataRef.icon, this.game.currentTintColor);
+            }
+        }
+
         const creatures = this.game.getCurrentLevel().creatures;
         for (const furry of creatures) {
             const tileState = level.getTileState(furry.x, furry.y);

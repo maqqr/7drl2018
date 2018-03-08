@@ -1,8 +1,8 @@
 import * as ROT from "rot-js";
 import { Game } from ".";
 import { GameData } from "./data";
-import { Creature, Entity, Furniture } from "./entity";
-import { ICreature, IFurniture, ITile } from "./interface/entity-schema";
+import { Creature, Entity, Furniture, Item } from "./entity";
+import { ICreature, IFurniture, IItem, ITile } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
 
@@ -52,8 +52,11 @@ export class Level {
     public creatures: Creature[] = [];
     public fov: ROT.FOV;
 
+    public items: Item[] = [];
+
     private tiles: TileID[] = [];
     private tilestate: TileState[] = [];
+
 
     private nextLevel: Level;
     private prevLevel: Level;
@@ -190,6 +193,18 @@ export class Level {
         return furs;
     }
 
+    public getItemsAt(x: number, y: number): Item[] {
+        x = Math.floor(x);
+        y = Math.floor(y);
+        const items: Item[] = [];
+        for (const item of this.items) {
+            if (item.x === x && item.y === y) {
+                items.push(item);
+            }
+        }
+        return items;
+    }
+
     public getTotalFurnitureSizeAt(x: number, y: number): number {
         x = Math.floor(x);
         y = Math.floor(y);
@@ -213,6 +228,12 @@ export class Level {
         this.creatures.push(creature);
     }
 
+    public addItemAt(item: Item, x: number, y: number): void {
+        item.x = x;
+        item.y = y;
+        this.items.push(item);
+    }
+
     public removeCreature(creature: Creature): void {
         const index = this.creatures.indexOf(creature);
         if (index >= 0) {
@@ -228,6 +249,13 @@ export class Level {
         addedCreature.time = 0;
         this.addCreatureAt(addedCreature, x, y);
         return addedCreature;
+    }
+
+    public createItemAt(newItem: IItem, x: number, y: number): Item {
+        const addedItem = new Item();
+        addedItem.dataRef = newItem;
+        this.addItemAt(addedItem, x, y);
+        return addedItem;
     }
 
     public set(x: number, y: number, tile: TileID): void {
