@@ -221,9 +221,6 @@ export class Game {
 
     public assetsLoaded(): void {
         console.log("loaded");
-        // console.log(this.data.creatures);
-        // console.log(this.data.player);
-        // console.log(this.data.creatures[253]);
         setInterval(this.updateTinting.bind(this), 60);
         setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
         setInterval(this.updateScrollAnim.bind(this), 1 / 30.0);
@@ -260,11 +257,6 @@ export class Game {
     public getCurrentLevel(): Level {
         return this.currentLevel;
     }
-
-    // private isPassable(ownSize: number, x: number, y: number): boolean {
-        // const plSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
-        // return ownSize <= this.data.tiles[this.currentLevel.get(x, y)].maxsize;
-    // }
 
     private isCurrable(x: number, y: number): boolean {
         return this.currentLevel.getCreatureAt(x, y) === null;
@@ -310,11 +302,6 @@ export class Game {
         const yy = py + dy;
         let moving = !(dx === 0 && dy === 0);
 
-        // let moving = code === "ArrowUp" || code === "ArrowDown" ||
-        //  code === "ArrowLeft" || code === "ArrowRight" || code === "Space" ? true : false;
-        // xx = code === "ArrowRight" ? xx += 1 : (code === "ArrowLeft") ? xx -= 1 : xx;
-        // yy = code === "ArrowDown" ? yy += 1 : (code === "ArrowUp") ? yy -= 1 : yy;
-
         const creatureBlocking = !this.isCurrable(xx, yy);
         const spiritMode = this.player.currentbody === null;
 
@@ -350,33 +337,33 @@ export class Game {
             keyAccepted = true;
         }
 
-        // Player tries to move. Switch?
-        // Tried to move into a tile with a creature
-        // TODO fight?
-
         if (moving || code === "Space") {
             if (creatureBlocking && e.shiftKey && (spiritMode || code !== "Space")) {
-                // Possessing
-                // possesChance = (1 - (hp/maxHP)) * (playerWP / (1 + creatureWP)) ?
+                // Possession
                 const cre = this.currentLevel.getCreatureAt(xx, yy);
                 const playerWp = this.player.willpower;
                 const creWp = cre.willpower;
                 const baseChance =
                     (1.0 - (cre.currenthp / cre.dataRef.maxhp)) + ((playerWp - creWp) / (playerWp + creWp));
                 const chance = Math.max(0.0, Math.min(1.0, baseChance));
-                const action = "You try to possess the " + cre.dataRef.type + " (" + Math.floor(chance * 100) + "%)";
-                // console.log(action);
-                this.messagebuffer.add(action);
+                const creatureName = cre.dataRef.type;
+
+                if (chance < 1.0) {
+                    const action = "You try to possess the " + creatureName +
+                                   " (" + Math.floor(chance * 100) + "%)";
+                    this.messagebuffer.add(action);
+                }
 
                 if (Math.random() < chance) {
-                    this.messagebuffer.add("You were more potent and overcame the feeble creature.");
+                    this.messagebuffer.add(chance < 1.0
+                        ? "You were more potent and overcame the feeble creature."
+                        : "You return to the body of " + creatureName + ".");
                     this.player.currentbody = cre;
                     this.player.currentbody.willpower = 0;
                     this.player.x = xx;
                     this.player.y = yy;
                 } else {
                     this.messagebuffer.add("The creature did not submit to you.");
-                    console.log(cre.willpower);
                 }
                 keyAccepted = true;
             } else {
@@ -392,6 +379,7 @@ export class Game {
                         // Unpossess
                         this.player.x = xx;
                         this.player.y = yy;
+                        this.messagebuffer.add("You detach from the " + this.player.currentbody.dataRef.type + ".");
                         this.player.currentbody = null;
                         keyAccepted = true;
                     } else if (this.creatureCanMoveTo(this.player.currentbody.dataRef.size, xx, yy)) {
@@ -409,7 +397,7 @@ export class Game {
         // Check descriptions
         for (const desc of this.currentLevel.descriptions) {
             if (desc.isInside(this.player.x, this.player.y) && !desc.isRead) {
-                // desc.isRead = true;
+                desc.isRead = true;
                 this.messagebuffer.add(desc.text);
             }
         }
@@ -427,12 +415,18 @@ export class Game {
         console.log(defender);
         const damage = attacker.dataRef.strength;
         defender.currenthp -= damage;
+        const attackerName = attacker === this.player.currentbody ? "you" : attacker.dataRef.type;
+        const defenderName = defender === this.player.currentbody ? "you" : "the " + defender.dataRef.type;
         console.log("hp left " + defender.currenthp);
+        const color = defender === this.player.currentbody ? Color.red : Color.skin;
+
+        const extraS = attacker === this.player.currentbody ? "" : "s";
         this.messagebuffer.add(
-            attacker.dataRef.type + " hits the " + defender.dataRef.type + " and deals " + damage + " damage.");
+            attackerName + " hit" + extraS + " " + defenderName +
+            " and deal" + extraS + " " + damage + " damage.", color);
 
         if (defender.currenthp <= 0) {
-            console.log(defender.dataRef.type + " died.");
+            this.messagebuffer.add(defender.dataRef.type + " died.");
             this.currentLevel.removeCreature(defender);
             if (this.player.currentbody === defender) {
                 this.player.currentbody = null;
@@ -467,13 +461,18 @@ export class Game {
         this.testX = mouseEvent.tx - this.mapOffsetTargetX;
         this.testY = mouseEvent.ty - this.mapOffsetTargetY;
         console.log(mouseEvent);
-        this.currentLevel.activate(mouseEvent.tx - this.mapOffsetTargetX, mouseEvent.ty - this.mapOffsetTargetY, true);
+        const msg = this.currentLevel.activate(
+                        mouseEvent.tx - this.mapOffsetTargetX,
+                        mouseEvent.ty - this.mapOffsetTargetY, true);
+
+        if (msg) {
+            this.messagebuffer.add(msg);
+        }
         this.renderer.renderGame();
     }
 
     private updateLoop(deltaTime: number): void {
         for (const cre of this.currentLevel.creatures) {
-            console.log(cre);
             if (this.player.currentbody === cre || cre.currenthp <= 0) {
                 continue;
             }
@@ -530,7 +529,6 @@ export class Game {
             this.moveCreature(cre, cre.x + dx, cre.y + dy);
         } else {
             // Attempt to activate tile if movement failed
-            // TODO: suppress activation texts?
             this.currentLevel.activate(targetX, targetY, true);
         }
     }
