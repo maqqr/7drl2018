@@ -404,6 +404,22 @@ export class Level {
                 for (const creDefinition of creatureLayer.objects) {
                     console.log(creDefinition);
 
+                    // Check probability
+                    if ("properties" in creDefinition) {
+                        for (const prop in creDefinition.properties) {
+                            if (creDefinition.properties.hasOwnProperty(prop)) {
+                                if (prop === "probability") {
+                                    const prob = parseInt(creDefinition.properties.probability, 10);
+                                    if (Math.random() * 100 > prob) {
+                                        console.log("Spawn prob failed");
+                                        continue;
+                                    }
+                                    console.log("Spawn success");
+                                }
+                            }
+                        }
+                    }
+
                     // If type if missing, get type from the corresponding tile
                     let foundType = creDefinition.type;
                     if (foundType === "") {

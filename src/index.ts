@@ -7,7 +7,7 @@ import { Creature, Furniture, Player } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
-import { Level } from "./level";
+import { Level, TileVisibility } from "./level";
 import { MessageBuffer } from "./messagebuffer";
 import { IMouseEvent, Renderer } from "./renderer";
 
@@ -504,14 +504,19 @@ export class Game {
             return canMove;
         };
 
-        const dijkstra = new ROT.Path.Dijkstra(this.testX, this.testY, passable, { topology: 4 });
-
         const path: Array<[number, number]> = [];
-        dijkstra.compute(cre.x, cre.y, (x: number, y: number) => {
-            path.push([x, y]);
-        });
 
-        // console.log(path);
+        // Follow the player
+        const playerBody = this.player.currentbody;
+        const tileState = this.currentLevel.getTileState(cre.x, cre.y).state;
+        if (playerBody !== null && (tileState === TileVisibility.Visible || tileState === TileVisibility.Remembered)) {
+            const dijkstra = new ROT.Path.Dijkstra(playerBody.x, playerBody.y, passable, { topology: 4 });
+            dijkstra.compute(cre.x, cre.y, (x: number, y: number) => {
+                path.push([x, y]);
+            });
+        }
+
+        console.log(path);
 
         let dx = 0;
         let dy = 0;
