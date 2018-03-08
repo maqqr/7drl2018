@@ -10,15 +10,16 @@
                 "properties": {
                     "id": {"type":"integer"},
                     "type": {"type":"string"},
+                    "category": {"type":"string"},
                     "maxhp": {"type":"integer","minimum": 0},
                     "currrenthp": {"type": "integer"},
                     "strength": {"type":"integer","minimum": 0},
                     "speed": {"type":"integer","minimum": 0},
                     "willpower": {"type":"integer","minimum": 0},
-                    "spiritpower": {"type":"integer","minimum": 0},
-                    "spiritstability": {"type":"integer","minimum": 0},
                     "size": {"type":"integer","minimum": 1,"maximum": 20},
                     "description": {"type":"string"},
+                    "offensiveslot": {"type":"boolean"},
+                    "defenciveslot": {"type":"boolean"},
                     "inventoryslots": {"type":"integer","minimum": 0},
                     "inventory":{"type":"array","items": {
                         "type": "string"
