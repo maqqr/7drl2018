@@ -86,9 +86,12 @@ export class Renderer {
         }
 
         // Draw descriptions (for debugging purposes)
-        // for (const desc of this.game.getCurrentLevel().descriptions) {
-        //     this.renderer.drawRect(desc.x * 16, desc.y * 16, desc.w * 16, desc.h * 16, true, Color.red);
-        // }
+        for (const desc of this.game.getCurrentLevel().descriptions) {
+            this.renderer.drawRect(
+                toScreen(this.game.mapOffsetX + desc.x),
+                toScreen(this.game.mapOffsetY + desc.y),
+                desc.w * 16, desc.h * 16, true, Color.red);
+        }
 
         const creatures = this.game.getCurrentLevel().creatures;
         for (const furry of creatures) {
@@ -110,7 +113,9 @@ export class Renderer {
             this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 4, 15, Color.blue, 0.10);
             this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 4, 9, Color.blue, 0.15);
         } else {
-            this.renderer.drawTexture(playerDrawX, playerDrawY, player.currentbody.dataRef.id);
+            this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 8, 20, Color.blue, 0.08);
+            this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 8, 7, Color.blue, 0.15);
+            this.renderer.drawTexture(playerDrawX, playerDrawY, player.currentbody.dataRef.id, 0xAAAAFF);
         }
 
         if (this.game.waitForPushKey) {
@@ -118,6 +123,24 @@ export class Renderer {
         }
 
         this.renderer.drawString(0, 0, this.game.testPuzzleName);
+
+        // Draw messagebuffer
+        const lines = this.game.messagebuffer.getLines();
+        let msgY = Game.HEIGHT - lines.length * 12;
+        for (let index = 0; index < lines.length; index++) {
+            const msg = lines[index];
+            const line = msg[0];
+            let color = msg[1];
+            if (index === 0 && lines.length >= this.game.messagebuffer.getMaxLines()) {
+                color = Color.gray;
+            }
+            if (index === 1 && lines.length >= this.game.messagebuffer.getMaxLines() - 1) {
+                color = Color.lightgray;
+            }
+            this.renderer.drawString(0, msgY, line, color);
+            msgY += 12;
+        }
+
         this.renderer.render();
 
         level.markRememberedTiles(this.game.player.x, this.game.player.y, visionRadius);

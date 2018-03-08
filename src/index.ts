@@ -8,6 +8,7 @@ import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level } from "./level";
+import { MessageBuffer } from "./messagebuffer";
 import { IMouseEvent, Renderer } from "./renderer";
 
 export class Game {
@@ -16,6 +17,7 @@ export class Game {
 
     public data: GameData;
     public player: Player;
+    public messagebuffer: MessageBuffer = new MessageBuffer(10);
 
     public testX: number = 0;
     public testY: number = 0;
@@ -219,9 +221,9 @@ export class Game {
 
     public assetsLoaded(): void {
         console.log("loaded");
-        console.log(this.data.creatures);
-        console.log(this.data.player);
-        console.log(this.data.creatures[253]);
+        // console.log(this.data.creatures);
+        // console.log(this.data.player);
+        // console.log(this.data.creatures[253]);
         setInterval(this.updateTinting.bind(this), 60);
         setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
         setInterval(this.updateScrollAnim.bind(this), 1 / 30.0);
@@ -362,18 +364,18 @@ export class Game {
                 const baseChance =
                     (1.0 - (cre.currenthp / cre.dataRef.maxhp)) + ((playerWp - creWp) / (playerWp + creWp));
                 const chance = Math.max(0.0, Math.min(1.0, baseChance));
-                const action = "You try to possess the " + cre.dataRef.type;
-                console.log(action);
-                console.log("Chance: " + chance);
+                const action = "You try to possess the " + cre.dataRef.type + " (" + Math.floor(chance * 100) + "%)";
+                // console.log(action);
+                this.messagebuffer.add(action);
 
                 if (Math.random() < chance) {
-                    console.log("You were more potent and overcame the feeble creature.");
+                    this.messagebuffer.add("You were more potent and overcame the feeble creature.");
                     this.player.currentbody = cre;
                     this.player.currentbody.willpower = 0;
                     this.player.x = xx;
                     this.player.y = yy;
                 } else {
-                    console.log("The creature did not submit to you.");
+                    this.messagebuffer.add("The creature did not submit to you.");
                     console.log(cre.willpower);
                 }
                 keyAccepted = true;
@@ -404,6 +406,14 @@ export class Game {
             }
         }
 
+        // Check descriptions
+        for (const desc of this.currentLevel.descriptions) {
+            if (desc.isInside(this.player.x, this.player.y) && !desc.isRead) {
+                // desc.isRead = true;
+                this.messagebuffer.add(desc.text);
+            }
+        }
+
         if (keyAccepted) {
             window.removeEventListener("keydown", this.keyDownCallBack);
             const speed = this.player.currentbody === null ? 5 : this.player.currentbody.dataRef.speed;
@@ -415,8 +425,12 @@ export class Game {
         console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
         console.log(attacker);
         console.log(defender);
-        defender.currenthp -= attacker.dataRef.strength;
+        const damage = attacker.dataRef.strength;
+        defender.currenthp -= damage;
         console.log("hp left " + defender.currenthp);
+        this.messagebuffer.add(
+            attacker.dataRef.type + " hits the " + defender.dataRef.type + " and deals " + damage + " damage.");
+
         if (defender.currenthp <= 0) {
             console.log(defender.dataRef.type + " died.");
             this.currentLevel.removeCreature(defender);
