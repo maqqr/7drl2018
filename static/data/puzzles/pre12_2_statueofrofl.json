@@ -119,7 +119,7 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"Statue of a young boy playing. You recognize the boy. It is Rofl, your cousins, and you think that you used to play with him when you were young. It seems there was something beside Rofl, but it has been broken off, only a pair boots is left standing."
+                     "description":"Statue of a young boy playing. You recognize the boy. It is Rofl, your cousin, and you think that you used to play with him when you were young. It seems there was something beside Rofl, but it has been broken off, only a pair boots is left standing."
                     },
                  "propertytypes":
                     {
@@ -348,7 +348,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",
