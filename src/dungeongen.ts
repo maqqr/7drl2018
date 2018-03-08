@@ -1,5 +1,5 @@
 import { Game } from ".";
-import { LevelRooms, PuzzleRoom } from "./entity";
+import { LevelRooms, PuzzleRoom, Furniture } from "./entity";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { Level } from "./level";
 
@@ -28,19 +28,42 @@ export class DungeonGenerator {
             room.hasAppeared = false;
         }
 
-        const generatedRooms = this.makeLevelPlan(roomsX, roomsY, rooms);
-        // console.log(generatedRooms);
+        const result = this.makeLevelPlan(roomsX, roomsY, rooms);
+        const generatedRooms = result[0];
+        const up = result[1];
+        const down = result[2];
+        console.log(result);
 
         for (const posRoom of generatedRooms) {
             level.placePuzzleAt(1 + 12 * posRoom.x, 1 + 12 * posRoom.y, posRoom.room);
         }
 
+        // const stairUpId = 92;
+        // const stairDownId = 93;
+        // level.set(up.x * 12 + 7, up.y * 12 + 6, stairUpId);
+        // level.set(down.x * 12 + 6, down.y * 12 + 7, stairDownId);
+        const upFur = new Furniture();
+        upFur.dataRef = game.data.furnitures[92];
+        upFur.x = up.x * 12 + 7;
+        upFur.y = up.y * 12 + 6;
+        level.addFurniture(upFur);
+
+        const downFur = new Furniture();
+        downFur.dataRef = game.data.furnitures[93];
+        downFur.x = down.x * 12 + 6;
+        downFur.y = down.y * 12 + 7;
+        level.addFurniture(downFur);
+
         return level;
     }
 
-    private static makeLevelPlan(roomsX: number, roomsY: number, rooms: LevelRooms): PositionedRoom[] {
+    private static makeLevelPlan(roomsX: number, roomsY: number, rooms: LevelRooms):
+            [PositionedRoom[], { x: number, y: number}, { x: number, y: number}] {
+
         const generatedRooms: PositionedRoom[] = [];
         const level: string[][] = [];
+        const down: { x: number, y: number} = { x: 0, y: 0 };
+        const up: { x: number, y: number} = { x: 0, y: 0 };
 
         // console.log(rooms);
 
@@ -122,12 +145,24 @@ export class DungeonGenerator {
             }
         }
 
-        // Place base tiles at empty spaces
+        // Place base tiles and stair at empty spaces
+        const stairdownPos = randomFreePosition();
+        const stairUpPos = randomFreePosition();
         for (let y = 0; y < roomsY; y++) {
             for (let x = 0; x < roomsX; x++) {
                 if (level[y][x] === "+") {
                     const room = this.getRandomRoom(rooms, "base", false);
                     generatedRooms.push(new PositionedRoom(x, y, room.dataRef));
+                }
+
+                if (x === stairdownPos.x && y === stairdownPos.y) {
+                    down.x = stairdownPos.x;
+                    down.y = stairdownPos.y;
+                }
+
+                if (x === stairUpPos.x && y === stairUpPos.y) {
+                    up.x = stairUpPos.x;
+                    up.y = stairUpPos.y;
                 }
             }
         }
@@ -137,7 +172,7 @@ export class DungeonGenerator {
             console.log("" + y + " " + level[y]);
         }
 
-        return generatedRooms;
+        return [generatedRooms, up, down];
     }
 
     private static getRandomRoom(rooms: LevelRooms, roomType: string, unique: boolean = true): PuzzleRoom {
