@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="74">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="12" height="12">
+  <data encoding="csv">
+9,6,7,8,6,7,7,8,6,7,8,9,
+6,4,3,2,3,5,5,5,2,2,2,6,
+8,4,6,6,8,4,9,7,9,3,5,8,
+7,3,9,8,6,6,8,9,9,5,4,7,
+6,4,9,8,9,3,6,7,6,3,3,6,
+9,5,6,9,7,4,9,8,8,2,4,7,
+9,3,7,6,6,3,5,5,3,5,4,7,
+6,4,7,7,6,3,7,8,9,9,3,8,
+9,3,9,6,6,8,6,8,6,7,5,9,
+9,2,7,6,7,3,7,9,8,9,3,7,
+6,3,3,8,5,5,3,4,5,2,5,8,
+6,9,6,6,6,9,9,7,9,6,8,8
+</data>
+ </layer>
+ <objectgroup name="item">
+  <object id="72" gid="212" x="128" y="128" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="creature">
+  <object id="59" gid="253" x="112" y="64" width="16" height="16">
+   <properties>
+    <property name="description" value="This is a dirty graverobber. How dare he desecrate your tomb!"/>
+    <property name="probability" type="int" value="100"/>
+    <property name="willpower" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="73" gid="251" x="128" y="160" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="furniture">
+  <object id="39" gid="55" x="128" y="64" width="16" height="16">
+   <properties>
+    <property name="description" value="Your coffin, it is opened and the lid has shattered. You only make out the time of your death, year 1004."/>
+   </properties>
+  </object>
+  <object id="40" gid="75" x="128" y="80" width="16" height="16">
+   <properties>
+    <property name="description" value="This is a totally shattered statue."/>
+    <property name="name" value="shattered statue"/>
+   </properties>
+  </object>
+  <object id="41" gid="10" x="48" y="176" width="16" height="16"/>
+  <object id="42" gid="10" x="80" y="144" width="16" height="16"/>
+  <object id="44" gid="70" x="128" y="128" width="16" height="16"/>
+  <object id="45" gid="71" x="112" y="128" width="16" height="16"/>
+  <object id="46" gid="76" x="128" y="144" width="16" height="16"/>
+  <object id="47" gid="77" x="96" y="128" width="16" height="16"/>
+  <object id="48" gid="85" x="96" y="160" width="16" height="16"/>
+  <object id="49" gid="90" x="144" y="160" width="16" height="16">
+   <properties>
+    <property name="description" value="This is a goblin skeleton, skull of the skeleton is missing. Most of it's bones are fractured severely."/>
+    <property name="name" value="goblin skeleton"/>
+   </properties>
+  </object>
+  <object id="50" gid="92" x="144" y="128" width="16" height="16">
+   <properties>
+    <property name="description" value="This is a severed goblin skull."/>
+    <property name="name" value="goblin skull"/>
+   </properties>
+  </object>
+  <object id="51" gid="88" x="112" y="80" width="16" height="16">
+   <properties>
+    <property name="description" value="Here are pieces of shattered statue."/>
+    <property name="name" value="pieces of statue"/>
+   </properties>
+  </object>
+  <object id="52" gid="89" x="96" y="64" width="16" height="16">
+   <properties>
+    <property name="description" value="Here are pieces of shattered statue."/>
+    <property name="name" value="pieces of statue"/>
+   </properties>
+  </object>
+  <object id="53" gid="73" x="112" y="64" width="16" height="16">
+   <properties>
+    <property name="description" value="Here are pieces of shattered statue."/>
+    <property name="name" value="pieces of statue"/>
+   </properties>
+  </object>
+  <object id="54" gid="73" x="112" y="96" width="16" height="16">
+   <properties>
+    <property name="description" value="Here are pieces of shattered statue."/>
+    <property name="name" value="pieces of statue"/>
+   </properties>
+  </object>
+  <object id="55" gid="87" x="128" y="96" width="16" height="16">
+   <properties>
+    <property name="description" value="Here are little pieces of shattered statue."/>
+    <property name="name" value="pieces of statue"/>
+   </properties>
+  </object>
+  <object id="56" gid="87" x="128" y="48" width="16" height="16">
+   <properties>
+    <property name="description" value="Here are little pieces of shattered statue."/>
+    <property name="name" value="pieces of statue"/>
+   </properties>
+  </object>
+  <object id="57" gid="87" x="48" y="48" width="16" height="16"/>
+  <object id="58" gid="73" x="32" y="64" width="16" height="16"/>
+  <object id="62" gid="69" x="96" y="96" width="16" height="16"/>
+  <object id="63" gid="85" x="96" y="48" width="16" height="16"/>
+  <object id="64" gid="65" x="64" y="144" width="16" height="16"/>
+  <object id="66" gid="11" x="80" y="64" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="description">
+  <object id="67" x="32" y="80" width="48" height="16">
+   <properties>
+    <property name="text" value="You notice a big rock blocking one of the doors. You can push the rock by pressing 's'. Try pushing the rock away from the door."/>
+   </properties>
+  </object>
+  <object id="68" x="64" y="128" width="16" height="16">
+   <properties>
+    <property name="text" value="There is closed door next to you. You can open the door by pressing 'a'."/>
+   </properties>
+  </object>
+  <object id="69" x="80" y="128" width="16" height="16">
+   <properties>
+    <property name="text" value="You step into the doorway. Room is a servant's resting room and it is in horrible condition. You notice that there is something on the table. Then you get a glimpse of a pesky rat near the skeleton in the corner, that is charging towards you!"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
