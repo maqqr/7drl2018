@@ -40,6 +40,21 @@ export class GameData {
         return collection[key];
     }
 
+    // public getByIcon<T extends IHasType>(collection: {[id: number]: T}, searchedType: string): T {
+    public getByIcon(collection: any, searchedType: string): any {
+        for (const key in collection) {
+            if (collection.hasOwnProperty(key)) {
+                const item = collection[key];
+                if (item.icon === searchedType) {
+                    return item;
+                }
+            }
+        }
+
+        console.error("GameData.getByIcon unknown type: \"" + searchedType + "\"");
+        return null;
+    }
+
     public getIdByType(collection: {[id: number]: IHasType}, searchedType: string): number {
         for (const key in collection) {
             if (collection.hasOwnProperty(key)) {

@@ -492,7 +492,8 @@ export class Level {
                             const tileIndex = creDefinition.gid - 1;
                             const creData = this.data.creatures[tileIndex];
                             if (creData === undefined) {
-                                console.error("Creature " + creDefinition.gid + " not found.");
+                                console.error(
+                                    "Creature " + creDefinition.gid + " not found (" + puzzle.puzzlename + ").");
                                 continue;
                             }
                             foundType = creData.type;
@@ -501,13 +502,62 @@ export class Level {
 
                     const data = this.data.getByType(this.data.creatures, foundType);
                     if (data === undefined) {
-                        console.error("Creature with type " + foundType + " not found.");
+                        console.error("Creature with type " + foundType + " not found (" + puzzle.puzzlename + ").");
                         continue;
                     }
 
                     const xx = px + (creDefinition.x / 16);
                     const yy = py + (creDefinition.y / 16) - 1;
                     this.createCreatureAt(data, xx, yy);
+                }
+            }
+        }
+
+        // Place items
+        const itemLayer = getLayerByName("item", true);
+        if (itemLayer) {
+            if ("objects" in itemLayer) {
+                for (const itemDefinition of itemLayer.objects) {
+                    // Check probability
+                    let prob = 100;
+                    if ("properties" in itemDefinition) {
+                        for (const prop in itemDefinition.properties) {
+                            if (itemDefinition.properties.hasOwnProperty(prop)) {
+                                if (prop === "probability") {
+                                    prob = parseInt(itemDefinition.properties.probability, 10);
+                                }
+                            }
+                        }
+                    }
+                    if (Math.random() * 100 > prob) {
+                        continue;
+                    }
+
+                    // If type if missing, get type from the corresponding tile
+                    let foundType = itemDefinition.type;
+                    if (foundType === "") {
+                        if ("gid" in itemDefinition) {
+                            const tileIndex = itemDefinition.gid - 1;
+                            const tileType = this.data.tiles[tileIndex].type;
+                            const itemData = this.data.getByType(this.data.items, tileType);
+                            if (itemData === undefined) {
+                                console.error("Item " + itemDefinition.gid + " not found (" + puzzle.puzzlename + ").");
+                                continue;
+                            }
+                            foundType = itemData.type;
+                        }
+                    }
+
+                    const data = this.data.getByType(this.data.items, foundType);
+                    if (data === undefined) {
+                        console.error("Item with type " + foundType + " not found (" + puzzle.puzzlename + ").");
+                        continue;
+                    }
+
+                    const xx = px + (itemDefinition.x / 16);
+                    const yy = py + (itemDefinition.y / 16) - 1;
+                    // this.createCreatureAt(data, xx, yy);
+                    this.createItemAt(data, xx, yy);
                 }
             }
         }
