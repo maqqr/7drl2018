@@ -10,6 +10,7 @@
         "properties": {
           "id":{"type":"integer"},
           "type":{"type":"string"},
+          "name":{"type":"string"},
           "category":{"type":"string"},
           "description":{"type":"string"}
         }
