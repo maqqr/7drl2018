@@ -38,12 +38,12 @@
         },
         {
             "id":252, "type": "graverobber", "description": "Filthy human dares to rob my family crypt.",
-            "maxhp": 15, "strength": 5, "speed": 5,"willpower": 11, "size": 10, "inventoryslots": 3,
+            "maxhp": 15, "strength": 5, "speed": 5,"willpower": 12, "size": 10, "inventoryslots": 3,
             "inventory": []
         },
         {
             "id":253, "type": "goblin", "description": "A foul green creature.",
-            "maxhp": 12, "strength": 3, "speed": 4,"willpower": 12, "size": 8, "inventoryslots": 3,
+            "maxhp": 12, "strength": 3, "speed": 4,"willpower": 11, "size": 8, "inventoryslots": 3,
             "inventory": []
         },
         {

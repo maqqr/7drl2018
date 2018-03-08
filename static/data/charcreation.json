@@ -19,10 +19,10 @@
             "stability": "You steal what you can and bribe a local farmer to hide you. Hoping to make a better plan the next day."
         },
         {
-            "question": " // pakosi epäonnistuu ja joudut oikeuden eteen. yrität puolustaa itseäsi oikeudenkäynnissä, sukusi ei auta sinua",
-            "willpower": "",
-            "power": "",
-            "stability": ""
+            "question": "Despite your best efforts, you are caught in matter of hours and thrown behind lock and key. As you wait for the trial, you are visited by your uncle Vitalius. He tells you that your family is veru dissapointed and will not help you, for you must pay for your crime if the family honor is to be restored. When, at last, the day of the trial comes, no one from your family is present as you make your speech, trying to plead for you life. Your simple plan is:",
+            "willpower": "You lie, trying to blame the guards. Telling that they killed Norbert and you tried to save his life.",
+            "power": "Distract the guards and run.",
+            "stability": "Plead guilty, hoping your honesty will mitigate your sentence."
         },
         {
             "question": " // tuomiosi on kuolema, millätavalla poistut tästä maailmasta?",
