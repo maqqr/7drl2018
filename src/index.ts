@@ -145,6 +145,7 @@ export class Game {
         // Load item data
         for (const item of itemset.items) {
             this.data.items[item.id] = item;
+            // console.log(item);
         }
 
         // Load tile data
@@ -349,6 +350,25 @@ export class Game {
         }
         if (e.code === "KeyG" && spiritMode) {
             this.messagebuffer.add("You can not pick up items as a spirit.");
+        }
+
+        // Z - use stairs
+        if (e.code === "KeyZ") {
+            const furs = this.currentLevel.getFurnituresAt(this.player.x, this.player.y);
+            let movedir = 0;
+            for (const fur of furs) {
+                if (fur.dataRef.type === "stairup") {
+                    movedir = -1;
+                    break;
+                }
+                if (fur.dataRef.type === "stairdown") {
+                    movedir = 1;
+                    break;
+                }
+            }
+            if (movedir === 1) {
+                //
+            }
         }
 
         // Movement
