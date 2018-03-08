@@ -20,6 +20,7 @@ export interface ICreature extends IHasType {
    speed: number;
    size: number;
    willpower: number;
+   category?: string;
    inventoryslots?: number;
    inventory?: IItem[];
 }

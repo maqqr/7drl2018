@@ -14,6 +14,7 @@ class DescriptionObject {
     public w: number;
     public h: number;
     public text: string;
+    public isRead: boolean;
 
     constructor(x: number, y: number, w: number, h: number, text: string) {
         this.x = x;
@@ -21,6 +22,11 @@ class DescriptionObject {
         this.w = w;
         this.h = h;
         this.text = text;
+        this.isRead = false;
+    }
+
+    public isInside(x: number, y: number): boolean {
+        return x >= this.x && y >= this.y && x < (this.x + this.w) && y < (this.y + this.h);
     }
 }
 
@@ -249,9 +255,10 @@ export class Level {
         }
     }
 
-    public activate(x: number, y: number, userInitiated: boolean = true): void {
+    public activate(x: number, y: number, userInitiated: boolean = true): string {
         console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
+        let message = null;
         // const tile = this.game.
 
         for (const fur of this.furnitures) {
@@ -260,11 +267,10 @@ export class Level {
 
                 // Inform the player with description texts
                 if (userInitiated && fur.dataRef.useractivationtext) {
-                    console.log(fur.dataRef.useractivationtext);
+                    message = fur.dataRef.useractivationtext;
                 }
 
                 const canActivate = (userInitiated && fur.dataRef.useractivation) || !userInitiated;
-                console.log(canActivate);
 
                 // Handle activation targets
                 if (canActivate && fur.dataRef.activationtarget) {
@@ -286,6 +292,7 @@ export class Level {
                 }
             }
         }
+        return message;
     }
 
     public assignNewDataToFurniture(furniture: Furniture, newData: IFurniture): void {
@@ -299,11 +306,14 @@ export class Level {
     }
 
     public placePuzzleAt(px: number, py: number, puzzle: IPuzzleRoom): void {
-        const getLayerByName = (name: string) => {
+        const getLayerByName = (name: string, optional: boolean = false) => {
             for (const layer of puzzle.layers) {
                 if (layer.name === name) {
                     return layer;
                 }
+            }
+            if (optional) {
+                return null;
             }
             console.error("Layer " + name + " not found in puzzle room");
         };
@@ -325,7 +335,7 @@ export class Level {
             for (const desc of descLayer.objects) {
                 const convert = (x) => Math.floor(x / 16);
                 this.descriptions.push(new DescriptionObject(
-                    convert(desc.x) + px, convert(desc.y) + px,
+                    convert(desc.x) + px, convert(desc.y) + py,
                     convert(desc.width), convert(desc.height), desc.properties.text));
             }
         }
@@ -384,6 +394,54 @@ export class Level {
                 furniture.offsetY = py;
                 this.addFurniture(furniture);
                 // this.furnitures.push(furniture);
+            }
+        }
+
+        // Place creatures
+        const creatureLayer = getLayerByName("creature", true);
+        if (creatureLayer) {
+            if ("objects" in creatureLayer) {
+                for (const creDefinition of creatureLayer.objects) {
+                    console.log(creDefinition);
+
+                    // Check probability
+                    if ("properties" in creDefinition) {
+                        for (const prop in creDefinition.properties) {
+                            if (creDefinition.properties.hasOwnProperty(prop)) {
+                                if (prop === "probability") {
+                                    const prob = parseInt(creDefinition.properties.probability, 10);
+                                    if (Math.random() * 100 > prob) {
+                                        continue;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // If type if missing, get type from the corresponding tile
+                    let foundType = creDefinition.type;
+                    if (foundType === "") {
+                        if ("gid" in creDefinition) {
+                            const tileIndex = creDefinition.gid - 1;
+                            const creData = this.data.creatures[tileIndex];
+                            if (creData === undefined) {
+                                console.error("Creature " + creDefinition.gid + " not found.");
+                                continue;
+                            }
+                            foundType = creData.type;
+                        }
+                    }
+
+                    const data = this.data.getByType(this.data.creatures, foundType);
+                    if (data === undefined) {
+                        console.error("Creature with type " + foundType + " not found.");
+                        continue;
+                    }
+
+                    const xx = px + (creDefinition.x / 16);
+                    const yy = py + (creDefinition.y / 16) - 1;
+                    this.createCreatureAt(data, xx, yy);
+                }
             }
         }
     }

@@ -159,9 +159,9 @@ export class PixiRenderer {
         rect.drawCircle(x, y, radius);
     }
 
-    public drawString(x: number, y: number, str: string): void {
+    public drawString(x: number, y: number, str: string, tint: number = Color.white): void {
         for (const ch of str) {
-            this.drawChar(x, y, ch);
+            this.drawChar(x, y, ch, tint);
             x += this.letterSizes[ch];
         }
     }

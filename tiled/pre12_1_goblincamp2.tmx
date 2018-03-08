@@ -21,7 +21,11 @@
   <object id="73" gid="254" x="144" y="48" width="16" height="16"/>
   <object id="74" gid="254" x="112" y="48" width="16" height="16"/>
   <object id="75" gid="254" x="80" y="96" width="16" height="16"/>
-  <object id="76" gid="254" x="112" y="80" width="16" height="16"/>
+  <object id="76" gid="254" x="112" y="80" width="16" height="16">
+   <properties>
+    <property name="probability" value="50"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="furniture">
   <object id="31" gid="52" x="48" y="32" width="16" height="16"/>

@@ -292,6 +292,23 @@
  <tile id="210" type="goldenkey"/>
  <tile id="211" type="healingpotion"/>
  <tile id="212" type="sword"/>
+ <tile id="213" type="mace"/>
+ <tile id="214" type="axe"/>
+ <tile id="215" type="spear"/>
+ <tile id="216" type="shield"/>
+ <tile id="217" type="buckler"/>
+ <tile id="218" type="tome"/>
+ <tile id="219" type="jewellery"/>
+ <tile id="220" type="kalamakkara"/>
+ <tile id="221" type="orb"/>
+ <tile id="224" type="demon"/>
+ <tile id="225" type="cultist"/>
+ <tile id="226" type="vitalius"/>
+ <tile id="240" type="imp"/>
+ <tile id="241" type="fireelemental"/>
+ <tile id="242" type="golem"/>
+ <tile id="243" type="troll"/>
+ <tile id="244" type="giantworm"/>
  <tile id="245" type="giantspider"/>
  <tile id="246" type="bat"/>
  <tile id="247" type="ghoul"/>
