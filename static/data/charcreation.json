@@ -1,13 +1,31 @@
 {
     "questions": [
         {
-            "question": "(past event description here)",
-            "willpower": "I resisted my urge to beat him.",
-            "power": "I punched him in the face.",
+            "question": "In your youth, you and your cousin Markus had a friend named Norbert Omenius. Norbert was a child of a very noble and old family, even at your standarts. Unfortunately, one day you walked in as Norbert was kicking Markus and making fun of your family. You stood there and did what?",
+            "willpower": "I resisted my urge to beat him, and begged Norbert to stop.",
+            "power": "I punched Norber in the head knocking him unconscious.",
             "stability": "I ran away."
         },
         {
-            "question": "(past event description here)",
+            "question": "// tapaat saman noblen muutamia vuosia myöhemmin ja keksit miten maksat takaisin hänelle",
+            "willpower": "",
+            "power": "",
+            "stability": ""
+        },
+        {
+            "question": "// takaisinmaksu menee pieleen ja noble kuolee -> sinua syytetään tästä ja jousut perheesi paheksunnan kohteeksi",
+            "willpower": "",
+            "power": "",
+            "stability": ""
+        },
+        {
+            "question": " // yrität puolustaa itseäsi oikeudenkäynnissä, perheesi ei auta sinua",
+            "willpower": "",
+            "power": "",
+            "stability": ""
+        },
+        {
+            "question": " // tuomiosi on kuolema, millätavalla poistut tästä maailmasta?",
             "willpower": "",
             "power": "",
             "stability": ""
