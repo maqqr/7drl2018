@@ -24,7 +24,9 @@ export class Game {
 
     public indexForTestPuzzle: number = 0;
     public testPuzzleName: string = "";
-    public waitForPushKey: boolean = false;
+
+    public waitForDirCallback: (delta: [number, number]) => void = null;
+    public waitForMessage: string = "";
 
     // Animation variables
     public spiritFadeTimer: number = 0;
@@ -301,44 +303,38 @@ export class Game {
         const dy = code === "ArrowDown" ? 1 : (code === "ArrowUp") ? -1 : 0;
         const xx = px + dx;
         const yy = py + dy;
-        let moving = !(dx === 0 && dy === 0);
+        const moving = !(dx === 0 && dy === 0);
+        const dirKeyPressed = moving || code === "Space";
 
         const creatureBlocking = !this.isCurrable(xx, yy);
         const spiritMode = this.player.currentbody === null;
+
+        if (this.waitForDirCallback !== null && dirKeyPressed) {
+            this.waitForDirCallback([dx, dy]);
+            this.waitForDirCallback = null;
+            keyAccepted = true;
+        }
 
         if (e.code === "KeyQ") {
             this.loadLevel();
         }
 
-        if (e.code === "KeyP" && !spiritMode) {
-            this.waitForPushKey = true;
+        // A - activate
+        if (e.code === "KeyA" && !spiritMode) {
+            this.waitForDirCallback = this.activateTileCallback.bind(this);
+            this.waitForMessage = "Press a direction where to activate (space = current tile)";
             keyAccepted = true;
         }
 
-        if (this.waitForPushKey && moving) {
-            this.waitForPushKey = false;
-            for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
-                const furTargetX = fur.x + dx;
-                const furTargetY = fur.y + dy;
-                const targetTile = this.data.tiles[this.currentLevel.get(furTargetX, furTargetY)];
-                if (this.player.currentbody.dataRef.size >= fur.dataRef.movable) {
-                    const furSizeAtTile = this.currentLevel.getTotalFurnitureSizeAt(furTargetX, furTargetY);
-                    if (furSizeAtTile + fur.dataRef.size <= targetTile.maxsize) {
-                        const oldX = fur.x;
-                        const oldY = fur.y;
-                        fur.x = xx + dx;
-                        fur.y = yy + dy;
-                        this.checkPressureDeactivation(oldX, oldY);
-                        this.checkPressureActivation(fur.x, fur.y);
-                        break;
-                    }
-                }
-            }
-            moving = false;
+        // S - slide (push)
+        if (e.code === "KeyS" && !spiritMode) {
+            this.waitForDirCallback = this.pushObjectCallback.bind(this);
+            this.waitForMessage = "Press a direction where to push";
             keyAccepted = true;
         }
 
-        if (moving || code === "Space") {
+        // Movement
+        if (!keyAccepted && dirKeyPressed) {
             if (creatureBlocking && e.shiftKey && (spiritMode || code !== "Space")) {
                 // Possession
                 const cre = this.currentLevel.getCreatureAt(xx, yy);
@@ -407,6 +403,47 @@ export class Game {
             window.removeEventListener("keydown", this.keyDownCallBack);
             const speed = this.player.currentbody === null ? 5 : this.player.currentbody.dataRef.speed;
             this.updateLoop(speed);
+        }
+    }
+
+    private activateTileCallback(delta: [number, number]): void {
+        const dx = delta[0];
+        const dy = delta[1];
+        const msg = this.currentLevel.activate(
+            this.player.currentbody.x + dx,
+            this.player.currentbody.y + dy, true);
+
+        if (msg) {
+            this.messagebuffer.add(msg);
+        }
+    }
+
+    private pushObjectCallback(delta: [number, number]): void {
+        const dx = delta[0];
+        const dy = delta[1];
+        const xx = this.player.currentbody.x + dx;
+        const yy = this.player.currentbody.y + dy;
+        for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
+            const furTargetX = fur.x + dx;
+            const furTargetY = fur.y + dy;
+            const targetTile = this.data.tiles[this.currentLevel.get(furTargetX, furTargetY)];
+            if (this.player.currentbody.dataRef.size >= fur.dataRef.movable) {
+                const furSizeAtTile = this.currentLevel.getTotalFurnitureSizeAt(furTargetX, furTargetY);
+                if (furSizeAtTile + fur.dataRef.size <= targetTile.maxsize) {
+                    const oldX = fur.x;
+                    const oldY = fur.y;
+                    fur.x = xx + dx;
+                    fur.y = yy + dy;
+                    this.messagebuffer.add("You push the " + fur.dataRef.type + ".");
+                    this.checkPressureDeactivation(oldX, oldY);
+                    this.checkPressureActivation(fur.x, fur.y);
+                    break;
+                } else {
+                    this.messagebuffer.add("Not enough space to push the " + fur.dataRef.type + " there.");
+                }
+            } else {
+                this.messagebuffer.add("The " + fur.dataRef.type + " is too big for you to push.");
+            }
         }
     }
 
