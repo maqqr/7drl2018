@@ -39,7 +39,7 @@
   <object id="41" gid="10" x="192" y="208" width="16" height="16"/>
   <object id="42" gid="53" x="192" y="112" width="16" height="16">
    <properties>
-    <property name="description" value="&quot;Statue of Markus III Grimwin.&quot; Statue's head is slithly tilted up and he is standing majesticly like true head family should be. His face is slithly disfigured as if something correded it over time."/>
+    <property name="description" value="&quot;Statue of Markus III Grimwin.&quot; Statue's head is slightly tilted up and he is standing majestically like true head family should be. His face is slightly disfigured as if something corroded it over time."/>
    </properties>
   </object>
   <object id="43" gid="52" x="144" y="112" width="16" height="16"/>
