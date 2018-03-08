@@ -251,17 +251,19 @@ export class Game {
         return this.currentLevel;
     }
 
-    private isPassable(x: number, y: number): boolean {
-        const plSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
-        return plSize <= this.data.tiles[this.currentLevel.get(x, y)].maxsize;
-    }
+    // private isPassable(ownSize: number, x: number, y: number): boolean {
+        // const plSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
+        // return ownSize <= this.data.tiles[this.currentLevel.get(x, y)].maxsize;
+    // }
+
     private isCurrable(x: number, y: number): boolean {
         return this.currentLevel.getCreatureAt(x, y) === null;
     }
-    private isFurrable(furs: Furniture[], tile: ITile, x: number, y: number): boolean {
+
+    private isFurrable(creSize: number, furs: Furniture[], tile: ITile, x: number, y: number): boolean {
         // let val = true;
         let pile = 0;
-        const playerSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
+        // const playerSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
 
         for (const fur of furs) {
             pile += fur.dataRef.size;
@@ -270,7 +272,16 @@ export class Game {
         // console.log(tile);
         // console.log("pile: " + pile + " / " + tile.maxsize);
         // console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
-        return (pile + playerSize) <= tile.maxsize;
+        return (pile + creSize) <= tile.maxsize;
+    }
+
+    private creatureCanMoveTo(creSize: number, x: number, y: number): boolean {
+        let pile = 0;
+        for (const fur of this.currentLevel.getFurnituresAt(x, y)) {
+            pile += fur.dataRef.size;
+        }
+        const tile = this.currentLevel.getTile(x, y);
+        return (pile + creSize) <= tile.maxsize;
     }
 
     private loadJSON<T>(path: string): Promise<T> {
@@ -345,12 +356,12 @@ export class Game {
         // Tried to move into a tile with a creature
         // TODO fight?
 
-        if (moving) {
+        if (moving || code === "Space") {
             if (creatureBlocking && !spiritMode && !e.shiftKey && code !== "Space") {
                 const action = "You try to hit the " + this.currentLevel.getCreatureAt(xx, yy).dataRef.type;
                 console.log(action);
                 keyAccepted = true;
-            } else if (creatureBlocking && e.shiftKey) {
+            } else if (creatureBlocking && e.shiftKey && spiritMode) {
                 // Possessing
                 const action = "You try to possess the " + this.currentLevel.getCreatureAt(xx, yy).dataRef.type;
                 console.log(action);
@@ -365,17 +376,27 @@ export class Game {
                     console.log(this.currentLevel.getCreatureAt(xx, yy).willpower);
                 }
                 keyAccepted = true;
-            } else if (this.isPassable(xx, yy) &&
-                       this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
-                                       this.currentLevel.getTile(xx, yy), xx, yy)) {
-                this.player.x = xx;
-                this.player.y = yy;
-                if (e.shiftKey) {
-                    this.player.currentbody = null;
-                } else if (!spiritMode) {
-                    this.moveCreature(this.player.currentbody, xx, yy);
+            } else {
+
+                if (spiritMode) {
+                    if (this.creatureCanMoveTo(1, xx, yy)) {
+                        this.player.x = xx;
+                        this.player.y = yy;
+                        keyAccepted = true;
+                    }
+                } else {
+                    if (e.shiftKey && this.creatureCanMoveTo(1, xx, yy)) {
+                        this.player.x = xx;
+                        this.player.y = yy;
+                        this.player.currentbody = null;
+                        keyAccepted = true;
+                    } else if (this.creatureCanMoveTo(this.player.currentbody.dataRef.size, xx, yy)) {
+                        this.player.x = xx;
+                        this.player.y = yy;
+                        this.moveCreature(this.player.currentbody, xx, yy);
+                        keyAccepted = true;
+                    }
                 }
-                keyAccepted = true;
             }
         }
 
@@ -386,12 +407,15 @@ export class Game {
     }
 
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
+        if (this.isFurrable(cre.dataRef.size, this.currentLevel.getFurnituresAt(targetX, targetY),
+            this.currentLevel.getTile(targetX, targetY), targetX, targetY)) {
         const oldX = cre.x;
         const oldY = cre.y;
         cre.x = targetX;
         cre.y = targetY;
         this.checkPressureDeactivation(oldX, oldY);
         this.checkPressureActivation(targetX, targetY);
+            }
     }
 
     private checkPressureActivation(x: number, y: number): void {
@@ -428,8 +452,28 @@ export class Game {
     }
 
     private updateAI(cre: Creature): void {
-        const dx = Math.floor(Math.random() * 3) - 1;
-        const dy = Math.floor(Math.random() * 3) - 1;
+        const passable = (x: number, y: number) => {
+            return true;
+        };
+
+        const dijkstra = new ROT.Path.Dijkstra(this.player.x, this.player.y, passable, { topology: 4 });
+
+        const path: Array<[number, number]> = [];
+        dijkstra.compute(cre.x, cre.y, (x: number, y: number) => {
+            path.push([x, y]);
+        });
+
+        console.log(path);
+
+        let dx = 0;
+        let dy = 0;
+        if (path.length > 1) {
+            dx = path[1][0] - cre.x;
+            dy = path[1][1] - cre.y;
+        } else {
+            dx = Math.floor(Math.random() * 3) - 1;
+            dy = Math.floor(Math.random() * 3) - 1;
+        }
         this.moveCreature(cre, cre.x + dx, cre.y + dy);
     }
 }
