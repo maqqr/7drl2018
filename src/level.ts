@@ -1,8 +1,8 @@
 import * as ROT from "rot-js";
 import { Game } from ".";
 import { GameData } from "./data";
-import { Creature, Entity, Furniture } from "./entity";
-import { ICreature, IFurniture, ITile } from "./interface/entity-schema";
+import { Creature, Entity, Furniture, Item } from "./entity";
+import { ICreature, IFurniture, IItem, ITile } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
 
@@ -52,8 +52,11 @@ export class Level {
     public creatures: Creature[] = [];
     public fov: ROT.FOV;
 
+    public items: Item[] = [];
+
     private tiles: TileID[] = [];
     private tilestate: TileState[] = [];
+
 
     private nextLevel: Level;
     private prevLevel: Level;
@@ -167,6 +170,17 @@ export class Level {
         console.error("Level.getTileState index out of bounds : " + JSON.stringify({ x, y }));
     }
 
+    public getTileDamage(x: number, y: number): number {
+        if (!this.isInLevelBounds(x, y)) {
+            return 0;
+        }
+        let furDamage = 0;
+        for (const fur of this.getFurnituresAt(x, y)) {
+            furDamage += fur.dataRef.damage;
+        }
+        return this.getTile(x, y).damage + furDamage;
+    }
+
     public getFurnituresAt(x: number, y: number): Furniture[] {
         x = Math.floor(x);
         y = Math.floor(y);
@@ -177,6 +191,18 @@ export class Level {
             }
         }
         return furs;
+    }
+
+    public getItemsAt(x: number, y: number): Item[] {
+        x = Math.floor(x);
+        y = Math.floor(y);
+        const items: Item[] = [];
+        for (const item of this.items) {
+            if (item.x === x && item.y === y) {
+                items.push(item);
+            }
+        }
+        return items;
     }
 
     public getTotalFurnitureSizeAt(x: number, y: number): number {
@@ -202,6 +228,12 @@ export class Level {
         this.creatures.push(creature);
     }
 
+    public addItemAt(item: Item, x: number, y: number): void {
+        item.x = x;
+        item.y = y;
+        this.items.push(item);
+    }
+
     public removeCreature(creature: Creature): void {
         const index = this.creatures.indexOf(creature);
         if (index >= 0) {
@@ -217,6 +249,13 @@ export class Level {
         addedCreature.time = 0;
         this.addCreatureAt(addedCreature, x, y);
         return addedCreature;
+    }
+
+    public createItemAt(newItem: IItem, x: number, y: number): Item {
+        const addedItem = new Item();
+        addedItem.dataRef = newItem;
+        this.addItemAt(addedItem, x, y);
+        return addedItem;
     }
 
     public set(x: number, y: number, tile: TileID): void {
@@ -263,8 +302,6 @@ export class Level {
 
         for (const fur of this.furnitures) {
             if (fur.x === x && fur.y === y) {
-                console.log(fur);
-
                 // Inform the player with description texts
                 if (userInitiated && fur.dataRef.useractivationtext) {
                     message = fur.dataRef.useractivationtext;
@@ -402,20 +439,19 @@ export class Level {
         if (creatureLayer) {
             if ("objects" in creatureLayer) {
                 for (const creDefinition of creatureLayer.objects) {
-                    console.log(creDefinition);
-
                     // Check probability
+                    let prob = 50;
                     if ("properties" in creDefinition) {
                         for (const prop in creDefinition.properties) {
                             if (creDefinition.properties.hasOwnProperty(prop)) {
                                 if (prop === "probability") {
-                                    const prob = parseInt(creDefinition.properties.probability, 10);
-                                    if (Math.random() * 100 > prob) {
-                                        continue;
-                                    }
+                                    prob = parseInt(creDefinition.properties.probability, 10);
                                 }
                             }
                         }
+                    }
+                    if (Math.random() * 100 > prob) {
+                        continue;
                     }
 
                     // If type if missing, get type from the corresponding tile

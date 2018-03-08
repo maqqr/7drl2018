@@ -26,6 +26,7 @@ export interface ICreature extends IHasType {
 }
 export interface IItem extends IHasType {
     id: number;
+    icon: number;
     category: string;
 }
 export interface IFurniture extends IHasType {

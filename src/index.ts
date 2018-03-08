@@ -24,7 +24,9 @@ export class Game {
 
     public indexForTestPuzzle: number = 0;
     public testPuzzleName: string = "";
-    public waitForPushKey: boolean = false;
+
+    public waitForDirCallback: (delta: [number, number]) => void = null;
+    public waitForMessage: string = "";
 
     // Animation variables
     public spiritFadeTimer: number = 0;
@@ -137,20 +139,17 @@ export class Game {
             if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
         }
 
-        for (const ent of itemset.items) {
-            this.data.items[ent.id] = ent;
+        // Load item data
+        for (const item of itemset.items) {
+            this.data.items[item.id] = item;
         }
 
-        // Fill empty fields with default values
+        // Load tile data
         for (const tile of tileset.tiles) {
             tile.damage = getProp(tile, "damage", 0, convertInt);
             tile.maxsize = getProp(tile, "maxsize", 0, convertInt);
             tile.transparent = getProp(tile, "transparent", true, convertBool);
             this.data.tiles[tile.id] = tile;
-            // this.data.tiles[tile.id] = tile;
-            // if (!("damage" in tile)) { this.data.tiles[tile.id].damage = 0; }
-            // if (!("maxsize" in tile)) { this.data.tiles[tile.id].maxsize = 0; }
-            // if (!("transparent" in tile)) { this.data.tiles[tile.id].transparent = true; }
             if (!("activation" in tile)) { this.data.tiles[tile.id].activation = null; }
             if (!("requireitem" in tile)) { this.data.tiles[tile.id].requireitem = null; }
             if (!("useractivation" in tile)) { this.data.tiles[tile.id].useractivation = null; }
@@ -162,15 +161,10 @@ export class Game {
             furry.movable = getProp(furry, "movable", 21, convertInt);
             furry.size = getProp(furry, "size", 21, convertInt);
             furry.movable = getProp(furry, "movable", 21, convertInt);
-            // furry.maxsize = getProp(furry, "maxsize", 0, convertInt);
             furry.damage = getProp(furry, "damage", 0, convertInt);
             furry.transparent = getProp(furry, "transparent", true, convertBool);
             furry.draworder = getProp(furry, "draworder", 0, convertInt);
             this.data.furnitures[furry.icon] = furry;
-            // if (!("movable" in furry)) { this.data.furnitures[furry.icon].movable = 21; }
-            // if (!("maxsize" in furry)) { this.data.furnitures[furry.icon].maxsize = 0; }
-            // if (!("size" in furry)) { this.data.furnitures[furry.icon].size = 21; }
-            // if (!("damage" in furry)) { this.data.furnitures[furry.icon].damage = 0; }
             if (!("activation" in furry)) { this.data.furnitures[furry.icon].activation = null; }
             if (!("useractivation" in furry)) { this.data.furnitures[furry.icon].useractivation = null; }
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
@@ -209,8 +203,11 @@ export class Game {
         const graveRobber = this.currentLevel.createCreatureAt(this.data.creatures[252],
                                                                this.player.x + 1, this.player.y);
         graveRobber.willpower = 1;
-        this.currentLevel.createCreatureAt(this.data.creatures[253], this.player.x + 1, this.player.y + 2);
-        this.currentLevel.createCreatureAt(this.data.creatures[254], this.player.x + 2, this.player.y + 2);
+        // this.currentLevel.createCreatureAt(this.data.creatures[253], this.player.x + 1, this.player.y + 2);
+        // this.currentLevel.createCreatureAt(this.data.creatures[254], this.player.x + 2, this.player.y + 2);
+
+        this.currentLevel.createItemAt(this.data.items[1], this.player.x, this.player.y + 1);
+        this.currentLevel.createItemAt(this.data.items[2], this.player.x, this.player.y + 1);
 
         // Transfer player's current body
         if (this.player.currentbody !== null) {
@@ -301,44 +298,58 @@ export class Game {
         const dy = code === "ArrowDown" ? 1 : (code === "ArrowUp") ? -1 : 0;
         const xx = px + dx;
         const yy = py + dy;
-        let moving = !(dx === 0 && dy === 0);
+        const moving = !(dx === 0 && dy === 0);
+        const dirKeyPressed = moving || code === "Space";
 
         const creatureBlocking = !this.isCurrable(xx, yy);
         const spiritMode = this.player.currentbody === null;
+
+        if (this.waitForDirCallback !== null && dirKeyPressed) {
+            this.waitForDirCallback([dx, dy]);
+            this.waitForDirCallback = null;
+            keyAccepted = true;
+        }
 
         if (e.code === "KeyQ") {
             this.loadLevel();
         }
 
-        if (e.code === "KeyP" && !spiritMode) {
-            this.waitForPushKey = true;
+        // A - activate
+        if (e.code === "KeyA" && !spiritMode) {
+            this.waitForDirCallback = this.activateTileCallback.bind(this);
+            this.waitForMessage = "Press a direction where to activate (space = current tile)";
             keyAccepted = true;
         }
+        if (e.code === "KeyA" && spiritMode) {
+            this.messagebuffer.add("You can not activate objects as a spirit.");
+        }
 
-        if (this.waitForPushKey && moving) {
-            this.waitForPushKey = false;
-            for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
-                const furTargetX = fur.x + dx;
-                const furTargetY = fur.y + dy;
-                const targetTile = this.data.tiles[this.currentLevel.get(furTargetX, furTargetY)];
-                if (this.player.currentbody.dataRef.size >= fur.dataRef.movable) {
-                    const furSizeAtTile = this.currentLevel.getTotalFurnitureSizeAt(furTargetX, furTargetY);
-                    if (furSizeAtTile + fur.dataRef.size <= targetTile.maxsize) {
-                        const oldX = fur.x;
-                        const oldY = fur.y;
-                        fur.x = xx + dx;
-                        fur.y = yy + dy;
-                        this.checkPressureDeactivation(oldX, oldY);
-                        this.checkPressureActivation(fur.x, fur.y);
-                        break;
-                    }
-                }
+        // S - slide (push)
+        if (e.code === "KeyS" && !spiritMode) {
+            this.waitForDirCallback = this.pushObjectCallback.bind(this);
+            this.waitForMessage = "Press a direction where to push";
+            keyAccepted = true;
+        }
+        if (e.code === "KeyS" && spiritMode) {
+            this.messagebuffer.add("You can not push up items as a spirit.");
+        }
+
+        // G - get item
+        if (e.code === "KeyG" && !spiritMode) {
+            const items = this.currentLevel.getItemsAt(this.player.x, this.player.y);
+            if (items.length > 0) {
+                // TODO: pick up
+            } else {
+                this.messagebuffer.add("Nothing to pick up here.");
             }
-            moving = false;
             keyAccepted = true;
         }
+        if (e.code === "KeyG" && spiritMode) {
+            this.messagebuffer.add("You can not pick up items as a spirit.");
+        }
 
-        if (moving || code === "Space") {
+        // Movement
+        if (!keyAccepted && dirKeyPressed) {
             if (creatureBlocking && e.shiftKey && (spiritMode || code !== "Space")) {
                 // Possession
                 const cre = this.currentLevel.getCreatureAt(xx, yy);
@@ -390,8 +401,14 @@ export class Game {
                         this.player.x = body.x;
                         this.player.y = body.y;
                         keyAccepted = true;
+                    } else {
+                        console.log(this.currentLevel.getTile(xx, yy).maxsize);
+                        if (this.currentLevel.getTile(xx, yy).maxsize > 0) {
+                            this.messagebuffer.add("You are too big to move there.");
+                        }
                     }
                 }
+                this.reportItemsAt(this.player.x, this.player.y);
             }
         }
 
@@ -407,6 +424,59 @@ export class Game {
             window.removeEventListener("keydown", this.keyDownCallBack);
             const speed = this.player.currentbody === null ? 5 : this.player.currentbody.dataRef.speed;
             this.updateLoop(speed);
+        }
+    }
+
+    private activateTileCallback(delta: [number, number]): void {
+        const dx = delta[0];
+        const dy = delta[1];
+        const msg = this.currentLevel.activate(
+            this.player.currentbody.x + dx,
+            this.player.currentbody.y + dy, true);
+
+        if (msg) {
+            this.messagebuffer.add(msg);
+        }
+    }
+
+    private pushObjectCallback(delta: [number, number]): void {
+        const dx = delta[0];
+        const dy = delta[1];
+        const xx = this.player.currentbody.x + dx;
+        const yy = this.player.currentbody.y + dy;
+        for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
+            const furTargetX = fur.x + dx;
+            const furTargetY = fur.y + dy;
+            const targetTile = this.data.tiles[this.currentLevel.get(furTargetX, furTargetY)];
+            if (this.player.currentbody.dataRef.size >= fur.dataRef.movable) {
+                const furSizeAtTile = this.currentLevel.getTotalFurnitureSizeAt(furTargetX, furTargetY);
+                if (furSizeAtTile + fur.dataRef.size <= targetTile.maxsize) {
+                    const oldX = fur.x;
+                    const oldY = fur.y;
+                    fur.x = xx + dx;
+                    fur.y = yy + dy;
+                    this.messagebuffer.add("You push the " + fur.dataRef.type + ".");
+                    this.checkPressureDeactivation(oldX, oldY);
+                    this.checkPressureActivation(fur.x, fur.y);
+                    break;
+                } else {
+                    this.messagebuffer.add("Not enough space to push the " + fur.dataRef.type + " there.");
+                }
+            } else {
+                this.messagebuffer.add("The " + fur.dataRef.type + " is too heavy for you to push.");
+            }
+        }
+    }
+
+    private checkDeath(cre: Creature): void {
+        if (cre.currenthp <= 0) {
+            const your = cre === this.player.currentbody ? "your " : "";
+            this.messagebuffer.add(your + cre.dataRef.type + " died.");
+            this.currentLevel.removeCreature(cre);
+            if (this.player.currentbody === cre) {
+                this.player.currentbody = null;
+                this.messagebuffer.add("You detach from the corpse.", Color.red);
+            }
         }
     }
 
@@ -426,13 +496,7 @@ export class Game {
             attackerName + " hit" + extraS + " " + defenderName +
             " and deal" + extraS + " " + damage + " damage.", color);
 
-        if (defender.currenthp <= 0) {
-            this.messagebuffer.add(defender.dataRef.type + " died.");
-            this.currentLevel.removeCreature(defender);
-            if (this.player.currentbody === defender) {
-                this.player.currentbody = null;
-            }
-        }
+        this.checkDeath(defender);
     }
 
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
@@ -450,6 +514,31 @@ export class Game {
             cre.y = targetY;
             this.checkPressureDeactivation(oldX, oldY);
             this.checkPressureActivation(targetX, targetY);
+
+            const damage = this.currentLevel.getTileDamage(targetX, targetY);
+            if (damage > 0) {
+                cre.currenthp -= damage;
+                if (cre === this.player.currentbody) {
+                    const tileName = this.currentLevel.getTile(targetX, targetY).type;
+                    this.messagebuffer.add("You take " + damage + " from the " + tileName + "!", Color.red);
+                }
+                this.checkDeath(cre);
+            }
+        }
+    }
+
+    private reportItemsAt(x: number, y: number): void {
+        const items = this.currentLevel.getItemsAt(x, y);
+        if (items.length > 0)  {
+            const addedA = items.length === 1 ? "a " : "";
+            let msg = "You see here " + addedA;
+            for (let index = 0; index < items.length; index++) {
+                const item = items[index];
+                const comma = index === items.length - 1 ? "" : ", ";
+                msg += item.dataRef.type + comma;
+            }
+            msg += ".";
+            this.messagebuffer.add(msg);
         }
     }
 
