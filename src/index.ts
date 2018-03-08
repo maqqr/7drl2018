@@ -7,7 +7,7 @@ import { Creature, Furniture, Player } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
-import { Level } from "./level";
+import { Level, TileVisibility } from "./level";
 import { MessageBuffer } from "./messagebuffer";
 import { IMouseEvent, Renderer } from "./renderer";
 
@@ -132,6 +132,7 @@ export class Game {
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
             ent.willpower = getProp(ent, "willpower", 5, convertInt);
+            if (!("category" in ent)) { this.data.creatures[ent.id].category = "default"; }
             if (!("inventoryslots" in ent)) { this.data.creatures[ent.id].inventoryslots = null; }
             if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
         }
@@ -435,10 +436,13 @@ export class Game {
     }
 
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
-        // if (this.isFurrable(cre.dataRef.size, this.currentLevel.getFurnituresAt(targetX, targetY),
-        //     this.currentLevel.getTile(targetX, targetY), targetX, targetY)) {
         if (!this.isCurrable(targetX, targetY) && !(targetX === cre.x && targetY === cre.y)) {
-            this.creatureFight(cre, this.currentLevel.getCreatureAt(targetX, targetY));
+            // Prevent creatures of same category fighting each other
+            const defender = this.currentLevel.getCreatureAt(targetX, targetY);
+            const playerControlled = cre === this.player.currentbody || defender === this.player.currentbody;
+            if (playerControlled || cre.dataRef.category !== defender.dataRef.category) {
+                this.creatureFight(cre, defender);
+            }
         } else if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             const oldX = cre.x;
             const oldY = cre.y;
@@ -503,14 +507,19 @@ export class Game {
             return canMove;
         };
 
-        const dijkstra = new ROT.Path.Dijkstra(this.testX, this.testY, passable, { topology: 4 });
-
         const path: Array<[number, number]> = [];
-        dijkstra.compute(cre.x, cre.y, (x: number, y: number) => {
-            path.push([x, y]);
-        });
 
-        // console.log(path);
+        // Follow the player
+        const playerBody = this.player.currentbody;
+        const tileState = this.currentLevel.getTileState(cre.x, cre.y).state;
+        if (playerBody !== null && (tileState === TileVisibility.Visible || tileState === TileVisibility.Remembered)) {
+            const dijkstra = new ROT.Path.Dijkstra(playerBody.x, playerBody.y, passable, { topology: 4 });
+            dijkstra.compute(cre.x, cre.y, (x: number, y: number) => {
+                path.push([x, y]);
+            });
+        }
+
+        console.log(path);
 
         let dx = 0;
         let dy = 0;
