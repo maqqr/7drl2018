@@ -39,34 +39,18 @@
          "name":"creature",
          "objects":[
                 {
-                 "gid":253,
-                 "height":16,
-                 "id":59,
-                 "name":"",
-                 "properties":
-                    {
-                     "description":"This is a dirty graverobber. How dare he desecrate your tomb!",
-                     "probability":100,
-                     "willpower":1
-                    },
-                 "propertytypes":
-                    {
-                     "description":"string",
-                     "probability":"int",
-                     "willpower":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":112,
-                 "y":64
-                }, 
-                {
                  "gid":251,
                  "height":16,
                  "id":73,
                  "name":"",
+                 "properties":
+                    {
+                     "propability":100
+                    },
+                 "propertytypes":
+                    {
+                     "propability":"int"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,

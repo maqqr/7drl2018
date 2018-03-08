@@ -250,8 +250,8 @@ export class Game {
                                                                this.player.x - 1, this.player.y);
         graveRobber.willpower = 1;
 
-        this.currentLevel.createItemAt(this.data.items[1], this.player.x, this.player.y + 1);
-        this.currentLevel.createItemAt(this.data.items[2], this.player.x, this.player.y + 1);
+        this.currentLevel.createItemAt(this.data.items[1], this.player.x - 1, this.player.y + 1);
+        this.currentLevel.createItemAt(this.data.items[2], this.player.x - 1, this.player.y + 1);
 
         // Transfer player's current body
         if (this.player.currentbody !== null) {
