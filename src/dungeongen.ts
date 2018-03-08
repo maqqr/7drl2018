@@ -1,5 +1,5 @@
 import { Game } from ".";
-import { LevelRooms, PuzzleRoom, Furniture } from "./entity";
+import { Furniture, LevelRooms, PuzzleRoom } from "./entity";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { Level } from "./level";
 
@@ -23,7 +23,7 @@ export class DungeonGenerator {
 
         const rooms = game.data.predefinedRooms.level[0];
 
-        // Allow all pregen rooms to appear
+        // Allow all pregen rooms to appear again
         for (const room of rooms.pre) {
             room.hasAppeared = false;
         }
@@ -32,16 +32,12 @@ export class DungeonGenerator {
         const generatedRooms = result[0];
         const up = result[1];
         const down = result[2];
-        console.log(result);
+        // console.log(result);
 
         for (const posRoom of generatedRooms) {
             level.placePuzzleAt(1 + 12 * posRoom.x, 1 + 12 * posRoom.y, posRoom.room);
         }
 
-        // const stairUpId = 92;
-        // const stairDownId = 93;
-        // level.set(up.x * 12 + 7, up.y * 12 + 6, stairUpId);
-        // level.set(down.x * 12 + 6, down.y * 12 + 7, stairDownId);
         const upFur = new Furniture();
         upFur.dataRef = game.data.furnitures[92];
         upFur.x = up.x * 12 + 7;
