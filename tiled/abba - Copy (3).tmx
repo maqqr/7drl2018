@@ -31,7 +31,11 @@
   <object id="49" gid="76" x="96" y="96" width="16" height="16"/>
   <object id="50" gid="69" x="80" y="128" width="16" height="16"/>
   <object id="51" gid="69" x="64" y="144" width="16" height="16"/>
-  <object id="52" gid="49" x="112" y="144" width="16" height="16"/>
+  <object id="52" gid="49" x="112" y="144" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[6,9]]"/>
+   </properties>
+  </object>
   <object id="53" gid="57" x="96" y="160" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description"/>
