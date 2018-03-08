@@ -86,12 +86,12 @@ export class Renderer {
         }
 
         // Draw descriptions (for debugging purposes)
-        for (const desc of this.game.getCurrentLevel().descriptions) {
-            this.renderer.drawRect(
-                toScreen(this.game.mapOffsetX + desc.x),
-                toScreen(this.game.mapOffsetY + desc.y),
-                desc.w * 16, desc.h * 16, true, Color.red);
-        }
+        // for (const desc of this.game.getCurrentLevel().descriptions) {
+        //     this.renderer.drawRect(
+        //         toScreen(this.game.mapOffsetX + desc.x),
+        //         toScreen(this.game.mapOffsetY + desc.y),
+        //         desc.w * 16, desc.h * 16, true, Color.red);
+        // }
 
         const creatures = this.game.getCurrentLevel().creatures;
         for (const furry of creatures) {
