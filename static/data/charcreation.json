@@ -26,9 +26,9 @@
         },
         {
             "question": "But before you can make your desperate case, you are interrupted and informed that you will be executed the next day. Baffled for what is happening, you are locked in the dungeon and asked how you would like to be executed.",
-            "willpower": "Poison.",
+            "willpower": "Death by poison.",
             "power": "Death by duel.",
-            "stability": "Hanged."
+            "stability": "Death by hanging."
         }
     ]
 }
