@@ -54,6 +54,10 @@
     "pre": [
         [
             "pre12_1_3x3spiketrapwithpressureplates.json",
+            "pre12_1_coppervault1.json",
+            "pre12_1_coppervault2.json",
+            "pre12_1_silvervault1.json",
+            "pre12_1_goldvault1.json",
             "pre12_1_cluttermap.json",
             "pre12_1_goblincamp.json",
             "pre12_1_goblincamp2.json",
