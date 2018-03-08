@@ -266,6 +266,9 @@ export class Game {
     }
 
     private creatureCanMoveTo(creSize: number, x: number, y: number): boolean {
+        if (!this.currentLevel.isInLevelBounds(x, y)) {
+            return false;
+        }
         let pile = 0;
         for (const fur of this.currentLevel.getFurnituresAt(x, y)) {
             pile += fur.dataRef.size;
@@ -399,7 +402,8 @@ export class Game {
 
         if (keyAccepted) {
             window.removeEventListener("keydown", this.keyDownCallBack);
-            this.updateLoop(5);
+            const speed = this.player.currentbody === null ? 5 : this.player.currentbody.dataRef.speed;
+            this.updateLoop(speed);
         }
     }
 
@@ -411,6 +415,10 @@ export class Game {
         console.log("hp left " + defender.currenthp);
         if (defender.currenthp <= 0) {
             console.log(defender.dataRef.type + " died.");
+            this.currentLevel.removeCreature(defender);
+            if (this.player.currentbody === defender) {
+                this.player.currentbody = null;
+            }
         }
     }
 
@@ -448,7 +456,7 @@ export class Game {
     private updateLoop(deltaTime: number): void {
         for (const cre of this.currentLevel.creatures) {
             console.log(cre);
-            if (this.player.currentbody === cre) {
+            if (this.player.currentbody === cre || cre.currenthp <= 0) {
                 continue;
             }
             cre.time += deltaTime;

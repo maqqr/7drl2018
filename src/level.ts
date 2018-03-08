@@ -197,7 +197,10 @@ export class Level {
     }
 
     public removeCreature(creature: Creature): void {
-        //
+        const index = this.creatures.indexOf(creature);
+        if (index >= 0) {
+            this.creatures.splice(index, 1);
+        }
     }
 
     public createCreatureAt(newCreature: ICreature, x: number, y: number, wp: number ): void {
