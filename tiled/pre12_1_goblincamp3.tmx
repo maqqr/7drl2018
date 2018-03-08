@@ -18,7 +18,11 @@
 </data>
  </layer>
  <objectgroup name="creature">
-  <object id="78" gid="254" x="64" y="96" width="16" height="16"/>
+  <object id="78" gid="254" x="64" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" value="50"/>
+   </properties>
+  </object>
   <object id="79" gid="254" x="96" y="128" width="16" height="16"/>
   <object id="80" gid="254" x="96" y="96" width="16" height="16"/>
  </objectgroup>

@@ -21,6 +21,14 @@
                  "height":16,
                  "id":78,
                  "name":"",
+                 "properties":
+                    {
+                     "probability":"50"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
