@@ -45,11 +45,11 @@
                  "name":"",
                  "properties":
                     {
-                     "propability":100
+                     "probability":100
                     },
                  "propertytypes":
                     {
-                     "propability":"int"
+                     "probability":"int"
                     },
                  "rotation":0,
                  "type":"",

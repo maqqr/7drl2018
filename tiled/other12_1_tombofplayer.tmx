@@ -23,7 +23,7 @@
  <objectgroup name="creature">
   <object id="73" gid="251" x="128" y="160" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="100"/>
+    <property name="probability" type="int" value="100"/>
    </properties>
   </object>
  </objectgroup>
