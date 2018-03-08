@@ -1,0 +1,16 @@
+{
+    "questions": [
+        {
+            "question": "(past event description here)",
+            "willpower": "I resisted my urge to beat him.",
+            "power": "I punched him in the face.",
+            "stability": "I ran away."
+        },
+        {
+            "question": "(past event description here)",
+            "willpower": "",
+            "power": "",
+            "stability": ""
+        }
+    ]
+}
