@@ -28,7 +28,7 @@
   <object id="47" gid="52" x="112" y="32" width="16" height="16"/>
   <object id="48" gid="53" x="80" y="96" width="16" height="16">
    <properties>
-    <property name="description" value="Statue of a young boy playing. You recognize the boy. It is Rofl, your cousins, and you think that you used to play with him when you were young. It seems there was something beside Rofl, but it has been broken off, only a pair boots is left standing."/>
+    <property name="description" value="Statue of a young boy playing. You recognize the boy. It is Rofl, your cousin, and you think that you used to play with him when you were young. It seems there was something beside Rofl, but it has been broken off, only a pair boots is left standing."/>
    </properties>
   </object>
   <object id="49" gid="61" x="64" y="96" width="16" height="16"/>
