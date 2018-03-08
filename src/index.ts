@@ -1,4 +1,5 @@
 import * as $ from "jquery";
+import * as ROT from "rot-js";
 import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
@@ -197,11 +198,13 @@ export class Game {
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
 
+        // Create test creature
+        this.currentLevel.createCreatureAt(this.data.creatures[253], this.player.x + 1, this.player.y, 10);
+
         // Transfer player's current body
         if (this.player.currentbody !== null) {
             this.currentLevel.addCreatureAt(this.player.currentbody, this.player.x, this.player.y);
         }
-        this.currentLevel.createCreatureAt(this.data.creatures[253], 2, 0, 10);
 
         this.indexForTestPuzzle++;
     }
@@ -214,7 +217,7 @@ export class Game {
         setInterval(this.updateTinting.bind(this), 60);
         setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
         setInterval(this.updateScrollAnim.bind(this), 1 / 30.0);
-        this.updateLoop();
+        this.updateLoop(0);
     }
 
     public updateScrollAnim(): void {
@@ -354,6 +357,7 @@ export class Game {
                 if (this.player.spiritpower >= this.currentLevel.getCreatureAt(xx, yy).willpower) {
                     console.log("You were more potent and overcame the feeble creature.");
                     this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
+                    this.player.currentbody.willpower = 0;
                     this.player.x = xx;
                     this.player.y = yy;
                 } else {
@@ -361,10 +365,9 @@ export class Game {
                     console.log(this.currentLevel.getCreatureAt(xx, yy).willpower);
                 }
                 keyAccepted = true;
-            // } else if (this.isPassable(xx, yy) &&
-            //            this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
-            //                            this.currentLevel.getTile(xx, yy), xx, yy)) {
-            } else {
+            } else if (this.isPassable(xx, yy) &&
+                       this.isFurrable(this.currentLevel.getFurnituresAt(xx, yy),
+                                       this.currentLevel.getTile(xx, yy), xx, yy)) {
                 this.player.x = xx;
                 this.player.y = yy;
                 if (e.shiftKey) {
@@ -378,7 +381,7 @@ export class Game {
 
         if (keyAccepted) {
             window.removeEventListener("keydown", this.keyDownCallBack);
-            this.updateLoop();
+            this.updateLoop(5);
         }
     }
 
@@ -405,12 +408,29 @@ export class Game {
         this.renderer.renderGame();
     }
 
-    private updateLoop(): void {
-        // for (const char of this.currentLevel.characters) {
-            // this.updateAI(char)
-        // }
+    private updateLoop(deltaTime: number): void {
+        for (const cre of this.currentLevel.creatures) {
+            console.log(cre);
+            if (this.player.currentbody === cre) {
+                continue;
+            }
+            cre.time += deltaTime;
+            while (cre.time > cre.dataRef.speed) {
+                cre.time -= cre.dataRef.speed;
+
+                if (cre.willpower > 0) {
+                    this.updateAI(cre);
+                }
+            }
+        }
         this.renderer.renderGame();
         this.playerTurn();
+    }
+
+    private updateAI(cre: Creature): void {
+        const dx = Math.floor(Math.random() * 3) - 1;
+        const dy = Math.floor(Math.random() * 3) - 1;
+        this.moveCreature(cre, cre.x + dx, cre.y + dy);
     }
 }
 

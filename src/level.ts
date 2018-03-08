@@ -200,6 +200,7 @@ export class Level {
         const addedCreature = new Creature();
         addedCreature.dataRef = newCreature;
         addedCreature.willpower = wp;
+        addedCreature.time = 0;
         this.addCreatureAt(addedCreature, x, y);
     }
 

@@ -19,7 +19,7 @@ export class Item extends Entity<IItem> {
 export class Creature extends Entity<ICreature> {
     public currenthp: number;
     public willpower: number;
-
+    public time: number;
 }
 
 export class Player extends Entity<IPlayer> {
