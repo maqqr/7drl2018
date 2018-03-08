@@ -202,9 +202,12 @@ export class Game {
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
 
-        // Create test creature
-        this.currentLevel.createCreatureAt(this.data.creatures[253], this.player.x + 1, this.player.y, 10);
-        this.currentLevel.createCreatureAt(this.data.creatures[254], this.player.x + 2, this.player.y, 10);
+        // Create test creatures
+        const graveRobber = this.currentLevel.createCreatureAt(this.data.creatures[252],
+                                                               this.player.x + 1, this.player.y);
+        graveRobber.willpower = 1;
+        this.currentLevel.createCreatureAt(this.data.creatures[253], this.player.x + 1, this.player.y + 2);
+        this.currentLevel.createCreatureAt(this.data.creatures[254], this.player.x + 2, this.player.y + 2);
 
         // Transfer player's current body
         if (this.player.currentbody !== null) {
@@ -376,7 +379,7 @@ export class Game {
                 keyAccepted = true;
             } else {
 
-                if (spiritMode) {
+                if (this.player.currentbody === null) {
                     if (this.creatureCanMoveTo(1, xx, yy)) {
                         this.player.x = xx;
                         this.player.y = yy;
@@ -391,9 +394,10 @@ export class Game {
                         keyAccepted = true;
                     } else if (this.creatureCanMoveTo(this.player.currentbody.dataRef.size, xx, yy)) {
                         // Control possessed body
-                        this.moveCreature(this.player.currentbody, xx, yy);
-                        this.player.x = this.player.currentbody.x;
-                        this.player.y = this.player.currentbody.y;
+                        const body = this.player.currentbody;
+                        this.moveCreature(body, xx, yy);
+                        this.player.x = body.x;
+                        this.player.y = body.y;
                         keyAccepted = true;
                     }
                 }
@@ -425,7 +429,7 @@ export class Game {
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
         // if (this.isFurrable(cre.dataRef.size, this.currentLevel.getFurnituresAt(targetX, targetY),
         //     this.currentLevel.getTile(targetX, targetY), targetX, targetY)) {
-        if (!this.isCurrable(targetX, targetY)) {
+        if (!this.isCurrable(targetX, targetY) && !(targetX === cre.x && targetY === cre.y)) {
             this.creatureFight(cre, this.currentLevel.getCreatureAt(targetX, targetY));
         } else if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             const oldX = cre.x;

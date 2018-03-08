@@ -203,13 +203,14 @@ export class Level {
         }
     }
 
-    public createCreatureAt(newCreature: ICreature, x: number, y: number, wp: number ): void {
+    public createCreatureAt(newCreature: ICreature, x: number, y: number): Creature {
         const addedCreature = new Creature();
         addedCreature.currenthp = newCreature.maxhp;
         addedCreature.dataRef = newCreature;
         addedCreature.willpower = newCreature.willpower;
         addedCreature.time = 0;
         this.addCreatureAt(addedCreature, x, y);
+        return addedCreature;
     }
 
     public set(x: number, y: number, tile: TileID): void {
