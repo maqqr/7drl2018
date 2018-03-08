@@ -436,10 +436,13 @@ export class Game {
     }
 
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
-        // if (this.isFurrable(cre.dataRef.size, this.currentLevel.getFurnituresAt(targetX, targetY),
-        //     this.currentLevel.getTile(targetX, targetY), targetX, targetY)) {
         if (!this.isCurrable(targetX, targetY) && !(targetX === cre.x && targetY === cre.y)) {
-            this.creatureFight(cre, this.currentLevel.getCreatureAt(targetX, targetY));
+            // Prevent creatures of same category fighting each other
+            const defender = this.currentLevel.getCreatureAt(targetX, targetY);
+            const playerControlled = cre === this.player.currentbody || defender === this.player.currentbody;
+            if (playerControlled || cre.dataRef.category !== defender.dataRef.category) {
+                this.creatureFight(cre, defender);
+            }
         } else if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             const oldX = cre.x;
             const oldY = cre.y;
