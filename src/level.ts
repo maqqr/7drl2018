@@ -274,8 +274,6 @@ export class Level {
 
         for (const fur of this.furnitures) {
             if (fur.x === x && fur.y === y) {
-                console.log(fur);
-
                 // Inform the player with description texts
                 if (userInitiated && fur.dataRef.useractivationtext) {
                     message = fur.dataRef.useractivationtext;
@@ -413,8 +411,6 @@ export class Level {
         if (creatureLayer) {
             if ("objects" in creatureLayer) {
                 for (const creDefinition of creatureLayer.objects) {
-                    console.log(creDefinition);
-
                     // Check probability
                     let prob = 50;
                     if ("properties" in creDefinition) {
