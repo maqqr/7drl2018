@@ -187,7 +187,7 @@ export class Game {
         if (!testMode) {
             this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5);
         } else {
-            this.currentLevel = new Level(25, 25, this.data);
+            this.currentLevel = new Level(26, 26, this.data);
         }
 
         this.player.x = 6;
