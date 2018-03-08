@@ -7,19 +7,19 @@
             "stability": "I ran away."
         },
         {
-            "question": "// tapaat saman noblen muutamia vuosia myöhemmin ja keksit miten maksat takaisin hänelle",
-            "willpower": "",
-            "power": "",
-            "stability": ""
+            "question": "Many years later in a ball, you find out that Norbert has returned to town and is attending at the same party. You decide, that now is the time to get even. Your plan is:",
+            "willpower": "I'll quickly break in to his home, and trash his room.",
+            "power": "I'll wait for an opportunity, and then give him a beating.",
+            "stability": "I'll steal some jewellery at the ball, and plant them in to the Norberts carriage."
         },
         {
-            "question": "// takaisinmaksu menee pieleen ja noble kuolee -> sinua syytetään tästä ja jousut perheesi paheksunnan kohteeksi",
-            "willpower": "",
-            "power": "",
-            "stability": ""
+            "question": "Just before you have successfully executed your plan, Norbert and two of his guards catch you. In the heat of the moment, you grap a knife and stab him in the throat and manage to flee from the situation. Panicing, becouse you have brought dishonor to your family, you decide to flee the country. What will you take with you?",
+            "willpower": "You only take the essentials: food and money. Then you sneak in the stables and saddle your fathers best horse, hoping to make as much ground as possible before they start to look for you.",
+            "power": "You steal the family sword and other valuables. Hoping you can make a living as a mercenary or in the worst case sell some of your possessions.",
+            "stability": "You steal what you can and bribe a local farmer to hide you. Hoping to make a better plan the next day."
         },
         {
-            "question": " // yrität puolustaa itseäsi oikeudenkäynnissä, perheesi ei auta sinua",
+            "question": " // pakosi epäonnistuu ja joudut oikeuden eteen. yrität puolustaa itseäsi oikeudenkäynnissä, sukusi ei auta sinua",
             "willpower": "",
             "power": "",
             "stability": ""
