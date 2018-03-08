@@ -601,7 +601,20 @@ export class Game {
             for (let index = 0; index < items.length; index++) {
                 const item = items[index];
                 const comma = index === items.length - 1 ? "" : ", ";
-                msg += item.dataRef.type + comma;
+                msg += item.dataRef.name + comma;
+            }
+            msg += ".";
+            this.messagebuffer.add(msg);
+        }
+
+        const furs = this.currentLevel.getFurnituresAt(x, y);
+        if (furs.length > 0)  {
+            const addedA = furs.length === 1 ? "a " : "";
+            let msg = "You see here " + addedA;
+            for (let index = 0; index < furs.length; index++) {
+                const fur = furs[index];
+                const comma = index === furs.length - 1 ? "" : ", ";
+                msg += fur.dataRef.name + comma;
             }
             msg += ".";
             this.messagebuffer.add(msg);
@@ -617,8 +630,6 @@ export class Game {
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {
-        this.testX = mouseEvent.tx - this.mapOffsetTargetX;
-        this.testY = mouseEvent.ty - this.mapOffsetTargetY;
         console.log(mouseEvent);
         const msg = this.currentLevel.activate(
                         mouseEvent.tx - this.mapOffsetTargetX,

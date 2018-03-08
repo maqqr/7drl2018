@@ -37,6 +37,7 @@ export interface IItem extends IHasType {
 
 export interface IFurniture extends IHasType {
     icon: number;
+    name: string;
     size?: number;
     movable?: number;
     draworder?: number;
