@@ -23,7 +23,15 @@ export class DungeonGenerator {
         const level = new Level(roomsX * 12 + 2, roomsY * 12 + 2, depth, game.data);
 
         // TODO: get correct rooms
-        const rooms = game.data.predefinedRooms.level[0];
+        let levelStyle = 0;
+        if (depth >= 4) {
+            levelStyle = 1;
+        }
+        if (depth >= 7) {
+            levelStyle = 2;
+        }
+        console.log("level style " + levelStyle);
+        const rooms = game.data.predefinedRooms.level[levelStyle];
 
         // Allow all pregen rooms to appear again
         for (const room of rooms.pre) {
@@ -40,17 +48,21 @@ export class DungeonGenerator {
             level.placePuzzleAt(1 + 12 * posRoom.x, 1 + 12 * posRoom.y, posRoom.room);
         }
 
+        // Place up stairs
         const upFur = new Furniture();
         upFur.dataRef = game.data.furnitures[92];
         upFur.x = up.x * 12 + 7;
         upFur.y = up.y * 12 + 6;
         level.addFurniture(upFur);
 
-        const downFur = new Furniture();
-        downFur.dataRef = game.data.furnitures[93];
-        downFur.x = down.x * 12 + 6;
-        downFur.y = down.y * 12 + 7;
-        level.addFurniture(downFur);
+        // Place down stairs
+        if (depth < 10) {
+            const downFur = new Furniture();
+            downFur.dataRef = game.data.furnitures[93];
+            downFur.x = down.x * 12 + 6;
+            downFur.y = down.y * 12 + 7;
+            level.addFurniture(downFur);
+        }
 
         return level;
     }
@@ -127,7 +139,7 @@ export class DungeonGenerator {
             Game.startRoomX = startPos.x;
             Game.startRoomY = startPos.y;
         }
-        if (depth === 2) {
+        if (depth === 10) {
             const startPos = randomFree2x2Position();
             putTile2x2(startPos, "S");
             generatedRooms.push(new PositionedRoom(startPos.x, startPos.y, data.predefinedRooms.finalRoom.dataRef));
@@ -180,6 +192,7 @@ export class DungeonGenerator {
         }
 
         // Print the level layout
+        console.log("Generated depth " + depth);
         for (let y = 0; y < roomsY; y++) {
             console.log("" + y + " " + level[y]);
         }

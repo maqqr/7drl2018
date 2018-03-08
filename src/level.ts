@@ -68,6 +68,7 @@ export class Level {
         this.data = data;
         this.width = width;
         this.height = height;
+        this.depth = depth;
         this.nextLevel = null;
         this.prevLevel = null;
         for (let index = 0; index < width * height; index++) {
@@ -275,7 +276,7 @@ export class Level {
             }
         }
 
-        console.log(addedCreature);
+        // console.log(addedCreature);
 
         this.addCreatureAt(addedCreature, x, y);
         return addedCreature;

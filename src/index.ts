@@ -26,7 +26,7 @@ export class Game {
     public indexForTestPuzzle: number = 0;
     public testPuzzleName: string = "";
 
-    public waitForDirCallback: (delta: [number, number]) => void = null;
+    public waitForDirCallback: (delta: [number, number]) => boolean = null;
     public waitForMessage: string = "";
 
     // Animation variables
@@ -334,6 +334,7 @@ export class Game {
         const px = this.player.x;
         const py = this.player.y;
         let keyAccepted = false;
+        let advanceTime = false;
 
         const code = e.code;
         console.log(e.code);
@@ -349,7 +350,7 @@ export class Game {
         const spiritMode = this.player.currentbody === null;
 
         if (this.waitForDirCallback !== null && dirKeyPressed) {
-            this.waitForDirCallback([dx, dy]);
+            advanceTime = this.waitForDirCallback([dx, dy]);
             this.waitForDirCallback = null;
             keyAccepted = true;
         }
@@ -451,6 +452,7 @@ export class Game {
                 } else {
                     this.messagebuffer.add("The creature did not submit to you.");
                 }
+                advanceTime = true;
                 keyAccepted = true;
             } else {
 
@@ -458,6 +460,7 @@ export class Game {
                     if (this.creatureCanMoveTo(1, xx, yy)) {
                         this.player.x = xx;
                         this.player.y = yy;
+                        advanceTime = true;
                         keyAccepted = true;
                     }
                 } else {
@@ -467,6 +470,7 @@ export class Game {
                         this.player.y = yy;
                         this.messagebuffer.add("You detach from the " + this.player.currentbody.dataRef.type + ".");
                         this.player.currentbody = null;
+                        advanceTime = true;
                         keyAccepted = true;
                     } else if (this.creatureCanMoveTo(this.player.currentbody.dataRef.size, xx, yy)) {
                         // Control possessed body
@@ -474,6 +478,7 @@ export class Game {
                         this.moveCreature(body, xx, yy);
                         this.player.x = body.x;
                         this.player.y = body.y;
+                        advanceTime = true;
                         keyAccepted = true;
                     } else {
                         console.log(this.currentLevel.getTile(xx, yy).maxsize);
@@ -497,11 +502,11 @@ export class Game {
         if (keyAccepted) {
             window.removeEventListener("keydown", this.keyDownCallBack);
             const speed = this.player.currentbody === null ? 5 : this.player.currentbody.dataRef.speed;
-            this.updateLoop(speed);
+            this.updateLoop(advanceTime ? speed : 0);
         }
     }
 
-    private activateTileCallback(delta: [number, number]): void {
+    private activateTileCallback(delta: [number, number]): boolean {
         const dx = delta[0];
         const dy = delta[1];
         const msg = this.currentLevel.activate(
@@ -511,13 +516,15 @@ export class Game {
         if (msg) {
             this.messagebuffer.add(msg);
         }
+        return true;
     }
 
-    private pushObjectCallback(delta: [number, number]): void {
+    private pushObjectCallback(delta: [number, number]): boolean {
         const dx = delta[0];
         const dy = delta[1];
         const xx = this.player.currentbody.x + dx;
         const yy = this.player.currentbody.y + dy;
+        let advanceTime = false;
         for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
             const furTargetX = fur.x + dx;
             const furTargetY = fur.y + dy;
@@ -532,6 +539,7 @@ export class Game {
                     this.messagebuffer.add("You push the " + fur.dataRef.type + ".");
                     this.checkPressureDeactivation(oldX, oldY);
                     this.checkPressureActivation(fur.x, fur.y);
+                    advanceTime = true;
                     break;
                 } else {
                     this.messagebuffer.add("Not enough space to push the " + fur.dataRef.type + " there.");
@@ -540,6 +548,7 @@ export class Game {
                 this.messagebuffer.add("The " + fur.dataRef.type + " is too heavy for you to push.");
             }
         }
+        return advanceTime;
     }
 
     private checkDeath(cre: Creature): void {
@@ -650,16 +659,19 @@ export class Game {
     }
 
     private updateLoop(deltaTime: number): void {
-        for (const cre of this.currentLevel.creatures) {
-            if (this.player.currentbody === cre || cre.currenthp <= 0) {
-                continue;
-            }
-            cre.time += deltaTime;
-            while (cre.time > cre.dataRef.speed) {
-                cre.time -= cre.dataRef.speed;
+        console.log("deltaTime: " + deltaTime);
+        if (deltaTime > 0) {
+            for (const cre of this.currentLevel.creatures) {
+                if (this.player.currentbody === cre || cre.currenthp <= 0) {
+                    continue;
+                }
+                cre.time += deltaTime;
+                while (cre.time > cre.dataRef.speed) {
+                    cre.time -= cre.dataRef.speed;
 
-                if (cre.willpower > 0) {
-                    this.updateAI(cre);
+                    if (cre.willpower > 0) {
+                        this.updateAI(cre);
+                    }
                 }
             }
         }
