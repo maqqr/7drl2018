@@ -331,7 +331,7 @@ export class Level {
             for (const desc of descLayer.objects) {
                 const convert = (x) => Math.floor(x / 16);
                 this.descriptions.push(new DescriptionObject(
-                    convert(desc.x) + px, convert(desc.y) + px,
+                    convert(desc.x) + px, convert(desc.y) + py,
                     convert(desc.width), convert(desc.height), desc.properties.text));
             }
         }
