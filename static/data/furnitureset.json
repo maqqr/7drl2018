@@ -100,6 +100,10 @@
         {"icon": 82,"draworder": 10,"type": "trapteleportin","name":"active teleport circle","size": 0,"description": "This is a active teleport circle."},
         {"icon": 83,"draworder": 10,"type": "trapteleportout","name":"inactive teleport circle","size": 0,"description": "This is a inactive teleport circle."},
 
-        {"icon": 89,"draworder": 11,"type": "headlessskeleton","name":"skeleton","size": 6,"description": "This is a headless skeleton."}
+        {"icon": 89,"draworder": 11,"type": "headlessskeleton","name":"skeleton","size": 6,"description": "This is a headless skeleton."},
+
+        {"icon": 92,"draworder": 11,"type": "stairsup","name":"upward stairway","size": 0,"description": "This is a stairway leading up."},
+        {"icon": 93,"draworder": 11,"type": "stairsdown","name":"downward stairway","size": 0,"description": "This is a stairway leading down."}
+        
     ]
 }
