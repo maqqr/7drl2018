@@ -54,12 +54,13 @@ export class Level {
 
     public items: Item[] = [];
 
+    public nextLevel: Level;
+    public prevLevel: Level;
+
     private tiles: TileID[] = [];
     private tilestate: TileState[] = [];
 
 
-    private nextLevel: Level;
-    private prevLevel: Level;
     private readonly data: GameData;
 
     constructor(width: number, height: number, data: GameData) {

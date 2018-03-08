@@ -19,9 +19,6 @@ export class Game {
     public player: Player;
     public messagebuffer: MessageBuffer = new MessageBuffer(10);
 
-    public testX: number = 0;
-    public testY: number = 0;
-
     public indexForTestPuzzle: number = 0;
     public testPuzzleName: string = "";
 
@@ -180,6 +177,41 @@ export class Game {
         this.loadLevel();
     }
 
+    public placePlayerAtFurniture(furType: string): void {
+        for (const fur of this.currentLevel.furnitures) {
+            if (fur.dataRef.type === furType) {
+                this.player.x = fur.x;
+                this.player.y = fur.y;
+            }
+        }
+    }
+
+    public nextLevel(): void {
+        if (this.currentLevel.nextLevel === null) {
+            this.currentLevel.nextLevel = DungeonGenerator.generateLevel(this, 5, 5);
+            this.currentLevel.nextLevel.prevLevel = this.currentLevel;
+        }
+        this.currentLevel = this.currentLevel.nextLevel;
+
+        this.placePlayerAtFurniture("stairsup");
+
+        this.mapOffsetX = this.mapOffsetTargetX;
+        this.mapOffsetY = this.mapOffsetTargetY;
+    }
+
+    public prevLevel(): void {
+        if (this.currentLevel.prevLevel === null) {
+            this.messagebuffer.add("Those stairs lead out of the crypt. You do not want to go there.");
+            return;
+        }
+        this.currentLevel = this.currentLevel.prevLevel;
+
+        this.placePlayerAtFurniture("stairsdown");
+
+        this.mapOffsetX = this.mapOffsetTargetX;
+        this.mapOffsetY = this.mapOffsetTargetY;
+    }
+
     public loadLevel(): void {
         const testMode = false;
 
@@ -314,8 +346,15 @@ export class Game {
             keyAccepted = true;
         }
 
-        if (e.code === "KeyQ") {
-            this.loadLevel();
+        // Debugging keys
+        // if (e.code === "KeyQ") {
+        //     this.loadLevel();
+        // }
+        if (e.code === "KeyP") {
+            this.placePlayerAtFurniture("stairsup");
+        }
+        if (e.code === "KeyO") {
+            this.placePlayerAtFurniture("stairsdown");
         }
 
         // A - activate
@@ -357,17 +396,21 @@ export class Game {
             const furs = this.currentLevel.getFurnituresAt(this.player.x, this.player.y);
             let movedir = 0;
             for (const fur of furs) {
-                if (fur.dataRef.type === "stairup") {
+                if (fur.dataRef.type === "stairsup") {
                     movedir = -1;
                     break;
                 }
-                if (fur.dataRef.type === "stairdown") {
+                if (fur.dataRef.type === "stairsdown") {
                     movedir = 1;
                     break;
                 }
             }
             if (movedir === 1) {
-                //
+                this.nextLevel();
+            } else if (movedir === -1) {
+                this.prevLevel();
+            } else {
+                this.messagebuffer.add("There are no stairs here.");
             }
         }
 
@@ -631,7 +674,7 @@ export class Game {
             });
         }
 
-        console.log(path);
+        // console.log(path);
 
         let dx = 0;
         let dy = 0;
