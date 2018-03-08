@@ -145,6 +145,7 @@ export class Game {
         // Load item data
         for (const item of itemset.items) {
             this.data.items[item.id] = item;
+            // console.log(item);
         }
 
         // Load tile data
