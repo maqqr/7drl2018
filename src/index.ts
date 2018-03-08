@@ -132,6 +132,7 @@ export class Game {
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
             ent.willpower = getProp(ent, "willpower", 5, convertInt);
+            if (!("category" in ent)) { this.data.creatures[ent.id].category = "default"; }
             if (!("inventoryslots" in ent)) { this.data.creatures[ent.id].inventoryslots = null; }
             if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
         }
