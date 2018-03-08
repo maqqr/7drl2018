@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="42">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="48">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -108,11 +108,24 @@
   <object id="40" gid="29" x="304" y="160" width="16" height="16"/>
   <object id="41" gid="29" x="304" y="240" width="16" height="16"/>
  </objectgroup>
+ <objectgroup name="item">
+  <object id="42" gid="222" x="256" y="80" width="16" height="16"/>
+ </objectgroup>
  <objectgroup name="description">
   <object id="10" x="64" y="176" width="16" height="16">
    <properties>
     <property name="text" value="You step in to a vault. Your family used to store valuables in these. The vault doors look old and rusty."/>
    </properties>
   </object>
+  <object id="43" x="304" y="160" width="16" height="16">
+   <properties>
+    <property name="text" value="The vault is filled with jewellery and gold."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="creature">
+  <object id="44" gid="251" x="288" y="176" width="16" height="16"/>
+  <object id="45" gid="251" x="80" y="192" width="16" height="16"/>
+  <object id="46" gid="251" x="144" y="304" width="16" height="16"/>
  </objectgroup>
 </map>
