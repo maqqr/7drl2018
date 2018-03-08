@@ -11,6 +11,7 @@
                 "icon": {"type":"integer"},
                 "movable": {"type":"integer","minimum": 0,"maximum": 21,"default":21},
                 "type": {"type":"string"},
+                "name": {"type":"string"},
                 "size": {"type":"integer","minimum": 0,"maximum": 21,"default":21},
                 "draworder": {"type":"integer", "default": 0},
                 "damage": {"type":"integer","minimum": 0},
