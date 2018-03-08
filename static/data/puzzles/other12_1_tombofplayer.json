@@ -43,6 +43,14 @@
                  "height":16,
                  "id":73,
                  "name":"",
+                 "properties":
+                    {
+                     "propability":100
+                    },
+                 "propertytypes":
+                    {
+                     "propability":"int"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
