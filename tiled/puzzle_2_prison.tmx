@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="150">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="161">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -139,6 +139,21 @@
   <object id="145" gid="52" x="96" y="208" width="16" height="16"/>
   <object id="146" gid="52" x="144" y="288" width="16" height="16"/>
   <object id="147" gid="52" x="224" y="288" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="150" gid="222" x="336" y="352" width="16" height="16"/>
+  <object id="160" gid="212" x="192" y="192" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="creature">
+  <object id="151" gid="249" x="336" y="64" width="16" height="16"/>
+  <object id="152" gid="250" x="48" y="48" width="16" height="16"/>
+  <object id="153" gid="250" x="48" y="352" width="16" height="16"/>
+  <object id="154" gid="250" x="304" y="192" width="16" height="16"/>
+  <object id="155" gid="250" x="48" y="96" width="16" height="16"/>
+  <object id="156" gid="250" x="112" y="336" width="16" height="16"/>
+  <object id="157" gid="250" x="160" y="336" width="16" height="16"/>
+  <object id="158" gid="250" x="224" y="320" width="16" height="16"/>
+  <object id="159" gid="250" x="272" y="320" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description">
   <object id="148" x="96" y="48" width="192" height="16">

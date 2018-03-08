@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="142">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="146">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
 25,22,23,24,22,23,23,24,22,23,24,25,22,23,23,23,23,22,22,24,24,25,22,22,
-24,18,19,19,19,18,18,21,18,18,21,23,25,18,20,21,21,20,20,21,21,19,19,23,
+24,22,19,19,19,18,18,21,18,18,21,23,25,18,20,21,21,20,20,21,21,19,23,23,
 22,18,19,18,18,21,19,20,20,20,20,22,25,19,21,20,19,21,19,21,18,21,20,23,
 25,19,20,18,20,20,18,21,20,19,21,23,22,19,18,21,19,18,19,21,20,18,20,24,
 25,19,24,19,18,22,22,24,22,23,22,25,25,25,25,22,23,23,23,21,20,22,19,23,
@@ -25,7 +25,7 @@
 24,21,19,21,18,25,22,18,21,21,18,23,24,19,21,19,18,25,24,21,20,19,19,25,
 22,18,19,18,18,20,18,18,21,20,21,19,21,21,20,18,21,19,18,20,21,19,20,25,
 22,18,19,21,19,18,19,18,20,18,21,20,19,21,19,21,21,18,19,21,21,18,18,22,
-24,21,19,21,18,21,20,19,21,21,20,19,18,19,20,18,20,18,19,20,19,18,21,23,
+24,23,19,21,18,21,20,19,21,21,20,19,18,19,20,18,20,18,19,20,19,18,23,23,
 25,25,22,24,25,25,22,24,24,25,22,25,23,24,22,23,25,22,23,22,24,22,23,25
 </data>
  </layer>
@@ -175,6 +175,18 @@
     <property name="description" value="“Here lies Mrs Juetta Payne. Died from the plague in 999.” Your grandmother became very distant after the death of her husband."/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="142" gid="222" x="208" y="304" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="creature">
+  <object id="143" gid="243" x="192" y="224" width="16" height="16">
+   <properties>
+    <property name="probability" value="100"/>
+   </properties>
+  </object>
+  <object id="144" gid="250" x="288" y="288" width="16" height="16"/>
+  <object id="145" gid="250" x="80" y="272" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description">
   <object id="140" x="176" y="64" width="32" height="16">

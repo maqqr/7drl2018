@@ -29,7 +29,7 @@ export class DungeonGenerator {
         }
 
         const generatedRooms = this.makeLevelPlan(roomsX, roomsY, rooms);
-        console.log(generatedRooms);
+        // console.log(generatedRooms);
 
         for (const posRoom of generatedRooms) {
             level.placePuzzleAt(1 + 12 * posRoom.x, 1 + 12 * posRoom.y, posRoom.room);
@@ -42,7 +42,7 @@ export class DungeonGenerator {
         const generatedRooms: PositionedRoom[] = [];
         const level: string[][] = [];
 
-        console.log(rooms);
+        // console.log(rooms);
 
         const randomFreePosition = () => {
             let attempt = 0;
@@ -95,7 +95,7 @@ export class DungeonGenerator {
         const puzzlePos = randomFree2x2Position();
         const puzzle = this.getRandomRoom(rooms, "puzzles");
         generatedRooms.push(new PositionedRoom(puzzlePos.x, puzzlePos.y, puzzle.dataRef));
-        console.log("Generated puzzle name: " + puzzle.dataRef.puzzlename);
+        // console.log("Generated puzzle name: " + puzzle.dataRef.puzzlename);
         putTile2x2(puzzlePos, "P");
 
         // Place potential "other" room

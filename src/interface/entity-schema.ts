@@ -12,7 +12,8 @@ export interface ITile extends IHasType {
     useractivationtext?: string;
     transparent?: boolean;
     damage?: number;
- }
+}
+
 export interface ICreature extends IHasType {
    id: number;
    maxhp: number;
@@ -22,12 +23,17 @@ export interface ICreature extends IHasType {
    willpower: number;
    category?: string;
    inventoryslots?: number;
-   inventory?: IItem[];
+   defenciveslot?: boolean;
+   offensiveslot?: boolean;
+   inventory?: string[];
 }
+
 export interface IItem extends IHasType {
     id: number;
+    icon: number;
     category: string;
 }
+
 export interface IFurniture extends IHasType {
     icon: number;
     size?: number;

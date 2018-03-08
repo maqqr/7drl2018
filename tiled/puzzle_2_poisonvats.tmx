@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="63">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="73">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -120,6 +120,20 @@
     <property name="description" value="Alchemy formulas and calculations. You recognize the name Lina Grimwin, she was your aunt. You remember that she liked to dapple with alchemy and was somewhat successful in that area."/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="63" gid="222" x="272" y="208" width="16" height="16"/>
+  <object id="64" gid="212" x="304" y="192" width="16" height="16"/>
+  <object id="65" gid="212" x="272" y="304" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="creature">
+  <object id="66" gid="252" x="208" y="80" width="16" height="16"/>
+  <object id="67" gid="252" x="192" y="160" width="16" height="16"/>
+  <object id="68" gid="252" x="208" y="144" width="16" height="16"/>
+  <object id="69" gid="252" x="288" y="304" width="16" height="16"/>
+  <object id="70" gid="252" x="288" y="80" width="16" height="16"/>
+  <object id="71" gid="252" x="272" y="176" width="16" height="16"/>
+  <object id="72" gid="252" x="288" y="224" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description">
   <object id="62" x="64" y="176" width="16" height="32">
