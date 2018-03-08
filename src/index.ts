@@ -17,8 +17,8 @@ export class Game {
     public data: GameData;
     public player: Player;
 
-    public testX: number;
-    public testY: number;
+    public testX: number = 0;
+    public testY: number = 0;
 
     public indexForTestPuzzle: number = 0;
     public testPuzzleName: string = "";
@@ -129,6 +129,7 @@ export class Game {
         // Load the creatures to data
         for (const ent of creatureset.creatures) {
             this.data.creatures[ent.id] = ent;
+            ent.willpower = getProp(ent, "willpower", 5, convertInt);
             if (!("inventoryslots" in ent)) { this.data.creatures[ent.id].inventoryslots = null; }
             if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
         }
@@ -203,6 +204,7 @@ export class Game {
 
         // Create test creature
         this.currentLevel.createCreatureAt(this.data.creatures[253], this.player.x + 1, this.player.y, 10);
+        this.currentLevel.createCreatureAt(this.data.creatures[254], this.player.x + 2, this.player.y, 10);
 
         // Transfer player's current body
         if (this.player.currentbody !== null) {
@@ -261,21 +263,6 @@ export class Game {
 
     private isCurrable(x: number, y: number): boolean {
         return this.currentLevel.getCreatureAt(x, y) === null;
-    }
-
-    private isFurrable(creSize: number, furs: Furniture[], tile: ITile, x: number, y: number): boolean {
-        // let val = true;
-        let pile = 0;
-        // const playerSize = this.player.currentbody === null ? 1 : this.player.currentbody.dataRef.size;
-
-        for (const fur of furs) {
-            pile += fur.dataRef.size;
-        }
-        // console.log(furs);
-        // console.log(tile);
-        // console.log("pile: " + pile + " / " + tile.maxsize);
-        // console.log("pile+player: " + (pile + playerSize) + " / " + tile.maxsize);
-        return (pile + creSize) <= tile.maxsize;
     }
 
     private creatureCanMoveTo(creSize: number, x: number, y: number): boolean {
@@ -360,23 +347,28 @@ export class Game {
         // TODO fight?
 
         if (moving || code === "Space") {
-            if (creatureBlocking && !spiritMode && !e.shiftKey && code !== "Space") {
-                const action = "You try to hit the " + this.currentLevel.getCreatureAt(xx, yy).dataRef.type;
-                console.log(action);
-                keyAccepted = true;
-            } else if (creatureBlocking && e.shiftKey && spiritMode) {
+            if (creatureBlocking && e.shiftKey && (spiritMode || code !== "Space")) {
                 // Possessing
-                const action = "You try to possess the " + this.currentLevel.getCreatureAt(xx, yy).dataRef.type;
+                // possesChance = (1 - (hp/maxHP)) * (playerWP / (1 + creatureWP)) ?
+                const cre = this.currentLevel.getCreatureAt(xx, yy);
+                const playerWp = this.player.willpower;
+                const creWp = cre.willpower;
+                const baseChance =
+                    (1.0 - (cre.currenthp / cre.dataRef.maxhp)) + ((playerWp - creWp) / (playerWp + creWp));
+                const chance = Math.max(0.0, Math.min(1.0, baseChance));
+                const action = "You try to possess the " + cre.dataRef.type;
                 console.log(action);
-                if (this.player.spiritpower >= this.currentLevel.getCreatureAt(xx, yy).willpower) {
+                console.log("Chance: " + chance);
+
+                if (Math.random() < chance) {
                     console.log("You were more potent and overcame the feeble creature.");
-                    this.player.currentbody = this.currentLevel.getCreatureAt(xx, yy);
+                    this.player.currentbody = cre;
                     this.player.currentbody.willpower = 0;
                     this.player.x = xx;
                     this.player.y = yy;
                 } else {
                     console.log("The creature did not submit to you.");
-                    console.log(this.currentLevel.getCreatureAt(xx, yy).willpower);
+                    console.log(cre.willpower);
                 }
                 keyAccepted = true;
             } else {
@@ -389,14 +381,16 @@ export class Game {
                     }
                 } else {
                     if (e.shiftKey && this.creatureCanMoveTo(1, xx, yy)) {
+                        // Unpossess
                         this.player.x = xx;
                         this.player.y = yy;
                         this.player.currentbody = null;
                         keyAccepted = true;
                     } else if (this.creatureCanMoveTo(this.player.currentbody.dataRef.size, xx, yy)) {
-                        this.player.x = xx;
-                        this.player.y = yy;
+                        // Control possessed body
                         this.moveCreature(this.player.currentbody, xx, yy);
+                        this.player.x = this.player.currentbody.x;
+                        this.player.y = this.player.currentbody.y;
                         keyAccepted = true;
                     }
                 }
@@ -409,16 +403,30 @@ export class Game {
         }
     }
 
+    private creatureFight(attacker: Creature, defender: Creature): void {
+        console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
+        console.log(attacker);
+        console.log(defender);
+        defender.currenthp -= attacker.dataRef.strength;
+        console.log("hp left " + defender.currenthp);
+        if (defender.currenthp <= 0) {
+            console.log(defender.dataRef.type + " died.");
+        }
+    }
+
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
-        if (this.isFurrable(cre.dataRef.size, this.currentLevel.getFurnituresAt(targetX, targetY),
-            this.currentLevel.getTile(targetX, targetY), targetX, targetY)) {
-        const oldX = cre.x;
-        const oldY = cre.y;
-        cre.x = targetX;
-        cre.y = targetY;
-        this.checkPressureDeactivation(oldX, oldY);
-        this.checkPressureActivation(targetX, targetY);
-            }
+        // if (this.isFurrable(cre.dataRef.size, this.currentLevel.getFurnituresAt(targetX, targetY),
+        //     this.currentLevel.getTile(targetX, targetY), targetX, targetY)) {
+        if (!this.isCurrable(targetX, targetY)) {
+            this.creatureFight(cre, this.currentLevel.getCreatureAt(targetX, targetY));
+        } else if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
+            const oldX = cre.x;
+            const oldY = cre.y;
+            cre.x = targetX;
+            cre.y = targetY;
+            this.checkPressureDeactivation(oldX, oldY);
+            this.checkPressureActivation(targetX, targetY);
+        }
     }
 
     private checkPressureActivation(x: number, y: number): void {

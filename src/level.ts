@@ -196,10 +196,15 @@ export class Level {
         this.creatures.push(creature);
     }
 
+    public removeCreature(creature: Creature): void {
+        //
+    }
+
     public createCreatureAt(newCreature: ICreature, x: number, y: number, wp: number ): void {
         const addedCreature = new Creature();
+        addedCreature.currenthp = newCreature.maxhp;
         addedCreature.dataRef = newCreature;
-        addedCreature.willpower = wp;
+        addedCreature.willpower = newCreature.willpower;
         addedCreature.time = 0;
         this.addCreatureAt(addedCreature, x, y);
     }
