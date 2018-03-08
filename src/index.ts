@@ -131,12 +131,15 @@ export class Game {
         };
 
         // Load the creatures to data
-        for (const ent of creatureset.creatures) {
-            this.data.creatures[ent.id] = ent;
-            ent.willpower = getProp(ent, "willpower", 5, convertInt);
-            if (!("category" in ent)) { this.data.creatures[ent.id].category = "default"; }
-            if (!("inventoryslots" in ent)) { this.data.creatures[ent.id].inventoryslots = null; }
-            if (!("inventory" in ent)) { this.data.creatures[ent.id].inventory = null; }
+        for (const cre of creatureset.creatures) {
+            this.data.creatures[cre.id] = cre;
+            cre.willpower = getProp(cre, "willpower", 5, convertInt);
+            cre.offensiveslot = getProp(cre, "offensiveslot", false, convertBool);
+            cre.defenciveslot = getProp(cre, "defenciveslot", false, convertBool);
+            if (!("category" in cre)) { this.data.creatures[cre.id].category = "default"; }
+            if (!("inventoryslots" in cre)) { this.data.creatures[cre.id].inventoryslots = null; }
+            if (!("inventory" in cre)) { this.data.creatures[cre.id].inventory = null; }
+            // console.log(cre);
         }
 
         // Load item data

@@ -1,7 +1,7 @@
 import * as ROT from "rot-js";
 import { Game } from ".";
 import { GameData } from "./data";
-import { Creature, Entity, Furniture, Item } from "./entity";
+import { Creature, Entity, Furniture, Item, ItemSlot, SlotType } from "./entity";
 import { ICreature, IFurniture, IItem, ITile } from "./interface/entity-schema";
 import { IObjectLayer, IPuzzleRoom, ITileLayer } from "./interface/puzzle-schema";
 
@@ -247,6 +247,34 @@ export class Level {
         addedCreature.dataRef = newCreature;
         addedCreature.willpower = newCreature.willpower;
         addedCreature.time = 0;
+        addedCreature.inventory = [];
+        console.log(addedCreature);
+
+        // Create inventory slots
+        if (newCreature.offensiveslot) {
+            const slot = new ItemSlot();
+            slot.type = SlotType.Offensive;
+            addedCreature.inventory.push(slot);
+        }
+        if (newCreature.defenciveslot) {
+            const slot = new ItemSlot();
+            slot.type = SlotType.Defensive;
+            addedCreature.inventory.push(slot);
+        }
+        for (let index = 0; index < newCreature.inventoryslots; index++) {
+            addedCreature.inventory.push(new ItemSlot());
+        }
+
+        // Add items
+        for (let index = 0; index < newCreature.inventory.length; index++) {
+            const itemType = newCreature.inventory[index];
+            if (itemType !== "") {
+                addedCreature.inventory[index].item = itemType;
+            }
+        }
+
+        console.log(addedCreature);
+
         this.addCreatureAt(addedCreature, x, y);
         return addedCreature;
     }
