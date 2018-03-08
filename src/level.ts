@@ -14,6 +14,7 @@ class DescriptionObject {
     public w: number;
     public h: number;
     public text: string;
+    public isRead: boolean;
 
     constructor(x: number, y: number, w: number, h: number, text: string) {
         this.x = x;
@@ -21,6 +22,11 @@ class DescriptionObject {
         this.w = w;
         this.h = h;
         this.text = text;
+        this.isRead = false;
+    }
+
+    public isInside(x: number, y: number): boolean {
+        return x >= this.x && y >= this.y && x < (this.x + this.w) && y < (this.y + this.h);
     }
 }
 
