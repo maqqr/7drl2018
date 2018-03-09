@@ -4,7 +4,7 @@ import { CharCreation } from "./charcreation";
 import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
-import { Creature, Furniture, Player, PuzzleRoom } from "./entity";
+import { Creature, Furniture, Player, PuzzleRoom, SlotType } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
@@ -140,7 +140,7 @@ export class Game {
         for (const cre of creatureset.creatures) {
             this.data.creatures[cre.id] = cre;
             cre.willpower = getProp(cre, "willpower", 5, convertInt);
-            cre.defence = getProp(cre, "defence", 5, convertInt);
+            cre.defence = getProp(cre, "defence", 0, convertInt);
             cre.flying = getProp(cre, "flying", false, convertBool);
             cre.offensiveslot = getProp(cre, "offensiveslot", false, convertBool);
             cre.defenciveslot = getProp(cre, "defenciveslot", false, convertBool);
@@ -467,7 +467,7 @@ export class Game {
 
                 if (chance < 1.0) {
                     const action = "You try to possess the " + creatureName +
-                                   " (" + Math.floor(chance * 100) + "%)";
+                                   " (" + Math.floor(chance * 100) + "% chance)";
                     this.messagebuffer.add(action);
                 }
 
@@ -477,6 +477,7 @@ export class Game {
                         : "You return to the body of " + creatureName + ".");
                     this.player.currentbody = cre;
                     this.player.currentbody.willpower = 0;
+                    this.player.currentstability = this.player.spiritstability;
                     this.player.x = xx;
                     this.player.y = yy;
                 } else {
@@ -490,6 +491,7 @@ export class Game {
                     if (this.creatureCanMoveTo(1, xx, yy)) {
                         this.player.x = xx;
                         this.player.y = yy;
+                        this.player.currentstability -= 0.5;
                         advanceTime = true;
                         keyAccepted = true;
                     }
@@ -596,10 +598,28 @@ export class Game {
     }
 
     private creatureFight(attacker: Creature, defender: Creature): void {
+        const getItemDefence = (cre: Creature) => {
+            const itemType = cre.getFirstItemOfSlot(SlotType.Defensive);
+            if (itemType !== "") {
+                const item = this.data.getByType(this.data.items, itemType);
+                return item.defence;
+            }
+            return 0;
+        };
+        const getItemAttack = (cre: Creature) => {
+            const itemType = cre.getFirstItemOfSlot(SlotType.Defensive);
+            if (itemType !== "") {
+                const item = this.data.getByType(this.data.items, itemType);
+                return item.defence;
+            }
+            return 0;
+        };
         console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
         console.log(attacker);
         console.log(defender);
-        const damage = attacker.dataRef.strength;
+        let damage = getItemAttack(attacker) + attacker.dataRef.strength;
+        damage -= getItemDefence(defender) + defender.dataRef.defence;
+        damage = Math.max(0, damage);
         defender.currenthp -= damage;
         const attackerName = attacker === this.player.currentbody ? "you" : attacker.dataRef.type;
         const defenderName = defender === this.player.currentbody ? "you" : "the " + defender.dataRef.type;

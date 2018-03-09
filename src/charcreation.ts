@@ -35,8 +35,9 @@ export class CharCreation {
 
     public initialize(): void {
         this.player.currentbody = null;
+        this.player.spiritstability = 8;
         this.player.currentstability = this.player.spiritstability;
-        this.player.spiritpower = 8;
+        this.player.spiritpower = 0;
         this.player.willpower = 8;
         this.draw();
     }
