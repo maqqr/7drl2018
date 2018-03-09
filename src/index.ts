@@ -924,14 +924,13 @@ export class Game {
         }
 
         // Fix long enemy queues
-        if (canSeePlayer && !this.isCurrable(cre.x + dx, cre.y + dy)) {
+        if (path.length > 2 && canSeePlayer && !this.isCurrable(cre.x + dx, cre.y + dy)) {
             dx = Math.floor(Math.random() * 3) - 1;
             dy = Math.floor(Math.random() * 3) - 1;
         }
 
         const targetX = cre.x + dx;
         const targetY = cre.y + dy;
-
 
         if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             // Move freely to target position unless it causes damage
