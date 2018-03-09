@@ -33,6 +33,15 @@ export class Creature extends Entity<ICreature> {
     public time: number;
     public inventory: ItemSlot[];
 
+    public getFirstItemOfSlot(slotType: SlotType): string {
+        for (const slot of this.inventory) {
+            if (slot.item !== "" && slot.type === slotType) {
+                return slot.item;
+            }
+        }
+        return "";
+    }
+
     public pickup(item: string): boolean {
        for (const slot of this.inventory) {
            if (slot.item === "") {
