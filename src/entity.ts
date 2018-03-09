@@ -32,6 +32,7 @@ export class Creature extends Entity<ICreature> {
     public willpower: number;
     public time: number;
     public inventory: ItemSlot[];
+    public dead: boolean = false;
 
     public getFirstItemOfSlot(slotType: SlotType): string {
         for (const slot of this.inventory) {

@@ -238,10 +238,20 @@ export class Level {
         this.items.push(item);
     }
 
-    public removeCreature(creature: Creature): void {
-        const index = this.creatures.indexOf(creature);
-        if (index >= 0) {
-            this.creatures.splice(index, 1);
+    // public removeCreature(creature: Creature): void {
+    //     console.log("REMOVED CREATURE " + creature.dataRef.type);
+    //     const index = this.creatures.indexOf(creature);
+    //     if (index >= 0) {
+    //         this.creatures.splice(index, 1);
+    //     }
+    // }
+
+    public cleanupDeadCreatures(): void {
+        let i = this.creatures.length;
+        while (i--) {
+            if (this.creatures[i].dead) {
+                this.creatures.splice(i, 1);
+            }
         }
     }
 
