@@ -447,7 +447,8 @@ export class Game implements IGameWindow {
                 // Autocollect orb
                 for (const item of this.currentLevel.getItemsAt(this.player.x, this.player.y)) {
                     if (item.dataRef.type === "orb") {
-                        this.messagebuffer.add("You touch the orb.");
+                        this.messagebuffer.add(
+                            "You touch the orb. Press number keys 1, 2 or 3 to select which upgrade you want.");
                         this.collectOrb();
                         keyAccepted = true;
                     }
