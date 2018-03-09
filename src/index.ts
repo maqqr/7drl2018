@@ -255,6 +255,13 @@ export class Game {
                                                                this.player.x - 1, this.player.y);
         graveRobber.willpower = 1;
 
+        // Create rat in the lower room
+        const rat = this.currentLevel.createCreatureAt(this.data.creatures[250], this.player.x, this.player.y + 5);
+        rat.dataRef = Object.assign({}, rat.dataRef, {}); // Create copy of rat's data
+        rat.dataRef.size = 2;
+        rat.dataRef.description = "A very fat rat.";
+
+        // Testing items
         this.currentLevel.createItemAt(this.data.items[1], this.player.x - 1, this.player.y + 1);
         this.currentLevel.createItemAt(this.data.items[2], this.player.x - 1, this.player.y + 1);
 
@@ -565,7 +572,9 @@ export class Game {
     private checkDeath(cre: Creature): void {
         if (cre.currenthp <= 0) {
             const your = cre === this.player.currentbody ? "your " : "";
-            this.messagebuffer.add(your + cre.dataRef.type + " died.");
+            if (this.currentLevel.lineOfSight(this.player.x, this.player.y, cre.x, cre.y)) {
+                this.messagebuffer.add(your + cre.dataRef.type + " died.");
+            }
             this.currentLevel.removeCreature(cre);
             if (this.player.currentbody === cre) {
                 this.player.currentbody = null;
@@ -586,9 +595,11 @@ export class Game {
         const color = defender === this.player.currentbody ? Color.red : Color.skin;
 
         const extraS = attacker === this.player.currentbody ? "" : "s";
-        this.messagebuffer.add(
-            attackerName + " hit" + extraS + " " + defenderName +
-            " and deal" + extraS + " " + damage + " damage.", color);
+
+        if (this.currentLevel.lineOfSight(this.player.x, this.player.y, attacker.x, attacker.y)) {
+            this.messagebuffer.add(attackerName + " hit" + extraS + " " + defenderName +
+                " and deal" + extraS + " " + damage + " damage.", color);
+        }
 
         this.checkDeath(defender);
     }
@@ -710,17 +721,19 @@ export class Game {
 
         const path: Array<[number, number]> = [];
 
-        // Follow the player
-        const playerBody = this.player.currentbody;
-        const tileState = this.currentLevel.getTileState(cre.x, cre.y).state;
-        if (playerBody !== null && (tileState === TileVisibility.Visible || tileState === TileVisibility.Remembered)) {
-            const dijkstra = new ROT.Path.Dijkstra(playerBody.x, playerBody.y, passable, { topology: 4 });
+        // Follow the player if the creature can see it
+        // TODO: move to last seen position
+        const canSeePlayer =
+            this.player.currentbody !== null && this.currentLevel.lineOfSight(
+                this.player.currentbody.x, this.player.currentbody.y, cre.x, cre.y);
+
+        if (canSeePlayer) {
+            const dijkstra = new ROT.Path.Dijkstra(
+                this.player.currentbody.x, this.player.currentbody.y, passable, { topology: 4 });
             dijkstra.compute(cre.x, cre.y, (x: number, y: number) => {
                 path.push([x, y]);
             });
         }
-
-        // console.log(path);
 
         let dx = 0;
         let dy = 0;
