@@ -287,7 +287,7 @@
    <property name="maxsize" type="int" value="2"/>
   </properties>
  </tile>
- <tile id="208" type="copperkey"/>
+ <tile id="208" type="bronzekey"/>
  <tile id="209" type="silverkey"/>
  <tile id="210" type="goldenkey"/>
  <tile id="211" type="healingpotion"/>
