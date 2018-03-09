@@ -236,6 +236,12 @@ export class Game {
         }
         this.currentLevel = this.currentLevel.prevLevel;
 
+        // Transfer player's current body
+        if (this.player.currentbody !== null) {
+            this.currentLevel.removeCreature(this.player.currentbody);
+            this.currentLevel.addCreatureAt(this.player.currentbody, this.player.x, this.player.y);
+        }
+
         this.placePlayerAtFurniture("stairsdown");
 
         this.mapOffsetX = this.mapOffsetTargetX;
