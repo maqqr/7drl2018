@@ -14,6 +14,16 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"creature",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"furniture",
          "objects":[
                 {
@@ -297,15 +307,53 @@
                  "y":112
                 }, 
                 {
-                 "gid":29,
+                 "gid":78,
                  "height":16,
-                 "id":59,
+                 "id":65,
                  "name":"",
+                 "properties":
+                    {
+                     "description":"This is a wooden box. It is filled with various alchemical tools, there is also some lumpy dust on the bottom that you think is made from decayed alchemical components."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
                  "x":96,
+                 "y":112
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":212,
+                 "height":16,
+                 "id":66,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":25
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
                  "y":112
                 }],
          "opacity":1,
@@ -343,7 +391,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":65,
+ "nextobjectid":67,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
