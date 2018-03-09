@@ -53,6 +53,7 @@ export interface IFurniture extends IHasType {
     requireitem?: string;
     activationtarget?: number[][];
     transparent: boolean;
+    lootlist: string[];
 }
 
 export interface IPlayer extends IHasType {

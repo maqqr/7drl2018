@@ -21,7 +21,13 @@
                 "description":{"type":"string"},
                 "requireitem": {"type":"string"},
                 "transparent": {"type":"boolean", "default": true},
-                "activationtarget":{"type":"array","items": {
+                "lootlist": {
+                    "type":"array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "activationtarget": {"type":"array","items": {
                     "type":"array",
                     "minItems":2,
                     "maxItems":2,

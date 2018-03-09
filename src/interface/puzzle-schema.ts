@@ -17,6 +17,7 @@ export interface IObjectLayerObject {
         deactivationtext?: string;
         text?: string;
         probability?: string;
+        lootlist?: string;
     };
 }
 
