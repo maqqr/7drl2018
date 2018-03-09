@@ -106,12 +106,16 @@ export class Renderer {
         }
 
         const creatures = this.game.getCurrentLevel().creatures;
-        for (const furry of creatures) {
-            const tileState = level.getTileState(furry.x, furry.y);
+        for (const cre of creatures) {
+            const tileState = level.getTileState(cre.x, cre.y);
             if (tileState.state === TileVisibility.Visible) {
-                this.renderer.drawTexture(
-                    toScreen(this.game.mapOffsetX + furry.x), toScreen(this.game.mapOffsetY + furry.y),
-                    furry.dataRef.id, this.game.currentTintColor);
+                const drawX = toScreen(this.game.mapOffsetX + cre.x);
+                const drawY = toScreen(this.game.mapOffsetY + cre.y);
+                this.renderer.drawTexture(drawX, drawY, cre.dataRef.id, this.game.currentTintColor);
+                // Draw creature hp bar
+                const width = Math.floor(12 * (cre.currenthp / cre.dataRef.maxhp));
+                this.renderer.drawRect(drawX + 2, drawY - 2, width, 2, false, Color.green, 0.7);
+                this.renderer.drawRect(drawX + 2 + width, drawY - 2, 12 - width, 2, false, Color.red, 0.7);
             }
         }
 
