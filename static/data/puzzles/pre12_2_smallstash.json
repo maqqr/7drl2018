@@ -14,6 +14,76 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":244,
+                 "height":16,
+                 "id":58,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"100"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":96
+                }, 
+                {
+                 "gid":244,
+                 "height":16,
+                 "id":59,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":32,
+                 "y":64
+                }, 
+                {
+                 "gid":244,
+                 "height":16,
+                 "id":60,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":144
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"furniture",
          "objects":[
                 {
@@ -256,7 +326,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":58,
+ "nextobjectid":61,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
