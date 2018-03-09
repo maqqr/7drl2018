@@ -21,6 +21,7 @@ export interface ICreature extends IHasType {
    defence: number;
    speed: number;
    size: number;
+   name?: string;
    willpower: number;
    flying?: boolean;
    category?: string;
