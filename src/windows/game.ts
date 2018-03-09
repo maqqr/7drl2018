@@ -659,16 +659,16 @@ export class Game implements IGameWindow {
                     const oldY = fur.y;
                     fur.x = xx + dx;
                     fur.y = yy + dy;
-                    this.messagebuffer.add("You push the " + fur.dataRef.type + ".");
+                    this.messagebuffer.add("You push the " + fur.dataRef.name + ".");
                     this.checkPressureDeactivation(oldX, oldY);
                     this.checkPressureActivation(fur.x, fur.y);
                     advanceTime = true;
                     break;
                 } else {
-                    this.messagebuffer.add("Not enough space to push the " + fur.dataRef.type + " there.");
+                    this.messagebuffer.add("Not enough space to push the " + fur.dataRef.name + " there.");
                 }
             } else {
-                this.messagebuffer.add("The " + fur.dataRef.type + " is too heavy for you to push.");
+                this.messagebuffer.add("The " + fur.dataRef.name + " is too heavy for you to push.");
             }
         }
         return advanceTime;
