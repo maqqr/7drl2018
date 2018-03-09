@@ -20,37 +20,37 @@
  <objectgroup name="creature">
   <object id="55" gid="245" x="80" y="64" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="10"/>
+    <property name="probability" type="int" value="10"/>
    </properties>
   </object>
   <object id="56" gid="246" x="128" y="96" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="5"/>
+    <property name="probability" type="int" value="5"/>
    </properties>
   </object>
   <object id="57" gid="246" x="16" y="96" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="5"/>
+    <property name="probability" type="int" value="5"/>
    </properties>
   </object>
   <object id="58" gid="250" x="96" y="144" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="5"/>
+    <property name="probability" type="int" value="5"/>
    </properties>
   </object>
   <object id="59" gid="248" x="64" y="112" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="5"/>
+    <property name="probability" type="int" value="5"/>
    </properties>
   </object>
   <object id="60" gid="252" x="112" y="80" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="5"/>
+    <property name="probability" type="int" value="5"/>
    </properties>
   </object>
   <object id="61" gid="252" x="80" y="176" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="5"/>
+    <property name="probability" type="int" value="5"/>
    </properties>
   </object>
  </objectgroup>
