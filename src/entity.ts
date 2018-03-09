@@ -51,6 +51,15 @@ export class Creature extends Entity<ICreature> {
         }
         return false;
     }
+
+    public removeItem(item: string): void {
+        for (const slot of this.inventory) {
+            if (slot.item === item) {
+                slot.item = "";
+                return;
+            }
+        }
+    }
 }
 
 export class Player extends Entity<IPlayer> {

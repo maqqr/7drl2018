@@ -351,7 +351,8 @@ export class Level {
                     const itemName = this.data.getByType(this.data.items, fur.dataRef.requireitem).name;
                     if (userInitiated && cre !== null && cre.hasItem(fur.dataRef.requireitem)) {
                         itemOk = true;
-                        message = "You open the thing";
+                        message = "You put your " + itemName + " in to the " + fur.dataRef.name + ".";
+                        cre.removeItem(fur.dataRef.requireitem);
                     } else {
                         message = "You need a " + itemName + ".";
                     }
@@ -375,7 +376,7 @@ export class Level {
                 }
 
                 // User initiated tile activation
-                if (userInitiated && fur.dataRef.useractivation) {
+                if (itemOk && userInitiated && fur.dataRef.useractivation) {
                     const newData = this.data.getByType(this.data.furnitures, fur.dataRef.useractivation);
                     this.assignNewDataToFurniture(fur, newData);
                 }

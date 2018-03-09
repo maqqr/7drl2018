@@ -153,6 +153,23 @@ export class Renderer {
         }
 
         // 176
+        let invX = 300;
+        const invY = 300;
+        let itemIndex = 1;
+        if (this.game.player.currentbody !== null) {
+            for (const slot of this.game.player.currentbody.inventory) {
+                this.renderer.drawTexture(invX, invY, 176);
+                this.renderer.drawString(invX + 5, invY + 20, "" + itemIndex);
+                if (slot.item !== "") {
+                    console.log(slot.item);
+                    const item = this.game.data.getByType(this.game.data.items, slot.item);
+                    this.renderer.drawTexture(invX, invY, item.icon);
+                }
+                // const item = slot.type
+                itemIndex++;
+                invX += 20;
+            }
+        }
 
         this.renderer.render();
 

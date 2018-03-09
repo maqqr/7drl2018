@@ -254,6 +254,7 @@ export class Game {
         const graveRobber = this.currentLevel.createCreatureAt(this.data.creatures[252],
                                                                this.player.x - 1, this.player.y);
         graveRobber.willpower = 1;
+        graveRobber.inventory.forEach((startItemSlot) => graveRobber.removeItem(startItemSlot.item));
 
         // Create rat in the lower room
         const rat = this.currentLevel.createCreatureAt(this.data.creatures[250], this.player.x, this.player.y + 5);
@@ -536,7 +537,7 @@ export class Game {
         const dy = delta[1];
         const msg = this.currentLevel.activate(
             this.player.currentbody.x + dx,
-            this.player.currentbody.y + dy, true);
+            this.player.currentbody.y + dy, true, this.player.currentbody);
 
         if (msg) {
             this.messagebuffer.add(msg);
@@ -685,7 +686,7 @@ export class Game {
         console.log(mouseEvent);
         const msg = this.currentLevel.activate(
                         mouseEvent.tx - this.mapOffsetTargetX,
-                        mouseEvent.ty - this.mapOffsetTargetY, true);
+                        mouseEvent.ty - this.mapOffsetTargetY, true, this.player.currentbody);
 
         if (msg) {
             this.messagebuffer.add(msg);
