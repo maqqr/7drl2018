@@ -387,18 +387,21 @@ export class Level {
 
                 // User initiated tile activation
                 if (itemOk && userInitiated && fur.dataRef.useractivation) {
-                    const newData = this.data.getByType(this.data.furnitures, fur.dataRef.useractivation);
-                    this.assignNewDataToFurniture(fur, newData);
-
                     // Open loot furniture
-                    console.log(fur.dataRef.lootlist);
                     if (fur.dataRef.lootlist.length > 0) {
                         const index = Math.floor(fur.dataRef.lootlist.length * Math.random());
-                        const item = this.data.getByType(this.data.items, fur.dataRef.lootlist[index]);
-                        if (item !== undefined) {
-                            this.createItemAt(item, fur.x, fur.y);
+                        const spawnedType = fur.dataRef.lootlist[index];
+                        if (spawnedType !== "") {
+                            const item = this.data.getByType(this.data.items, spawnedType);
+                            if (item !== undefined) {
+                                this.createItemAt(item, fur.x, fur.y);
+                            }
                         }
                     }
+
+                    // Activate the furniture
+                    const newData = this.data.getByType(this.data.furnitures, fur.dataRef.useractivation);
+                    this.assignNewDataToFurniture(fur, newData);
                 }
             }
         }
