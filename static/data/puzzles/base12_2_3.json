@@ -14,6 +14,96 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":249,
+                 "height":16,
+                 "id":55,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":80
+                }, 
+                {
+                 "gid":249,
+                 "height":16,
+                 "id":56,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"4"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":128
+                }, 
+                {
+                 "gid":248,
+                 "height":16,
+                 "id":57,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"10"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":128
+                }, 
+                {
+                 "gid":248,
+                 "height":16,
+                 "id":58,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"10"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":80
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"furniture",
          "objects":[],
          "opacity":1,
@@ -32,7 +122,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":55,
+ "nextobjectid":59,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
