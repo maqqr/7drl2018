@@ -14,6 +14,7 @@
                     "maxhp": {"type":"integer","minimum": 0},
                     "currrenthp": {"type": "integer"},
                     "strength": {"type":"integer","minimum": 0},
+                    "defence": {"type":"integer","minimum": 0},
                     "speed": {"type":"integer","minimum": 0},
                     "willpower": {"type":"integer","minimum": 0},
                     "size": {"type":"integer","minimum": 1,"maximum": 20},
