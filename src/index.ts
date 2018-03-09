@@ -140,6 +140,7 @@ export class Game {
         for (const cre of creatureset.creatures) {
             this.data.creatures[cre.id] = cre;
             cre.willpower = getProp(cre, "willpower", 5, convertInt);
+            cre.flying = getProp(cre, "flying", false, convertBool);
             cre.offensiveslot = getProp(cre, "offensiveslot", false, convertBool);
             cre.defenciveslot = getProp(cre, "defenciveslot", false, convertBool);
             if (!("category" in cre)) { this.data.creatures[cre.id].category = "default"; }
@@ -631,7 +632,7 @@ export class Game {
             this.checkPressureActivation(targetX, targetY);
 
             const damage = this.currentLevel.getTileDamage(targetX, targetY);
-            if (damage > 0) {
+            if (damage > 0 && !cre.dataRef.flying) {
                 cre.currenthp -= damage;
                 if (cre === this.player.currentbody) {
                     const tileName = this.currentLevel.getTile(targetX, targetY).type;
