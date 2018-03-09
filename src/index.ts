@@ -593,7 +593,6 @@ export class Game {
     }
 
     private creatureFight(attacker: Creature, defender: Creature): void {
-        return;
         console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
         console.log(attacker);
         console.log(defender);
