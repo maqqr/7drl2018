@@ -4,7 +4,7 @@ import { CharCreation } from "./charcreation";
 import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
-import { Creature, Furniture, Player, PuzzleRoom, SlotType, Item } from "./entity";
+import { Creature, Furniture, Item, Player, PuzzleRoom, SlotType } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
@@ -217,6 +217,12 @@ export class Game {
         }
         this.currentLevel = this.currentLevel.nextLevel;
 
+        // Transfer player's current body
+        if (this.player.currentbody !== null) {
+            this.currentLevel.removeCreature(this.player.currentbody);
+            this.currentLevel.addCreatureAt(this.player.currentbody, this.player.x, this.player.y);
+        }
+
         this.placePlayerAtFurniture("stairsup");
 
         this.mapOffsetX = this.mapOffsetTargetX;
@@ -274,11 +280,6 @@ export class Game {
         // Testing items
         this.currentLevel.createItemAt(this.data.items[1], this.player.x - 1, this.player.y + 1);
         this.currentLevel.createItemAt(this.data.items[2], this.player.x - 1, this.player.y + 1);
-
-        // Transfer player's current body
-        if (this.player.currentbody !== null) {
-            this.currentLevel.addCreatureAt(this.player.currentbody, this.player.x, this.player.y);
-        }
 
         this.indexForTestPuzzle++;
     }
@@ -762,7 +763,7 @@ export class Game {
             }
         } else if (this.isCurrable(targetX, targetY) && this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             if (targetX === this.player.x && targetY === this.player.y) {
-                console.log("ERROR");
+                console.error("ERROR");
             }
             const oldX = cre.x;
             const oldY = cre.y;
