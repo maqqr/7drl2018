@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="79">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="91">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -17,6 +17,68 @@
 22,20,18,21,19,24,23,20,19,20,19,24
 </data>
  </layer>
+ <objectgroup name="creature">
+  <object id="79" gid="249" x="48" y="64" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="80" gid="249" x="128" y="144" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="81" gid="249" x="48" y="144" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="82" gid="249" x="128" y="64" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="83" gid="248" x="80" y="80" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="84" gid="248" x="96" y="80" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="85" gid="248" x="112" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="86" gid="248" x="112" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="87" gid="248" x="96" y="128" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="88" gid="248" x="80" y="128" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="89" gid="248" x="64" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="90" gid="248" x="64" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="furniture">
   <object id="67" gid="52" x="64" y="80" width="16" height="16"/>
   <object id="68" gid="52" x="112" y="80" width="16" height="16"/>

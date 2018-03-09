@@ -645,18 +645,6 @@
                  "y":80
                 }, 
                 {
-                 "gid":69,
-                 "height":16,
-                 "id":81,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":304,
-                 "y":160
-                }, 
-                {
                  "gid":51,
                  "height":16,
                  "id":82,
@@ -1039,6 +1027,60 @@
                  "width":16,
                  "x":288,
                  "y":64
+                }, 
+                {
+                 "gid":12,
+                 "height":16,
+                 "id":134,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":304,
+                 "y":112
+                }, 
+                {
+                 "gid":49,
+                 "height":16,
+                 "id":135,
+                 "name":"",
+                 "properties":
+                    {
+                     "activationtarget":"[[19,6]]"
+                    },
+                 "propertytypes":
+                    {
+                     "activationtarget":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":320,
+                 "y":144
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":222,
+                 "height":16,
+                 "id":136,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":304,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1049,14 +1091,33 @@
         {
          "draworder":"topdown",
          "name":"description",
-         "objects":[],
+         "objects":[
+                {
+                 "height":16,
+                 "id":137,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"A collection of small rooms, connected with corridors. There are some odd tiles on the floor."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":208,
+                 "y":48
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
         }],
- "nextobjectid":133,
+ "nextobjectid":138,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
@@ -1064,7 +1125,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",

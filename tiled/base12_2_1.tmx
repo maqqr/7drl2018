@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="47">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="58">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -17,6 +17,53 @@
 24,20,20,18,21,24,24,21,20,21,18,22
 </data>
  </layer>
+ <objectgroup name="creature">
+  <object id="47" gid="245" x="48" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="48" gid="245" x="144" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="51" gid="244" x="96" y="48" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="52" gid="244" x="80" y="160" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="53" gid="253" x="176" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="54" gid="253" x="0" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="55" gid="246" x="80" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="56" gid="246" x="96" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="57" gid="246" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="furniture">
   <object id="39" gid="53" x="16" y="80" width="16" height="16"/>
   <object id="40" gid="53" x="16" y="128" width="16" height="16"/>

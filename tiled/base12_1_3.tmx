@@ -20,47 +20,47 @@
  <objectgroup name="creature">
   <object id="55" gid="253" x="96" y="32" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="56" gid="253" x="16" y="112" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="57" gid="253" x="96" y="160" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="58" gid="246" x="128" y="96" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="59" gid="246" x="32" y="96" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="60" gid="246" x="80" y="64" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="61" gid="249" x="80" y="112" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="62" gid="251" x="112" y="96" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="63" gid="251" x="80" y="144" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="25"/>
+    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
  </objectgroup>

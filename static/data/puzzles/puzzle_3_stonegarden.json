@@ -739,18 +739,6 @@
                 {
                  "gid":52,
                  "height":16,
-                 "id":88,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":288,
-                 "y":256
-                }, 
-                {
-                 "gid":52,
-                 "height":16,
                  "id":89,
                  "name":"",
                  "rotation":0,
@@ -795,66 +783,6 @@
                  "width":16,
                  "x":112,
                  "y":64
-                }, 
-                {
-                 "gid":74,
-                 "height":16,
-                 "id":93,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":176,
-                 "y":64
-                }, 
-                {
-                 "gid":74,
-                 "height":16,
-                 "id":94,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":48,
-                 "y":192
-                }, 
-                {
-                 "gid":74,
-                 "height":16,
-                 "id":95,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":48,
-                 "y":208
-                }, 
-                {
-                 "gid":74,
-                 "height":16,
-                 "id":96,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":320,
-                 "y":192
-                }, 
-                {
-                 "gid":74,
-                 "height":16,
-                 "id":97,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":192,
-                 "y":336
                 }, 
                 {
                  "gid":49,
@@ -947,30 +875,6 @@
                  "width":16,
                  "x":160,
                  "y":96
-                }, 
-                {
-                 "gid":52,
-                 "height":16,
-                 "id":106,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":176
-                }, 
-                {
-                 "gid":52,
-                 "height":16,
-                 "id":107,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":224
                 }, 
                 {
                  "gid":52,
@@ -1231,6 +1135,176 @@
                  "width":16,
                  "x":176,
                  "y":176
+                }, 
+                {
+                 "gid":90,
+                 "height":16,
+                 "id":129,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"It seems like someone died from hunger."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":336
+                }, 
+                {
+                 "gid":90,
+                 "height":16,
+                 "id":130,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"It seems like someone died from hunger."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":192
+                }, 
+                {
+                 "gid":90,
+                 "height":16,
+                 "id":131,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"It seems like someone died from hunger."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":208
+                }, 
+                {
+                 "gid":90,
+                 "height":16,
+                 "id":132,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"It seems like someone died from hunger."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":320,
+                 "y":192
+                }, 
+                {
+                 "gid":90,
+                 "height":16,
+                 "id":133,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"It seems like someone died from hunger."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":64
+                }, 
+                {
+                 "gid":89,
+                 "height":16,
+                 "id":135,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":144
+                }, 
+                {
+                 "gid":86,
+                 "height":16,
+                 "id":136,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":288,
+                 "y":256
+                }, 
+                {
+                 "gid":86,
+                 "height":16,
+                 "id":137,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":176
+                }, 
+                {
+                 "gid":86,
+                 "height":16,
+                 "id":138,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":224
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":222,
+                 "height":16,
+                 "id":134,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":208
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1267,7 +1341,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":129,
+ "nextobjectid":139,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
@@ -1275,7 +1349,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",

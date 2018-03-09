@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="89">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="98">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
 39,38,38,39,41,38,40,40,38,41,41,41,38,39,39,38,38,38,39,38,39,41,39,39,
-40,37,34,34,34,37,36,35,36,36,35,38,40,37,34,37,36,35,35,34,34,37,34,40,
+40,40,34,34,34,37,36,35,36,36,35,38,40,37,34,37,36,35,35,34,34,37,41,40,
 41,36,37,36,36,37,34,36,34,36,36,38,38,35,34,36,37,36,35,34,36,36,36,40,
 41,35,37,35,38,39,41,39,39,40,34,39,38,35,39,39,40,40,38,41,37,34,35,40,
 38,35,34,38,40,41,38,41,38,38,41,41,39,38,40,38,39,38,39,40,41,34,35,39,
@@ -25,19 +25,19 @@
 39,37,35,41,38,38,40,40,38,40,41,41,38,40,38,40,38,39,40,38,41,35,35,38,
 38,35,35,35,40,39,38,41,39,41,36,40,41,37,38,41,41,39,41,38,36,35,34,38,
 38,36,35,34,36,34,37,37,35,35,36,38,40,37,35,37,36,35,37,34,34,37,37,39,
-40,37,36,36,35,34,34,35,37,34,35,38,39,36,34,36,37,35,37,34,35,37,34,39,
+40,41,36,36,35,34,34,35,37,34,35,38,39,36,34,36,37,35,37,34,35,37,40,39,
 38,39,39,40,40,40,38,40,38,40,40,41,39,41,40,38,39,38,39,38,40,41,39,40
 </data>
  </layer>
  <objectgroup name="furniture">
-  <object id="31" gid="10" x="176" y="32" width="16" height="16"/>
-  <object id="32" gid="10" x="192" y="32" width="16" height="16"/>
-  <object id="33" gid="10" x="16" y="192" width="16" height="16"/>
-  <object id="34" gid="10" x="16" y="208" width="16" height="16"/>
-  <object id="35" gid="10" x="176" y="368" width="16" height="16"/>
-  <object id="36" gid="10" x="192" y="368" width="16" height="16"/>
-  <object id="37" gid="10" x="352" y="208" width="16" height="16"/>
-  <object id="39" gid="10" x="352" y="192" width="16" height="16"/>
+  <object id="31" gid="10" x="176" y="48" width="16" height="16"/>
+  <object id="32" gid="10" x="192" y="48" width="16" height="16"/>
+  <object id="33" gid="10" x="32" y="192" width="16" height="16"/>
+  <object id="34" gid="10" x="32" y="208" width="16" height="16"/>
+  <object id="35" gid="10" x="176" y="352" width="16" height="16"/>
+  <object id="36" gid="10" x="192" y="352" width="16" height="16"/>
+  <object id="37" gid="10" x="336" y="208" width="16" height="16"/>
+  <object id="39" gid="10" x="336" y="192" width="16" height="16"/>
   <object id="40" gid="65" x="256" y="128" width="16" height="16"/>
   <object id="41" gid="65" x="112" y="128" width="16" height="16"/>
   <object id="42" gid="65" x="112" y="272" width="16" height="16"/>
@@ -115,6 +115,18 @@
   <object id="86" type="fakewall3" gid="34" x="208" y="208" width="16" height="16"/>
   <object id="87" type="fakewall3" gid="34" x="224" y="208" width="16" height="16"/>
   <object id="88" gid="68" x="176" y="208" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="creature">
+  <object id="91" gid="244" x="112" y="288" width="16" height="16"/>
+  <object id="92" gid="245" x="256" y="112" width="16" height="16"/>
+  <object id="93" gid="255" x="272" y="272" width="16" height="16"/>
+  <object id="94" gid="244" x="256" y="288" width="16" height="16"/>
+  <object id="95" gid="254" x="96" y="128" width="16" height="16"/>
+  <object id="96" gid="245" x="112" y="112" width="16" height="16"/>
+  <object id="97" gid="248" x="176" y="192" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="89" gid="222" x="176" y="208" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="description"/>
 </map>

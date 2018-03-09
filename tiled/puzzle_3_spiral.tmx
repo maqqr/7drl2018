@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="70">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="74">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -91,7 +91,11 @@
   <object id="49" gid="12" x="96" y="144" width="16" height="16"/>
   <object id="50" gid="12" x="128" y="224" width="16" height="16"/>
   <object id="51" gid="12" x="224" y="192" width="16" height="16"/>
-  <object id="52" gid="12" x="192" y="160" width="16" height="16"/>
+  <object id="52" gid="12" x="192" y="160" width="16" height="16">
+   <properties>
+    <property name="description" value="Magic runes move on the surface of the metal door."/>
+   </properties>
+  </object>
   <object id="53" gid="65" x="336" y="64" width="16" height="16"/>
   <object id="54" gid="65" x="48" y="48" width="16" height="16"/>
   <object id="55" gid="65" x="32" y="272" width="16" height="16"/>
@@ -109,5 +113,26 @@
   <object id="68" gid="10" x="80" y="336" width="16" height="16"/>
   <object id="69" gid="10" x="48" y="368" width="16" height="16"/>
  </objectgroup>
- <objectgroup name="description"/>
+ <objectgroup name="creature">
+  <object id="72" gid="243" x="144" y="160" width="16" height="16">
+   <properties>
+    <property name="probability" value="100"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="item">
+  <object id="71" gid="222" x="128" y="160" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="description" visible="0">
+  <object id="70" x="32" y="320" width="32" height="32">
+   <properties>
+    <property name="text" value="In the middle of the small room is a round boulder. Someone has painted spirals on the doorframes."/>
+   </properties>
+  </object>
+  <object id="73" x="224" y="160" width="16" height="16">
+   <properties>
+    <property name="text" value="There are some very irregular, large footprints on the floor."/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

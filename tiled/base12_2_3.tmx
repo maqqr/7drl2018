@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="55">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="59">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -17,6 +17,28 @@
 22,19,20,18,19,24,25,19,18,19,18,23
 </data>
  </layer>
+ <objectgroup name="creature">
+  <object id="55" gid="249" x="64" y="80" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="56" gid="249" x="112" y="128" width="16" height="16">
+   <properties>
+    <property name="probability" value="4"/>
+   </properties>
+  </object>
+  <object id="57" gid="248" x="64" y="128" width="16" height="16">
+   <properties>
+    <property name="probability" value="10"/>
+   </properties>
+  </object>
+  <object id="58" gid="248" x="112" y="80" width="16" height="16">
+   <properties>
+    <property name="probability" value="10"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="furniture"/>
  <objectgroup name="description"/>
 </map>
