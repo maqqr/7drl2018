@@ -3,7 +3,7 @@
     "creatures":[
         {
             "id":245, "type": "giantspider","category": "beast", "description": "A monstrously big spider.",
-            "maxhp": 20, "strength": 4, "defence": 0, "speed": 4, "willpower": 7, "size": 8,
+            "maxhp": 18, "strength": 4, "defence": 0, "speed": 4, "willpower": 6, "size": 8,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
@@ -27,7 +27,7 @@
         },
         {
             "id":243, "type": "troll","category": "beast", "description": "A long limbed troll with sharp teeth.",
-            "maxhp": 43, "strength": 9, "defence": 1, "speed": 6, "willpower": 12, "size": 11,
+            "maxhp": 43, "strength": 9, "defence": 1, "speed": 6, "willpower": 13, "size": 11,
             "offensiveslot": true, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
@@ -48,7 +48,7 @@
         {
             "id":249, "type": "skeleton","category": "undead", "description": "A human skeleton.",
             "maxhp": 18, "strength": 4, "defence": 0, "speed": 6, "willpower": 5, "size": 9,
-            "offensiveslot": true, "defenciveslot": true, "inventoryslots": 0,
+            "offensiveslot": true, "defenciveslot": true, "inventoryslots": 1,
             "inventory": ["mace", "buckler"]
         },
 
@@ -76,7 +76,7 @@
         {
             "id":240, "type": "imp","category": "demonic", "description": "A lesser demon, a small impish creature with long tail.",
             "flying": true, "maxhp": 35, "strength": 7, "defence": 0, "speed": 4, "willpower": 14, "size": 4,
-            "offensiveslot": true, "defenciveslot": false, "inventoryslots": 1,
+            "offensiveslot": true, "defenciveslot": false, "inventoryslots": 2,
             "inventory": []
         },
         {
@@ -95,13 +95,13 @@
         },
         {
             "id":253, "type": "goblin","category": "humanoid", "description": "A goblin, a foul green creature with sharp features.",
-            "maxhp": 15, "strength": 4, "defence": 0, "speed": 4, "willpower": 9, "size": 8,
+            "maxhp": 13, "strength": 4, "defence": 0, "speed": 4, "willpower": 8, "size": 8,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 2,
             "inventory": ["axe"]
         },
         {
             "id":254, "type": "kobold","category": "humanoid", "description": "A kobold. The creature looks like a inbreed of a goblin and a rat.",
-            "maxhp": 12, "strength": 3, "defence": 0, "speed": 4, "willpower": 8, "size": 8,
+            "maxhp": 11, "strength": 3, "defence": 0, "speed": 4, "willpower": 8, "size": 8,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 2,
             "inventory": ["axe"]
         },
@@ -109,13 +109,13 @@
 
         {
             "id":225, "type": "cultist","category": "boss", "description": "A hooded human clad in black robes filled with runes.",
-            "maxhp": 40, "strength": 5, "defence": 1, "speed": 5, "willpower": 20, "size": 10,
+            "maxhp": 25, "strength": 5, "defence": 0, "speed": 5, "willpower": 18, "size": 10,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 3,
             "inventory": ["mace", "tome"]
         },
         {
             "id":226, "type": "vitalius","category": "boss", "description": "At first glance you recognize who this person is, even though he is wearing decorated dark amethyst gown and has hidden his face under hood. His clothes are inscribed with slightly glowing silver runes and symbols. He is the one who cursed you all those years ago and you sense that he is the one that binds your spirit to eternal suffering!",
-            "maxhp": 100, "strength": 6, "defence": 2, "speed": 5, "willpower": 25, "size": 10,
+            "maxhp": 70, "strength": 6, "defence": 1, "speed": 5, "willpower": 25, "size": 10,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 3,
             "inventory": ["sword", "tome", "kalamakkara"]
         }
