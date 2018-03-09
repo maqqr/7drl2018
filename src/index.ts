@@ -20,6 +20,8 @@ export class Game {
     public static startRoomX: number = 0;
     public static startRoomY: number = 0;
 
+    public static showPossessTutorial: boolean = true;
+
     public helpToggledOn: boolean = false;
 
     public data: GameData;
@@ -646,6 +648,7 @@ export class Game {
                     this.player.currentstability = this.player.spiritstability;
                     this.player.x = xx;
                     this.player.y = yy;
+                    Game.showPossessTutorial = false;
                 } else {
                     this.messagebuffer.add("The creature did not submit to you.");
                 }
