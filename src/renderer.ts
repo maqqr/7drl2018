@@ -127,7 +127,8 @@ export class Renderer {
         const playerDrawY = toScreen(this.game.mapOffsetY + this.game.player.y);
         if (player.currentbody === null) {
             const playerIcon = this.game.spiritAnimationIndices[this.game.spiritAnimationIndex];
-            this.renderer.drawTexture(playerDrawX, playerDrawY, playerIcon);
+            const playerTint = Game.debugMode ? Color.red : 0xFFFFFF;
+            this.renderer.drawTexture(playerDrawX, playerDrawY, playerIcon, playerTint);
             this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 4, 30, Color.blue, 0.08);
             this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 4, 15, Color.blue, 0.10);
             this.renderer.drawCircle(playerDrawX + 8, playerDrawY + 4, 9, Color.blue, 0.15);

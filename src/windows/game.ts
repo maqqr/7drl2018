@@ -15,6 +15,8 @@ export class Game implements IGameWindow {
     public static readonly WIDTH: number = 600;
     public static readonly HEIGHT: number = 400;
 
+    public static debugMode: boolean = false;
+
     // TODO: this is bad
     public static startRoomX: number = 0;
     public static startRoomY: number = 0;
@@ -255,13 +257,18 @@ export class Game implements IGameWindow {
         }
 
         // Debugging keys
-        // if (e.code === "KeyQ") {
-        //     this.loadLevel();
-        // }
-        if (e.code === "KeyP") {
+        if (e.code === "Home") {
+            Game.debugMode = !Game.debugMode;
+            if (Game.debugMode) {
+                this.messagebuffer.add("Debug mode activated.");
+            } else {
+                this.messagebuffer.add("Debug mode deactivated.");
+            }
+        }
+        if (Game.debugMode && e.code === "KeyP") {
             this.placePlayerAtFurniture("stairsup");
         }
-        if (e.code === "KeyO") {
+        if (Game.debugMode && e.code === "KeyO") {
             this.placePlayerAtFurniture("stairsdown");
         }
         if (e.code === "KeyL") {
@@ -376,7 +383,7 @@ export class Game implements IGameWindow {
                     this.messagebuffer.add(action);
                 }
 
-                if (Math.random() < chance) {
+                if (Game.debugMode || Math.random() < chance) {
                     this.messagebuffer.add(chance < 1.0
                         ? "You were more potent and overcame the feeble creature."
                         : "You return to the body of " + creatureName + ".");
@@ -394,12 +401,16 @@ export class Game implements IGameWindow {
             } else {
 
                 if (this.player.currentbody === null) {
-                    if (this.creatureCanMoveTo(1, xx, yy)) {
+                    if (Game.debugMode || this.creatureCanMoveTo(1, xx, yy)) {
                         this.player.x = xx;
                         this.player.y = yy;
-                        this.player.currentstability -= 0.5;
-                        if (this.checkPlayerDeath(app)) {
-                            return;
+                        if (!Game.debugMode) {
+                            this.player.currentstability -= 0.5;
+                            if (this.checkPlayerDeath(app)) {
+                                return;
+                            }
+                        } else {
+                            this.player.currentstability = this.player.spiritstability;
                         }
                         advanceTime = true;
                         keyAccepted = true;
@@ -665,6 +676,14 @@ export class Game implements IGameWindow {
     private checkDeath(cre: Creature): void {
         if (cre.currenthp <= 0 && !cre.dead) {
             cre.dead = true;
+
+            // Prevent death in debug mode
+            if (Game.debugMode && cre === this.player.currentbody) {
+                cre.dead = false;
+                cre.currenthp = 1;
+                return;
+            }
+
             const your = cre === this.player.currentbody ? "your " : "";
             if (this.currentLevel.lineOfSight(this.player.x, this.player.y, cre.x, cre.y)) {
                 this.messagebuffer.add(your + cre.dataRef.type + " died.");

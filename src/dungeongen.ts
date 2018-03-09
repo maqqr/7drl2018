@@ -127,7 +127,7 @@ export class DungeonGenerator {
         const puzzlePos = randomFree2x2Position();
         const puzzle = this.getRandomRoom(rooms, "puzzles");
         generatedRooms.push(new PositionedRoom(puzzlePos.x, puzzlePos.y, puzzle.dataRef));
-        // console.log("Generated puzzle name: " + puzzle.dataRef.puzzlename);
+        console.log("Generated puzzle name: " + puzzle.dataRef.puzzlename);
         putTile2x2(puzzlePos, "P");
 
         // Place start room and final boss room
