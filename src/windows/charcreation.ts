@@ -52,7 +52,6 @@ export class CharCreation implements IGameWindow {
     }
 
     public handleKeyPress(app: App, e: KeyboardEvent): void {
-        console.log("chargen");
         console.log(e.code);
 
         // TODO: Check pressed key

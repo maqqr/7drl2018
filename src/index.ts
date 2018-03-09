@@ -13,8 +13,8 @@ import { IMouseEvent, Renderer } from "./renderer";
 import { CharCreation } from "./windows/charcreation";
 import { Game } from "./windows/game";
 import { LoadingWindow } from "./windows/loading";
-import { IGameWindow } from "./windows/window";
 import { MainMenu } from "./windows/mainmenu";
+import { IGameWindow } from "./windows/window";
 
 
 export class App {

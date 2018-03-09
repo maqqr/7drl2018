@@ -30,7 +30,6 @@ export class DungeonGenerator {
         if (depth >= 7) {
             levelStyle = 2;
         }
-        console.log("level style " + levelStyle);
         const rooms = game.data.predefinedRooms.level[levelStyle];
 
         // Allow all pregen rooms to appear again

@@ -4,7 +4,7 @@ import { Color } from "../color";
 import { GameData } from "../data";
 import { DungeonGenerator } from "../dungeongen";
 import { Creature, Item, Player, SlotType } from "../entity";
-import { Level } from "../level";
+import { Level, TileVisibility } from "../level";
 import { MessageBuffer } from "../messagebuffer";
 import { IMouseEvent, Renderer } from "../renderer";
 import { CharCreation } from "./charcreation";
@@ -155,7 +155,7 @@ export class Game implements IGameWindow {
         // Place test puzzle map into current level
         if (testMode) {
             const testpuzzle = this.data.predefinedRooms.level[0].puzzles[0];
-            console.log("Loading puzzle " + testpuzzle.dataRef.puzzlename);
+            // console.log("Loading puzzle " + testpuzzle.dataRef.puzzlename);
             this.testPuzzleName = testpuzzle.dataRef.puzzlename;
             this.currentLevel.placePuzzleAt(1, 1, testpuzzle.dataRef);
         }
@@ -423,7 +423,6 @@ export class Game implements IGameWindow {
                         advanceTime = true;
                         keyAccepted = true;
                     } else {
-                        console.log(this.currentLevel.getTile(xx, yy).maxsize);
                         if (this.currentLevel.getTile(xx, yy).maxsize > 0) {
                             this.messagebuffer.add("You are too big to move there.");
                         }
@@ -467,17 +466,21 @@ export class Game implements IGameWindow {
         // Describe furniture
         const mouseX = mouseEvent.tx - this.mapOffsetTargetX;
         const mouseY = mouseEvent.ty - this.mapOffsetTargetY;
-        for (const fur of this.currentLevel.getFurnituresAt(mouseX, mouseY)) {
-            this.messagebuffer.add(fur.dataRef.description);
+        if (this.currentLevel.isInLevelBounds(mouseX, mouseY)) {
+            const tileState = this.currentLevel.getTileState(mouseX, mouseY);
+            if (tileState.state === TileVisibility.Remembered) {
+                for (const fur of this.currentLevel.getFurnituresAt(mouseX, mouseY)) {
+                    this.messagebuffer.add(fur.dataRef.description);
+                }
+                for (const item of this.currentLevel.getItemsAt(mouseX, mouseY)) {
+                    this.messagebuffer.add(item.dataRef.description);
+                }
+                const cre = this.currentLevel.getCreatureAt(mouseX, mouseY);
+                if (cre !== null) {
+                    this.messagebuffer.add(cre.dataRef.description);
+                }
+            }
         }
-        for (const item of this.currentLevel.getItemsAt(mouseX, mouseY)) {
-            this.messagebuffer.add(item.dataRef.description);
-        }
-        const cre = this.currentLevel.getCreatureAt(mouseX, mouseY);
-        if (cre !== null) {
-            this.messagebuffer.add(cre.dataRef.description);
-        }
-        this.renderer.renderGame();
     }
 
     private isCurrable(x: number, y: number): boolean {
@@ -701,9 +704,7 @@ export class Game implements IGameWindow {
             }
             return 0;
         };
-        console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
-        console.log(attacker);
-        console.log(defender);
+        // console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
         const spiritPower = this.player.currentbody === attacker ? this.player.spiritpower : 0;
         const maxDamage = getItemAttack(attacker) + attacker.dataRef.strength + spiritPower;
         const minDamage = Math.ceil(maxDamage / 2);
@@ -713,7 +714,6 @@ export class Game implements IGameWindow {
         defender.currenthp -= damage;
         const attackerName = attacker === this.player.currentbody ? "you" : attacker.dataRef.type;
         const defenderName = defender === this.player.currentbody ? "you" : "the " + defender.dataRef.type;
-        console.log("hp left " + defender.currenthp);
         const color = defender === this.player.currentbody ? Color.red : Color.skin;
 
         const extraS = attacker === this.player.currentbody ? "" : "s";
