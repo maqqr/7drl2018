@@ -137,7 +137,7 @@ export class Renderer {
         if (this.game.waitForDirCallback !== null || this.game.waitForItemCallback !== null) {
             for (let i = 0; i < this.game.waitForMessage.length; i++) {
                 const line = this.game.waitForMessage[i];
-                this.renderer.drawString(0, 16 + 12 * i, line);
+                this.renderer.drawString(2, 16 + 12 * i, line);
             }
         } else {
             if (this.game.helpToggledOn) {
