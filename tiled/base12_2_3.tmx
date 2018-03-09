@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="59">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="64">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -18,16 +18,6 @@
 </data>
  </layer>
  <objectgroup name="creature">
-  <object id="55" gid="249" x="64" y="80" width="16" height="16">
-   <properties>
-    <property name="probability" value="5"/>
-   </properties>
-  </object>
-  <object id="56" gid="249" x="112" y="128" width="16" height="16">
-   <properties>
-    <property name="probability" value="4"/>
-   </properties>
-  </object>
   <object id="57" gid="248" x="64" y="128" width="16" height="16">
    <properties>
     <property name="probability" value="10"/>
@@ -36,6 +26,31 @@
   <object id="58" gid="248" x="112" y="80" width="16" height="16">
    <properties>
     <property name="probability" value="10"/>
+   </properties>
+  </object>
+  <object id="59" gid="245" x="80" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="60" gid="245" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="61" gid="244" x="80" y="64" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="62" gid="250" x="112" y="128" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="63" gid="248" x="64" y="80" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
    </properties>
   </object>
  </objectgroup>

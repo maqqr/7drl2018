@@ -47,11 +47,6 @@
     <property name="propability" type="int" value="5"/>
    </properties>
   </object>
-  <object id="70" gid="249" x="96" y="144" width="16" height="16">
-   <properties>
-    <property name="propability" type="int" value="5"/>
-   </properties>
-  </object>
   <object id="71" gid="246" x="128" y="96" width="16" height="16">
    <properties>
     <property name="propability" type="int" value="5"/>
