@@ -1,8 +1,8 @@
 import { Color } from "./color";
+import { SlotType } from "./entity";
 import { Game } from "./index";
 import { Level, TileVisibility } from "./level";
 import { PixiRenderer } from "./pixirenderer";
-import { SlotType } from "./entity";
 
 export interface IMouseEvent {
     mx: number; // Mouse X
@@ -106,12 +106,16 @@ export class Renderer {
         }
 
         const creatures = this.game.getCurrentLevel().creatures;
-        for (const furry of creatures) {
-            const tileState = level.getTileState(furry.x, furry.y);
+        for (const cre of creatures) {
+            const tileState = level.getTileState(cre.x, cre.y);
             if (tileState.state === TileVisibility.Visible) {
-                this.renderer.drawTexture(
-                    toScreen(this.game.mapOffsetX + furry.x), toScreen(this.game.mapOffsetY + furry.y),
-                    furry.dataRef.id, this.game.currentTintColor);
+                const drawX = toScreen(this.game.mapOffsetX + cre.x);
+                const drawY = toScreen(this.game.mapOffsetY + cre.y);
+                this.renderer.drawTexture(drawX, drawY, cre.dataRef.id, this.game.currentTintColor);
+                // Draw creature hp bar
+                const width = Math.floor(12 * (cre.currenthp / cre.dataRef.maxhp));
+                this.renderer.drawRect(drawX + 2, drawY - 2, width, 2, false, Color.green, 0.7);
+                this.renderer.drawRect(drawX + 2 + width, drawY - 2, 12 - width, 2, false, Color.red, 0.7);
             }
         }
 
@@ -153,7 +157,17 @@ export class Renderer {
             msgY += 12;
         }
 
-        // 176
+        const spiritStatsX = Game.WIDTH - 130;
+        const spiritStatsY = 10;
+        const stabilityColor =
+            (this.game.player.currentstability / this.game.player.spiritstability) > 0.5 ? Color.lightblue : Color.red;
+        this.renderer.drawString(
+            spiritStatsX + 1, spiritStatsY, "Spirit stability: " +
+            Math.ceil(this.game.player.currentstability) + "/" + this.game.player.spiritstability, stabilityColor);
+        this.renderer.drawString(spiritStatsX, spiritStatsY + 12, "    Spirit power: " + this.game.player.spiritpower);
+        this.renderer.drawString(
+            spiritStatsX + 2, spiritStatsY + 24, "        Willpower: " + this.game.player.willpower);
+
         let invX = 4;
         const invY = 250;
         let itemIndex = 1;
@@ -162,7 +176,20 @@ export class Renderer {
         const bagSlotIcon = 178;
         const slotBackgroundIcon = 179;
         if (this.game.player.currentbody !== null) {
-            for (const slot of this.game.player.currentbody.inventory) {
+            const playerBody = this.game.player.currentbody;
+            // Draw hp and stats
+            const hpColor = (playerBody.currenthp / playerBody.dataRef.maxhp) > 0.5 ? Color.lightgreen : Color.red;
+            const statsX = Game.WIDTH - 100;
+            const statsY = 60;
+            this.renderer.drawString(
+                statsX - 1, statsY, "   HP: " + playerBody.currenthp + "/" + playerBody.dataRef.maxhp, hpColor);
+            this.renderer.drawString(statsX, statsY + 12, " STR: " + playerBody.dataRef.strength);
+            this.renderer.drawString(statsX, statsY + 12 * 2, " DEF: " + playerBody.dataRef.defence);
+            this.renderer.drawString(statsX, statsY + 12 * 3, " SPD: " + (10 - playerBody.dataRef.speed));
+            this.renderer.drawString(statsX - 1, statsY + 12 * 4, "SIZE: " + playerBody.dataRef.size);
+
+            // Draw item slots
+            for (const slot of playerBody.inventory) {
                 this.renderer.drawTexture(invX, invY, slotBackgroundIcon); // Slot background
                 this.renderer.drawString(invX + 5, invY + 20, "" + itemIndex); // Slot number
 
