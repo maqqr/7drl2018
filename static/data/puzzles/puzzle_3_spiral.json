@@ -353,6 +353,14 @@
                  "height":16,
                  "id":52,
                  "name":"",
+                 "properties":
+                    {
+                     "description":"Magic runes move on the surface of the metal door."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -560,15 +568,105 @@
         }, 
         {
          "draworder":"topdown",
-         "name":"description",
-         "objects":[],
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":243,
+                 "height":16,
+                 "id":72,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"100"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":160
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":222,
+                 "height":16,
+                 "id":71,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":160
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"description",
+         "objects":[
+                {
+                 "height":32,
+                 "id":70,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"In the middle of the small room is a round boulder. Someone has painted spirals on the doorframes."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":320
+                }, 
+                {
+                 "height":16,
+                 "id":73,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"There are some very irregular, large footprints on the floor."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":224,
+                 "y":160
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":false,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":70,
+ "nextobjectid":74,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
@@ -576,7 +674,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tileset.tsx"
+         "source":"..\/..\/..\/tiled\/tileset.tsx"
         }],
  "tilewidth":16,
  "type":"map",
