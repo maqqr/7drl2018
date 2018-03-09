@@ -466,7 +466,7 @@ export class Game {
                     this.messagebuffer.add(action);
                 }
 
-                if (Math.random() < chance) {
+                if (true || Math.random() < chance) { // TODO: remove true
                     this.messagebuffer.add(chance < 1.0
                         ? "You were more potent and overcame the feeble creature."
                         : "You return to the body of " + creatureName + ".");
@@ -591,6 +591,7 @@ export class Game {
     }
 
     private creatureFight(attacker: Creature, defender: Creature): void {
+        return;
         console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
         console.log(attacker);
         console.log(defender);

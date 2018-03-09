@@ -25,15 +25,15 @@
         {"icon": 11,"draworder": 10,"type": "doormechanised","name":"door","transparent": false,"size": 20,"description": "This is a closed metal door whitout any door handle.","activation": "doormechanisedopen"},
         {"icon": 12,"draworder": 10,"type": "doormechanisedopen","name":"door","size": 0,"description": "This is a open door.","activation": "doormechanised"},
         
-        {"icon": 25,"draworder": 10,"type": "doorbronzelocked","name":"door","transparent": false,"size": 20,"description": "This is a locked bronze door.","requireitem": "bronze key","useractivation": "doorbronze","useractivationtext": "You unlock the bronze door."},
+        {"icon": 25,"draworder": 10,"type": "doorbronzelocked","name":"door","transparent": false,"size": 20,"description": "This is a locked bronze door.","requireitem": "bronzekey","useractivation": "doorbronze","useractivationtext": "You unlock the bronze door."},
         {"icon": 26,"draworder": 10,"type": "doorbronze","name":"door","transparent": false,"size": 20,"description": "This is a bronze door.","useractivation": "doorbronzeopen","useractivationtext": "You open the bronze door."},
         {"icon": 27,"draworder": 10,"type": "doorbronzeopen","name":"door","size": 0,"description": "This is a opened bronze door.","useractivation": "doorbronze","useractivationtext": "You close the bronze door."},
         
-        {"icon": 41,"draworder": 10,"type": "doorsilverlocked","name":"door","transparent": false,"size": 20,"description": "This is a locked silver door.","requireitem": "silver key","useractivation": "doorsilver","useractivationtext": "You unlock the silver door."},
+        {"icon": 41,"draworder": 10,"type": "doorsilverlocked","name":"door","transparent": false,"size": 20,"description": "This is a locked silver door.","requireitem": "silverkey","useractivation": "doorsilver","useractivationtext": "You unlock the silver door."},
         {"icon": 42,"draworder": 10,"type": "doorsilver","name":"door","transparent": false,"size": 20,"description": "This is a silver door.","useractivation": "doorsilveropen","useractivationtext": "You open the silver door."},
         {"icon": 43,"draworder": 10,"type": "doorsilveropen","name":"door","size": 0,"description": "This is a opened silver door.","useractivation": "doorsilver","useractivationtext": "You close the silver door."},
 
-        {"icon": 57,"draworder": 10,"type": "doorgoldlocked","name":"door","transparent": false,"size": 20,"description": "This is a locked gold door.","requireitem": "golden key","useractivation": "doorgold","useractivationtext": "You unlock the golden door."},
+        {"icon": 57,"draworder": 10,"type": "doorgoldlocked","name":"door","transparent": false,"size": 20,"description": "This is a locked gold door.","requireitem": "goldenkey","useractivation": "doorgold","useractivationtext": "You unlock the golden door."},
         {"icon": 58,"draworder": 10,"type": "doorgold","name":"door","transparent": false,"size": 20,"description": "This is a gold door.","useractivation": "doorgoldopen","useractivationtext": "You open the gold door."},
         {"icon": 59,"draworder": 10,"type": "doorgoldopen","name":"door","size": 0,"description": "This is a opened gold door.","useractivation": "doorgold","useractivationtext": "You close the gold door."},
 
