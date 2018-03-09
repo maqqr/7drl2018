@@ -284,6 +284,7 @@ export class Game {
         rat.dataRef.description = "A very fat rat.";
 
         // Testing items
+        this.currentLevel.createItemAt(this.data.items[14], this.player.x - 2, this.player.y + 1);
         this.currentLevel.createItemAt(this.data.items[1], this.player.x - 1, this.player.y + 1);
         this.currentLevel.createItemAt(this.data.items[2], this.player.x - 1, this.player.y + 1);
 
@@ -371,9 +372,6 @@ export class Game {
             if (item.category === "key") {
                 this.messagebuffer.add("You use keys automatically by activating doors.");
                 return false;
-            } else if (item.category === "orb") {
-                // TODO
-                return false;
             } else if (item.category === "potion") {
                 playerBody.inventory[this.itemSlotToBeUsed].item = "";
                 playerBody.currenthp = playerBody.dataRef.maxhp;
@@ -429,6 +427,50 @@ export class Game {
                 this.messagebuffer.add("You do not have an item on that slot.");
             }
         }
+        return false;
+    }
+
+    private collectOrb(): void {
+        this.waitForMessage = [
+            "The orb gives you power and you can increase one of your stats:",
+            "  1 - Increase spirit stability",
+            "  2 - Increase spirit power",
+            "  3 - Increase willpower",
+        ];
+        this.waitForItemCallback = this.useOrb.bind(this);
+    }
+
+    private useOrb(keyCode: string): boolean {
+        const destroyOrb = () => {
+            for (const item of this.currentLevel.getItemsAt(this.player.x, this.player.y)) {
+                if (item.dataRef.type === "orb") {
+                    this.currentLevel.removeItem(item);
+                    break;
+                }
+            }
+        };
+
+        if (keyCode === "Digit1" || keyCode === "Numpad1") {
+            this.player.spiritstability += 1;
+            this.player.currentstability = this.player.spiritstability;
+            this.messagebuffer.add("Your stability increases and can remain out of body longer. The orb vanishes.");
+            destroyOrb();
+            return true;
+        }
+        if (keyCode === "Digit2" || keyCode === "Numpad2") {
+            this.player.spiritpower += 1;
+            this.messagebuffer.add("You can now transfer more power to possessed creatures. The orb vanishes.");
+            destroyOrb();
+            return true;
+        }
+        if (keyCode === "Digit3" || keyCode === "Numpad3") {
+            this.player.willpower += 1;
+            this.messagebuffer.add("Your willpower increases and possession is easier. The orb vanishes.");
+            destroyOrb();
+            return true;
+        }
+
+        this.collectOrb();
         return false;
     }
 
@@ -643,7 +685,19 @@ export class Game {
                         }
                     }
                 }
-                this.reportItemsAt(this.player.x, this.player.y);
+                // Report itemb
+                if (moving) {
+                    this.reportItemsAt(this.player.x, this.player.y);
+                }
+
+                // Autocollect orb
+                for (const item of this.currentLevel.getItemsAt(this.player.x, this.player.y)) {
+                    if (item.dataRef.type === "orb") {
+                        this.messagebuffer.add("You touch the orb.");
+                        this.collectOrb();
+                        keyAccepted = true;
+                    }
+                }
             }
         }
 
@@ -842,14 +896,9 @@ export class Game {
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {
-        if (this.chargen !== null) {
+        if (this.chargen !== null || this.currentLevel === null) {
             return;
         }
-
-        // console.log(mouseEvent);
-        // const msg = this.currentLevel.activate(
-        //                 mouseEvent.tx - this.mapOffsetTargetX,
-        //                 mouseEvent.ty - this.mapOffsetTargetY, true, this.player.currentbody);
 
         // Describe furniture
         const mouseX = mouseEvent.tx - this.mapOffsetTargetX;
