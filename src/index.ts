@@ -11,6 +11,7 @@ import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set
 import { Level, TileVisibility } from "./level";
 import { MessageBuffer } from "./messagebuffer";
 import { IMouseEvent, Renderer } from "./renderer";
+import { IGameWindow } from "./window";
 
 export class Game {
     public static readonly WIDTH: number = 600;
@@ -639,7 +640,7 @@ export class Game {
                     this.messagebuffer.add(action);
                 }
 
-                if (true || Math.random() < chance) { // TODO: remove true
+                if (Math.random() < chance) {
                     this.messagebuffer.add(chance < 1.0
                         ? "You were more potent and overcame the feeble creature."
                         : "You return to the body of " + creatureName + ".");
