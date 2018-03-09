@@ -37,27 +37,7 @@
         {
          "draworder":"topdown",
          "name":"creature",
-         "objects":[
-                {
-                 "gid":251,
-                 "height":16,
-                 "id":73,
-                 "name":"",
-                 "properties":
-                    {
-                     "probability":100
-                    },
-                 "propertytypes":
-                    {
-                     "probability":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":128,
-                 "y":160
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
