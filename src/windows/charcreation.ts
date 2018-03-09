@@ -1,7 +1,7 @@
-import { Color } from "./color";
-import { Player } from "./entity";
-import { PixiRenderer } from "./pixirenderer";
-import { IMouseEvent, Renderer } from "./renderer";
+import { Color } from "../color";
+import { Player } from "../entity";
+import { PixiRenderer } from "../pixirenderer";
+import { IMouseEvent } from "../renderer";
 import { IGameWindow } from "./window";
 
 export interface IQuestion {

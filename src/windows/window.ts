@@ -1,4 +1,4 @@
-import { IMouseEvent } from "./renderer";
+import { IMouseEvent } from "../renderer";
 
 export interface IGameWindow {
     startWindow(): void;

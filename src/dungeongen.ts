@@ -1,8 +1,8 @@
-import { Game } from ".";
 import { GameData } from "./data";
 import { Furniture, LevelRooms, PuzzleRoom } from "./entity";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 import { Level } from "./level";
+import { Game } from "./windows/game";
 
 class PositionedRoom {
     public room: IPuzzleRoom;

@@ -1,8 +1,8 @@
 import { Color } from "./color";
 import { SlotType } from "./entity";
-import { Game } from "./index";
 import { Level, TileVisibility } from "./level";
 import { PixiRenderer } from "./pixirenderer";
+import { Game } from "./windows/game";
 
 export interface IMouseEvent {
     mx: number; // Mouse X

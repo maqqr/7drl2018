@@ -1,6 +1,5 @@
 import * as bresenham from "bresenham-js";
 import * as ROT from "rot-js";
-import { Game } from ".";
 import { GameData } from "./data";
 import { Creature, Entity, Furniture, Item, ItemSlot, SlotType } from "./entity";
 import { ICreature, IFurniture, IItem, ITile } from "./interface/entity-schema";
