@@ -14,6 +14,46 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"creature",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":220,
+                 "height":16,
+                 "id":51,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":25
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":112
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"furniture",
          "objects":[
                 {
@@ -23,11 +63,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"\"Here lies Rofl Grimwin, son of Clovis and Floria Grimwin. Mysteriously vanished in 1004 and after 2 years of searching, was proclaimed dead.\""
+                     "description":"\"Here lies Rofl Grimwin, son of Clovis and Floria Grimwin. Mysteriously vanished in 1004 and after 2 years of searching, was proclaimed dead.\"",
+                     "name":"coffin of Rofl"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -43,11 +85,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"Statue of Rofl Grimwin. He is sparring with his father."
+                     "description":"Statue of Rofl Grimwin. He is sparring with his father.",
+                     "name":"statue of Rofl"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -103,7 +147,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":51,
+ "nextobjectid":52,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
