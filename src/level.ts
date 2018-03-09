@@ -1,3 +1,4 @@
+import * as bresenham from "bresenham-js";
 import * as ROT from "rot-js";
 import { Game } from ".";
 import { GameData } from "./data";
@@ -371,6 +372,16 @@ export class Level {
                 }
             }
         }
+    }
+
+    public lineOfSight(x1: number, y1: number, x2: number, y2: number): boolean {
+        const line = bresenham([x1, y1], [x2, y2]);
+        for (const point of line) {
+            if (!this.isTransparent(point[0], point[1])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public placePuzzleAt(px: number, py: number, puzzle: IPuzzleRoom): void {
