@@ -215,6 +215,14 @@ export class Renderer {
                 if (slot.item !== "") {
                     const item = this.game.data.getByType(this.game.data.items, slot.item);
                     this.renderer.drawTexture(invX, invY, item.icon);
+
+                    // Draw bonus
+                    let bonus = 0;
+                    if (slot.type === SlotType.Offensive) { bonus = item.attack; }
+                    if (slot.type === SlotType.Defensive) { bonus = item.defence; }
+                    // if (bonus > 0) {
+                    this.renderer.drawString(invX + 1, invY - 13, "+" + bonus, Color.white);
+                    // }
                 }
                 itemIndex++;
                 invX += 20;
