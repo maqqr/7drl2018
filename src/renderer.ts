@@ -2,6 +2,7 @@ import { Color } from "./color";
 import { Game } from "./index";
 import { Level, TileVisibility } from "./level";
 import { PixiRenderer } from "./pixirenderer";
+import { SlotType } from "./entity";
 
 export interface IMouseEvent {
     mx: number; // Mouse X
@@ -153,15 +154,27 @@ export class Renderer {
         }
 
         // 176
-        let invX = 300;
-        const invY = 300;
+        let invX = 4;
+        const invY = 250;
         let itemIndex = 1;
+        const offSlotIcon = 176;
+        const defSlotIcon = 177;
+        const bagSlotIcon = 178;
+        const slotBackgroundIcon = 179;
         if (this.game.player.currentbody !== null) {
             for (const slot of this.game.player.currentbody.inventory) {
-                this.renderer.drawTexture(invX, invY, 176);
-                this.renderer.drawString(invX + 5, invY + 20, "" + itemIndex);
+                this.renderer.drawTexture(invX, invY, slotBackgroundIcon); // Slot background
+                this.renderer.drawString(invX + 5, invY + 20, "" + itemIndex); // Slot number
+
+                let slotTypeIcon = bagSlotIcon;
+                if (slot.type === SlotType.Offensive) { slotTypeIcon = offSlotIcon; }
+                if (slot.type === SlotType.Defensive) { slotTypeIcon = defSlotIcon; }
+
+                // Draw slot icon on top of the slot
+                this.renderer.drawTexture(invX, invY - 16, slotTypeIcon); // Slot background
+
+                // Draw item on the slot
                 if (slot.item !== "") {
-                    console.log(slot.item);
                     const item = this.game.data.getByType(this.game.data.items, slot.item);
                     this.renderer.drawTexture(invX, invY, item.icon);
                 }
