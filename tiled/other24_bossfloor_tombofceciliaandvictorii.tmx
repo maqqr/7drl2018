@@ -1,34 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="31">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="136">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
-38,39,41,40,41,38,41,39,39,38,38,39,41,39,39,40,39,38,39,40,41,41,41,39,
-39,38,39,39,40,38,38,39,40,40,41,38,41,39,39,40,40,39,40,41,40,40,40,39,
-41,38,39,38,38,39,41,39,38,38,41,40,39,38,41,40,39,38,40,40,39,39,39,41,
-39,41,38,38,41,38,40,41,41,39,40,40,40,39,38,41,39,41,38,39,41,39,38,40,
-41,41,38,38,41,39,38,39,38,40,39,38,41,38,39,38,40,40,41,39,40,38,38,38,
-38,41,40,40,39,41,41,41,40,40,39,38,38,38,39,41,38,40,39,39,39,40,39,41,
-40,41,38,41,40,39,40,40,38,40,41,40,41,39,38,38,41,38,41,38,41,39,40,39,
-38,41,41,39,38,41,40,38,38,39,40,39,41,39,41,41,38,39,39,41,40,41,39,41,
-39,41,38,40,39,38,38,41,38,38,41,39,38,41,38,39,38,38,40,41,41,38,40,38,
-38,39,41,39,39,38,38,40,38,40,38,38,40,38,40,41,40,41,38,41,39,39,38,39,
-40,39,41,38,41,39,39,41,38,39,38,41,38,38,40,39,39,41,40,40,38,41,38,39,
-39,38,39,39,38,41,38,40,38,41,38,41,41,40,40,41,39,38,41,41,41,38,40,39,
-40,39,39,41,41,39,39,41,40,38,39,40,40,40,41,41,39,41,38,40,38,38,41,40,
-41,38,40,39,39,40,39,39,40,38,38,38,41,38,39,39,39,41,41,40,39,39,39,38,
-41,41,41,38,38,39,40,41,40,39,41,40,40,41,40,40,38,38,40,41,41,40,40,41,
-38,41,39,39,39,38,38,39,39,41,39,39,41,39,38,40,39,38,39,40,38,38,41,38,
-41,41,39,41,38,38,40,39,40,38,40,39,38,38,41,41,38,41,41,38,38,40,41,39,
-40,40,41,40,38,39,40,41,41,41,40,40,39,38,39,40,41,38,38,41,40,38,38,41,
-38,41,41,41,41,40,38,41,38,38,39,41,38,41,41,39,39,40,41,39,38,40,40,40,
-40,40,40,38,38,39,38,40,38,39,41,39,41,41,41,39,38,38,40,38,39,41,39,41,
-41,38,39,39,40,41,41,38,39,41,39,40,38,41,40,39,40,38,38,38,40,38,39,39,
-39,39,39,39,38,41,40,38,40,38,41,40,38,40,39,41,41,41,39,40,39,39,40,41,
-40,38,41,41,40,41,41,39,40,38,40,39,40,38,40,38,40,38,39,39,39,39,38,40,
+38,39,41,40,41,38,41,40,39,38,38,39,41,39,39,40,39,38,39,40,41,41,41,39,
+39,38,34,34,35,39,36,39,36,34,36,40,40,36,35,34,36,37,36,37,35,34,39,39,
+41,36,35,36,36,39,36,39,36,37,37,35,36,36,35,15,15,15,15,15,37,36,37,41,
+39,36,37,37,41,38,40,41,41,34,35,36,37,37,15,41,39,41,38,39,15,35,34,40,
+41,34,37,38,41,39,38,39,38,40,34,34,36,15,39,38,40,40,41,39,40,15,34,38,
+38,38,40,40,39,41,41,41,40,40,34,37,36,15,39,41,38,40,39,39,39,15,34,41,
+40,34,34,41,40,39,40,40,38,40,36,35,34,15,38,38,41,38,41,38,41,15,36,39,
+38,39,41,39,38,41,40,38,38,39,37,37,35,15,41,41,38,39,39,41,40,15,34,41,
+39,34,36,40,39,38,38,41,38,38,34,35,35,15,38,39,38,38,40,41,41,15,37,38,
+38,36,35,36,39,38,38,40,38,34,34,36,37,15,40,41,40,41,38,41,39,15,34,39,
+40,35,35,36,37,39,36,41,37,36,35,37,34,15,40,39,39,41,40,40,38,15,37,39,
+39,39,35,37,37,41,35,39,36,36,37,34,36,15,40,41,39,38,41,41,41,15,35,39,
+40,38,35,37,34,38,35,40,37,35,34,37,36,15,41,41,39,41,38,40,38,15,34,40,
+41,36,36,37,34,40,36,39,34,37,35,34,36,15,39,39,39,41,41,40,39,15,37,38,
+41,34,35,37,38,39,40,41,40,36,36,37,36,15,40,40,38,38,40,41,41,15,37,41,
+38,36,34,39,39,38,38,39,39,41,35,35,36,15,38,40,39,38,39,40,38,15,34,38,
+41,37,37,41,38,38,40,39,40,38,40,40,39,38,41,41,38,41,41,38,38,15,35,39,
+40,34,34,40,38,39,40,41,41,41,36,37,34,34,39,40,41,38,38,41,40,15,34,41,
+38,35,34,41,41,40,38,41,38,38,39,38,40,39,41,39,39,40,41,39,38,15,36,40,
+40,34,34,38,38,39,38,40,38,39,37,36,34,15,41,39,38,38,40,38,39,15,34,41,
+41,35,37,34,40,41,41,38,39,36,36,36,36,37,15,39,40,38,38,38,15,37,35,39,
+39,36,36,37,36,37,35,34,35,35,36,34,37,35,37,15,15,15,15,15,35,37,37,41,
+40,41,35,37,35,37,37,37,35,34,35,41,39,35,37,36,34,34,36,36,36,34,40,40,
 41,38,41,41,41,40,40,40,38,40,39,40,41,39,41,38,41,41,40,41,41,39,39,41
 </data>
  </layer>
- <objectgroup name="furniture"/>
+ <objectgroup name="furniture">
+  <object id="31" gid="10" x="80" y="48" width="16" height="16"/>
+  <object id="32" gid="10" x="112" y="48" width="16" height="16"/>
+  <object id="33" gid="10" x="32" y="96" width="16" height="16"/>
+  <object id="34" gid="10" x="32" y="128" width="16" height="16"/>
+  <object id="35" gid="10" x="80" y="176" width="16" height="16"/>
+  <object id="36" gid="10" x="112" y="176" width="16" height="16"/>
+  <object id="37" gid="10" x="80" y="224" width="16" height="16"/>
+  <object id="38" gid="10" x="112" y="224" width="16" height="16"/>
+  <object id="39" gid="10" x="160" y="272" width="16" height="16"/>
+  <object id="40" gid="10" x="160" y="304" width="16" height="16"/>
+  <object id="41" gid="10" x="208" y="272" width="16" height="16"/>
+  <object id="42" gid="10" x="208" y="304" width="16" height="16"/>
+  <object id="43" type="crumblingwall3" gid="35" x="224" y="240" width="16" height="16"/>
+  <object id="44" type="crumblingwall3" gid="35" x="224" y="224" width="16" height="16"/>
+  <object id="45" type="crumblingwall3" gid="35" x="320" y="240" width="16" height="16"/>
+  <object id="46" type="crumblingwall3" gid="35" x="240" y="224" width="16" height="16"/>
+  <object id="47" type="crumblingwall3" gid="35" x="256" y="224" width="16" height="16"/>
+  <object id="48" type="crumblingwall3" gid="35" x="272" y="224" width="16" height="16"/>
+  <object id="49" type="crumblingwall3" gid="35" x="288" y="224" width="16" height="16"/>
+  <object id="50" type="crumblingwall3" gid="35" x="304" y="224" width="16" height="16"/>
+  <object id="51" type="crumblingwall3" gid="35" x="320" y="224" width="16" height="16"/>
+  <object id="52" type="transfloor3" gid="39" x="192" y="272" width="16" height="16"/>
+  <object id="53" type="transfloor3" gid="39" x="192" y="304" width="16" height="16"/>
+  <object id="54" gid="49" x="272" y="288" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[12,18],[12,16],[14,14],[20,14],[14,13],[15,13],[16,13],[17,13],[18,13],[19,13],[20,13],[13,19],[14,20],[15,21],[16,21],[17,21],[18,21],[19,21],[20,20],[21,19],[20,19],[19,19],[18,19],[17,19],[16,19],[15,19],[14,19],[13,19],[12,19],[11,19],[10,19],[9,19],[8,19],[7,19],[6,19],[5,19],[4,19],[20,3],[19,2],[18,2],[17,2],[16,2],[15,2],[14,3],[13,4],[13,5],[13,6],[13,7],[13,8],[13,9],[13,10],[13,11],[13,12],[13,13],[13,14],[13,15]]"/>
+    <property name="useractivationtext" value="BOSS FIGHT!"/>
+   </properties>
+  </object>
+  <object id="61" gid="52" x="240" y="96" width="16" height="16"/>
+  <object id="62" gid="52" x="304" y="96" width="16" height="16"/>
+  <object id="63" gid="52" x="240" y="144" width="16" height="16"/>
+  <object id="64" gid="52" x="304" y="144" width="16" height="16"/>
+  <object id="65" gid="52" x="240" y="192" width="16" height="16"/>
+  <object id="66" gid="52" x="304" y="192" width="16" height="16"/>
+  <object id="67" gid="52" x="240" y="240" width="16" height="16"/>
+  <object id="68" gid="52" x="304" y="240" width="16" height="16"/>
+  <object id="69" gid="52" x="240" y="288" width="16" height="16"/>
+  <object id="70" gid="52" x="304" y="288" width="16" height="16"/>
+  <object id="71" gid="52" x="256" y="320" width="16" height="16"/>
+  <object id="72" gid="52" x="288" y="320" width="16" height="16"/>
+  <object id="75" gid="52" x="352" y="32" width="16" height="16"/>
+  <object id="76" gid="52" x="352" y="368" width="16" height="16"/>
+  <object id="77" gid="52" x="16" y="368" width="16" height="16"/>
+  <object id="78" gid="52" x="16" y="208" width="16" height="16"/>
+  <object id="79" gid="52" x="16" y="192" width="16" height="16"/>
+  <object id="82" gid="52" x="16" y="32" width="16" height="16"/>
+  <object id="83" gid="52" x="176" y="368" width="16" height="16"/>
+  <object id="84" gid="52" x="192" y="368" width="16" height="16"/>
+  <object id="85" gid="52" x="176" y="32" width="16" height="16"/>
+  <object id="86" gid="52" x="192" y="32" width="16" height="16"/>
+  <object id="89" gid="31" x="272" y="96" width="16" height="16"/>
+  <object id="90" gid="32" x="288" y="96" width="16" height="16"/>
+  <object id="91" gid="48" x="288" y="112" width="16" height="16"/>
+  <object id="92" gid="47" x="272" y="112" width="16" height="16"/>
+  <object id="93" type="crumblingwall3" gid="35" x="208" y="224" width="16" height="16"/>
+  <object id="94" type="crumblingwall3" gid="35" x="208" y="240" width="16" height="16"/>
+  <object id="95" type="crumblingwall3" gid="35" x="208" y="256" width="16" height="16"/>
+  <object id="96" type="crumblingwall3" gid="35" x="208" y="208" width="16" height="16"/>
+  <object id="97" type="crumblingwall3" gid="35" x="208" y="192" width="16" height="16"/>
+  <object id="98" type="crumblingwall3" gid="35" x="208" y="176" width="16" height="16"/>
+  <object id="99" type="crumblingwall3" gid="35" x="208" y="128" width="16" height="16"/>
+  <object id="100" type="crumblingwall3" gid="35" x="208" y="144" width="16" height="16"/>
+  <object id="101" type="crumblingwall3" gid="35" x="208" y="160" width="16" height="16"/>
+  <object id="102" type="crumblingwall3" gid="35" x="208" y="112" width="16" height="16"/>
+  <object id="103" type="crumblingwall3" gid="35" x="208" y="96" width="16" height="16"/>
+  <object id="104" type="crumblingwall3" gid="35" x="208" y="80" width="16" height="16"/>
+  <object id="105" type="crumblingwall3" gid="35" x="224" y="64" width="16" height="16"/>
+  <object id="106" type="crumblingwall3" gid="35" x="240" y="48" width="16" height="16"/>
+  <object id="107" type="crumblingwall3" gid="35" x="256" y="48" width="16" height="16"/>
+  <object id="108" type="crumblingwall3" gid="35" x="272" y="48" width="16" height="16"/>
+  <object id="109" type="crumblingwall3" gid="35" x="288" y="48" width="16" height="16"/>
+  <object id="110" type="crumblingwall3" gid="35" x="304" y="48" width="16" height="16"/>
+  <object id="111" type="crumblingwall3" gid="35" x="320" y="64" width="16" height="16"/>
+  <object id="112" type="crumblingwall3" gid="35" x="336" y="80" width="16" height="16"/>
+  <object id="113" type="crumblingwall3" gid="35" x="336" y="96" width="16" height="16"/>
+  <object id="114" type="crumblingwall3" gid="35" x="336" y="112" width="16" height="16"/>
+  <object id="115" type="crumblingwall3" gid="35" x="336" y="128" width="16" height="16"/>
+  <object id="116" type="crumblingwall3" gid="35" x="336" y="144" width="16" height="16"/>
+  <object id="117" type="crumblingwall3" gid="35" x="336" y="160" width="16" height="16"/>
+  <object id="118" type="crumblingwall3" gid="35" x="336" y="176" width="16" height="16"/>
+  <object id="119" type="crumblingwall3" gid="35" x="336" y="192" width="16" height="16"/>
+  <object id="120" type="crumblingwall3" gid="35" x="336" y="208" width="16" height="16"/>
+  <object id="121" type="crumblingwall3" gid="35" x="336" y="224" width="16" height="16"/>
+  <object id="122" type="crumblingwall3" gid="35" x="336" y="240" width="16" height="16"/>
+  <object id="123" type="crumblingwall3" gid="35" x="336" y="256" width="16" height="16"/>
+  <object id="124" type="crumblingwall3" gid="35" x="336" y="272" width="16" height="16"/>
+  <object id="125" type="crumblingwall3" gid="35" x="336" y="288" width="16" height="16"/>
+  <object id="126" type="crumblingwall3" gid="35" x="336" y="304" width="16" height="16"/>
+  <object id="127" type="crumblingwall3" gid="35" x="336" y="320" width="16" height="16"/>
+  <object id="128" type="crumblingwall3" gid="35" x="320" y="336" width="16" height="16"/>
+  <object id="129" type="crumblingwall3" gid="35" x="304" y="352" width="16" height="16"/>
+  <object id="130" type="crumblingwall3" gid="35" x="288" y="352" width="16" height="16"/>
+  <object id="131" type="crumblingwall3" gid="35" x="272" y="352" width="16" height="16"/>
+  <object id="132" type="crumblingwall3" gid="35" x="256" y="352" width="16" height="16"/>
+  <object id="133" type="crumblingwall3" gid="35" x="240" y="352" width="16" height="16"/>
+  <object id="134" type="crumblingwall3" gid="35" x="224" y="336" width="16" height="16"/>
+  <object id="135" type="crumblingwall3" gid="35" x="208" y="320" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="creature">
+  <object id="55" gid="226" x="256" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" value="100"/>
+   </properties>
+  </object>
+  <object id="56" gid="226" x="288" y="144" width="16" height="16">
+   <properties>
+    <property name="probability" value="100"/>
+   </properties>
+  </object>
+  <object id="57" gid="226" x="256" y="176" width="16" height="16">
+   <properties>
+    <property name="probability" value="100"/>
+   </properties>
+  </object>
+  <object id="58" gid="227" x="272" y="80" width="16" height="16">
+   <properties>
+    <property name="probability" value="100"/>
+   </properties>
+  </object>
+  <object id="59" gid="226" x="304" y="128" width="16" height="16">
+   <properties>
+    <property name="probability" value="100"/>
+   </properties>
+  </object>
+  <object id="60" gid="226" x="240" y="128" width="16" height="16">
+   <properties>
+    <property name="probability" value="100"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="description"/>
 </map>
