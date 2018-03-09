@@ -923,11 +923,19 @@ export class Game {
             dy = Math.floor(Math.random() * 3) - 1;
         }
 
+        // Fix long enemy queues
+        if (canSeePlayer && !this.isCurrable(cre.x + dx, cre.y + dy)) {
+            dx = Math.floor(Math.random() * 3) - 1;
+            dy = Math.floor(Math.random() * 3) - 1;
+        }
+
         const targetX = cre.x + dx;
         const targetY = cre.y + dy;
+
+
         if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             // Move freely to target position unless it causes damage
-            if (this.currentLevel.getTileDamage(targetX, targetY) === 0) {
+            if (this.currentLevel.getTileDamage(targetX, targetY) === 0 || cre.dataRef.flying) {
                 this.moveCreature(cre, targetX, targetY);
             }
         } else {
