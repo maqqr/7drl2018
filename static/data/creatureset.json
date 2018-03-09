@@ -115,7 +115,7 @@
         },
         {
             "id":226, "type": "vitalius","category": "boss", "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "flying": true, "maxhp": 100, "strength": 6, "defence": 2, "speed": 5, "willpower": 25, "size": 10,
+            "maxhp": 100, "strength": 6, "defence": 2, "speed": 5, "willpower": 25, "size": 10,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 3,
             "inventory": ["sword", "tome", "kalamakkara"]
         }

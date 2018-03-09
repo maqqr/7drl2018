@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="206">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="224">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -128,8 +128,16 @@
   <object id="133" type="crumblingwall3" gid="35" x="240" y="352" width="16" height="16"/>
   <object id="134" type="crumblingwall3" gid="35" x="224" y="336" width="16" height="16"/>
   <object id="135" type="crumblingwall3" gid="35" x="208" y="320" width="16" height="16"/>
-  <object id="138" gid="53" x="96" y="112" width="16" height="16"/>
-  <object id="139" gid="53" x="96" y="288" width="16" height="16"/>
+  <object id="138" gid="53" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="description" value="A statue of your parents, but someone has defaced them to almost unrecognizable state."/>
+   </properties>
+  </object>
+  <object id="139" gid="53" x="96" y="288" width="16" height="16">
+   <properties>
+    <property name="description" value="A statue of your parents, but someone has defaced them to almost unrecognizable state."/>
+   </properties>
+  </object>
   <object id="142" gid="70" x="272" y="64" width="16" height="16"/>
   <object id="143" gid="55" x="256" y="64" width="16" height="16">
    <properties>
@@ -191,18 +199,28 @@
   <object id="191" gid="52" x="64" y="80" width="16" height="16"/>
   <object id="192" gid="52" x="128" y="80" width="16" height="16"/>
   <object id="193" gid="52" x="128" y="144" width="16" height="16"/>
-  <object id="194" gid="52" x="64" y="256" width="16" height="16"/>
-  <object id="195" gid="52" x="128" y="256" width="16" height="16"/>
-  <object id="196" gid="52" x="128" y="320" width="16" height="16"/>
   <object id="197" gid="52" x="64" y="320" width="16" height="16"/>
-  <object id="198" gid="69" x="64" y="240" width="16" height="16"/>
-  <object id="199" gid="69" x="48" y="256" width="16" height="16"/>
-  <object id="200" gid="69" x="48" y="320" width="16" height="16"/>
-  <object id="201" gid="69" x="64" y="336" width="16" height="16"/>
-  <object id="202" gid="69" x="128" y="336" width="16" height="16"/>
-  <object id="203" gid="69" x="144" y="320" width="16" height="16"/>
-  <object id="204" gid="69" x="144" y="256" width="16" height="16"/>
-  <object id="205" gid="69" x="128" y="240" width="16" height="16"/>
+  <object id="209" gid="86" x="64" y="256" width="16" height="16"/>
+  <object id="210" gid="86" x="128" y="256" width="16" height="16"/>
+  <object id="211" gid="86" x="128" y="320" width="16" height="16"/>
+  <object id="212" gid="69" x="48" y="320" width="16" height="16"/>
+  <object id="213" gid="85" x="48" y="256" width="16" height="16"/>
+  <object id="214" gid="85" x="64" y="240" width="16" height="16"/>
+  <object id="215" gid="85" x="128" y="240" width="16" height="16"/>
+  <object id="216" gid="85" x="144" y="256" width="16" height="16"/>
+  <object id="217" gid="85" x="144" y="320" width="16" height="16"/>
+  <object id="218" gid="85" x="128" y="336" width="16" height="16"/>
+  <object id="219" gid="85" x="64" y="336" width="16" height="16"/>
+  <object id="222" gid="88" x="80" y="272" width="16" height="16">
+   <properties>
+    <property name="description" value="A pile of rocks with runic marks. Remains of a powerful golem."/>
+   </properties>
+  </object>
+  <object id="223" gid="88" x="128" y="288" width="16" height="16">
+   <properties>
+    <property name="description" value="A pile of rocks with runic marks. Remains of a powerful golem."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="item">
   <object id="148" gid="213" x="272" y="64" width="16" height="16">
@@ -243,5 +261,21 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="description"/>
+ <objectgroup name="description" visible="0">
+  <object id="206" x="48" y="48" width="112" height="112">
+   <properties>
+    <property name="text" value="As you step inside of the room, you feel at utmost certainty that the people responsible of your pitiful state are close."/>
+   </properties>
+  </object>
+  <object id="207" x="48" y="224" width="112" height="112">
+   <properties>
+    <property name="text" value="You see two destroyed golems on the floor and signs of a brief battle. The one who did this must have immense power."/>
+   </properties>
+  </object>
+  <object id="208" x="224" y="224" width="112" height="112">
+   <properties>
+    <property name="text" value="You hear a muffled chanting somewhere from the walls. As your anger rises you spot a single lever in the middle of the room."/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
