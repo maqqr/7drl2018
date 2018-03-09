@@ -14,6 +14,76 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":216,
+                 "height":16,
+                 "id":56,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"10"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":96
+                }, 
+                {
+                 "gid":217,
+                 "height":16,
+                 "id":57,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"10"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":112
+                }, 
+                {
+                 "gid":212,
+                 "height":16,
+                 "id":58,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"10"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":128
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"furniture",
          "objects":[
                 {
@@ -236,7 +306,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":56,
+ "nextobjectid":59,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
