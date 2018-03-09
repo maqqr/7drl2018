@@ -152,6 +152,8 @@ export class Renderer {
             msgY += 12;
         }
 
+        // 176
+
         this.renderer.render();
 
         level.markRememberedTiles(this.game.player.x, this.game.player.y, visionRadius);

@@ -325,6 +325,7 @@ export class Game {
             pile += fur.dataRef.size;
         }
         const tile = this.currentLevel.getTile(x, y);
+
         return (pile + creSize) <= tile.maxsize;
     }
 
@@ -408,7 +409,13 @@ export class Game {
         if (e.code === "KeyG" && !spiritMode) {
             const items = this.currentLevel.getItemsAt(this.player.x, this.player.y);
             if (items.length > 0) {
-                // TODO: pick up
+                if (this.player.currentbody.pickup(items[0].dataRef.type)) {
+                    this.messagebuffer.add("You pick up the " + items[0].dataRef.name + ".");
+                    this.currentLevel.removeItem(items[0]);
+                } else {
+                    this.messagebuffer.add(
+                        "You do not have enough inventory slots to pick up the " + items[0].dataRef.name + ".");
+                }
             } else {
                 this.messagebuffer.add("Nothing to pick up here.");
             }
@@ -609,10 +616,11 @@ export class Game {
             // Prevent creatures of same category fighting each other
             const defender = this.currentLevel.getCreatureAt(targetX, targetY);
             const playerControlled = cre === this.player.currentbody || defender === this.player.currentbody;
-            if (playerControlled || cre.dataRef.category !== defender.dataRef.category) {
+            const noWillpower = defender.willpower === 0;
+            if (noWillpower || playerControlled || cre.dataRef.category !== defender.dataRef.category) {
                 this.creatureFight(cre, defender);
             }
-        } else if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
+        } else if (this.isCurrable(targetX, targetY) && this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             const oldX = cre.x;
             const oldY = cre.y;
             cre.x = targetX;
@@ -649,7 +657,7 @@ export class Game {
         const furs = this.currentLevel.getFurnituresAt(x, y);
         if (furs.length > 0)  {
             const addedA = furs.length === 1 ? "a " : "";
-            let msg = "You see here " + addedA;
+            let msg = "Here is " + addedA;
             for (let index = 0; index < furs.length; index++) {
                 const fur = furs[index];
                 const comma = index === furs.length - 1 ? "" : ", ";
@@ -752,7 +760,9 @@ export class Game {
             this.moveCreature(cre, cre.x + dx, cre.y + dy);
         } else {
             // Attempt to activate tile if movement failed
-            this.currentLevel.activate(targetX, targetY, true);
+            if (cre.dataRef.size >= 5) {
+                this.currentLevel.activate(targetX, targetY, true);
+            }
         }
     }
 }
