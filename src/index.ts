@@ -985,8 +985,8 @@ export class Game {
             dy = Math.floor(Math.random() * 3) - 1;
         }
 
-        const targetX = cre.x + dx;
-        const targetY = cre.y + dy;
+        const targetX = Math.floor(cre.x + dx);
+        const targetY = Math.floor(cre.y + dy);
 
         if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             // Move freely to target position unless it causes damage
