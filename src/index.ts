@@ -476,6 +476,21 @@ export class Game {
         if (e.code === "KeyO") {
             this.placePlayerAtFurniture("stairsdown");
         }
+        if (e.code === "KeyL") {
+            this.currentLevel.nextLevel = undefined;
+            this.currentLevel.prevLevel = undefined;
+            const dump = { player: this.player, level: this.currentLevel };
+            console.log(dump);
+
+            document.body.innerHTML = "";
+            document.body.style.backgroundColor = "white";
+            const textArea = document.createElement("p");
+            textArea.innerHTML = "Dumping data...";
+            document.body.appendChild(textArea);
+            setTimeout(() => {
+                textArea.innerHTML = JSON.stringify(dump);
+            }, 100);
+        }
 
         // 1-9 numbers - Use items
         if (!keyAccepted && this.player.currentbody !== null) {
@@ -762,7 +777,7 @@ export class Game {
                 this.creatureFight(cre, defender);
             }
         } else if (this.isCurrable(targetX, targetY) && this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
-            if (targetX === this.player.x && targetY === this.player.y) {
+            if (targetX === this.player.x && targetY === this.player.y && this.player.currentbody !== null) {
                 console.error("ERROR");
             }
             const oldX = cre.x;
@@ -825,13 +840,23 @@ export class Game {
             return;
         }
 
-        console.log(mouseEvent);
-        const msg = this.currentLevel.activate(
-                        mouseEvent.tx - this.mapOffsetTargetX,
-                        mouseEvent.ty - this.mapOffsetTargetY, true, this.player.currentbody);
+        // console.log(mouseEvent);
+        // const msg = this.currentLevel.activate(
+        //                 mouseEvent.tx - this.mapOffsetTargetX,
+        //                 mouseEvent.ty - this.mapOffsetTargetY, true, this.player.currentbody);
 
-        if (msg) {
-            this.messagebuffer.add(msg);
+        // Describe furniture
+        const mouseX = mouseEvent.tx - this.mapOffsetTargetX;
+        const mouseY = mouseEvent.ty - this.mapOffsetTargetY;
+        for (const fur of this.currentLevel.getFurnituresAt(mouseX, mouseY)) {
+            this.messagebuffer.add(fur.dataRef.description);
+        }
+        for (const item of this.currentLevel.getItemsAt(mouseX, mouseY)) {
+            this.messagebuffer.add(item.dataRef.description);
+        }
+        const cre = this.currentLevel.getCreatureAt(mouseX, mouseY);
+        if (cre !== null) {
+            this.messagebuffer.add(cre.dataRef.description);
         }
         this.renderer.renderGame();
     }
