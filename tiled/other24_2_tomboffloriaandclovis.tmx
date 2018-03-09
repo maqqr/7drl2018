@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="97">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="110">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
@@ -30,18 +30,18 @@
 </data>
  </layer>
  <objectgroup name="furniture">
-  <object id="31" gid="10" x="80" y="240" width="16" height="16"/>
-  <object id="32" gid="10" x="112" y="240" width="16" height="16"/>
   <object id="33" gid="10" x="160" y="288" width="16" height="16"/>
   <object id="34" gid="10" x="208" y="288" width="16" height="16"/>
   <object id="37" gid="54" x="288" y="128" width="16" height="16">
    <properties>
     <property name="description" value="&quot;Here lies Floria Grimwin, daughter of Nikola and Ylaria Grimwin. Died from illness in #%&quot;#&amp;.&quot; You inspect coffin more closely and it seems that someone scraped the time of dead from the coffin."/>
+    <property name="name" value="coffin of Floria"/>
    </properties>
   </object>
   <object id="38" gid="54" x="288" y="160" width="16" height="16">
    <properties>
     <property name="description" value="&quot;Here lies Clovis Grimwin, son of Charles and Cilla Arnloss. Died in battle of Pleca plains, in 1026.&quot;"/>
+    <property name="name" value="coffin of Clovis"/>
    </properties>
   </object>
   <object id="39" gid="70" x="256" y="320" width="16" height="16"/>
@@ -58,7 +58,7 @@
   <object id="59" gid="52" x="128" y="96" width="16" height="16"/>
   <object id="60" gid="52" x="208" y="96" width="16" height="16"/>
   <object id="61" gid="52" x="208" y="192" width="16" height="16"/>
-  <object id="62" gid="45" x="288" y="144" width="16" height="16"/>
+  <object id="62" gid="45" x="272" y="144" width="16" height="16"/>
   <object id="63" gid="53" x="224" y="96" width="16" height="16">
    <properties>
     <property name="description" value="Statue of guardian wielding a sword and shield."/>
@@ -123,8 +123,55 @@
   </object>
   <object id="95" gid="76" x="272" y="304" width="16" height="16"/>
   <object id="96" gid="76" x="272" y="272" width="16" height="16"/>
+  <object id="99" gid="49" x="96" y="256" width="16" height="16">
+   <properties>
+    <property name="activationtarget" value="[[5,14],[7,14]]"/>
+   </properties>
+  </object>
+  <object id="100" gid="12" x="80" y="240" width="16" height="16"/>
+  <object id="101" gid="12" x="112" y="240" width="16" height="16"/>
+  <object id="105" gid="53" x="288" y="144" width="16" height="16">
+   <properties>
+    <property name="description" value="This is statue where a man and a woman are embracing each other. The woman is holding an infant in her arms. In front the statue there is a plate that reads: &quot;Clovis and Floria Grimwin.&quot;"/>
+    <property name="name" value="statue of Floria and Clovis"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="description" visible="0">
+ <objectgroup name="item">
+  <object id="102" gid="220" x="272" y="128" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="103" gid="220" x="272" y="160" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="104" gid="220" x="256" y="144" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="25"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="creature">
+  <object id="97" gid="243" x="240" y="144" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="98" gid="243" x="240" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="107" gid="246" x="256" y="288" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="100"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="description">
   <object id="92" x="80" y="208" width="48" height="16">
    <properties>
     <property name="text" value="You step in a room filled with statues and pillars. At the end of the room you see two coffins side by side. You also notice that all the statues are looking towars the coffins."/>
@@ -133,6 +180,11 @@
   <object id="93" x="272" y="96" width="48" height="80">
    <properties>
     <property name="text" value="The names on the coffins somehow feels very nostaltig to you."/>
+   </properties>
+  </object>
+  <object id="109" x="80" y="240" width="48" height="16">
+   <properties>
+    <property name="text" value="You hear quiet rumbling noice behind the doors."/>
    </properties>
   </object>
  </objectgroup>

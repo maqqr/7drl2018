@@ -47,11 +47,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"\"Here lies Mina Grimwin, daughter of Nikola and Ylaria Grimwin. Died in the hands of an assassin in 994.\" Coffin seems to be in extremely good condition, compared to surrounding of the room, like someone had just cleaned it."
+                     "description":"\"Here lies Mina Grimwin, daughter of Nikola and Ylaria Grimwin. Died by the hands of an assassin in 994.\" Coffin seems to be in extremely good condition, compared to surrounding of the room, like someone had just cleaned it.",
+                     "name":"coffin of Mina"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -67,11 +69,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"Plate on the statue reads: \"Mina Grimwin.\""
+                     "description":"Plate on the statue reads: \"Mina Grimwin.\"",
+                     "name":"statue of Mina"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -232,6 +236,66 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":55,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":10
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":112
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":220,
+                 "height":16,
+                 "id":56,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":25
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":112
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"description",
          "objects":[],
          "opacity":1,
@@ -240,7 +304,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":55,
+ "nextobjectid":57,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

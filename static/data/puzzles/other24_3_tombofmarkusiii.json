@@ -23,11 +23,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"\"Here lies Markus III Grimwin. Died of old age in 1024.\" You only remember meeting him once and he seemed very strict and rude towards you."
+                     "description":"\"Here lies Markus III Grimwin. Died of old age in 1024.\" You only remember meeting him once and he seemed very strict and rude towards you.",
+                     "name":"coffin of Markus III"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -67,11 +69,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"\"Statue of Markus III Grimwin.\" Statue's head is slightly tilted up and he is standing majestically like true head family should be. His face is slightly disfigured as if something corroded it over time."
+                     "description":"\"Statue of Markus III Grimwin.\" Statue's head is slightly tilted up and he is standing majestically like true head family should be. His face is slightly disfigured as if something corroded it over time.",
+                     "name":"statue of Markus III"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -195,11 +199,13 @@
                  "name":"",
                  "properties":
                     {
-                     "activationtarget":"[[16,14]]"
+                     "activationtarget":"[[16,14]]",
+                     "useractivationtext":"You hear a loud noice somewhere cloes."
                     },
                  "propertytypes":
                     {
-                     "activationtarget":"string"
+                     "activationtarget":"string",
+                     "useractivationtext":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -605,8 +611,58 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":84,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":10
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":144
+                }, 
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":85,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":10
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":224,
+                 "y":176
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":84,
+ "nextobjectid":86,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

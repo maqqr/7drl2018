@@ -45,6 +45,14 @@
                  "height":16,
                  "id":41,
                  "name":"",
+                 "properties":
+                    {
+                     "description":"Statue of helmed guardian wielding a spead and shield."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -57,6 +65,14 @@
                  "height":16,
                  "id":42,
                  "name":"",
+                 "properties":
+                    {
+                     "description":"Statue of helmed guardian wielding a spead and shield."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -71,11 +87,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"\"Here lies Vitalius Payne. Died in castle fire in 996.\" You notice that the coffin is empty."
+                     "description":"\"Here lies Vitalius Payne. Died in castle fire in 996.\" You notice that the coffin is empty.",
+                     "name":"coffin of Vitalius"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -115,11 +133,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"Plate under the statue reads: \"Vitalius Payne.\" Statue portraits young Vitalius Payne, staring up the sky, holding a book in his left hand."
+                     "description":"Plate under the statue reads: \"Vitalius Payne.\" Statue portraits young Vitalius Payne, staring up the sky, holding a book in his left hand.",
+                     "name":"statue of Vitalius"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -336,6 +356,86 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"item",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":250,
+                 "height":16,
+                 "id":72,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":5
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":96
+                }, 
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":73,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":5
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":96,
+                 "y":112
+                }, 
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":74,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":5
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":80
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"description",
          "objects":[
                 {
@@ -363,7 +463,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":72,
+ "nextobjectid":75,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

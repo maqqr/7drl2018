@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="72">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="75">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -20,11 +20,20 @@
  <objectgroup name="furniture">
   <object id="39" gid="10" x="80" y="160" width="16" height="16"/>
   <object id="40" gid="10" x="96" y="160" width="16" height="16"/>
-  <object id="41" gid="53" x="64" y="176" width="16" height="16"/>
-  <object id="42" gid="53" x="112" y="176" width="16" height="16"/>
+  <object id="41" gid="53" x="64" y="176" width="16" height="16">
+   <properties>
+    <property name="description" value="Statue of helmed guardian wielding a spead and shield."/>
+   </properties>
+  </object>
+  <object id="42" gid="53" x="112" y="176" width="16" height="16">
+   <properties>
+    <property name="description" value="Statue of helmed guardian wielding a spead and shield."/>
+   </properties>
+  </object>
   <object id="43" gid="55" x="80" y="96" width="16" height="16">
    <properties>
     <property name="description" value="&quot;Here lies Vitalius Payne. Died in castle fire in 996.&quot; You notice that the coffin is empty."/>
+    <property name="name" value="coffin of Vitalius"/>
    </properties>
   </object>
   <object id="44" gid="52" x="64" y="64" width="16" height="16"/>
@@ -32,6 +41,7 @@
   <object id="46" gid="53" x="96" y="96" width="16" height="16">
    <properties>
     <property name="description" value="Plate under the statue reads: &quot;Vitalius Payne.&quot; Statue portraits young Vitalius Payne, staring up the sky, holding a book in his left hand."/>
+    <property name="name" value="statue of Vitalius"/>
    </properties>
   </object>
   <object id="49" gid="52" x="48" y="80" width="16" height="16"/>
@@ -52,6 +62,24 @@
   <object id="70" gid="75" x="80" y="64" width="16" height="16">
    <properties>
     <property name="description" value="Here is a small stone torso. Looks like it is a piece of a broken statue."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="item"/>
+ <objectgroup name="creature">
+  <object id="72" gid="250" x="64" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="73" gid="226" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="74" gid="226" x="80" y="80" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="5"/>
    </properties>
   </object>
  </objectgroup>

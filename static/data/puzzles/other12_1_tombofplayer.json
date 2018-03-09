@@ -55,11 +55,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"Your coffin, it is opened and the lid has shattered. You only make out the time of your death, year 1004."
+                     "description":"Your coffin, it is opened and the lid has shattered. You only make out the time of your death, year 1004.",
+                     "name":"your coffin"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",

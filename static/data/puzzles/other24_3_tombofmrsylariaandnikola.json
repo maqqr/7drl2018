@@ -71,11 +71,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"\"Here lies Ylaria Grimwin, daughter of Markus III and Agnes Grimwin. Died of old age in 1032.\" You remember spending some with her after your parents death, you didn't really see eye to eye with her in anyway."
+                     "description":"\"Here lies Ylaria Grimwin, daughter of Markus III and Agnes Grimwin. Died of old age in 1032.\" You remember spending some with her after your parents death, you didn't really see eye to eye with her in anyway.",
+                     "name":"coffin of Ylaria"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -91,11 +93,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"\"Here lies Nikola Grimwin. Died in hunting accident in 1030.\" He was really busy man and spend little time in home, at least after you were transferred under his guardianship."
+                     "description":"\"Here lies Nikola Grimwin. Died in hunting accident in 1030.\" He was really busy man and spend little time in home, at least after you were transferred under his guardianship.",
+                     "name":"coffin of Nikola"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -111,11 +115,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"Statue of Ylaria Grimwin. She is holding small baby, wrapped in clothes, in her hands. You really loved like your mother, even though, it was only for a short period of time."
+                     "description":"Statue of Ylaria Grimwin. She is holding small baby, wrapped in clothes, in her hands. You really loved like your mother, even though, it was only for a short period of time.",
+                     "name":"statue of Ylaria"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -131,11 +137,13 @@
                  "name":"",
                  "properties":
                     {
-                     "description":"Statue of Nikola Grimwin, he is stepping on a felled great bear, holding bow in his left hand."
+                     "description":"Statue of Nikola Grimwin, he is stepping on a felled great bear, holding bow in his left hand.",
+                     "name":"statue of Nikola"
                     },
                  "propertytypes":
                     {
-                     "description":"string"
+                     "description":"string",
+                     "name":"string"
                     },
                  "rotation":0,
                  "type":"",
@@ -323,7 +331,7 @@
                  "name":"",
                  "properties":
                     {
-                     "activationtarget":"[[11,13],[11,14]]"
+                     "activationtarget":"[[11,13]]"
                     },
                  "propertytypes":
                     {
@@ -588,6 +596,130 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"item",
+         "objects":[
+                {
+                 "gid":219,
+                 "height":16,
+                 "id":80,
+                 "name":"",
+                 "properties":
+                    {
+                     "description":"This is a nearly decayed tome. By reading few pages you think it is a diary. You make out couple of lines amongst decayed pages, \"i know it is him! Now i just need some evidence to prove it.\", \"How can it be, he should be dead already...\"."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":176,
+                 "y":304
+                }, 
+                {
+                 "gid":220,
+                 "height":16,
+                 "id":85,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":160,
+                 "y":128
+                }, 
+                {
+                 "gid":220,
+                 "height":16,
+                 "id":86,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":128
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":82,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":15
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":288
+                }, 
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":83,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":15
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":272,
+                 "y":256
+                }, 
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":84,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":15
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":256,
+                 "y":288
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"description",
          "objects":[
                 {
@@ -627,14 +759,33 @@
                  "width":32,
                  "x":80,
                  "y":80
+                }, 
+                {
+                 "height":32,
+                 "id":81,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"This is a nearly decayed tome. By reading few pages you think it is a diary. You make out couple of alarming sentences amongst the decayed pages, \"I know it is him! Now i just need some evidence to prove it.\", \"How can it be, he should be dead already...\"."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":160,
+                 "y":272
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextobjectid":80,
+ "nextobjectid":87,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",

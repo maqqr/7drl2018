@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="51">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="52">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -17,15 +17,25 @@
 24,22,25,25,25,22,25,24,23,23,24,25
 </data>
  </layer>
+ <objectgroup name="creature"/>
+ <objectgroup name="item">
+  <object id="51" gid="220" x="80" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="25"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="furniture">
   <object id="39" gid="54" x="96" y="96" width="16" height="16">
    <properties>
     <property name="description" value="&quot;Here lies Rofl Grimwin, son of Clovis and Floria Grimwin. Mysteriously vanished in 1004 and after 2 years of searching, was proclaimed dead.&quot;"/>
+    <property name="name" value="coffin of Rofl"/>
    </properties>
   </object>
   <object id="40" gid="53" x="80" y="96" width="16" height="16">
    <properties>
     <property name="description" value="Statue of Rofl Grimwin. He is sparring with his father."/>
+    <property name="name" value="statue of Rofl"/>
    </properties>
   </object>
   <object id="47" gid="10" x="96" y="160" width="16" height="16"/>
