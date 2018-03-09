@@ -109,7 +109,7 @@
   </object>
   <object id="69" x="80" y="128" width="16" height="16">
    <properties>
-    <property name="text" value="You step into the doorway. Room is a servant's resting room and it is in horrible condition. You notice that there is something on the table. Then you get a glimpse of a pesky rat near the skeleton in the corner, that is charging towards you!"/>
+    <property name="text" value="You step into the doorway. Room is a servant's resting room and it is in horrible condition. You notice that there is something on the table. Then you get a glimpse of a pesky rat near the skeleton in the corner that is charging towards you!"/>
    </properties>
   </object>
  </objectgroup>
