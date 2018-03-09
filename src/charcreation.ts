@@ -1,7 +1,8 @@
 import { Color } from "./color";
 import { Player } from "./entity";
 import { PixiRenderer } from "./pixirenderer";
-import { Renderer } from "./renderer";
+import { IMouseEvent, Renderer } from "./renderer";
+import { IGameWindow } from "./window";
 
 export interface IQuestion {
     question: string;
@@ -14,9 +15,9 @@ export interface ICharCreation {
     questions: IQuestion[];
 }
 
-type CharGenDoneCallback = () => void;
+type CharGenDoneCallback = (player: Player) => void;
 
-export class CharCreation {
+export class CharCreation implements IGameWindow {
     private data: ICharCreation;
     private doneCallback: CharGenDoneCallback;
     private renderer: PixiRenderer;
@@ -33,13 +34,17 @@ export class CharCreation {
         // this.keyDownCallBack = this.handleKeyPress.bind(this);
     }
 
-    public initialize(): void {
+    public startWindow(): void {
         this.player.currentbody = null;
         this.player.spiritstability = 8;
         this.player.currentstability = this.player.spiritstability;
         this.player.spiritpower = 0;
         this.player.willpower = 8;
         this.draw();
+    }
+
+    public stopWindow(): void {
+        //
     }
 
     public draw(): void {
@@ -61,7 +66,11 @@ export class CharCreation {
 
         // TODO: remove this
         if (e.code === "Space") {
-            this.doneCallback();
+            this.doneCallback(this.player);
         }
+    }
+
+    public handleClick(mouseEvent: IMouseEvent): void {
+        //
     }
 }

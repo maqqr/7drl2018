@@ -10,80 +10,86 @@ import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level, TileVisibility } from "./level";
 import { MessageBuffer } from "./messagebuffer";
+import { PixiRenderer } from "./pixirenderer";
 import { IMouseEvent, Renderer } from "./renderer";
 import { IGameWindow } from "./window";
 
-export class Game {
-    public static readonly WIDTH: number = 600;
-    public static readonly HEIGHT: number = 400;
 
-    // TODO: this is bad
-    public static startRoomX: number = 0;
-    public static startRoomY: number = 0;
+class LoadingWindow implements IGameWindow {
+    private renderer: PixiRenderer;
 
-    public static showPossessTutorial: boolean = true;
+    constructor(renderer: PixiRenderer) {
+        this.renderer = renderer;
+    }
 
-    public helpToggledOn: boolean = false;
+    public handleKeyPress(e: KeyboardEvent): void {
+        console.log(e);
+    }
 
+    public handleClick(mouseEvent: IMouseEvent): void {
+        console.log(mouseEvent);
+    }
+
+    public startWindow(): void {
+        this.renderer.clear();
+        this.renderer.drawString(Game.WIDTH / 2 - 40, Game.HEIGHT / 2,
+            "Loading game data...");
+        this.renderer.render();
+    }
+
+    public stopWindow(): void {
+        //
+    }
+}
+
+export class App {
     public data: GameData;
-    public player: Player;
-    public messagebuffer: MessageBuffer = new MessageBuffer(10);
-
-    public indexForTestPuzzle: number = 0;
-    public testPuzzleName: string = "";
-
-    public waitForDirCallback: (delta: [number, number]) => boolean = null;
-    public waitForMessage: string[] = [];
-
-    public waitForItemCallback: (keyCode: string) => boolean = null;
-    public itemSlotToBeUsed: number = 0;
-
-    // Animation variables
-    public spiritFadeTimer: number = 0;
-    public spiritTintColors: number[] = [0xFFFFFF, Color.white, 0x7777FF];
-    public currentTintColor: number = 0xFFFFFF;
-
-    public spiritAnimationIndex: 0 = 0;
-    public spiritAnimationIndices: number[] = [255, 239, 255, 223, 207, 255, 191];
-
-    public mapOffsetX: number;
-    public mapOffsetY: number;
-
     private renderer: Renderer;
-    private currentLevel: Level = null;
 
-    private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
-
+    private window: IGameWindow = null;
     private keyDownCallBack: any;
-
-    private chargen: CharCreation = null;
-
-
-    public get mapOffsetTargetX(): number {
-        return 19 - this.player.x;
-    }
-
-    public get mapOffsetTargetY(): number {
-        return 12 - this.player.y;
-    }
 
     public start(): void {
         this.keyDownCallBack = this.handleKeyPress.bind(this);
+        window.addEventListener("keydown", this.keyDownCallBack);
+
         this.data = new GameData();
-        this.renderer = new Renderer(this);
+        this.renderer = new Renderer();
         this.renderer.addClickListener(this.handleClick.bind(this));
 
-        Promise.all([this.loadData(), this.renderer.loadGraphics()])
-          .then(this.assetsLoaded.bind(this));
-
-        this.player = new Player();
-        this.player.dataRef  = this.data.player;
-        this.player.x = 10;
-        this.player.y = 10;
+        this.window = new LoadingWindow(this.renderer.renderer);
+        this.renderer.loadGraphics().then(this.graphicsLoaded.bind(this));
     }
 
-    public async loadData(): Promise<void> {
-        console.log("Started loadData");
+    public setWindow(window: IGameWindow): void {
+        this.window.stopWindow();
+        this.window = window;
+        this.window.startWindow();
+    }
+
+    private graphicsLoaded(): void {
+        this.window.startWindow();
+        this.loadData().then(this.dataLoaded.bind(this));
+    }
+
+    private dataLoaded(): void {
+        console.log("Game data loaded.");
+        const player = new Player();
+        player.dataRef  = this.data.player;
+        const charcreation = new CharCreation(this.renderer.renderer, null, player, this.charGenDone.bind(this));
+        this.setWindow(charcreation);
+    }
+
+    private handleKeyPress(e: KeyboardEvent): void {
+        this.window.handleKeyPress(e);
+        // window.removeEventListener("keydown", this.keyDownCallBack);
+    }
+
+    private handleClick(mouseEvent: IMouseEvent): void {
+        this.window.handleClick(mouseEvent);
+    }
+
+    private async loadData(): Promise<void> {
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
         const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
         const itemset = await this.loadJSON<IItemset>("data/itemset.json");
@@ -116,7 +122,7 @@ export class Game {
         this.data.predefinedRooms.startRoom = new PuzzleRoom(startRoomDef);
         this.data.predefinedRooms.finalRoom = new PuzzleRoom(finalRoomDef);
 
-        console.log(this.data);
+        // console.log(this.data);
 
         const convertInt = (x: string): number => {
             const value = parseInt(x, 10);
@@ -193,16 +199,97 @@ export class Game {
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
             if (!("requireitem" in furry)) { this.data.furnitures[furry.icon].requireitem = null; }
             if (!("activationtarget" in furry)) { this.data.furnitures[furry.icon].activationtarget = null; }
-            console.log(furry);
+            // console.log(furry);
         }
-
-        this.chargen = new CharCreation(this.renderer.renderer, null, this.player, this.charGenDone.bind(this));
-        this.chargen.initialize();
     }
 
-    public charGenDone(): void {
-        this.chargen = null;
+    private charGenDone(player: Player): void {
+        const gameWindow = new Game(this.renderer, this.data, player);
+        this.setWindow(gameWindow);
+    }
+
+    private loadJSON<T>(path: string): Promise<T> {
+        return new Promise((resolve, reject) => {
+            $.getJSON(path, (data: any, textStatus: string, jqXHR: JQueryXHR) => {
+                resolve(data);
+            }).fail((jqXHR: JQueryXHR, textStatus, errorThrown) => {
+                console.log("loadJSON(" + path + ") failed: " + JSON.stringify(textStatus));
+            });
+        });
+    }
+}
+
+export class Game implements IGameWindow {
+    public static readonly WIDTH: number = 600;
+    public static readonly HEIGHT: number = 400;
+
+    // TODO: this is bad
+    public static startRoomX: number = 0;
+    public static startRoomY: number = 0;
+
+    public static showPossessTutorial: boolean = true;
+
+    public helpToggledOn: boolean = false;
+
+    public data: GameData;
+    public player: Player;
+    public messagebuffer: MessageBuffer = new MessageBuffer(10);
+
+    public indexForTestPuzzle: number = 0;
+    public testPuzzleName: string = "";
+
+    public waitForDirCallback: (delta: [number, number]) => boolean = null;
+    public waitForMessage: string[] = [];
+
+    public waitForItemCallback: (keyCode: string) => boolean = null;
+    public itemSlotToBeUsed: number = 0;
+
+    // Animation variables
+    public spiritFadeTimer: number = 0;
+    public spiritTintColors: number[] = [0xFFFFFF, Color.white, 0x7777FF];
+    public currentTintColor: number = 0xFFFFFF;
+
+    public spiritAnimationIndex: 0 = 0;
+    public spiritAnimationIndices: number[] = [255, 239, 255, 223, 207, 255, 191];
+
+    public mapOffsetX: number;
+    public mapOffsetY: number;
+
+    private renderer: Renderer;
+    private currentLevel: Level = null;
+
+    private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
+
+    private chargen: CharCreation = null;
+    private intervalIds: number[] = [];
+
+    constructor(renderer: Renderer, data: GameData, player: Player) {
+        this.player = player;
+        this.renderer = renderer;
+        this.data = data;
+    }
+
+    public get mapOffsetTargetX(): number {
+        return 19 - this.player.x;
+    }
+
+    public get mapOffsetTargetY(): number {
+        return 12 - this.player.y;
+    }
+
+    public startWindow(): void {
+        this.renderer.setGame(this);
+
         this.loadFirstLevel();
+
+        this.intervalIds.push(setInterval(this.updateTinting.bind(this), 60));
+        this.intervalIds.push(setInterval(this.updatePlayerAnimation.bind(this), 42 * 4));
+        this.intervalIds.push(setInterval(this.updateScrollAnim.bind(this), 1 / 30.0));
+        this.updateLoop(0);
+    }
+
+    public stopWindow(): void {
+        this.intervalIds.forEach((interval) => { clearInterval(interval); });
     }
 
     public placePlayerAtFurniture(furType: string): void {
@@ -295,14 +382,6 @@ export class Game {
         this.indexForTestPuzzle++;
     }
 
-    public assetsLoaded(): void {
-        console.log("loaded");
-        setInterval(this.updateTinting.bind(this), 60);
-        setInterval(this.updatePlayerAnimation.bind(this), 42 * 4);
-        setInterval(this.updateScrollAnim.bind(this), 1 / 30.0);
-        this.updateLoop(0);
-    }
-
     public updateScrollAnim(): void {
         this.mapOffsetX += (this.mapOffsetTargetX - this.mapOffsetX) * (1 / 42.0);
         this.mapOffsetY += (this.mapOffsetTargetY - this.mapOffsetY) * (1 / 42.0);
@@ -334,151 +413,7 @@ export class Game {
         return this.currentLevel;
     }
 
-    private isCurrable(x: number, y: number): boolean {
-        return this.currentLevel.getCreatureAt(x, y) === null;
-    }
-
-    private creatureCanMoveTo(creSize: number, x: number, y: number): boolean {
-        if (!this.currentLevel.isInLevelBounds(x, y)) {
-            return false;
-        }
-        let pile = 0;
-        for (const fur of this.currentLevel.getFurnituresAt(x, y)) {
-            pile += fur.dataRef.size;
-        }
-        const tile = this.currentLevel.getTile(x, y);
-
-        return (pile + creSize) <= tile.maxsize;
-    }
-
-    private loadJSON<T>(path: string): Promise<T> {
-        return new Promise((resolve, reject) => {
-            $.getJSON(path, (data: any, textStatus: string, jqXHR: JQueryXHR) => {
-                resolve(data);
-            }).fail((jqXHR: JQueryXHR, textStatus, errorThrown) => {
-                console.log("loadJSON(" + path + ") failed: " + JSON.stringify(textStatus));
-            });
-        });
-    }
-
-    private playerTurn(): void {
-        window.addEventListener("keydown", this.keyDownCallBack);
-    }
-
-    private useItemCallback(keyCode: string): boolean {
-        const itemType = this.player.currentbody.inventory[this.itemSlotToBeUsed].item;
-        const item = this.data.getByType(this.data.items, itemType);
-
-        const playerBody = this.player.currentbody;
-
-        // Use item
-        if (keyCode === "KeyQ") {
-            if (item.category === "key") {
-                this.messagebuffer.add("You use keys automatically by activating doors.");
-                return false;
-            } else if (item.category === "potion") {
-                playerBody.inventory[this.itemSlotToBeUsed].item = "";
-                playerBody.currenthp = playerBody.dataRef.maxhp;
-                this.messagebuffer.add("You drink the potion. Your wounds heal instantly.");
-                return true;
-            } else {
-                this.messagebuffer.add("You can not use that.");
-                return false;
-            }
-        }
-
-        // Drop item
-        if (keyCode === "KeyD") {
-            playerBody.inventory[this.itemSlotToBeUsed].item = "";
-            const newItem = new Item();
-            newItem.dataRef = item;
-            this.currentLevel.addItemAt(newItem, playerBody.x, playerBody.y);
-            return true;
-        }
-
-        // Swap item slots
-        if (keyCode === "KeyE") {
-            this.waitForMessage = ["Press a slot number where to move the " + item.name + "."];
-            this.waitForItemCallback = (otherKeyCode: string) => {
-                for (let index = 1; index < 10; index++) {
-                    if (otherKeyCode === "Digit" + index || otherKeyCode === "Numpad" + index) {
-                        if (index <= playerBody.inventory.length) {
-                            const sourceSlot = this.itemSlotToBeUsed;
-                            const targetSlot = index - 1;
-                            const temp = playerBody.inventory[targetSlot].item;
-                            playerBody.inventory[targetSlot].item = playerBody.inventory[sourceSlot].item;
-                            playerBody.inventory[sourceSlot].item = temp;
-                        } else {
-                            this.messagebuffer.add("Invalid item slot.");
-                        }
-                    }
-                }
-                return false;
-            };
-        }
-
-        return false;
-    }
-
-    private attemptToUseItem(cre: Creature, slotNumber: number): boolean {
-        if (slotNumber < cre.inventory.length) {
-            if (cre.inventory[slotNumber].item !== "") {
-                const item = this.data.getByType(this.data.items, cre.inventory[slotNumber].item);
-                this.itemSlotToBeUsed = slotNumber;
-                this.waitForMessage = ["Q - Use item", "D - Drop item", "E - Move item to another slot"];
-                this.waitForItemCallback = this.useItemCallback.bind(this);
-            } else {
-                this.messagebuffer.add("You do not have an item on that slot.");
-            }
-        }
-        return false;
-    }
-
-    private collectOrb(): void {
-        this.waitForMessage = [
-            "The orb gives you power and you can increase one of your stats:",
-            "  1 - Increase spirit stability",
-            "  2 - Increase spirit power",
-            "  3 - Increase willpower",
-        ];
-        this.waitForItemCallback = this.useOrb.bind(this);
-    }
-
-    private useOrb(keyCode: string): boolean {
-        const destroyOrb = () => {
-            for (const item of this.currentLevel.getItemsAt(this.player.x, this.player.y)) {
-                if (item.dataRef.type === "orb") {
-                    this.currentLevel.removeItem(item);
-                    break;
-                }
-            }
-        };
-
-        if (keyCode === "Digit1" || keyCode === "Numpad1") {
-            this.player.spiritstability += 1;
-            this.player.currentstability = this.player.spiritstability;
-            this.messagebuffer.add("Your stability increases and can remain out of body longer. The orb vanishes.");
-            destroyOrb();
-            return true;
-        }
-        if (keyCode === "Digit2" || keyCode === "Numpad2") {
-            this.player.spiritpower += 1;
-            this.messagebuffer.add("You can now transfer more power to possessed creatures. The orb vanishes.");
-            destroyOrb();
-            return true;
-        }
-        if (keyCode === "Digit3" || keyCode === "Numpad3") {
-            this.player.willpower += 1;
-            this.messagebuffer.add("Your willpower increases and possession is easier. The orb vanishes.");
-            destroyOrb();
-            return true;
-        }
-
-        this.collectOrb();
-        return false;
-    }
-
-    private handleKeyPress(e: KeyboardEvent): void {
+    public handleKeyPress(e: KeyboardEvent): void {
 
         if (this.chargen !== null) {
             this.chargen.handleKeyPress(e);
@@ -715,10 +650,164 @@ export class Game {
         }
 
         if (keyAccepted) {
-            window.removeEventListener("keydown", this.keyDownCallBack);
             const speed = this.player.currentbody === null ? 5 : this.player.currentbody.dataRef.speed;
             this.updateLoop(advanceTime ? speed : 0);
         }
+    }
+
+    public handleClick(mouseEvent: IMouseEvent): void {
+        if (this.chargen !== null || this.currentLevel === null) {
+            return;
+        }
+
+        // Describe furniture
+        const mouseX = mouseEvent.tx - this.mapOffsetTargetX;
+        const mouseY = mouseEvent.ty - this.mapOffsetTargetY;
+        for (const fur of this.currentLevel.getFurnituresAt(mouseX, mouseY)) {
+            this.messagebuffer.add(fur.dataRef.description);
+        }
+        for (const item of this.currentLevel.getItemsAt(mouseX, mouseY)) {
+            this.messagebuffer.add(item.dataRef.description);
+        }
+        const cre = this.currentLevel.getCreatureAt(mouseX, mouseY);
+        if (cre !== null) {
+            this.messagebuffer.add(cre.dataRef.description);
+        }
+        this.renderer.renderGame();
+    }
+
+    private isCurrable(x: number, y: number): boolean {
+        return this.currentLevel.getCreatureAt(x, y) === null;
+    }
+
+    private creatureCanMoveTo(creSize: number, x: number, y: number): boolean {
+        if (!this.currentLevel.isInLevelBounds(x, y)) {
+            return false;
+        }
+        let pile = 0;
+        for (const fur of this.currentLevel.getFurnituresAt(x, y)) {
+            pile += fur.dataRef.size;
+        }
+        const tile = this.currentLevel.getTile(x, y);
+
+        return (pile + creSize) <= tile.maxsize;
+    }
+
+    private playerTurn(): void {
+        //
+    }
+
+    private useItemCallback(keyCode: string): boolean {
+        const itemType = this.player.currentbody.inventory[this.itemSlotToBeUsed].item;
+        const item = this.data.getByType(this.data.items, itemType);
+
+        const playerBody = this.player.currentbody;
+
+        // Use item
+        if (keyCode === "KeyQ") {
+            if (item.category === "key") {
+                this.messagebuffer.add("You use keys automatically by activating doors.");
+                return false;
+            } else if (item.category === "potion") {
+                playerBody.inventory[this.itemSlotToBeUsed].item = "";
+                playerBody.currenthp = playerBody.dataRef.maxhp;
+                this.messagebuffer.add("You drink the potion. Your wounds heal instantly.");
+                return true;
+            } else {
+                this.messagebuffer.add("You can not use that.");
+                return false;
+            }
+        }
+
+        // Drop item
+        if (keyCode === "KeyD") {
+            playerBody.inventory[this.itemSlotToBeUsed].item = "";
+            const newItem = new Item();
+            newItem.dataRef = item;
+            this.currentLevel.addItemAt(newItem, playerBody.x, playerBody.y);
+            return true;
+        }
+
+        // Swap item slots
+        if (keyCode === "KeyE") {
+            this.waitForMessage = ["Press a slot number where to move the " + item.name + "."];
+            this.waitForItemCallback = (otherKeyCode: string) => {
+                for (let index = 1; index < 10; index++) {
+                    if (otherKeyCode === "Digit" + index || otherKeyCode === "Numpad" + index) {
+                        if (index <= playerBody.inventory.length) {
+                            const sourceSlot = this.itemSlotToBeUsed;
+                            const targetSlot = index - 1;
+                            const temp = playerBody.inventory[targetSlot].item;
+                            playerBody.inventory[targetSlot].item = playerBody.inventory[sourceSlot].item;
+                            playerBody.inventory[sourceSlot].item = temp;
+                        } else {
+                            this.messagebuffer.add("Invalid item slot.");
+                        }
+                    }
+                }
+                return false;
+            };
+        }
+
+        return false;
+    }
+
+    private attemptToUseItem(cre: Creature, slotNumber: number): boolean {
+        if (slotNumber < cre.inventory.length) {
+            if (cre.inventory[slotNumber].item !== "") {
+                const item = this.data.getByType(this.data.items, cre.inventory[slotNumber].item);
+                this.itemSlotToBeUsed = slotNumber;
+                this.waitForMessage = ["Q - Use item", "D - Drop item", "E - Move item to another slot"];
+                this.waitForItemCallback = this.useItemCallback.bind(this);
+            } else {
+                this.messagebuffer.add("You do not have an item on that slot.");
+            }
+        }
+        return false;
+    }
+
+    private collectOrb(): void {
+        this.waitForMessage = [
+            "The orb gives you power and you can increase one of your stats:",
+            "  1 - Increase spirit stability",
+            "  2 - Increase spirit power",
+            "  3 - Increase willpower",
+        ];
+        this.waitForItemCallback = this.useOrb.bind(this);
+    }
+
+    private useOrb(keyCode: string): boolean {
+        const destroyOrb = () => {
+            for (const item of this.currentLevel.getItemsAt(this.player.x, this.player.y)) {
+                if (item.dataRef.type === "orb") {
+                    this.currentLevel.removeItem(item);
+                    break;
+                }
+            }
+        };
+
+        if (keyCode === "Digit1" || keyCode === "Numpad1") {
+            this.player.spiritstability += 1;
+            this.player.currentstability = this.player.spiritstability;
+            this.messagebuffer.add("Your stability increases and can remain out of body longer. The orb vanishes.");
+            destroyOrb();
+            return true;
+        }
+        if (keyCode === "Digit2" || keyCode === "Numpad2") {
+            this.player.spiritpower += 1;
+            this.messagebuffer.add("You can now transfer more power to possessed creatures. The orb vanishes.");
+            destroyOrb();
+            return true;
+        }
+        if (keyCode === "Digit3" || keyCode === "Numpad3") {
+            this.player.willpower += 1;
+            this.messagebuffer.add("Your willpower increases and possession is easier. The orb vanishes.");
+            destroyOrb();
+            return true;
+        }
+
+        this.collectOrb();
+        return false;
     }
 
     private activateTileCallback(delta: [number, number]): boolean {
@@ -866,19 +955,6 @@ export class Game {
     }
 
     private reportItemsAt(x: number, y: number): void {
-        const items = this.currentLevel.getItemsAt(x, y);
-        if (items.length > 0)  {
-            const addedA = items.length === 1 ? "a " : "";
-            let msg = "You see here " + addedA;
-            for (let index = 0; index < items.length; index++) {
-                const item = items[index];
-                const comma = index === items.length - 1 ? "" : ", ";
-                msg += item.dataRef.name + comma;
-            }
-            msg += ".";
-            this.messagebuffer.add(msg);
-        }
-
         const furs = this.currentLevel.getFurnituresAt(x, y);
         if (furs.length > 0)  {
             const addedA = furs.length === 1 ? "a " : "";
@@ -891,6 +967,19 @@ export class Game {
             msg += ".";
             this.messagebuffer.add(msg);
         }
+
+        const items = this.currentLevel.getItemsAt(x, y);
+        if (items.length > 0)  {
+            const addedA = items.length === 1 ? "a " : "";
+            let msg = "You see here " + addedA;
+            for (let index = 0; index < items.length; index++) {
+                const item = items[index];
+                const comma = index === items.length - 1 ? "" : ", ";
+                msg += item.dataRef.name + comma;
+            }
+            msg += ".";
+            this.messagebuffer.add(msg);
+        }
     }
 
     private checkPressureActivation(x: number, y: number): void {
@@ -899,27 +988,6 @@ export class Game {
 
     private checkPressureDeactivation(x: number, y: number): void {
         this.currentLevel.checkPressureActivation(x, y, "pressureplatedown", "pressureplate", (size) => size < 8);
-    }
-
-    private handleClick(mouseEvent: IMouseEvent): void {
-        if (this.chargen !== null || this.currentLevel === null) {
-            return;
-        }
-
-        // Describe furniture
-        const mouseX = mouseEvent.tx - this.mapOffsetTargetX;
-        const mouseY = mouseEvent.ty - this.mapOffsetTargetY;
-        for (const fur of this.currentLevel.getFurnituresAt(mouseX, mouseY)) {
-            this.messagebuffer.add(fur.dataRef.description);
-        }
-        for (const item of this.currentLevel.getItemsAt(mouseX, mouseY)) {
-            this.messagebuffer.add(item.dataRef.description);
-        }
-        const cre = this.currentLevel.getCreatureAt(mouseX, mouseY);
-        if (cre !== null) {
-            this.messagebuffer.add(cre.dataRef.description);
-        }
-        this.renderer.renderGame();
     }
 
     private updateLoop(deltaTime: number): void {
@@ -1008,5 +1076,5 @@ export class Game {
 }
 
 // TODO: start after DOM has been loaded
-const game = new Game();
-game.start();
+const app = new App();
+app.start();

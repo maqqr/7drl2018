@@ -13,15 +13,18 @@ export interface IMouseEvent {
 
 export class Renderer {
     public renderer: PixiRenderer;
-    private game: Game;
+    private game: Game = null;
 
-    constructor(game: Game) {
-        this.game = game;
+    constructor() {
         this.renderer = new PixiRenderer(Game.WIDTH, Game.HEIGHT);
         this.renderer.initialize();
 
         window.addEventListener("resize", this.renderer.resize.bind(this.renderer));
         this.renderer.resize();
+    }
+
+    public setGame(game: Game): void {
+        this.game = game;
     }
 
     public addClickListener(callback: (e: IMouseEvent) => void): void {
