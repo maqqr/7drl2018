@@ -184,6 +184,7 @@ export class Game {
             furry.transparent = getProp(furry, "transparent", true, convertBool);
             furry.draworder = getProp(furry, "draworder", 0, convertInt);
             this.data.furnitures[furry.icon] = furry;
+            if (!("lootlist" in furry)) { this.data.furnitures[furry.icon].lootlist = []; }
             if (!("activation" in furry)) { this.data.furnitures[furry.icon].activation = null; }
             if (!("useractivation" in furry)) { this.data.furnitures[furry.icon].useractivation = null; }
             if (!("useractivationtext" in furry)) { this.data.furnitures[furry.icon].useractivationtext = null; }
@@ -957,9 +958,9 @@ export class Game {
 
         // Follow the player if the creature can see it
         // TODO: move to last seen position
-        const canSeePlayer = true;
-            // this.player.currentbody !== null && this.currentLevel.lineOfSight(
-                // this.player.currentbody.x, this.player.currentbody.y, cre.x, cre.y);
+        const canSeePlayer =
+            this.player.currentbody !== null && this.currentLevel.lineOfSight(
+                this.player.currentbody.x, this.player.currentbody.y, cre.x, cre.y);
 
         if (canSeePlayer && this.player.currentbody !== null) { // TODO: REMOVE true
             const dijkstra = new ROT.Path.Dijkstra(
