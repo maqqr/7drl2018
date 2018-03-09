@@ -22,7 +22,7 @@
         {"icon": 9,"draworder": 10,"type": "door","name":"door","transparent": false,"size": 19,"description": "This is a closed wooden door.","useractivation": "dooropen","useractivationtext": "You open the wooden door."},
         {"icon": 10,"draworder": 10,"type": "dooropen","name":"door","size": 0,"description": "This is a open door.","useractivation": "door","useractivationtext": "You close the wooden door."},
         
-        {"icon": 11,"draworder": 10,"type": "doormechanised","name":"door","transparent": false,"size": 20,"description": "This is a closed metal door whitout any door handle.","activation": "doormechanisedopen"},
+        {"icon": 11,"draworder": 10,"type": "doormechanised","name":"door","transparent": false,"size": 20,"description": "This is a closed metal door without any door handle.","activation": "doormechanisedopen"},
         {"icon": 12,"draworder": 10,"type": "doormechanisedopen","name":"door","size": 0,"description": "This is a open door.","activation": "doormechanised"},
         
         {"icon": 25,"draworder": 10,"type": "doorbronzelocked","name":"door","transparent": false,"size": 20,"description": "This is a locked bronze door.","requireitem": "bronzekey","useractivation": "doorbronze","useractivationtext": "You unlock the bronze door."},
