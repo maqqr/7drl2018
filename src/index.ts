@@ -720,7 +720,7 @@ export class Game {
         console.log(defender);
         const maxDamage = getItemAttack(attacker) + attacker.dataRef.strength;
         const minDamage = Math.ceil(maxDamage / 2);
-        let damage = minDamage + Math.ceil(Math.random() * (maxDamage + 1));
+        let damage = minDamage + Math.ceil(Math.random() * (maxDamage - minDamage));
         damage -= getItemDefence(defender) + defender.dataRef.defence;
         damage = Math.max(0, damage);
         defender.currenthp -= damage;
