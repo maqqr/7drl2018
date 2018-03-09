@@ -1,5 +1,6 @@
 import * as $ from "jquery";
 import * as ROT from "rot-js";
+import { CharCreation } from "./charcreation";
 import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
@@ -41,11 +42,13 @@ export class Game {
     public mapOffsetY: number;
 
     private renderer: Renderer;
-    private currentLevel: Level;
+    private currentLevel: Level = null;
 
     private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
 
     private keyDownCallBack: any;
+
+    private chargen: CharCreation = null;
 
 
     public get mapOffsetTargetX(): number {
@@ -69,10 +72,6 @@ export class Game {
         this.player.dataRef  = this.data.player;
         this.player.x = 10;
         this.player.y = 10;
-        this.player.currentbody = null;
-        this.player.currentstability = this.player.spiritstability;
-        this.player.spiritpower = 10;
-        this.player.willpower = 10;
     }
 
     public async loadData(): Promise<void> {
@@ -184,7 +183,13 @@ export class Game {
             // console.log(furry);
         }
 
-        this.loadLevel();
+        this.chargen = new CharCreation(this.renderer.renderer, null, this.player, this.charGenDone.bind(this));
+        this.chargen.initialize();
+    }
+
+    public charGenDone(): void {
+        this.chargen = null;
+        this.loadFirstLevel();
     }
 
     public placePlayerAtFurniture(furType: string): void {
@@ -222,7 +227,7 @@ export class Game {
         this.mapOffsetY = this.mapOffsetTargetY;
     }
 
-    public loadLevel(): void {
+    public loadFirstLevel(): void {
         const testMode = false;
 
         if (!testMode) {
@@ -331,6 +336,12 @@ export class Game {
     }
 
     private handleKeyPress(e: KeyboardEvent): void {
+
+        if (this.chargen !== null) {
+            this.chargen.handleKeyPress(e);
+            return;
+        }
+
         const px = this.player.x;
         const py = this.player.y;
         let keyAccepted = false;
@@ -647,6 +658,10 @@ export class Game {
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {
+        if (this.chargen !== null) {
+            return;
+        }
+
         console.log(mouseEvent);
         const msg = this.currentLevel.activate(
                         mouseEvent.tx - this.mapOffsetTargetX,

@@ -11,8 +11,8 @@ export interface IMouseEvent {
 }
 
 export class Renderer {
+    public renderer: PixiRenderer;
     private game: Game;
-    private renderer: PixiRenderer;
 
     constructor(game: Game) {
         this.game = game;
@@ -42,6 +42,10 @@ export class Renderer {
 
     public renderGame(): void {
         const level = this.game.getCurrentLevel();
+        if (level === null) {
+            return;
+        }
+
         const visionRadius = 7;
 
         level.calculateFov(this.game.player.x, this.game.player.y, visionRadius);
