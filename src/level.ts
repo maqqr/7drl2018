@@ -245,6 +245,13 @@ export class Level {
         }
     }
 
+    public removeItem(item: Item): void {
+        const index = this.items.indexOf(item);
+        if (index >= 0) {
+            this.items.splice(index, 1);
+        }
+    }
+
     public createCreatureAt(newCreature: ICreature, x: number, y: number): Creature {
         const addedCreature = new Creature();
         addedCreature.currenthp = newCreature.maxhp;
@@ -326,7 +333,7 @@ export class Level {
         }
     }
 
-    public activate(x: number, y: number, userInitiated: boolean = true): string {
+    public activate(x: number, y: number, userInitiated: boolean = true, cre: Creature = null): string {
         console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
         let message = null;
@@ -337,6 +344,20 @@ export class Level {
                 // Inform the player with description texts
                 if (userInitiated && fur.dataRef.useractivationtext) {
                     message = fur.dataRef.useractivationtext;
+                }
+
+                let itemOk = false;
+                if (fur.dataRef.requireitem) {
+                    const itemName = this.data.getByType(this.data.items, fur.dataRef.requireitem).name;
+                    if (userInitiated && cre !== null && cre.hasItem(fur.dataRef.requireitem)) {
+                        itemOk = true;
+                        message = "You put your " + itemName + " in to the " + fur.dataRef.name + ".";
+                        cre.removeItem(fur.dataRef.requireitem);
+                    } else {
+                        message = "You need a " + itemName + ".";
+                    }
+                } else {
+                    itemOk = true;
                 }
 
                 const canActivate = (userInitiated && fur.dataRef.useractivation) || !userInitiated;
@@ -355,7 +376,7 @@ export class Level {
                 }
 
                 // User initiated tile activation
-                if (userInitiated && fur.dataRef.useractivation) {
+                if (itemOk && userInitiated && fur.dataRef.useractivation) {
                     const newData = this.data.getByType(this.data.furnitures, fur.dataRef.useractivation);
                     this.assignNewDataToFurniture(fur, newData);
                 }
