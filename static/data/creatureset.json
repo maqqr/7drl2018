@@ -97,13 +97,13 @@
             "id":253, "type": "goblin","category": "humanoid", "description": "A goblin, a foul green creature with sharp features.",
             "maxhp": 15, "strength": 4, "defence": 0, "speed": 4, "willpower": 9, "size": 8,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 2,
-            "inventory": ["spear"]
+            "inventory": ["axe"]
         },
         {
             "id":254, "type": "kobold","category": "humanoid", "description": "A kobold. The creature looks like a inbred of a goblin and a rat.",
             "maxhp": 12, "strength": 3, "defence": 0, "speed": 4, "willpower": 8, "size": 8,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 1,
-            "inventory": ["spear"]
+            "inventory": ["axe"]
         },
 
 
