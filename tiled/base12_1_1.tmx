@@ -45,7 +45,7 @@
   </object>
   <object id="53" gid="249" x="64" y="112" width="16" height="16">
    <properties>
-    <property name="propability" type="int" value="5"/>
+    <property name="propability" type="int" value="1"/>
    </properties>
   </object>
   <object id="54" gid="254" x="80" y="32" width="16" height="16">
