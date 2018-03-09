@@ -391,10 +391,9 @@ export class Game {
         if (keyCode === "KeyE") {
             this.waitForMessage = ["Press a slot number where to move the " + item.name + "."];
             this.waitForItemCallback = (otherKeyCode: string) => {
-                this.messagebuffer.add("SWAP " + otherKeyCode);
                 for (let index = 1; index < 10; index++) {
                     if (otherKeyCode === "Digit" + index || otherKeyCode === "Numpad" + index) {
-                        if (index < playerBody.inventory.length) {
+                        if (index <= playerBody.inventory.length) {
                             const sourceSlot = this.itemSlotToBeUsed;
                             const targetSlot = index - 1;
                             const temp = playerBody.inventory[targetSlot].item;
