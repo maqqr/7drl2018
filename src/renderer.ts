@@ -229,6 +229,14 @@ export class Renderer {
             }
         }
 
+        if (Game.showPossessTutorial) {
+            this.renderer.drawRect(50, 60, Game.WIDTH - 220, 80, true, Color.black, 0.1);
+            this.renderer.drawString(60, 70, "Tutorial: You can stay in spirit form only for a limited time.");
+            this.renderer.drawString(60, 70 + 12, "Try possessing the grave robber next to you by holding shift and");
+            this.renderer.drawString(60, 70 + 24, "moving towards it using the arrow keys.");
+            this.renderer.drawString(60, 70 + 24 + 24, "You can move out of bodies also using shift and arrow keys.");
+        }
+
         this.renderer.render();
 
         level.markRememberedTiles(this.game.player.x, this.game.player.y, visionRadius);
