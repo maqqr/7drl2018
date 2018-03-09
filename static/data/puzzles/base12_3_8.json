@@ -14,6 +14,136 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"creature",
+         "objects":[
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":67,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":80
+                }, 
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":68,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":48,
+                 "y":128
+                }, 
+                {
+                 "gid":226,
+                 "height":16,
+                 "id":69,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":144,
+                 "y":80
+                }, 
+                {
+                 "gid":225,
+                 "height":16,
+                 "id":70,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":128
+                }, 
+                {
+                 "gid":241,
+                 "height":16,
+                 "id":71,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":128,
+                 "y":128
+                }, 
+                {
+                 "gid":241,
+                 "height":16,
+                 "id":72,
+                 "name":"",
+                 "properties":
+                    {
+                     "probability":"5"
+                    },
+                 "propertytypes":
+                    {
+                     "probability":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":144
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"furniture",
          "objects":[
                 {
@@ -176,7 +306,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":67,
+ "nextobjectid":73,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
