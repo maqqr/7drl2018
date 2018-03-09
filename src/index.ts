@@ -806,7 +806,8 @@ export class Game {
         console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
         console.log(attacker);
         console.log(defender);
-        const maxDamage = getItemAttack(attacker) + attacker.dataRef.strength;
+        const spiritPower = this.player.currentbody === attacker ? this.player.spiritpower : 0;
+        const maxDamage = getItemAttack(attacker) + attacker.dataRef.strength + spiritPower;
         const minDamage = Math.ceil(maxDamage / 2);
         let damage = minDamage + Math.ceil(Math.random() * (maxDamage - minDamage));
         damage -= getItemDefence(defender) + defender.dataRef.defence;
@@ -984,8 +985,8 @@ export class Game {
             dy = Math.floor(Math.random() * 3) - 1;
         }
 
-        const targetX = cre.x + dx;
-        const targetY = cre.y + dy;
+        const targetX = Math.floor(cre.x + dx);
+        const targetY = Math.floor(cre.y + dy);
 
         if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             // Move freely to target position unless it causes damage
