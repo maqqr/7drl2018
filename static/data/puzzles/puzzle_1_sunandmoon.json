@@ -33,14 +33,6 @@
                  "height":16,
                  "id":21,
                  "name":"",
-                 "properties":
-                    {
-                     "description":"Solid oak door with sun symbol carved on the frame."
-                    },
-                 "propertytypes":
-                    {
-                     "description":"string"
-                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -53,14 +45,6 @@
                  "height":16,
                  "id":22,
                  "name":"",
-                 "properties":
-                    {
-                     "description":"Solid oak door with moon symbol carved on the frame."
-                    },
-                 "propertytypes":
-                    {
-                     "description":"string"
-                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -672,6 +656,44 @@
                  "width":16,
                  "x":320,
                  "y":80
+                }, 
+                {
+                 "height":16,
+                 "id":103,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"You see a solid oak door with sun symbol carved on the frame."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":80
+                }, 
+                {
+                 "height":16,
+                 "id":104,
+                 "name":"",
+                 "properties":
+                    {
+                     "text":"You see a solid oak door with moon symbol carved on the frame."
+                    },
+                 "propertytypes":
+                    {
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":288,
+                 "y":160
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -679,7 +701,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":103,
+ "nextobjectid":106,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.2",
