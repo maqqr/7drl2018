@@ -354,12 +354,8 @@ export class Game {
     }
 
     private useItemCallback(keyCode: string): boolean {
-        // TODOOO
-        this.messagebuffer.add("USE ITEM " + keyCode);
-        console.log(this.itemSlotToBeUsed);
         const itemType = this.player.currentbody.inventory[this.itemSlotToBeUsed].item;
         const item = this.data.getByType(this.data.items, itemType);
-        console.log(item);
 
         const playerBody = this.player.currentbody;
 
@@ -389,6 +385,28 @@ export class Game {
             newItem.dataRef = item;
             this.currentLevel.addItemAt(newItem, playerBody.x, playerBody.y);
             return true;
+        }
+
+        // Swap item slots
+        if (keyCode === "KeyE") {
+            this.waitForMessage = ["Press a slot number where to move the " + item.name + "."];
+            this.waitForItemCallback = (otherKeyCode: string) => {
+                this.messagebuffer.add("SWAP " + otherKeyCode);
+                for (let index = 1; index < 10; index++) {
+                    if (otherKeyCode === "Digit" + index || otherKeyCode === "Numpad" + index) {
+                        if (index < playerBody.inventory.length) {
+                            const sourceSlot = this.itemSlotToBeUsed;
+                            const targetSlot = index - 1;
+                            const temp = playerBody.inventory[targetSlot].item;
+                            playerBody.inventory[targetSlot].item = playerBody.inventory[sourceSlot].item;
+                            playerBody.inventory[sourceSlot].item = temp;
+                        } else {
+                            this.messagebuffer.add("Invalid item slot.");
+                        }
+                    }
+                }
+                return false;
+            };
         }
 
         return false;
@@ -701,7 +719,9 @@ export class Game {
         console.log("Fight " + attacker.dataRef.type + " vs. " + defender.dataRef.type);
         console.log(attacker);
         console.log(defender);
-        let damage = getItemAttack(attacker) + attacker.dataRef.strength;
+        const maxDamage = getItemAttack(attacker) + attacker.dataRef.strength;
+        const minDamage = Math.ceil(maxDamage / 2);
+        let damage = minDamage + Math.ceil(Math.random() * (maxDamage + 1));
         damage -= getItemDefence(defender) + defender.dataRef.defence;
         damage = Math.max(0, damage);
         defender.currenthp -= damage;
