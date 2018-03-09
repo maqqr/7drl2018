@@ -177,11 +177,11 @@
                  "name":"",
                  "properties":
                     {
-                     "propability":5
+                     "probability":5
                     },
                  "propertytypes":
                     {
-                     "propability":"int"
+                     "probability":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -197,11 +197,11 @@
                  "name":"",
                  "properties":
                     {
-                     "propability":25
+                     "probability":25
                     },
                  "propertytypes":
                     {
-                     "propability":"int"
+                     "probability":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -217,11 +217,11 @@
                  "name":"",
                  "properties":
                     {
-                     "propability":5
+                     "probability":5
                     },
                  "propertytypes":
                     {
-                     "propability":"int"
+                     "probability":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -237,11 +237,11 @@
                  "name":"",
                  "properties":
                     {
-                     "propability":25
+                     "probability":25
                     },
                  "propertytypes":
                     {
-                     "propability":"int"
+                     "probability":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -257,11 +257,11 @@
                  "name":"",
                  "properties":
                     {
-                     "propability":5
+                     "probability":5
                     },
                  "propertytypes":
                     {
-                     "propability":"int"
+                     "probability":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -277,11 +277,11 @@
                  "name":"",
                  "properties":
                     {
-                     "propability":25
+                     "probability":25
                     },
                  "propertytypes":
                     {
-                     "propability":"int"
+                     "probability":"int"
                     },
                  "rotation":0,
                  "type":"",
@@ -297,11 +297,11 @@
                  "name":"",
                  "properties":
                     {
-                     "propability":5
+                     "probability":5
                     },
                  "propertytypes":
                     {
-                     "propability":"int"
+                     "probability":"int"
                     },
                  "rotation":0,
                  "type":"",
