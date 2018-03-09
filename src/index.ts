@@ -364,7 +364,7 @@ export class Game {
             if (item.category === "key") {
                 this.messagebuffer.add("You use keys automatically by activating doors.");
                 return false;
-            } else if (item.category === "ord") {
+            } else if (item.category === "orb") {
                 // TODO
                 return false;
             } else if (item.category === "potion") {
@@ -438,7 +438,7 @@ export class Game {
         let advanceTime = false;
 
         const code = e.code;
-        console.log(e.code);
+        // console.log(e.code);
 
         const dx = code === "ArrowRight" ? 1 : (code === "ArrowLeft") ? -1 : 0;
         const dy = code === "ArrowDown" ? 1 : (code === "ArrowUp") ? -1 : 0;
@@ -611,6 +611,7 @@ export class Game {
                         this.moveCreature(body, xx, yy);
                         this.player.x = body.x;
                         this.player.y = body.y;
+                        this.currentLevel.cleanupDeadCreatures();
                         advanceTime = true;
                         keyAccepted = true;
                     } else {
@@ -685,15 +686,26 @@ export class Game {
     }
 
     private checkDeath(cre: Creature): void {
-        if (cre.currenthp <= 0) {
+        if (cre.currenthp <= 0 && !cre.dead) {
+            cre.dead = true;
             const your = cre === this.player.currentbody ? "your " : "";
             if (this.currentLevel.lineOfSight(this.player.x, this.player.y, cre.x, cre.y)) {
                 this.messagebuffer.add(your + cre.dataRef.type + " died.");
             }
-            this.currentLevel.removeCreature(cre);
+
             if (this.player.currentbody === cre) {
                 this.player.currentbody = null;
                 this.messagebuffer.add("You detach from the corpse.", Color.red);
+            }
+
+            // Drop inventory items
+            for (const slot of cre.inventory) {
+                if (slot.item !== "") {
+                    const item = this.data.getByType(this.data.items, slot.item);
+                    const newItem = new Item();
+                    newItem.dataRef = item;
+                    this.currentLevel.addItemAt(newItem, cre.x, cre.y);
+                }
             }
         }
     }
@@ -749,6 +761,9 @@ export class Game {
                 this.creatureFight(cre, defender);
             }
         } else if (this.isCurrable(targetX, targetY) && this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
+            if (targetX === this.player.x && targetY === this.player.y) {
+                console.log("ERROR");
+            }
             const oldX = cre.x;
             const oldY = cre.y;
             cre.x = targetX;
@@ -821,7 +836,7 @@ export class Game {
     }
 
     private updateLoop(deltaTime: number): void {
-        console.log("deltaTime: " + deltaTime);
+        // console.log("deltaTime: " + deltaTime);
         if (deltaTime > 0) {
             for (const cre of this.currentLevel.creatures) {
                 if (this.player.currentbody === cre || cre.currenthp <= 0) {
@@ -836,6 +851,7 @@ export class Game {
                     }
                 }
             }
+            this.currentLevel.cleanupDeadCreatures();
         }
         this.renderer.renderGame();
         this.playerTurn();
@@ -859,11 +875,11 @@ export class Game {
 
         // Follow the player if the creature can see it
         // TODO: move to last seen position
-        const canSeePlayer =
-            this.player.currentbody !== null && this.currentLevel.lineOfSight(
-                this.player.currentbody.x, this.player.currentbody.y, cre.x, cre.y);
+        const canSeePlayer = true;
+            // this.player.currentbody !== null && this.currentLevel.lineOfSight(
+                // this.player.currentbody.x, this.player.currentbody.y, cre.x, cre.y);
 
-        if (canSeePlayer) {
+        if (canSeePlayer && this.player.currentbody !== null) { // TODO: REMOVE true
             const dijkstra = new ROT.Path.Dijkstra(
                 this.player.currentbody.x, this.player.currentbody.y, passable, { topology: 4 });
             dijkstra.compute(cre.x, cre.y, (x: number, y: number) => {
