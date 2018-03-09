@@ -18,6 +18,7 @@ export interface ICreature extends IHasType {
    id: number;
    maxhp: number;
    strength: number;
+   defence: number;
    speed: number;
    size: number;
    willpower: number;
@@ -32,6 +33,8 @@ export interface ICreature extends IHasType {
 export interface IItem extends IHasType {
     id: number;
     icon: number;
+    attack: number;
+    defence: number;
     name: string;
     category: string;
 }

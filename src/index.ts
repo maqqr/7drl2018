@@ -140,6 +140,7 @@ export class Game {
         for (const cre of creatureset.creatures) {
             this.data.creatures[cre.id] = cre;
             cre.willpower = getProp(cre, "willpower", 5, convertInt);
+            cre.defence = getProp(cre, "defence", 5, convertInt);
             cre.flying = getProp(cre, "flying", false, convertBool);
             cre.offensiveslot = getProp(cre, "offensiveslot", false, convertBool);
             cre.defenciveslot = getProp(cre, "defenciveslot", false, convertBool);
@@ -152,6 +153,8 @@ export class Game {
         // Load item data
         for (const item of itemset.items) {
             this.data.items[item.id] = item;
+            item.attack = getProp(item, "attack", 0, convertInt);
+            item.defence = getProp(item, "defence", 0, convertInt);
             // console.log(item);
         }
 

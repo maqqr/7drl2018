@@ -9,6 +9,8 @@
         ],
         "properties": {
           "id":{"type":"integer"},
+          "attack":{"type":"integer"},
+          "defence":{"type":"integer"},
           "type":{"type":"string"},
           "name":{"type":"string"},
           "category":{"type":"string"},
