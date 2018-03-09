@@ -231,26 +231,6 @@
                  "y":112
                 }, 
                 {
-                 "gid":249,
-                 "height":16,
-                 "id":70,
-                 "name":"",
-                 "properties":
-                    {
-                     "propability":5
-                    },
-                 "propertytypes":
-                    {
-                     "propability":"int"
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":96,
-                 "y":144
-                }, 
-                {
                  "gid":246,
                  "height":16,
                  "id":71,

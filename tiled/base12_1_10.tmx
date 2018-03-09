@@ -37,19 +37,9 @@
     <property name="propability" type="int" value="5"/>
    </properties>
   </object>
-  <object id="80" gid="244" x="32" y="112" width="16" height="16">
-   <properties>
-    <property name="propability" type="int" value="5"/>
-   </properties>
-  </object>
   <object id="81" gid="247" x="128" y="96" width="16" height="16">
    <properties>
     <property name="propability" type="int" value="25"/>
-   </properties>
-  </object>
-  <object id="82" gid="241" x="96" y="160" width="16" height="16">
-   <properties>
-    <property name="propability" type="int" value="5"/>
    </properties>
   </object>
   <object id="83" gid="250" x="80" y="96" width="16" height="16">

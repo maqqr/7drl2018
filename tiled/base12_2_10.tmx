@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="91">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="94">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="12" height="12">
   <data encoding="csv">
@@ -18,22 +18,7 @@
 </data>
  </layer>
  <objectgroup name="creature">
-  <object id="79" gid="249" x="48" y="64" width="16" height="16">
-   <properties>
-    <property name="probability" value="5"/>
-   </properties>
-  </object>
-  <object id="80" gid="249" x="128" y="144" width="16" height="16">
-   <properties>
-    <property name="probability" value="5"/>
-   </properties>
-  </object>
   <object id="81" gid="249" x="48" y="144" width="16" height="16">
-   <properties>
-    <property name="probability" value="5"/>
-   </properties>
-  </object>
-  <object id="82" gid="249" x="128" y="64" width="16" height="16">
    <properties>
     <property name="probability" value="5"/>
    </properties>
@@ -74,6 +59,21 @@
    </properties>
   </object>
   <object id="90" gid="248" x="64" y="96" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="91" gid="248" x="64" y="64" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="92" gid="248" x="128" y="64" width="16" height="16">
+   <properties>
+    <property name="probability" value="5"/>
+   </properties>
+  </object>
+  <object id="93" gid="248" x="128" y="144" width="16" height="16">
    <properties>
     <property name="probability" value="5"/>
    </properties>
