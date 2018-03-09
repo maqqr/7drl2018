@@ -4,7 +4,7 @@ import { CharCreation } from "./charcreation";
 import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
-import { Creature, Furniture, Player, PuzzleRoom, SlotType } from "./entity";
+import { Creature, Furniture, Player, PuzzleRoom, SlotType, Item } from "./entity";
 import { ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
@@ -20,6 +20,8 @@ export class Game {
     public static startRoomX: number = 0;
     public static startRoomY: number = 0;
 
+    public helpToggledOn: boolean = false;
+
     public data: GameData;
     public player: Player;
     public messagebuffer: MessageBuffer = new MessageBuffer(10);
@@ -28,7 +30,10 @@ export class Game {
     public testPuzzleName: string = "";
 
     public waitForDirCallback: (delta: [number, number]) => boolean = null;
-    public waitForMessage: string = "";
+    public waitForMessage: string[] = [];
+
+    public waitForItemCallback: (keyCode: string) => boolean = null;
+    public itemSlotToBeUsed: number = 0;
 
     // Animation variables
     public spiritFadeTimer: number = 0;
@@ -348,6 +353,61 @@ export class Game {
         window.addEventListener("keydown", this.keyDownCallBack);
     }
 
+    private useItemCallback(keyCode: string): boolean {
+        // TODOOO
+        this.messagebuffer.add("USE ITEM " + keyCode);
+        console.log(this.itemSlotToBeUsed);
+        const itemType = this.player.currentbody.inventory[this.itemSlotToBeUsed].item;
+        const item = this.data.getByType(this.data.items, itemType);
+        console.log(item);
+
+        const playerBody = this.player.currentbody;
+
+        // Use item
+        if (keyCode === "KeyQ") {
+            if (item.category === "key") {
+                this.messagebuffer.add("You use keys automatically by activating doors.");
+                return false;
+            } else if (item.category === "ord") {
+                // TODO
+                return false;
+            } else if (item.category === "potion") {
+                playerBody.inventory[this.itemSlotToBeUsed].item = "";
+                playerBody.currenthp = playerBody.dataRef.maxhp;
+                this.messagebuffer.add("You drink the potion. Your wounds heal instantly.");
+                return true;
+            } else {
+                this.messagebuffer.add("You can not use that.");
+                return false;
+            }
+        }
+
+        // Drop item
+        if (keyCode === "KeyD") {
+            playerBody.inventory[this.itemSlotToBeUsed].item = "";
+            const newItem = new Item();
+            newItem.dataRef = item;
+            this.currentLevel.addItemAt(newItem, playerBody.x, playerBody.y);
+            return true;
+        }
+
+        return false;
+    }
+
+    private attemptToUseItem(cre: Creature, slotNumber: number): boolean {
+        if (slotNumber < cre.inventory.length) {
+            if (cre.inventory[slotNumber].item !== "") {
+                const item = this.data.getByType(this.data.items, cre.inventory[slotNumber].item);
+                this.itemSlotToBeUsed = slotNumber;
+                this.waitForMessage = ["Q - Use item", "D - Drop item", "E - Move item to another slot"];
+                this.waitForItemCallback = this.useItemCallback.bind(this);
+            } else {
+                this.messagebuffer.add("You do not have an item on that slot.");
+            }
+        }
+        return false;
+    }
+
     private handleKeyPress(e: KeyboardEvent): void {
 
         if (this.chargen !== null) {
@@ -373,9 +433,18 @@ export class Game {
         const creatureBlocking = !this.isCurrable(xx, yy);
         const spiritMode = this.player.currentbody === null;
 
-        if (this.waitForDirCallback !== null && dirKeyPressed) {
+        // Directional callbacks
+        if (!keyAccepted && this.waitForDirCallback !== null && dirKeyPressed) {
             advanceTime = this.waitForDirCallback([dx, dy]);
             this.waitForDirCallback = null;
+            keyAccepted = true;
+        }
+
+        // Item callbacks
+        if (!keyAccepted && this.waitForItemCallback !== null) {
+            const func = this.waitForItemCallback;
+            this.waitForItemCallback = null;
+            advanceTime = func(e.code);
             keyAccepted = true;
         }
 
@@ -390,28 +459,43 @@ export class Game {
             this.placePlayerAtFurniture("stairsdown");
         }
 
+        // 1-9 numbers - Use items
+        if (!keyAccepted && this.player.currentbody !== null) {
+            for (let index = 1; index < 10; index++) {
+                if (e.code === "Digit" + index || e.code === "Numpad" + index) {
+                    advanceTime = this.attemptToUseItem(this.player.currentbody, index - 1);
+                    keyAccepted = true;
+                }
+            }
+        }
+
+        // H - toggle help
+        if (!keyAccepted && e.code === "KeyH") {
+            this.helpToggledOn = !this.helpToggledOn;
+        }
+
         // A - activate
-        if (e.code === "KeyA" && !spiritMode) {
+        if (!keyAccepted && e.code === "KeyA" && !spiritMode) {
             this.waitForDirCallback = this.activateTileCallback.bind(this);
-            this.waitForMessage = "Press a direction where to activate (space = current tile)";
+            this.waitForMessage = ["Press a direction where to activate (space = current tile)"];
             keyAccepted = true;
         }
-        if (e.code === "KeyA" && spiritMode) {
+        if (!keyAccepted && e.code === "KeyA" && spiritMode) {
             this.messagebuffer.add("You can not activate objects as a spirit.");
         }
 
         // S - slide (push)
-        if (e.code === "KeyS" && !spiritMode) {
+        if (!keyAccepted && e.code === "KeyS" && !spiritMode) {
             this.waitForDirCallback = this.pushObjectCallback.bind(this);
-            this.waitForMessage = "Press a direction where to push";
+            this.waitForMessage = ["Press a direction where to push"];
             keyAccepted = true;
         }
-        if (e.code === "KeyS" && spiritMode) {
+        if (!keyAccepted && e.code === "KeyS" && spiritMode) {
             this.messagebuffer.add("You can not push up items as a spirit.");
         }
 
         // G - get item
-        if (e.code === "KeyG" && !spiritMode) {
+        if (!keyAccepted && e.code === "KeyG" && !spiritMode) {
             const items = this.currentLevel.getItemsAt(this.player.x, this.player.y);
             if (items.length > 0) {
                 if (this.player.currentbody.pickup(items[0].dataRef.type)) {
@@ -431,7 +515,7 @@ export class Game {
         }
 
         // Z - use stairs
-        if (e.code === "KeyZ") {
+        if (!keyAccepted && e.code === "KeyZ") {
             const furs = this.currentLevel.getFurnituresAt(this.player.x, this.player.y);
             let movedir = 0;
             for (const fur of furs) {
@@ -781,8 +865,10 @@ export class Game {
         const targetX = cre.x + dx;
         const targetY = cre.y + dy;
         if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
-            // Move freely to target position
-            this.moveCreature(cre, cre.x + dx, cre.y + dy);
+            // Move freely to target position unless it causes damage
+            if (this.currentLevel.getTileDamage(targetX, targetY) === 0) {
+                this.moveCreature(cre, targetX, targetY);
+            }
         } else {
             // Attempt to activate tile if movement failed
             if (cre.dataRef.size >= 5) {

@@ -134,8 +134,18 @@ export class Renderer {
             this.renderer.drawTexture(playerDrawX, playerDrawY, player.currentbody.dataRef.id, 0xAAAAFF);
         }
 
-        if (this.game.waitForDirCallback !== null) {
-            this.renderer.drawString(0, 16, this.game.waitForMessage);
+        if (this.game.waitForDirCallback !== null || this.game.waitForItemCallback !== null) {
+            for (let i = 0; i < this.game.waitForMessage.length; i++) {
+                const line = this.game.waitForMessage[i];
+                this.renderer.drawString(2, 16 + 12 * i, line);
+            }
+        } else {
+            if (this.game.helpToggledOn) {
+                // TODO: write help texts
+                this.renderer.drawString(2, 16, "LOL U NEED SUM HELP??");
+            } else {
+                this.renderer.drawString(2, 16, "H - Toggle help");
+            }
         }
 
         this.renderer.drawString(0, 0, this.game.testPuzzleName);
@@ -169,7 +179,7 @@ export class Renderer {
             spiritStatsX + 2, spiritStatsY + 24, "        Willpower: " + this.game.player.willpower);
 
         let invX = 4;
-        const invY = 250;
+        const invY = 230;
         let itemIndex = 1;
         const offSlotIcon = 176;
         const defSlotIcon = 177;
@@ -190,8 +200,9 @@ export class Renderer {
 
             // Draw item slots
             for (const slot of playerBody.inventory) {
+                const slotNumberColor = slot.item === "" ? Color.gray : Color.lightblue;
                 this.renderer.drawTexture(invX, invY, slotBackgroundIcon); // Slot background
-                this.renderer.drawString(invX + 5, invY + 20, "" + itemIndex); // Slot number
+                this.renderer.drawString(invX + 5, invY + 20, "" + itemIndex, slotNumberColor); // Slot number
 
                 let slotTypeIcon = bagSlotIcon;
                 if (slot.type === SlotType.Offensive) { slotTypeIcon = offSlotIcon; }
@@ -205,7 +216,6 @@ export class Renderer {
                     const item = this.game.data.getByType(this.game.data.items, slot.item);
                     this.renderer.drawTexture(invX, invY, item.icon);
                 }
-                // const item = slot.type
                 itemIndex++;
                 invX += 20;
             }
