@@ -12,39 +12,14 @@ import { PixiRenderer } from "./pixirenderer";
 import { IMouseEvent, Renderer } from "./renderer";
 import { CharCreation } from "./windows/charcreation";
 import { Game } from "./windows/game";
+import { LoadingWindow } from "./windows/loading";
 import { IGameWindow } from "./windows/window";
+import { MainMenu } from "./windows/mainmenu";
 
-
-class LoadingWindow implements IGameWindow {
-    private renderer: PixiRenderer;
-
-    constructor(renderer: PixiRenderer) {
-        this.renderer = renderer;
-    }
-
-    public handleKeyPress(e: KeyboardEvent): void {
-        // console.log(e);
-    }
-
-    public handleClick(mouseEvent: IMouseEvent): void {
-        // console.log(mouseEvent);
-    }
-
-    public startWindow(): void {
-        this.renderer.clear();
-        this.renderer.drawString(Game.WIDTH / 2 - 40, Game.HEIGHT / 2,
-            "Loading game data...");
-        this.renderer.render();
-    }
-
-    public stopWindow(): void {
-        //
-    }
-}
 
 export class App {
     public data: GameData;
-    private renderer: Renderer;
+    public renderer: Renderer;
 
     private window: IGameWindow = null;
     private keyDownCallBack: any;
@@ -67,6 +42,18 @@ export class App {
         this.window.startWindow();
     }
 
+    public goToMainMenu(): void {
+        const mainmenu = new MainMenu(this.renderer.renderer);
+        this.setWindow(mainmenu);
+    }
+
+    public goToCharCreation(): void {
+        const player = new Player();
+        player.dataRef  = this.data.player;
+        const charcreation = new CharCreation(this.renderer.renderer, null, player);
+        this.setWindow(charcreation);
+    }
+
     private graphicsLoaded(): void {
         this.window.startWindow();
         this.loadData().then(this.dataLoaded.bind(this));
@@ -74,19 +61,15 @@ export class App {
 
     private dataLoaded(): void {
         console.log("Game data loaded.");
-        const player = new Player();
-        player.dataRef  = this.data.player;
-        const charcreation = new CharCreation(this.renderer.renderer, null, player, this.charGenDone.bind(this));
-        this.setWindow(charcreation);
+        this.goToMainMenu();
     }
 
     private handleKeyPress(e: KeyboardEvent): void {
-        this.window.handleKeyPress(e);
-        // window.removeEventListener("keydown", this.keyDownCallBack);
+        this.window.handleKeyPress(this, e);
     }
 
     private handleClick(mouseEvent: IMouseEvent): void {
-        this.window.handleClick(mouseEvent);
+        this.window.handleClick(this, mouseEvent);
     }
 
     private async loadData(): Promise<void> {
@@ -203,22 +186,18 @@ export class App {
         }
     }
 
-    private charGenDone(player: Player): void {
-        const gameWindow = new Game(this.renderer, this.data, player);
-        this.setWindow(gameWindow);
-    }
-
     private loadJSON<T>(path: string): Promise<T> {
         return new Promise((resolve, reject) => {
             $.getJSON(path, (data: any, textStatus: string, jqXHR: JQueryXHR) => {
                 resolve(data);
             }).fail((jqXHR: JQueryXHR, textStatus, errorThrown) => {
-                console.log("loadJSON(" + path + ") failed: " + JSON.stringify(textStatus));
+                console.error("loadJSON(" + path + ") failed: " + JSON.stringify(textStatus));
             });
         });
     }
 }
 
-// TODO: start after DOM has been loaded
-const app = new App();
-app.start();
+$(document).ready(() => {
+    const app = new App();
+    app.start();
+});

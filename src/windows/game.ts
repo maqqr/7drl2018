@@ -1,4 +1,5 @@
 import * as ROT from "rot-js";
+import { App } from "..";
 import { Color } from "../color";
 import { GameData } from "../data";
 import { DungeonGenerator } from "../dungeongen";
@@ -7,6 +8,7 @@ import { Level } from "../level";
 import { MessageBuffer } from "../messagebuffer";
 import { IMouseEvent, Renderer } from "../renderer";
 import { CharCreation } from "./charcreation";
+import { GameOver } from "./gameover";
 import { IGameWindow } from "./window";
 
 export class Game implements IGameWindow {
@@ -35,7 +37,7 @@ export class Game implements IGameWindow {
     public itemSlotToBeUsed: number = 0;
 
     // Animation variables
-    public spiritFadeTimer: number = 0;
+    public spiritFadeTimer: number = 1.0;
     public spiritTintColors: number[] = [0xFFFFFF, Color.white, 0x7777FF];
     public currentTintColor: number = 0xFFFFFF;
 
@@ -50,7 +52,7 @@ export class Game implements IGameWindow {
 
     private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
 
-    private chargen: CharCreation = null;
+    // private chargen: CharCreation = null;
     private intervalIds: number[] = [];
 
     constructor(renderer: Renderer, data: GameData, player: Player) {
@@ -80,6 +82,15 @@ export class Game implements IGameWindow {
 
     public stopWindow(): void {
         this.intervalIds.forEach((interval) => { clearInterval(interval); });
+    }
+
+    public checkPlayerDeath(app: App): boolean {
+        if (this.player.currentstability <= 0) {
+            const gameover = new GameOver(this.renderer.renderer);
+            app.setWindow(gameover);
+            return true;
+        }
+        return false;
     }
 
     public placePlayerAtFurniture(furType: string): void {
@@ -203,12 +214,12 @@ export class Game implements IGameWindow {
         return this.currentLevel;
     }
 
-    public handleKeyPress(e: KeyboardEvent): void {
+    public handleKeyPress(app: App, e: KeyboardEvent): void {
 
-        if (this.chargen !== null) {
-            this.chargen.handleKeyPress(e);
-            return;
-        }
+        // if (this.chargen !== null) {
+        //     this.chargen.handleKeyPress(e);
+        //     return;
+        // }
 
         const px = this.player.x;
         const py = this.player.y;
@@ -387,6 +398,9 @@ export class Game implements IGameWindow {
                         this.player.x = xx;
                         this.player.y = yy;
                         this.player.currentstability -= 0.5;
+                        if (this.checkPlayerDeath(app)) {
+                            return;
+                        }
                         advanceTime = true;
                         keyAccepted = true;
                     }
@@ -445,8 +459,8 @@ export class Game implements IGameWindow {
         }
     }
 
-    public handleClick(mouseEvent: IMouseEvent): void {
-        if (this.chargen !== null || this.currentLevel === null) {
+    public handleClick(app: App, mouseEvent: IMouseEvent): void {
+        if (this.currentLevel === null) {
             return;
         }
 
@@ -577,7 +591,7 @@ export class Game implements IGameWindow {
         };
 
         if (keyCode === "Digit1" || keyCode === "Numpad1") {
-            this.player.spiritstability += 1;
+            this.player.spiritstability += 2;
             this.player.currentstability = this.player.spiritstability;
             this.messagebuffer.add("Your stability increases and can remain out of body longer. The orb vanishes.");
             destroyOrb();

@@ -238,7 +238,6 @@ export class Level {
     }
 
     public removeCreature(creature: Creature): void {
-        console.log("REMOVED CREATURE " + creature.dataRef.type);
         const index = this.creatures.indexOf(creature);
         if (index >= 0) {
             this.creatures.splice(index, 1);
