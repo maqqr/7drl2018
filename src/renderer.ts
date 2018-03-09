@@ -74,7 +74,7 @@ export class Renderer {
                         this.renderer.drawTexture(drawX, drawY, tileState.rememberedFurniture, rememberTint);
                     }
                 } else {
-                    this.renderer.drawTexture(drawX, drawY, tile, 1);
+                    // this.renderer.drawTexture(drawX, drawY, tile, 1);
                 }
             }
         }

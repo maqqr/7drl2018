@@ -1,7 +1,9 @@
+import { App } from "..";
 import { Color } from "../color";
 import { Player } from "../entity";
 import { PixiRenderer } from "../pixirenderer";
 import { IMouseEvent } from "../renderer";
+import { Game } from "./game";
 import { IGameWindow } from "./window";
 
 export interface IQuestion {
@@ -19,19 +21,14 @@ type CharGenDoneCallback = (player: Player) => void;
 
 export class CharCreation implements IGameWindow {
     private data: ICharCreation;
-    private doneCallback: CharGenDoneCallback;
     private renderer: PixiRenderer;
-    // private keyDownCallBack: any;
 
     private player: Player;
 
-    constructor(renderer: PixiRenderer, data: ICharCreation,
-                player: Player, done: CharGenDoneCallback) {
+    constructor(renderer: PixiRenderer, data: ICharCreation, player: Player) {
         this.player = player;
         this.renderer = renderer;
         this.data = data;
-        this.doneCallback = done;
-        // this.keyDownCallBack = this.handleKeyPress.bind(this);
     }
 
     public startWindow(): void {
@@ -48,12 +45,13 @@ export class CharCreation implements IGameWindow {
     }
 
     public draw(): void {
+        this.renderer.clear();
         this.renderer.drawString(50, 50, "(char gen here)", Color.white);
         this.renderer.drawString(50, 100, "Press space", Color.white);
         this.renderer.render();
     }
 
-    public handleKeyPress(e: KeyboardEvent): void {
+    public handleKeyPress(app: App, e: KeyboardEvent): void {
         console.log("chargen");
         console.log(e.code);
 
@@ -66,11 +64,12 @@ export class CharCreation implements IGameWindow {
 
         // TODO: remove this
         if (e.code === "Space") {
-            this.doneCallback(this.player);
+            const gameWindow = new Game(app.renderer, app.data, this.player);
+            app.setWindow(gameWindow);
         }
     }
 
-    public handleClick(mouseEvent: IMouseEvent): void {
+    public handleClick(app: App, mouseEvent: IMouseEvent): void {
         //
     }
 }
