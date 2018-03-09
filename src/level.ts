@@ -334,7 +334,7 @@ export class Level {
     }
 
     public activate(x: number, y: number, userInitiated: boolean = true, cre: Creature = null): string {
-        console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
+        // console.log((userInitiated ? "user " : "") + "activation at " + JSON.stringify({ x, y }));
         const tileId = this.get(x, y);
         let message = null;
         // const tile = this.game.
