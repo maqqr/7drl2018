@@ -1,7 +1,7 @@
 {
     "$schema":"./itemset-schema.json",
     "items":[
-        { "id": 1, "icon": 208, "type": "copperkey", "name": "copper key", "category": "key", "description": "A copper key." },
+        { "id": 1, "icon": 208, "type": "bronzekey", "name": "bronze key", "category": "key", "description": "A bronze key." },
         { "id": 2, "icon": 209, "type": "silverkey", "name": "silver key", "category": "key", "description": "A silver key." },
         { "id": 3, "icon": 210, "type": "goldenkey", "name": "gold key", "category": "key", "description": "A golden key." },
         { "id": 4, "icon": 211, "type": "healingpotion", "name": "healing potion", "category": "potion", "description": "A small red vial." },
