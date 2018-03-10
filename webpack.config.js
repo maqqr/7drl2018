@@ -44,7 +44,7 @@ module.exports = {
         }),
         new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
         new HtmlWebpackPlugin({
-            title: '7drl2018',
+            title: 'Crypt of Grimwin - 7drl2018 game',
             filename: 'dist/index.html',
             template: 'index-template.ejs',
         }),

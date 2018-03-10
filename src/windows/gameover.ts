@@ -14,6 +14,8 @@ export class GameOver implements IGameWindow {
     private title: string;
     private texts: string[];
 
+    private intervalId: any;
+
     constructor(renderer: PixiRenderer, title: string, texts: string[]) {
         this.renderer = renderer;
         this.title = title;
@@ -21,9 +23,9 @@ export class GameOver implements IGameWindow {
     }
 
     public startWindow(): void {
-        setTimeout(() => {
+        this.intervalId = setInterval(() => {
             this.draw();
-        }, 200);
+        }, 80);
 
         setTimeout(() => {
             this.canContinue = true;
@@ -32,7 +34,7 @@ export class GameOver implements IGameWindow {
     }
 
     public stopWindow(): void {
-        //
+        clearInterval(this.intervalId);
     }
 
     public handleKeyPress(app: App, e: KeyboardEvent): void {

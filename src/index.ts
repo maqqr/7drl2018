@@ -10,7 +10,7 @@ import { Level, TileVisibility } from "./level";
 import { MessageBuffer } from "./messagebuffer";
 import { PixiRenderer } from "./pixirenderer";
 import { IMouseEvent, Renderer } from "./renderer";
-import { CharCreation } from "./windows/charcreation";
+import { CharCreation, ICharCreation } from "./windows/charcreation";
 import { Game } from "./windows/game";
 import { LoadingWindow } from "./windows/loading";
 import { MainMenu } from "./windows/mainmenu";
@@ -51,7 +51,7 @@ export class App {
     public goToCharCreation(): void {
         const player = new Player();
         player.dataRef  = this.data.player;
-        const charcreation = new CharCreation(this.renderer.renderer, null, player);
+        const charcreation = new CharCreation(this.renderer.renderer, this.data, player);
         this.setWindow(charcreation);
     }
 
@@ -79,6 +79,10 @@ export class App {
         const itemset = await this.loadJSON<IItemset>("data/itemset.json");
         const furnitureset = await this.loadJSON<IFurnitureset>("data/furnitureset.json");
         const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
+
+        const questions = await this.loadJSON<ICharCreation>("data/charcreation.json");
+        console.log(questions);
+        this.data.charcreation = questions;
 
         // console.log(puzzleList);
 

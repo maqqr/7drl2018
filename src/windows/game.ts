@@ -149,7 +149,7 @@ export class Game implements IGameWindow {
     }
 
     public loadFirstLevel(): void {
-        const testMode = true;
+        const testMode = false;
 
         if (!testMode) {
             this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5, 1);
@@ -183,7 +183,7 @@ export class Game implements IGameWindow {
 
             // Create initial grave robber
             const graveRobber = this.currentLevel.createCreatureAt(this.data.creatures[252],
-                                                                this.player.x - 1, this.player.y);
+                                                                   this.player.x - 1, this.player.y);
             graveRobber.willpower = 1;
             graveRobber.inventory.forEach((startItemSlot) => graveRobber.removeItem(startItemSlot.item));
 
@@ -412,7 +412,7 @@ export class Game implements IGameWindow {
                     this.messagebuffer.add(action);
                 }
 
-                if (Game.debugMode || Math.random() < chance) {
+                if (Game.showPossessTutorial || Game.debugMode || Math.random() < chance) {
                     this.messagebuffer.add(chance < 1.0
                         ? "You were more potent and overcame the feeble creature."
                         : "You return to the body of " + creatureName + ".");
@@ -505,7 +505,7 @@ export class Game implements IGameWindow {
         }
 
         if (keyAccepted) {
-            const speed = this.player.currentbody === null ? 5 : this.player.currentbody.dataRef.speed;
+            const speed = this.player.currentbody === null ? 3 : this.player.currentbody.dataRef.speed;
             this.updateLoop(advanceTime ? speed : 0);
         }
     }
