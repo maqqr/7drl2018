@@ -21,7 +21,7 @@
         },
         {
             "id":244, "type": "giantworm", "name": "giant worm", "category": "beast", "description": "A giant tunnel worm. A snakelike creature with no eyes.",
-            "maxhp": 38, "strength": 8, "defence": 0, "speed": 6, "willpower": 14, "size": 15,
+            "maxhp": 38, "strength": 8, "defence": 0, "speed": 6, "willpower": 14, "size": 14,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 0,
             "inventory": []
         },
@@ -61,7 +61,7 @@
         },
         {
             "id":242, "type": "golem", "name": "golem", "category": "magic", "description": "A large humanlike construction, animated with magic.",
-            "maxhp": 40, "strength": 10, "defence": 3, "speed": 8, "willpower": 18, "size": 15,
+            "maxhp": 40, "strength": 10, "defence": 3, "speed": 8, "willpower": 18, "size": 14,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
