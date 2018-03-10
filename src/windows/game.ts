@@ -143,7 +143,7 @@ export class Game implements IGameWindow {
     }
 
     public loadFirstLevel(): void {
-        const testMode = false;
+        const testMode = true;
 
         if (!testMode) {
             this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5, 1);
@@ -909,7 +909,10 @@ export class Game implements IGameWindow {
 
         if (this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
             // Move freely to target position unless it causes damage
-            if (this.currentLevel.getTileDamage(targetX, targetY) === 0 || cre.dataRef.flying) {
+            const movingToPlayer =
+                this.player.currentbody !== null && targetX === this.player.x && targetY === this.player.y;
+
+            if (this.currentLevel.getTileDamage(targetX, targetY) === 0 || cre.dataRef.flying || movingToPlayer) {
                 this.moveCreature(cre, targetX, targetY);
             }
         } else {
