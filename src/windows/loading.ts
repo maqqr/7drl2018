@@ -29,4 +29,8 @@ export class LoadingWindow implements IGameWindow {
     public stopWindow(): void {
         //
     }
+
+    public draw(): void {
+        //
+    }
 }

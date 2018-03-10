@@ -241,6 +241,10 @@ export class Game implements IGameWindow {
         }
     }
 
+    public draw(): void {
+        //
+    }
+
     public handleKeyPress(app: App, e: KeyboardEvent): void {
 
         // if (this.chargen !== null) {
