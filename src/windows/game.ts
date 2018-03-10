@@ -147,7 +147,7 @@ export class Game implements IGameWindow {
     }
 
     public loadFirstLevel(): void {
-        const testMode = false;
+        const testMode = true;
 
         if (!testMode) {
             this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5, 1);
@@ -490,7 +490,7 @@ export class Game implements IGameWindow {
         for (const desc of this.currentLevel.descriptions) {
             if (desc.isInside(this.player.x, this.player.y) && !desc.isRead) {
                 desc.isRead = true;
-                this.messagebuffer.add(desc.text);
+                this.messagebuffer.add(desc.text, Color.lightblue);
             }
         }
 
@@ -714,6 +714,7 @@ export class Game implements IGameWindow {
                         this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
                     this.messagebuffer.add("You push the " + cre.dataRef.name + ".");
                     this.moveCreature(cre, targetX, targetY);
+                    cre.time = -cre.dataRef.speed;
                     advanceTime = true;
                 } else {
                     this.messagebuffer.add("Not enough space to push the " + cre.dataRef.name + " there.");

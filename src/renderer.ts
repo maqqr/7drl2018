@@ -57,11 +57,8 @@ export class Renderer {
         }
 
         const visionRadius = 7;
-
         level.calculateFov(this.game.player.x, this.game.player.y, visionRadius);
 
-        // const playerInsideBody = this.game.player.currentbody === null;
-        // const colorTint = playerInsideBody ? Color.blue : 0xFFFFFF;
         const toScreen = (x: number) => Math.floor(x * 16);
 
         this.renderer.clear();
@@ -120,6 +117,7 @@ export class Renderer {
         for (const cre of creatures) {
             const tileState = level.getTileState(cre.x, cre.y);
             if (tileState.state === TileVisibility.Visible) {
+                // Draw creature
                 const drawX = toScreen(this.game.mapOffsetX + cre.x);
                 const drawY = toScreen(this.game.mapOffsetY + cre.y);
                 this.renderer.drawTexture(drawX, drawY, cre.dataRef.id, this.game.currentTintColor);
@@ -165,6 +163,7 @@ export class Renderer {
                     "",
                     "Hold shift while moving to possess and unpossess creatures.",
                     "Collect orbs to increase your spirit's power.",
+                    "Click tiles to view descriptions.",
                 ];
                 const helpTexts2 = [
                     "- Move",
@@ -172,7 +171,7 @@ export class Renderer {
                     "- Pick up item",
                     "- Use stairs",
                     "- Activate objects",
-                    "- Push objects and creatures",
+                    "- Push objects",
                     "- Use items",
                     "- Toggle this help off",
                 ];
