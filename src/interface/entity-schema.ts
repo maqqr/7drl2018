@@ -22,6 +22,7 @@ export interface ICreature extends IHasType {
    speed: number;
    size: number;
    name?: string;
+   namearticle: string;
    willpower: number;
    flying?: boolean;
    category?: string;
@@ -37,12 +38,14 @@ export interface IItem extends IHasType {
     attack: number;
     defence: number;
     name: string;
+    namearticle: string;
     category: string;
 }
 
 export interface IFurniture extends IHasType {
     icon: number;
     name: string;
+    namearticle: string;
     size?: number;
     movable?: number;
     draworder?: number;

@@ -11,6 +11,7 @@
                     "id": {"type":"integer"},
                     "type": {"type":"string"},
                     "name": {"type":"string"},
+                    "namearticle": {"type":"string"},
                     "category": {"type":"string"},
                     "maxhp": {"type":"integer","minimum": 0},
                     "currrenthp": {"type": "integer"},

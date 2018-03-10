@@ -304,7 +304,6 @@ export class Game implements IGameWindow {
             this.currentLevel.nextLevel = undefined;
             this.currentLevel.prevLevel = undefined;
             const dump = { player: this.player, level: this.currentLevel };
-            console.log(dump);
 
             document.body.innerHTML = "";
             document.body.style.backgroundColor = "white";
@@ -361,7 +360,7 @@ export class Game implements IGameWindow {
         // G - get item
         if (!keyAccepted && e.code === "KeyG" && !spiritMode) {
             const items = this.currentLevel.getItemsAt(this.player.x, this.player.y);
-            if (items.length > 0) {
+            if (items.length === 1) {
                 if (this.player.currentbody.pickup(items[0].dataRef.type)) {
                     this.messagebuffer.add("You pick up the " + items[0].dataRef.name + ".");
                     this.currentLevel.removeItem(items[0]);
