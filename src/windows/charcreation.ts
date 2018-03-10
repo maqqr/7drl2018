@@ -5,6 +5,7 @@ import { PixiRenderer } from "../pixirenderer";
 import { IMouseEvent } from "../renderer";
 import { Game } from "./game";
 import { IGameWindow } from "./window";
+import { GameData } from "../data";
 
 export interface IQuestion {
     question: string;
@@ -20,12 +21,12 @@ export interface ICharCreation {
 type CharGenDoneCallback = (player: Player) => void;
 
 export class CharCreation implements IGameWindow {
-    private data: ICharCreation;
+    private data: GameData;
     private renderer: PixiRenderer;
 
     private player: Player;
 
-    constructor(renderer: PixiRenderer, data: ICharCreation, player: Player) {
+    constructor(renderer: PixiRenderer, data: GameData, player: Player) {
         this.player = player;
         this.renderer = renderer;
         this.data = data;
@@ -46,8 +47,12 @@ export class CharCreation implements IGameWindow {
 
     public draw(): void {
         this.renderer.clear();
-        this.renderer.drawString(50, 50, "(character generation is still unfinished)", Color.white);
-        this.renderer.drawString(50, 100, "Press space to continue", Color.white);
+        let y = 0;
+        for (const line of this.data.introafter) {
+            this.renderer.drawString(10, 50 + y, line, Color.white);
+            y += 14;
+        }
+        this.renderer.drawString(20, Game.HEIGHT - 30, "Press space to continue", Color.white);
         this.renderer.render();
     }
 

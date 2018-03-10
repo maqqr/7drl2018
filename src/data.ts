@@ -49,6 +49,31 @@ export class GameData {
         undead: ["The undead creature rips Vitalius' limbs apart and starts feasting on his bone marrow!"],
     };
 
+    public introtexts: string[] = [
+        "Long after your death, the Grimwin noble family has come to an end. Even though you weren't keenly",
+        "liked by most of your relatives, you were buried in your family's crypt. But even in death you were",
+        "not given peace and something prevented you from passing on to the spirit world...",
+        "",
+        "You see a group of hooded men standing around you. Your body doesn't move. You see a man dressed in",
+        "dark amethyst gown and hood standing in front of you. He is chanting something in a language, that",
+        "you have never heard before. Suddenly feel like you are on fire and your entire being is in pain.",
+        "You sense that something is trying cut your link to the spirit world and denying your right to pass",
+        "on. After a while, the chanting ends and your world starts turning black.",
+        "",
+        "You fall into a deep slumber...",
+    ];
+
+    public introafter: string[] = [
+        "One day, something wakes you up from your slumber... First thing you see is an oddly clothed man,",
+        "staring down to you, holding a lantern and searching through your remains. You stand up, but it",
+        "seems that the man doesn't see you. Then you look down and see your own mummified remains, laying",
+        "in the coffin. Then you notice that world around you looks a little different, like all the colors",
+        "except shades of blue have vanished and then you remember your curse and what must be done.",
+        "",
+        "Use everything and everyone to exact your revenge upon the man who cursed you. You sense that the",
+        "man who cursed you, resides somewhere below you...",
+    ];
+
     public player: IPlayer = {
         description: "This is me.",
         id: 255,

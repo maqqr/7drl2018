@@ -51,7 +51,7 @@ export class App {
     public goToCharCreation(): void {
         const player = new Player();
         player.dataRef  = this.data.player;
-        const charcreation = new CharCreation(this.renderer.renderer, null, player);
+        const charcreation = new CharCreation(this.renderer.renderer, this.data, player);
         this.setWindow(charcreation);
     }
 
