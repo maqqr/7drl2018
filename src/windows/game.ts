@@ -143,7 +143,7 @@ export class Game implements IGameWindow {
     }
 
     public loadFirstLevel(): void {
-        const testMode = true;
+        const testMode = false;
 
         if (!testMode) {
             this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5, 1);
@@ -228,6 +228,17 @@ export class Game implements IGameWindow {
 
     public getCurrentLevel(): Level {
         return this.currentLevel;
+    }
+
+    public reduceStability(amount: number, app: App): void {
+        if (!Game.debugMode) {
+            this.player.currentstability -= amount;
+            if (this.checkPlayerDeath(app)) {
+                return;
+            }
+        } else {
+            this.player.currentstability = this.player.spiritstability;
+        }
     }
 
     public handleKeyPress(app: App, e: KeyboardEvent): void {
@@ -408,7 +419,11 @@ export class Game implements IGameWindow {
                     this.player.y = yy;
                     Game.showPossessTutorial = false;
                 } else {
-                    this.messagebuffer.add("The creature did not submit to you.");
+                    const loseMsg = this.player.currentbody === null ? " You lose some of your stability." : "";
+                    this.messagebuffer.add("The creature did not submit to you." + loseMsg);
+                    if (this.player.currentbody === null) {
+                        this.reduceStability(1.0, app);
+                    }
                 }
                 advanceTime = true;
                 keyAccepted = true;
@@ -418,14 +433,7 @@ export class Game implements IGameWindow {
                     if (Game.debugMode || this.creatureCanMoveTo(1, xx, yy)) {
                         this.player.x = xx;
                         this.player.y = yy;
-                        if (!Game.debugMode) {
-                            this.player.currentstability -= 0.5;
-                            if (this.checkPlayerDeath(app)) {
-                                return;
-                            }
-                        } else {
-                            this.player.currentstability = this.player.spiritstability;
-                        }
+                        this.reduceStability(0.5, app);
                         advanceTime = true;
                         keyAccepted = true;
                     }
