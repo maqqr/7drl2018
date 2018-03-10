@@ -3,6 +3,7 @@ import { SlotType } from "./entity";
 import { Level, TileVisibility } from "./level";
 import { PixiRenderer } from "./pixirenderer";
 import { Game } from "./windows/game";
+import { MainMenu } from "./windows/mainmenu";
 
 export interface IMouseEvent {
     mx: number; // Mouse X
@@ -40,7 +41,12 @@ export class Renderer {
 
     public async loadGraphics(): Promise<{}> {
         return new Promise((resolve, reject) => {
-            this.renderer.loadAssets(["font.png", "tileset.png"], resolve);
+            const baseTextures = ["font.png", "tileset.png", "bg.png"];
+            MainMenu.createFrameNames();
+            for (const frame of MainMenu.anim) {
+                baseTextures.push(frame);
+            }
+            this.renderer.loadAssets(baseTextures, resolve);
         });
     }
 

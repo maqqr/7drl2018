@@ -130,6 +130,18 @@ export class PixiRenderer {
         this.grapgicsPool.clear();
     }
 
+    public drawImage(x: number, y: number, texName: string, tint: number = 0xFFFFFF): PIXI.Sprite {
+        const fontTex = PIXI.utils.TextureCache[texName];
+        const tex = new PIXI.Texture(fontTex);
+
+        const sprite = this.spritePool.get();
+        sprite.texture = tex;
+        sprite.x = x;
+        sprite.y = y;
+        sprite.tint = tint;
+        return sprite;
+    }
+
     public drawTexture(x: number, y: number, index: number, tint: number = 0xFFFFFF): void {
         const fontTex = PIXI.utils.TextureCache["tileset.png"];
         const tx = Math.floor(index % 16) * 16;
