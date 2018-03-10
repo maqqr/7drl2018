@@ -1,4 +1,4 @@
-import { ICreature, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interface/entity-schema";
+import { ICreature, IEnemyPrefix, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interface/entity-schema";
 import { IPuzzleRoom } from "./interface/puzzle-schema";
 
 export class Entity<T extends IHasType> {
@@ -28,6 +28,7 @@ export class ItemSlot {
 }
 
 export class Creature extends Entity<ICreature> {
+    public prefix: IEnemyPrefix = null;
     public currenthp: number;
     public willpower: number;
     public time: number;

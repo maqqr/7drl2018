@@ -567,7 +567,30 @@ export class Level {
                         }
                     }
 
-                    const data = this.data.getByType(this.data.creatures, foundType);
+                    // Must make a copy before applying prefixes (TODO: this is bad)
+                    const originalData = this.data.getByType(this.data.creatures, foundType);
+                    const data = Object.assign({}, originalData, {});
+
+                    // Apply prefixes (horrible glue and gum everywhere)
+                    let prefix = null;
+                    if (Math.random() < 0.2 && data.type !== "vitalius") {
+                        const randomIndex = Math.floor(this.data.prefixes.prefixes.length * Math.random());
+                        prefix = this.data.prefixes.prefixes[randomIndex];
+                        data[prefix.stat] += prefix.bonus;
+                        data.name = prefix.type + " " + data.name;
+                        const splitNameArticle = data.namearticle.split(" ");
+                        if (splitNameArticle.length > 1) {
+                            let newNameArticle = prefix.article + " " + prefix.type;
+                            splitNameArticle.splice(0, 1);
+                            for (const shit of splitNameArticle) {
+                                newNameArticle += " " + shit;
+                            }
+                            data.namearticle = newNameArticle;
+                        } else {
+                            data.namearticle = prefix.type + " " + data.namearticle;
+                        }
+                    }
+
                     if (data === undefined) {
                         console.error("Creature with type " + foundType + " not found (" + puzzle.puzzlename + ").");
                         continue;
@@ -575,7 +598,8 @@ export class Level {
 
                     const xx = px + (creDefinition.x / 16);
                     const yy = py + (creDefinition.y / 16) - 1;
-                    this.createCreatureAt(data, xx, yy);
+                    const cre = this.createCreatureAt(data, xx, yy);
+                    cre.prefix = prefix;
                 }
             }
         }

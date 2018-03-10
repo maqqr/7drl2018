@@ -1,5 +1,5 @@
 import { LevelRooms, PuzzleRoom } from "./entity";
-import { ICreature, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interface/entity-schema";
+import { ICreature, IEnemyPrefixSet, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICharCreation } from "./windows/charcreation";
 
@@ -21,6 +21,8 @@ export class PredefinedRooms {
 
 export class GameData {
     public predefinedRooms: PredefinedRooms = new PredefinedRooms();
+
+    public prefixes: IEnemyPrefixSet = null;
 
     public tiles: { [id: number]: ITile } = {};
 

@@ -571,7 +571,11 @@ export class Game implements IGameWindow {
                 }
                 const cre = this.currentLevel.getCreatureAt(x, y);
                 if (cre !== null) {
-                    this.messagebuffer.add(cre.dataRef.description);
+                    let msg = cre.dataRef.description;
+                    if (cre.prefix !== null) {
+                        msg = msg.concat(" It is " + cre.prefix.type + ".");
+                    }
+                    this.messagebuffer.add(msg);
                 }
             }
         }

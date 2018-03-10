@@ -4,7 +4,7 @@ import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
 import { Creature, Furniture, Item, Player, PuzzleRoom, SlotType } from "./entity";
-import { ITile } from "./interface/entity-schema";
+import { ITile, IEnemyPrefixSet } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level, TileVisibility } from "./level";
@@ -80,6 +80,7 @@ export class App {
         const itemset = await this.loadJSON<IItemset>("data/itemset.json");
         const furnitureset = await this.loadJSON<IFurnitureset>("data/furnitureset.json");
         const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
+        this.data.prefixes = await this.loadJSON<IEnemyPrefixSet>("data/enemyprefixes.json");
 
         const puzzleSchema = await this.loadJSON<any>("data/puzzle-schema.json");
         const validator = new Validator();

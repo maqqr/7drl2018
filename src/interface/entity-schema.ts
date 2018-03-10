@@ -67,3 +67,14 @@ export interface IPlayer extends IHasType {
     id: number;
     speed: number;
 }
+
+export interface IEnemyPrefix {
+    type: string;
+    stat: string;
+    bonus: string;
+    article: string;
+}
+
+export interface IEnemyPrefixSet {
+    prefixes: IEnemyPrefix[];
+}
