@@ -2,31 +2,31 @@
     "$schema":"./creatureset-schema.json",
     "creatures":[
         {
-            "id":245, "type": "giantspider", "name": "giant spider", "category": "beast", "description": "A monstrously big spider.",
+            "id":245, "type": "giantspider", "name": "giant spider", "namearticle": "a giant spider", "category": "beast", "description": "A monstrously big spider.",
             "maxhp": 18, "strength": 4, "defence": 0, "speed": 4, "willpower": 6, "size": 8,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
         {
-            "id":246, "type": "bat", "name": "bat", "category": "beast", "description": "A small brown bat.",
+            "id":246, "type": "bat", "name": "bat", "namearticle": "a bat", "category": "beast", "description": "A small brown bat.",
             "flying": true, "maxhp": 6, "strength": 1, "defence": 0, "speed": 4, "willpower": 4, "size": 2,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
         {
-            "id":250, "type": "rat", "name": "rat", "category": "beast", "description": "A well fed rat.",
+            "id":250, "type": "rat", "name": "rat", "namearticle": "a rat", "category": "beast", "description": "A well fed rat.",
             "maxhp": 6, "strength": 1, "defence": 0, "speed": 4, "willpower": 4, "size": 1,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
         {
-            "id":244, "type": "giantworm", "name": "giant worm", "category": "beast", "description": "A giant tunnel worm. A snakelike creature with no eyes.",
+            "id":244, "type": "giantworm", "name": "giant worm", "namearticle": "a giant worm", "category": "beast", "description": "A giant tunnel worm. A snakelike creature with no eyes.",
             "maxhp": 38, "strength": 8, "defence": 0, "speed": 6, "willpower": 14, "size": 14,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 0,
             "inventory": []
         },
         {
-            "id":243, "type": "troll", "name": "troll", "category": "beast", "description": "A long limbed troll with sharp teeth.",
+            "id":243, "type": "troll", "name": "troll", "namearticle": "a troll", "category": "beast", "description": "A long limbed troll with sharp teeth.",
             "maxhp": 43, "strength": 9, "defence": 1, "speed": 6, "willpower": 13, "size": 11,
             "offensiveslot": true, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
@@ -34,19 +34,19 @@
 
 
         {
-            "id":247, "type": "ghoul", "name": "ghoul", "category": "undead", "description": "A ravaged humanoid creature with long claws.",
+            "id":247, "type": "ghoul", "name": "ghoul", "namearticle": "a ghoul", "category": "undead", "description": "A ravaged humanoid creature with long claws.",
             "maxhp": 24, "strength": 8, "defence": 0, "speed": 5, "willpower": 6, "size": 10,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 2,
             "inventory": []
         },
         {
-            "id":248, "type": "mummy", "name": "mummy", "category": "undead", "description": "Mummified humanoid, wrapped in yellowed white wraps.",
+            "id":248, "type": "mummy", "name": "mummy", "namearticle": "a mummy", "category": "undead", "description": "Mummified humanoid, wrapped in yellowed white wraps.",
             "maxhp": 40, "strength": 6, "defence": 1, "speed": 8, "willpower": 15, "size": 10,
             "offensiveslot": true, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
         {
-            "id":249, "type": "skeleton", "name": "skeleton", "category": "undead", "description": "A human skeleton.",
+            "id":249, "type": "skeleton", "name": "skeleton", "namearticle": "a skeleton", "category": "undead", "description": "A human skeleton.",
             "maxhp": 18, "strength": 4, "defence": 0, "speed": 6, "willpower": 5, "size": 9,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 1,
             "inventory": ["mace", "buckler"]
@@ -54,19 +54,19 @@
 
 
         {
-            "id":251, "type": "slime", "name": "slime", "category": "magic", "description": "A smelly big blob of green jelly.",
+            "id":251, "type": "slime", "name": "slime", "namearticle": "a slime", "category": "magic", "description": "A smelly big blob of green jelly.",
             "flying": true, "maxhp": 25, "strength": 5, "defence": 0, "speed": 7, "willpower": 11, "size": 2,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 2,
             "inventory": []
         },
         {
-            "id":242, "type": "golem", "name": "golem", "category": "magic", "description": "A large humanlike construction, animated with magic.",
+            "id":242, "type": "golem", "name": "golem", "namearticle": "a golem", "category": "magic", "description": "A large humanlike construction, animated with magic.",
             "maxhp": 40, "strength": 10, "defence": 3, "speed": 8, "willpower": 18, "size": 14,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
         },
         {
-            "id":241, "type": "fireelemental", "name": "fire elemental", "category": "magic", "description": "A fire elemental, from another plane of existence.",
+            "id":241, "type": "fireelemental", "name": "fire elemental", "namearticle": "a fire elemental", "category": "magic", "description": "A fire elemental, from another plane of existence.",
             "flying": true, "maxhp": 25, "strength": 7, "defence": 0, "speed": 5, "willpower": 13, "size": 10,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": []
@@ -74,13 +74,13 @@
 
 
         {
-            "id":240, "type": "imp", "name": "imp", "category": "demonic", "description": "A lesser demon, a small impish creature with long tail.",
+            "id":240, "type": "imp", "name": "imp", "namearticle": "an imp", "category": "demonic", "description": "A lesser demon, a small impish creature with long tail.",
             "flying": true, "maxhp": 35, "strength": 7, "defence": 0, "speed": 4, "willpower": 14, "size": 4,
             "offensiveslot": true, "defenciveslot": false, "inventoryslots": 2,
             "inventory": []
         },
         {
-            "id":224, "type": "demon", "name": "demon", "category": "demonic", "description": "An abyssal demon with large horns and reddish scale covered body.",
+            "id":224, "type": "demon", "name": "demon", "namearticle": "a demon", "category": "demonic", "description": "An abyssal demon with large horns and reddish scale covered body.",
             "flying": true, "maxhp": 55, "strength": 11, "defence": 3, "speed": 5, "willpower": 18, "size": 12,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": ["tome"]
@@ -88,19 +88,19 @@
 
 
         {
-            "id":252, "type": "graverobber", "name": "grave robber", "category": "humanoid", "description": "A human in a long dirty coat.",
+            "id":252, "type": "graverobber", "name": "grave robber", "namearticle": "a grave robber", "category": "humanoid", "description": "A human in a long dirty coat.",
             "maxhp": 20, "strength": 5, "defence": 0, "speed": 5, "willpower": 10, "size": 10,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 3,
             "inventory": ["sword", "", "jewellery", "jewellery"]
         },
         {
-            "id":253, "type": "goblin", "name": "goblin", "category": "humanoid", "description": "A goblin, a foul green creature with sharp features.",
+            "id":253, "type": "goblin", "name": "goblin", "namearticle": "a goblin", "category": "humanoid", "description": "A goblin, a foul green creature with sharp features.",
             "maxhp": 13, "strength": 4, "defence": 0, "speed": 4, "willpower": 8, "size": 8,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 2,
             "inventory": ["axe"]
         },
         {
-            "id":254, "type": "kobold", "name": "kobold", "category": "humanoid", "description": "A kobold. The creature looks like a inbreed of a goblin and a rat.",
+            "id":254, "type": "kobold", "name": "kobold", "namearticle": "a kobold", "category": "humanoid", "description": "A kobold. The creature looks like a inbreed of a goblin and a rat.",
             "maxhp": 11, "strength": 3, "defence": 0, "speed": 4, "willpower": 8, "size": 8,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 2,
             "inventory": ["axe"]
@@ -108,7 +108,7 @@
 
 
         {
-            "id":225, "type": "cultist", "name": "cultist", "category": "boss", "description": "A hooded human clad in black robes filled with runes.",
+            "id":225, "type": "cultist", "name": "cultist", "namearticle": "a cultist", "category": "boss", "description": "A hooded human clad in black robes filled with runes.",
             "maxhp": 35, "strength": 5, "defence": 1, "speed": 5, "willpower": 18, "size": 10,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 3,
             "inventory": ["mace", "tome"]

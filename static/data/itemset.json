@@ -1,19 +1,19 @@
 {
     "$schema":"./itemset-schema.json",
     "items":[
-        { "id": 1,  "icon": 208, "type": "bronzekey",     "name": "bronze key", "category": "key", "description": "A bronze key." },
-        { "id": 2,  "icon": 209, "type": "silverkey",     "name": "silver key", "category": "key", "description": "A silver key." },
-        { "id": 3,  "icon": 210, "type": "goldenkey",     "name": "gold key", "category": "key", "description": "A golden key." },
-        { "id": 4,  "icon": 211, "type": "healingpotion", "name": "healing potion", "category": "potion", "description": "A small red vial." },
-        { "id": 5,  "icon": 212, "type": "sword",   "attack": 1, "defence": 2, "name": "sword", "category": "weapon", "description": "A standard, well kept, arming sword." },
-        { "id": 6,  "icon": 213, "type": "mace",    "attack": 2, "defence": 1, "name": "mace", "category": "weapon", "description": "A steel mace with wooden handle." },
-        { "id": 7,  "icon": 214, "type": "axe",     "attack": 2, "defence": 1, "name": "axe", "category": "weapon", "description": "A battle axe with a steel spike at the top and a wooden shaft." },
-        { "id": 8,  "icon": 215, "type": "spear",   "attack": 3, "defence": 0, "name": "spear", "category": "weapon", "description": "A spear with 7 ft wooden handle." },
-        { "id": 9,  "icon": 216, "type": "shield",  "attack": 0, "defence": 3, "name": "shield", "category": "weapon", "description": "A wooden shield with boss made of steel and rawhide edges." },
-        { "id": 10, "icon": 217, "type": "buckler", "attack": 0, "defence": 2, "name": "buckler", "category": "weapon", "description": "A small metal buckler." },
-        { "id": 11, "icon": 218, "type": "tome",          "name": "tome", "category": "clutter", "description": "An old tome. The books text has faded long ago and the paper crumbles to dust when you flip the pages." },
-        { "id": 12, "icon": 219, "type": "jewellery",     "name": "pile of valuables", "category": "clutter", "description": "A small pile of coins and jewellery." },
-        { "id": 13, "icon": 220, "type": "kalamakkara",   "name": "kalamakkara", "category": "orb", "description": "A thick meaty sausage, pulsating with fishyness. Sliding it up and down your throat could give you godlike powers... or not." },
-        { "id": 14, "icon": 221, "type": "orb",           "name": "orb", "category": "orb", "description": "A shiny orb, pulsating with magic. Devouring this should make your spirit stronger." }
+        { "id": 1,  "icon": 208, "type": "bronzekey",     "name": "bronze key", "namearticle": "a bronze key", "category": "key", "description": "A bronze key." },
+        { "id": 2,  "icon": 209, "type": "silverkey",     "name": "silver key", "namearticle": "a silver key", "category": "key", "description": "A silver key." },
+        { "id": 3,  "icon": 210, "type": "goldenkey",     "name": "gold key", "namearticle": "a gold key", "category": "key", "description": "A golden key." },
+        { "id": 4,  "icon": 211, "type": "healingpotion", "name": "healing potion", "namearticle": "a healing potion", "category": "potion", "description": "A small red vial." },
+        { "id": 5,  "icon": 212, "type": "sword",   "attack": 1, "defence": 2, "name": "sword", "namearticle": "a sword", "category": "weapon", "description": "A standard, well kept, arming sword." },
+        { "id": 6,  "icon": 213, "type": "mace",    "attack": 2, "defence": 1, "name": "mace", "namearticle": "a mace", "category": "weapon", "description": "A steel mace with wooden handle." },
+        { "id": 7,  "icon": 214, "type": "axe",     "attack": 2, "defence": 1, "name": "axe", "namearticle": "an axe", "category": "weapon", "description": "A battle axe with a steel spike at the top and a wooden shaft." },
+        { "id": 8,  "icon": 215, "type": "spear",   "attack": 3, "defence": 0, "name": "spear", "namearticle": "a spear", "category": "weapon", "description": "A spear with 7 ft wooden handle." },
+        { "id": 9,  "icon": 216, "type": "shield",  "attack": 0, "defence": 3, "name": "shield", "namearticle": "a shield", "category": "weapon", "description": "A wooden shield with boss made of steel and rawhide edges." },
+        { "id": 10, "icon": 217, "type": "buckler", "attack": 0, "defence": 2, "name": "buckler", "namearticle": "a buckler", "category": "weapon", "description": "A small metal buckler." },
+        { "id": 11, "icon": 218, "type": "tome",          "name": "tome", "category": "clutter", "namearticle": "a tome", "description": "An old tome. The books text has faded long ago and the paper crumbles to dust when you flip the pages." },
+        { "id": 12, "icon": 219, "type": "jewellery",     "name": "pile of valuables", "namearticle": "a pile of valuables", "category": "clutter", "description": "A small pile of coins and jewellery." },
+        { "id": 13, "icon": 220, "type": "kalamakkara",   "name": "kalamakkara", "namearticle": "an kalamakkara", "category": "orb", "description": "A thick meaty sausage, pulsating with fishyness. Sliding it up and down your throat could give you godlike powers... or not." },
+        { "id": 14, "icon": 221, "type": "orb",           "name": "orb", "namearticle": "an orb", "category": "orb", "description": "A shiny orb, pulsating with magic. Devouring this should make your spirit stronger." }
     ]
 }

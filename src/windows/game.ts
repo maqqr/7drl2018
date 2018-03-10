@@ -361,13 +361,26 @@ export class Game implements IGameWindow {
         if (!keyAccepted && e.code === "KeyG" && !spiritMode) {
             const items = this.currentLevel.getItemsAt(this.player.x, this.player.y);
             if (items.length === 1) {
-                if (this.player.currentbody.pickup(items[0].dataRef.type)) {
-                    this.messagebuffer.add("You pick up the " + items[0].dataRef.name + ".");
-                    this.currentLevel.removeItem(items[0]);
-                } else {
-                    this.messagebuffer.add(
-                        "You do not have enough inventory slots to pick up the " + items[0].dataRef.name + ".");
+                this.pickupItem(items[0]);
+            } else if (items.length > 0) {
+                // Wait until player selects which item to pick up
+                this.waitForMessage = ["Select which item to pick up"];
+                let index = 0;
+                for (const item of items) {
+                    this.waitForMessage.push("  " + (index + 1) + ") " + item.dataRef.name);
+                    index++;
+                    if (index >= 10) {
+                        break;
+                    }
                 }
+                this.waitForItemCallback = (keyCode: string) => {
+                    const pressedNumber = this.keyCodeToNumber(keyCode);
+                    if (pressedNumber !== -1 && (pressedNumber - 1) < items.length) {
+                        this.pickupItem(items[pressedNumber - 1]);
+                        return true;
+                    }
+                    return false;
+                };
             } else {
                 this.messagebuffer.add("Nothing to pick up here.");
             }
@@ -525,6 +538,25 @@ export class Game implements IGameWindow {
         const mouseX = mouseEvent.tx - this.mapOffsetTargetX;
         const mouseY = mouseEvent.ty - this.mapOffsetTargetY;
         this.describePosition(mouseX, mouseY);
+    }
+
+    private pickupItem(item: Item): void {
+        if (this.player.currentbody.pickup(item.dataRef.type)) {
+            this.messagebuffer.add("You pick up the " + item.dataRef.name + ".");
+            this.currentLevel.removeItem(item);
+        } else {
+            this.messagebuffer.add(
+                "You do not have enough inventory slots to pick up the " + item.dataRef.name + ".");
+        }
+    }
+
+    private keyCodeToNumber(keyCode: string): number {
+        for (let index = 1; index <= 9; index++) {
+            if (keyCode === "Digit" + index || keyCode === "Numpad" + index) {
+                return index;
+            }
+        }
+        return -1;
     }
 
     private describePosition(x: number, y: number): void {
@@ -865,29 +897,30 @@ export class Game implements IGameWindow {
     private reportItemsAt(x: number, y: number): void {
         const furs = this.currentLevel.getFurnituresAt(x, y);
         if (furs.length > 0)  {
-            const addedA = furs.length === 1 ? "a " : "";
-            let msg = "Here is " + addedA;
-            for (let index = 0; index < furs.length; index++) {
-                const fur = furs[index];
-                const comma = index === furs.length - 1 ? "" : ", ";
-                msg += fur.dataRef.name + comma;
-            }
+            let msg = "Here is ";
+            msg += this.makeCommaAndList(furs.map((fur) => fur.dataRef.namearticle));
             msg += ".";
             this.messagebuffer.add(msg);
         }
 
         const items = this.currentLevel.getItemsAt(x, y);
         if (items.length > 0)  {
-            const addedA = items.length === 1 ? "a " : "";
-            let msg = "You see here " + addedA;
-            for (let index = 0; index < items.length; index++) {
-                const item = items[index];
-                const comma = index === items.length - 1 ? "" : ", ";
-                msg += item.dataRef.name + comma;
-            }
+            let msg = "You see here ";
+            msg += this.makeCommaAndList(items.map((item) => item.dataRef.namearticle));
             msg += ".";
             this.messagebuffer.add(msg);
         }
+    }
+
+    private makeCommaAndList(names: string[]): string {
+        let final = "";
+        for (let index = 0; index < names.length; index++) {
+            const name = names[index];
+            let comma = index === names.length - 1 ? "" : ", ";
+            if (index === names.length - 2) { comma = " and "; }
+            final += name + comma;
+        }
+        return final;
     }
 
     private checkPressureActivation(x: number, y: number): void {
