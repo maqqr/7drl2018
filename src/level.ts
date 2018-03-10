@@ -64,7 +64,7 @@ export class Level {
 
     private readonly data: GameData;
 
-    constructor(width: number, height: number, depth: number, data: GameData) {
+    constructor(width: number, height: number, depth: number, data: GameData, fillTile: number = 1) {
         this.data = data;
         this.width = width;
         this.height = height;
@@ -73,7 +73,7 @@ export class Level {
         this.prevLevel = null;
         for (let index = 0; index < width * height; index++) {
             this.tilestate.push(new TileState());
-            this.tiles.push(1);
+            this.tiles.push(fillTile);
         }
         this.fov = new ROT.FOV.RecursiveShadowcasting(this.isTransparent.bind(this));
     }

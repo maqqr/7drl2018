@@ -20,17 +20,21 @@ export class DungeonGenerator {
     public static generateLevel(game: Game,
                                 roomsX: number,
                                 roomsY: number, depth: number): Level {
-        const level = new Level(roomsX * 12 + 2, roomsY * 12 + 2, depth, game.data);
 
-        // TODO: get correct rooms
+        let fillTile = 0;
         let levelStyle = 0;
         if (depth >= 4) {
             levelStyle = 1;
+            fillTile = 17;
         }
         if (depth >= 7) {
             levelStyle = 2;
+            fillTile = 33;
         }
+
+        console.error(fillTile);
         const rooms = game.data.predefinedRooms.level[levelStyle];
+        const level = new Level(roomsX * 12 + 2, roomsY * 12 + 2, depth, game.data, fillTile);
 
         // Allow all pregen rooms to appear again
         for (const room of rooms.pre) {
@@ -67,7 +71,7 @@ export class DungeonGenerator {
     }
 
     public static bossroomTesting(game: Game, roomsX: number, roomsY: number, depth: number): Level {
-        const level = new Level(24 + 2, 24 + 2, depth, game.data);
+        const level = new Level(24 + 2, 24 + 2, depth, game.data, 33);
 
         level.placePuzzleAt(1 , 1, game.data.predefinedRooms.finalRoom.dataRef);
 
