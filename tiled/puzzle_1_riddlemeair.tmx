@@ -107,7 +107,11 @@
     <property name="description" value="Statue of a armadillo."/>
    </properties>
   </object>
-  <object id="43" gid="53" x="304" y="96" width="16" height="16"/>
+  <object id="43" gid="53" x="304" y="96" width="16" height="16">
+   <properties>
+    <property name="description" value="Three letters are carved on the side of the statue: AIR."/>
+   </properties>
+  </object>
   <object id="44" gid="12" x="80" y="160" width="16" height="16"/>
   <object id="45" gid="12" x="80" y="176" width="16" height="16"/>
   <object id="46" gid="12" x="80" y="192" width="16" height="16"/>

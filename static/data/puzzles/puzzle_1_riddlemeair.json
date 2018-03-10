@@ -405,6 +405,14 @@
                  "height":16,
                  "id":43,
                  "name":"",
+                 "properties":
+                    {
+                     "description":"Three letters are carved on the side of the statue: AIR."
+                    },
+                 "propertytypes":
+                    {
+                     "description":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
