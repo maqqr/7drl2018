@@ -1,4 +1,5 @@
 import * as $ from "jquery";
+import { Validator } from "jsonschema";
 import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
@@ -80,6 +81,9 @@ export class App {
         const furnitureset = await this.loadJSON<IFurnitureset>("data/furnitureset.json");
         const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
 
+        const puzzleSchema = await this.loadJSON<any>("data/puzzle-schema.json");
+        const validator = new Validator();
+
         const questions = await this.loadJSON<ICharCreation>("data/charcreation.json");
         this.data.charcreation = questions;
 
@@ -92,8 +96,13 @@ export class App {
                     const puzzle = await this.loadJSON<IPuzzleRoom>("data/puzzles/" + levelName);
                     puzzle.puzzlename = levelName;
                     rooms.push(puzzle);
+                    const result = validator.validate(puzzle, puzzleSchema);
+                    if (!result.valid) {
+                        console.error(result);
+                    }
                 }
                 this.data.predefinedRooms.addLevelRooms(index, roomType, rooms);
+
             }
         };
 

@@ -15,12 +15,12 @@
     "height": {
       "$id": "/properties/height",
       "type": "integer",
-      "enum": [12]
+      "enum": [12, 24]
     },
     "width": {
       "$id": "/properties/width",
       "type": "integer",
-      "enum": [12]
+      "enum": [12, 24]
     },
     "infinite": {
       "$id": "/properties/infinite",
@@ -57,7 +57,7 @@
                 "enum": ["objectgroup"]
               },
               "name": {
-                "enum": ["description", "furniture"]
+                "enum": ["description", "furniture", "item", "creature"]
               },
               "x": { "enum": [0] },
               "y": { "enum": [0] },
@@ -69,30 +69,27 @@
                 "items": {
                   "type": "object",
                   "properties": {
-                    "width": { "enum": [16] },
-                    "height": { "enum": [16] },
+                    "x": {"type":"integer"},
+                    "y": {"type":"integer"},
+                    "width": {"type":"integer"},
+                    "height": {"type":"integer"},
                     "rotation": { "enum": [0] },
                     "properties": {
                       "type": "object",
                       "properties": {
+                        "name": { "type": "string" },
                         "text": { "type": "string" },
+                        "probability": { "type": ["string", "integer"] },
+                        "description": { "type": "string" },
                         "icon": {"type":"integer"},
                         "movable": {"type":"integer","minimum": 0,"maximum": 21,"default":false},
                         "type": {"type":"string"},
-                        "maxsize": {"type":"integer","minimum": 0,"maximum": 21,"default":0},
                         "damage": {"type":"integer","minimum": 0},
                         "activation": {"type":"string"},
                         "useractivation": {"type":"string"},
                         "useractivationtext": {"type":"string"},
                         "requireitem": {"type":"boolean"},
-                        "activationtarget":{"type":"array","items": {
-                            "type":"array",
-                            "items": {
-                                "type":"integer",
-                                "minItems":2,
-                                "maxItems": 2
-                            }
-                        }}
+                        "activationtarget":{"type":"string"}
                       },
                       "additionalProperties": false
                     }
@@ -129,10 +126,6 @@
       "$id": "/properties/tileheight",
       "type": "integer",
       "enum": [16]
-    },
-    "tilesets": {
-      "$id": "/properties/tilesets",
-      "enum": ["POISTA KOKO 'tilesets' KOHTA KOKONAAN!"]
     },
     "tilewidth": {
       "$id": "/properties/tilewidth",
