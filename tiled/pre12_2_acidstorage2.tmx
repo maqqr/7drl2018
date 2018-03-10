@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextobjectid="68">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="tile" width="12" height="12">
+  <data encoding="csv">
+23,23,24,22,24,23,25,24,23,24,24,23,
+24,22,25,24,25,23,24,22,25,23,22,23,
+24,24,19,19,18,18,19,18,19,18,25,24,
+24,25,21,25,25,23,19,24,24,19,24,25,
+25,23,19,23,24,24,21,16,16,21,25,23,
+23,24,19,18,25,19,20,16,25,19,23,22,
+22,24,19,25,16,24,16,25,23,21,22,24,
+23,24,21,16,16,16,22,23,16,20,25,24,
+24,25,20,16,24,23,16,16,24,21,25,22,
+23,25,19,20,18,18,21,24,18,19,23,25,
+25,22,23,25,24,25,24,24,22,24,23,23,
+24,24,24,24,22,25,23,24,25,24,23,24
+</data>
+ </layer>
+ <objectgroup name="furniture">
+  <object id="52" gid="10" x="112" y="160" width="16" height="16"/>
+  <object id="53" gid="10" x="64" y="96" width="16" height="16"/>
+  <object id="54" gid="69" x="112" y="64" width="16" height="16"/>
+  <object id="55" gid="69" x="128" y="64" width="16" height="16"/>
+  <object id="56" gid="85" x="128" y="144" width="16" height="16"/>
+  <object id="57" gid="85" x="80" y="144" width="16" height="16"/>
+  <object id="58" gid="85" x="64" y="144" width="16" height="16"/>
+  <object id="59" gid="85" x="80" y="112" width="16" height="16"/>
+  <object id="61" gid="29" x="48" y="64" width="16" height="16"/>
+  <object id="62" gid="29" x="80" y="80" width="16" height="16"/>
+  <object id="63" gid="78" x="48" y="80" width="16" height="16"/>
+  <object id="65" gid="77" x="80" y="64" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="item"/>
+ <objectgroup name="creature">
+  <object id="66" gid="252" x="128" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="67" gid="252" x="48" y="112" width="16" height="16">
+   <properties>
+    <property name="probability" type="int" value="10"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="description"/>
+</map>
