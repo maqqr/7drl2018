@@ -1,0 +1,14 @@
+{
+    "prefixes": [
+        { "article": "a", "type": "bulky", "stat": "maxhp", "bonus": 10 },
+        { "article": "an", "type": "armoured", "stat": "defence", "bonus": 2 },
+        { "article": "a", "type": "vulnerable", "stat": "defence", "bonus": -2 },
+        { "article": "a", "type": "strong", "stat": "strength", "bonus": 2 },
+        { "article": "a", "type": "feeble", "stat": "strength", "bonus": -2 },
+        { "article": "an", "type": "unbending", "stat": "willpower", "bonus": 2 },
+        { "article": "a", "type": "weak-minded", "stat": "willpower", "bonus": -2 },
+        { "article": "a", "type": "fast", "stat": "speed", "bonus": 1 },
+        { "article": "a", "type": "slow", "stat": "speed", "bonus": 1 },
+        { "article": "a", "type": "greedy", "stat": "inventoryslots", "bonus": 1 }
+    ]
+}
