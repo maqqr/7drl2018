@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="126">
+<map version="1.0" tiledversion="1.1.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="16" tileheight="16" infinite="0" nextobjectid="127">
  <tileset firstgid="1" source="tileset.tsx"/>
  <layer name="tile" width="24" height="24">
   <data encoding="csv">
 38,41,41,41,39,38,38,38,38,38,40,39,38,39,39,39,40,38,38,38,39,38,41,39,
-39,34,35,37,36,36,34,35,37,34,36,39,40,37,34,36,34,36,37,34,35,35,37,41,
+39,38,35,37,36,36,34,35,37,34,36,39,40,37,34,36,34,36,37,34,35,35,40,41,
 38,37,34,34,37,36,37,35,35,37,37,38,41,34,35,34,34,36,37,36,36,34,36,39,
 41,34,36,40,40,40,39,39,37,37,37,38,40,35,34,34,34,37,38,41,38,35,37,38,
 41,36,35,41,40,41,39,40,35,34,34,40,39,35,37,34,34,35,38,38,38,34,35,38,
@@ -25,7 +25,7 @@
 38,36,34,38,40,39,38,40,37,36,35,38,41,37,35,36,40,41,41,38,38,37,34,41,
 40,37,35,38,40,40,41,38,35,34,37,40,40,37,35,37,40,41,38,38,40,37,35,38,
 40,35,36,37,35,34,34,35,36,35,34,35,34,36,36,35,37,35,35,37,37,36,36,38,
-41,35,36,36,34,37,37,35,34,36,36,36,37,34,35,37,35,37,37,34,37,35,34,39,
+41,39,36,36,34,37,37,35,34,36,36,36,37,34,35,37,35,37,37,34,37,35,38,39,
 41,41,39,41,41,38,41,41,40,39,38,40,39,39,39,39,39,40,38,39,38,39,41,38
 </data>
  </layer>
@@ -132,6 +132,11 @@
   <object id="123" gid="90" x="64" y="96" width="16" height="16"/>
   <object id="124" gid="90" x="288" y="64" width="16" height="16"/>
   <object id="125" gid="90" x="256" y="320" width="16" height="16"/>
+  <object id="126" gid="75" x="224" y="176" width="16" height="16">
+   <properties>
+    <property name="description" value="This is a right arm made of stone and the hand is clenched to a fist. Most of the upper arm has shattered, it might have been broken off by a massive creature or in a blind rage.."/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="item">
   <object id="108" gid="222" x="320" y="64" width="16" height="16"/>
