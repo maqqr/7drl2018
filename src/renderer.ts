@@ -153,8 +153,39 @@ export class Renderer {
             }
         } else {
             if (this.game.helpToggledOn) {
-                // TODO: write help texts
-                this.renderer.drawString(2, 16, "LOL U NEED SUM HELP??");
+                const helpTexts = [
+                    "Arrows",
+                    "Space",
+                    "G",
+                    "Z",
+                    "A",
+                    "S",
+                    "1 - 9",
+                    "H",
+                    "",
+                    "Hold shift while moving to possess and unpossess creatures.",
+                    "Collect orbs to increase your spirit's power.",
+                ];
+                const helpTexts2 = [
+                    "- Move",
+                    "- Wait one turn",
+                    "- Pick up item",
+                    "- Use stairs",
+                    "- Activate objects",
+                    "- Push objects and creatures",
+                    "- Use items",
+                    "- Toggle this help off",
+                ];
+                let helpY = 16;
+                for (let i = 0; i < helpTexts.length; i++) {
+                    const key = helpTexts[i];
+                    this.renderer.drawString(5, helpY, key);
+                    if (i < helpTexts2.length) {
+                        const desc = helpTexts2[i];
+                        this.renderer.drawString(50, helpY, desc);
+                    }
+                    helpY += 13;
+                }
             } else {
                 this.renderer.drawString(2, 16, "H - Toggle help");
             }

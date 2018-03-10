@@ -32,7 +32,6 @@ export class DungeonGenerator {
             fillTile = 33;
         }
 
-        console.error(fillTile);
         const rooms = game.data.predefinedRooms.level[levelStyle];
         const level = new Level(roomsX * 12 + 2, roomsY * 12 + 2, depth, game.data, fillTile);
 
