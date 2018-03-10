@@ -11,14 +11,13 @@ export class GameOver implements IGameWindow {
     private canContinue: boolean;
     private canContinueTime: number = 2000;
 
-    private texts: string[] = [
-        "You failed to get your revenge. Your spirit couldn't keep maintaining its form in the world of the",
-        "living and because of your curse and all the lingering hatred in your soul, your spirit couldn't pass",
-        "on to the spirit world. You are now doomed to exist between worlds, for all eternity.",
-    ];
+    private title: string;
+    private texts: string[];
 
-    constructor(renderer: PixiRenderer) {
+    constructor(renderer: PixiRenderer, title: string, texts: string[]) {
         this.renderer = renderer;
+        this.title = title;
+        this.texts = texts;
     }
 
     public startWindow(): void {
@@ -48,7 +47,7 @@ export class GameOver implements IGameWindow {
 
     public draw(): void {
         this.renderer.clear();
-        this.renderer.drawString(280, 100, "GAME OVER", Color.white);
+        this.renderer.drawString(280, 100, this.title, Color.white);
         let y = 0;
         for (const line of this.texts) {
             this.renderer.drawString(45, 150 + y, line, Color.lightgray);

@@ -88,7 +88,11 @@ export class Game implements IGameWindow {
 
     public checkPlayerDeath(app: App): boolean {
         if (this.player.currentstability <= 0) {
-            const gameover = new GameOver(this.renderer.renderer);
+            const gameover = new GameOver(this.renderer.renderer, "GAME OVER", [
+                "You failed to get your revenge. Your spirit couldn't keep maintaining its form in the world of the",
+                "living and because of your curse and all the lingering hatred in your soul, your spirit couldn't pass",
+                "on to the spirit world. You are now doomed to exist between worlds, for all eternity.",
+            ]);
             app.setWindow(gameover);
             return true;
         }
