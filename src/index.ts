@@ -4,7 +4,7 @@ import { Color } from "./color";
 import { GameData } from "./data";
 import { DungeonGenerator } from "./dungeongen";
 import { Creature, Furniture, Item, Player, PuzzleRoom, SlotType } from "./entity";
-import { ITile, IEnemyPrefixSet } from "./interface/entity-schema";
+import { IEnemyPrefixSet, ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
 import { ICreatureset, IFurnitureset, IItemset, ITileset } from "./interface/set-schema";
 import { Level, TileVisibility } from "./level";
@@ -26,6 +26,8 @@ export class App {
     private window: IGameWindow = null;
     private keyDownCallBack: any;
 
+    private loadJSONCalls: number = 0;
+
     public start(): void {
         this.keyDownCallBack = this.handleKeyPress.bind(this);
         window.addEventListener("keydown", this.keyDownCallBack);
@@ -35,6 +37,7 @@ export class App {
         this.renderer.addClickListener(this.handleClick.bind(this));
 
         this.loadingWindow = new LoadingWindow(this.renderer.renderer);
+        this.loadingWindow.itemsToLoad = 125;
         this.window = this.loadingWindow;
         this.renderer.loadGraphics().then(this.graphicsLoaded.bind(this));
     }
@@ -64,7 +67,7 @@ export class App {
     }
 
     private dataLoaded(): void {
-        console.log("Game data loaded.");
+        console.log("Game data loaded (" + this.loadJSONCalls + " files).");
         this.goToMainMenu();
     }
 
@@ -81,27 +84,18 @@ export class App {
     }
 
     private async loadData(): Promise<void> {
-        this.loadingWindow.setProgress(0);
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
-        this.loadingWindow.setProgress(5);
         const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
-        this.loadingWindow.setProgress(10);
         const itemset = await this.loadJSON<IItemset>("data/itemset.json");
-        this.loadingWindow.setProgress(15);
         const furnitureset = await this.loadJSON<IFurnitureset>("data/furnitureset.json");
-        this.loadingWindow.setProgress(20);
         const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
-        this.loadingWindow.setProgress(25);
         this.data.prefixes = await this.loadJSON<IEnemyPrefixSet>("data/enemyprefixes.json");
-        this.loadingWindow.setProgress(30);
 
         const puzzleSchema = await this.loadJSON<any>("data/puzzle-schema.json");
-        this.loadingWindow.setProgress(50);
         const validator = new Validator();
 
         const questions = await this.loadJSON<ICharCreation>("data/charcreation.json");
         this.data.charcreation = questions;
-        this.loadingWindow.setProgress(55);
 
         const roomLoader = async (roomType: "puzzles"|"other"|"pre"|"base") => {
             for (let index = 0; index < puzzleList[roomType].length; index++) {
@@ -123,19 +117,14 @@ export class App {
         };
 
         await roomLoader("puzzles");
-        this.loadingWindow.setProgress(60);
         await roomLoader("other");
-        this.loadingWindow.setProgress(70);
         await roomLoader("pre");
-        this.loadingWindow.setProgress(80);
         await roomLoader("base");
-        this.loadingWindow.setProgress(90);
         const startRoomDef = await this.loadJSON<IPuzzleRoom>("data/puzzles/other12_1_tombofplayer.json");
         const finalRoomDef =
             await this.loadJSON<IPuzzleRoom>("data/puzzles/other24_bossfloor_tombofceciliaandvictorii.json");
         this.data.predefinedRooms.startRoom = new PuzzleRoom(startRoomDef);
         this.data.predefinedRooms.finalRoom = new PuzzleRoom(finalRoomDef);
-        this.loadingWindow.setProgress(100);
 
         // console.log(this.data);
 
@@ -224,7 +213,9 @@ export class App {
 
     private loadJSON<T>(path: string): Promise<T> {
         return new Promise((resolve, reject) => {
+            this.loadJSONCalls++;
             $.getJSON(path, (data: any, textStatus: string, jqXHR: JQueryXHR) => {
+                this.loadingWindow.itemLoaded();
                 resolve(data);
             }).fail((jqXHR: JQueryXHR, textStatus, errorThrown) => {
                 console.error("loadJSON(" + path + ") failed: " + JSON.stringify(textStatus));

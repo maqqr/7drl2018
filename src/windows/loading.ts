@@ -5,8 +5,10 @@ import { Game } from "./game";
 import { IGameWindow } from "./window";
 
 export class LoadingWindow implements IGameWindow {
+    public itemsLoaded: number = 0;
+    public itemsToLoad: number = 1;
+
     private renderer: PixiRenderer;
-    private progress: number = 0;
 
     constructor(renderer: PixiRenderer) {
         this.renderer = renderer;
@@ -30,12 +32,13 @@ export class LoadingWindow implements IGameWindow {
 
     public draw(): void {
         this.renderer.clear();
-        this.renderer.drawString(Game.WIDTH / 2 - 60, Game.HEIGHT / 2, "Loading game data... (" + this.progress + "%)");
+        const progress = Math.floor(100 * (this.itemsLoaded / this.itemsToLoad));
+        this.renderer.drawString(Game.WIDTH / 2 - 60, Game.HEIGHT / 2, "Loading game data... (" + progress + "%)");
         this.renderer.render();
     }
 
-    public setProgress(progress: number): void {
-        this.progress = progress;
+    public itemLoaded(): void {
+        this.itemsLoaded++;
         this.draw();
     }
 }
