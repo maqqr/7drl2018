@@ -47,7 +47,7 @@ export class CharCreation implements IGameWindow {
         this.player.spiritstability = 8;
         this.player.currentstability = this.player.spiritstability;
         this.player.spiritpower = 0;
-        this.player.willpower = 10;
+        this.player.willpower = 8;
         this.draw();
     }
 

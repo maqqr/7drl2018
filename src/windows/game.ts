@@ -351,6 +351,13 @@ export class Game implements IGameWindow {
             this.messagebuffer.add("You can not push up items as a spirit.");
         }
 
+        // D - describe
+        if (!keyAccepted && e.code === "KeyD") {
+            this.waitForDirCallback = this.describeObjectCallback.bind(this);
+            this.waitForMessage = ["Press a direction where to look"];
+            keyAccepted = true;
+        }
+
         // G - get item
         if (!keyAccepted && e.code === "KeyG" && !spiritMode) {
             const items = this.currentLevel.getItemsAt(this.player.x, this.player.y);
@@ -518,16 +525,20 @@ export class Game implements IGameWindow {
         // Describe furniture
         const mouseX = mouseEvent.tx - this.mapOffsetTargetX;
         const mouseY = mouseEvent.ty - this.mapOffsetTargetY;
-        if (this.currentLevel.isInLevelBounds(mouseX, mouseY)) {
-            const tileState = this.currentLevel.getTileState(mouseX, mouseY);
+        this.describePosition(mouseX, mouseY);
+    }
+
+    private describePosition(x: number, y: number): void {
+        if (this.currentLevel.isInLevelBounds(x, y)) {
+            const tileState = this.currentLevel.getTileState(x, y);
             if (tileState.state === TileVisibility.Remembered) {
-                for (const fur of this.currentLevel.getFurnituresAt(mouseX, mouseY)) {
+                for (const fur of this.currentLevel.getFurnituresAt(x, y)) {
                     this.messagebuffer.add(fur.dataRef.description);
                 }
-                for (const item of this.currentLevel.getItemsAt(mouseX, mouseY)) {
+                for (const item of this.currentLevel.getItemsAt(x, y)) {
                     this.messagebuffer.add(item.dataRef.description);
                 }
-                const cre = this.currentLevel.getCreatureAt(mouseX, mouseY);
+                const cre = this.currentLevel.getCreatureAt(x, y);
                 if (cre !== null) {
                     this.messagebuffer.add(cre.dataRef.description);
                 }
@@ -676,6 +687,13 @@ export class Game implements IGameWindow {
             this.messagebuffer.add(msg);
         }
         return true;
+    }
+
+    private describeObjectCallback(delta: [number, number]): boolean {
+        const dx = delta[0];
+        const dy = delta[1];
+        this.describePosition(this.player.x + dx, this.player.y + dy);
+        return false;
     }
 
     private pushObjectCallback(delta: [number, number]): boolean {

@@ -158,6 +158,7 @@ export class Renderer {
                     "Z",
                     "A",
                     "S",
+                    "D",
                     "1 - 9",
                     "H",
                     "",
@@ -172,6 +173,7 @@ export class Renderer {
                     "- Use stairs",
                     "- Activate objects",
                     "- Push objects",
+                    "- Look at an object next to you",
                     "- Use items",
                     "- Toggle this help off",
                 ];
