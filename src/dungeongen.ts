@@ -66,6 +66,14 @@ export class DungeonGenerator {
         return level;
     }
 
+    public static bossroomTesting(game: Game, roomsX: number, roomsY: number, depth: number): Level {
+        const level = new Level(24 + 2, 24 + 2, depth, game.data);
+
+        level.placePuzzleAt(1 , 1, game.data.predefinedRooms.finalRoom.dataRef);
+
+        return level;
+    }
+
     private static makeLevelPlan(roomsX: number, roomsY: number, rooms: LevelRooms, depth: number, data: GameData):
             [PositionedRoom[], { x: number, y: number}, { x: number, y: number}] {
 

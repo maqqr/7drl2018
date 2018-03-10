@@ -143,44 +143,58 @@ export class Game implements IGameWindow {
     }
 
     public loadFirstLevel(): void {
-        const testMode = false;
+        const testMode = true;
 
         if (!testMode) {
             this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5, 1);
         } else {
-            this.currentLevel = new Level(26, 26, 1, this.data);
+            // this.currentLevel = new Level(26, 26, 1, this.data);
+            this.currentLevel = DungeonGenerator.bossroomTesting(this, 1, 1, 10);
         }
-
-        this.player.x = Game.startRoomX * 12 + 9;
-        this.player.y = Game.startRoomY * 12 + 4;
 
         // Place test puzzle map into current level
         if (testMode) {
-            const testpuzzle = this.data.predefinedRooms.level[0].puzzles[0];
+            // const testpuzzle = this.data.predefinedRooms.level[0].puzzles[0];
             // console.log("Loading puzzle " + testpuzzle.dataRef.puzzlename);
-            this.testPuzzleName = testpuzzle.dataRef.puzzlename;
-            this.currentLevel.placePuzzleAt(1, 1, testpuzzle.dataRef);
+            // this.testPuzzleName = testpuzzle.dataRef.puzzlename;
+            // this.currentLevel.placePuzzleAt(1, 1, testpuzzle.dataRef);
+            this.player.x = 1;
+            this.player.y = 1;
+            const creSpawnlist = [224, 248, 243, 242];
+            for (let index = 0; index < creSpawnlist.length; index++) {
+                const element = creSpawnlist[index];
+                const testcre = this.currentLevel.createCreatureAt(this.data.creatures[element],
+                    this.player.x, this.player.y + 2 + index);
+                testcre.willpower = 0;
+            }
+            for (let index = 0; index < 10; index++) {
+                this.currentLevel.createItemAt(
+                    this.data.items[14], this.player.x, this.player.y + creSpawnlist.length + index + 4);
+            }
+        } else {
+            this.player.x = Game.startRoomX * 12 + 9;
+            this.player.y = Game.startRoomY * 12 + 4;
+
+            // Create initial grave robber
+            const graveRobber = this.currentLevel.createCreatureAt(this.data.creatures[252],
+                                                                this.player.x - 1, this.player.y);
+            graveRobber.willpower = 1;
+            graveRobber.inventory.forEach((startItemSlot) => graveRobber.removeItem(startItemSlot.item));
+
+            // Create rat in the lower room
+            const rat = this.currentLevel.createCreatureAt(this.data.creatures[250], this.player.x, this.player.y + 5);
+            rat.dataRef = Object.assign({}, rat.dataRef, {}); // Create copy of rat's data
+            rat.dataRef.size = 2;
+            rat.dataRef.description = "A very fat rat.";
         }
 
         this.mapOffsetX = this.mapOffsetTargetX;
         this.mapOffsetY = this.mapOffsetTargetY;
 
-        // Create initial grave robber
-        const graveRobber = this.currentLevel.createCreatureAt(this.data.creatures[252],
-                                                               this.player.x - 1, this.player.y);
-        graveRobber.willpower = 1;
-        graveRobber.inventory.forEach((startItemSlot) => graveRobber.removeItem(startItemSlot.item));
-
-        // Create rat in the lower room
-        const rat = this.currentLevel.createCreatureAt(this.data.creatures[250], this.player.x, this.player.y + 5);
-        rat.dataRef = Object.assign({}, rat.dataRef, {}); // Create copy of rat's data
-        rat.dataRef.size = 2;
-        rat.dataRef.description = "A very fat rat.";
-
         // Testing items
-        this.currentLevel.createItemAt(this.data.items[14], this.player.x - 2, this.player.y + 1);
-        this.currentLevel.createItemAt(this.data.items[1], this.player.x - 1, this.player.y + 1);
-        this.currentLevel.createItemAt(this.data.items[2], this.player.x - 1, this.player.y + 1);
+        // this.currentLevel.createItemAt(this.data.items[14], this.player.x - 2, this.player.y + 1);
+        // this.currentLevel.createItemAt(this.data.items[1], this.player.x - 1, this.player.y + 1);
+        // this.currentLevel.createItemAt(this.data.items[2], this.player.x - 1, this.player.y + 1);
 
         this.indexForTestPuzzle++;
     }
