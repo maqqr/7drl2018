@@ -143,7 +143,7 @@ export class Game implements IGameWindow {
     }
 
     public loadFirstLevel(): void {
-        const testMode = false;
+        const testMode = true;
 
         if (!testMode) {
             this.currentLevel = DungeonGenerator.generateLevel(this, 5, 5, 1);
