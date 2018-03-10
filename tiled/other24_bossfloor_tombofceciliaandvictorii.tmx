@@ -56,7 +56,7 @@
   <object id="54" gid="49" x="272" y="288" width="16" height="16">
    <properties>
     <property name="activationtarget" value="[[13,17],[12,18],[12,16],[14,14],[20,14],[14,13],[15,13],[16,13],[17,13],[18,13],[19,13],[20,13],[13,19],[14,20],[15,21],[16,21],[17,21],[18,21],[19,21],[20,20],[21,19],[21,18],[21,17],[21,16],[21,15],[21,14],[21,13],[21,12],[21,11],[21,10],[21,9],[21,8],[21,7],[21,6],[21,5],[21,4],[20,3],[19,2],[18,2],[17,2],[16,2],[15,2],[14,3],[13,4],[13,5],[13,6],[13,7],[13,8],[13,9],[13,10],[13,11],[13,12],[13,13],[13,14],[13,15]]"/>
-    <property name="useractivationtext" value="BOSS FIGHT!"/>
+    <property name="useractivationtext" value="You pull the lever. The walls crumble all around you, the heat of lava washes over you. A large burial chamber stretches before you. And on the far side you see a small group of hooded men. And the man who orchestrated this all, your uncle, Vitalius."/>
    </properties>
   </object>
   <object id="61" gid="52" x="240" y="96" width="16" height="16"/>
@@ -236,11 +236,6 @@
     <property name="probability" value="100"/>
    </properties>
   </object>
-  <object id="56" gid="226" x="272" y="128" width="16" height="16">
-   <properties>
-    <property name="probability" value="100"/>
-   </properties>
-  </object>
   <object id="57" gid="226" x="288" y="128" width="16" height="16">
    <properties>
     <property name="probability" value="100"/>
@@ -252,11 +247,6 @@
    </properties>
   </object>
   <object id="59" gid="226" x="256" y="112" width="16" height="16">
-   <properties>
-    <property name="probability" value="100"/>
-   </properties>
-  </object>
-  <object id="60" gid="226" x="256" y="128" width="16" height="16">
    <properties>
     <property name="probability" value="100"/>
    </properties>
