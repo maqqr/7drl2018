@@ -29,6 +29,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="item"/>
+ <objectgroup name="creature"/>
  <objectgroup name="furniture"/>
  <objectgroup name="description"/>
 </map>

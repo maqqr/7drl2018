@@ -18,5 +18,7 @@
 </data>
  </layer>
  <objectgroup name="furniture"/>
+ <objectgroup name="item"/>
+ <objectgroup name="creature"/>
  <objectgroup name="description"/>
 </map>
