@@ -173,15 +173,29 @@ export class Level {
         console.error("Level.getTileState index out of bounds : " + JSON.stringify({ x, y }));
     }
 
-    public getTileDamage(x: number, y: number): number {
+    public getTileDamage(x: number, y: number, cre: Creature): number {
         if (!this.isInLevelBounds(x, y)) {
+            return 0;
+        }
+        if (cre.dataRef.flying) {
             return 0;
         }
         let furDamage = 0;
         for (const fur of this.getFurnituresAt(x, y)) {
+            if (fur.dataRef.type === "trapspikeactivated" && cre.dataRef.spikeimmunity) {
+                continue;
+            }
             furDamage += fur.dataRef.damage;
         }
-        return this.getTile(x, y).damage + furDamage;
+        const tile = this.getTile(x, y);
+        let tileDamage = tile.damage;
+        if (tile.type === "lava" && cre.dataRef.fireimmunity) {
+            tileDamage = 0;
+        }
+        if (tile.type === "acid" && cre.dataRef.poisonimmunity) {
+            tileDamage = 0;
+        }
+        return tileDamage + furDamage;
     }
 
     public getFurnituresAt(x: number, y: number): Furniture[] {

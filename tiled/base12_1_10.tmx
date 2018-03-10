@@ -34,7 +34,7 @@
  <objectgroup name="creature">
   <object id="79" gid="255" x="96" y="48" width="16" height="16">
    <properties>
-    <property name="probability" type="int" value="5"/>
+    <property name="probability" type="int" value="8"/>
    </properties>
   </object>
   <object id="81" gid="247" x="128" y="96" width="16" height="16">
@@ -44,7 +44,7 @@
   </object>
   <object id="83" gid="250" x="80" y="96" width="16" height="16">
    <properties>
-    <property name="probability" type="int" value="5"/>
+    <property name="probability" type="int" value="8"/>
    </properties>
   </object>
   <object id="84" gid="251" x="144" y="112" width="16" height="16">
@@ -54,7 +54,7 @@
   </object>
   <object id="85" gid="246" x="80" y="80" width="16" height="16">
    <properties>
-    <property name="probability" type="int" value="5"/>
+    <property name="probability" type="int" value="8"/>
    </properties>
   </object>
   <object id="86" gid="247" x="80" y="144" width="16" height="16">
@@ -64,7 +64,7 @@
   </object>
   <object id="87" gid="246" x="96" y="16" width="16" height="16">
    <properties>
-    <property name="probability" type="int" value="5"/>
+    <property name="probability" type="int" value="8"/>
    </properties>
   </object>
  </objectgroup>

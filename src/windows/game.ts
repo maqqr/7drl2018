@@ -375,7 +375,7 @@ export class Game implements IGameWindow {
                 }
                 this.waitForItemCallback = (keyCode: string) => {
                     const pressedNumber = this.keyCodeToNumber(keyCode);
-                    if (pressedNumber !== -1) {
+                    if (pressedNumber !== -1 && (pressedNumber - 1) < items.length) {
                         this.pickupItem(items[pressedNumber - 1]);
                         return true;
                     }
@@ -888,8 +888,8 @@ export class Game implements IGameWindow {
             this.checkPressureDeactivation(oldX, oldY);
             this.checkPressureActivation(targetX, targetY);
 
-            const damage = this.currentLevel.getTileDamage(targetX, targetY);
-            if (damage > 0 && !cre.dataRef.flying) {
+            const damage = this.currentLevel.getTileDamage(targetX, targetY, cre);
+            if (damage > 0) {
                 cre.currenthp -= damage;
                 const tileType = this.currentLevel.getTile(targetX, targetY).type;
 
@@ -906,29 +906,30 @@ export class Game implements IGameWindow {
     private reportItemsAt(x: number, y: number): void {
         const furs = this.currentLevel.getFurnituresAt(x, y);
         if (furs.length > 0)  {
-            const addedA = furs.length === 1 ? "a " : "";
-            let msg = "Here is " + addedA;
-            for (let index = 0; index < furs.length; index++) {
-                const fur = furs[index];
-                const comma = index === furs.length - 1 ? "" : ", ";
-                msg += fur.dataRef.name + comma;
-            }
+            let msg = "Here is ";
+            msg += this.makeCommaAndList(furs.map((fur) => fur.dataRef.namearticle));
             msg += ".";
             this.messagebuffer.add(msg);
         }
 
         const items = this.currentLevel.getItemsAt(x, y);
         if (items.length > 0)  {
-            const addedA = items.length === 1 ? "a " : "";
-            let msg = "You see here " + addedA;
-            for (let index = 0; index < items.length; index++) {
-                const item = items[index];
-                const comma = index === items.length - 1 ? "" : ", ";
-                msg += item.dataRef.name + comma;
-            }
+            let msg = "You see here ";
+            msg += this.makeCommaAndList(items.map((item) => item.dataRef.namearticle));
             msg += ".";
             this.messagebuffer.add(msg);
         }
+    }
+
+    private makeCommaAndList(names: string[]): string {
+        let final = "";
+        for (let index = 0; index < names.length; index++) {
+            const name = names[index];
+            let comma = index === names.length - 1 ? "" : ", ";
+            if (index === names.length - 2) { comma = " and "; }
+            final += name + comma;
+        }
+        return final;
     }
 
     private checkPressureActivation(x: number, y: number): void {
@@ -1014,7 +1015,7 @@ export class Game implements IGameWindow {
             const movingToPlayer =
                 this.player.currentbody !== null && targetX === this.player.x && targetY === this.player.y;
 
-            if (this.currentLevel.getTileDamage(targetX, targetY) === 0 || cre.dataRef.flying || movingToPlayer) {
+            if (this.currentLevel.getTileDamage(targetX, targetY, cre) === 0 || cre.dataRef.flying || movingToPlayer) {
                 this.moveCreature(cre, targetX, targetY);
             }
         } else {
