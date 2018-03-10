@@ -1,7 +1,6 @@
 {
     "puzzles": [
         [
-            "testmap.json",
             "puzzle_1_eightboulders.json",
             "puzzle_1_fort.json",
             "puzzle_1_labyrinth.json",
