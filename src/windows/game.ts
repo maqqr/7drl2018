@@ -412,7 +412,7 @@ export class Game implements IGameWindow {
                     this.messagebuffer.add(action);
                 }
 
-                if (Game.debugMode || Math.random() < chance) {
+                if (Game.showPossessTutorial || Game.debugMode || Math.random() < chance) {
                     this.messagebuffer.add(chance < 1.0
                         ? "You were more potent and overcame the feeble creature."
                         : "You return to the body of " + creatureName + ".");

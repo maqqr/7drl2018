@@ -47,7 +47,7 @@ export class CharCreation implements IGameWindow {
         this.player.spiritstability = 8;
         this.player.currentstability = this.player.spiritstability;
         this.player.spiritpower = 0;
-        this.player.willpower = 8;
+        this.player.willpower = 10;
         this.draw();
     }
 
@@ -91,7 +91,6 @@ export class CharCreation implements IGameWindow {
                 y += 14;
                 index++;
             }
-
             this.renderer.drawString(20, Game.HEIGHT - 30, "Press number 1, 2 or 3", Color.white);
         }
 
@@ -102,13 +101,13 @@ export class CharCreation implements IGameWindow {
         if (e.code === "Space") {
             if (this.stage !== Stage.Questions) {
                 this.stage++;
+                this.draw();
             }
 
             if (this.stage === Stage.StartGame) {
                 const gameWindow = new Game(app.renderer, app.data, this.player);
                 app.setWindow(gameWindow);
             }
-            this.draw();
         }
 
         if (this.stage === Stage.Questions) {
