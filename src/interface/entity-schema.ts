@@ -37,6 +37,7 @@ export interface IItem extends IHasType {
     attack: number;
     defence: number;
     name: string;
+    namearticle: string;
     category: string;
 }
 
