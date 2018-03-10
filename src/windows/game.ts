@@ -198,7 +198,7 @@ export class Game implements IGameWindow {
         this.mapOffsetY = this.mapOffsetTargetY;
 
         // Testing items
-        // this.currentLevel.createItemAt(this.data.items[14], this.player.x - 2, this.player.y + 1);
+        // this.currentLevel.createItemAt(this.data.items[11], this.player.x - 2, this.player.y + 1);
         // this.currentLevel.createItemAt(this.data.items[1], this.player.x - 1, this.player.y + 1);
         // this.currentLevel.createItemAt(this.data.items[2], this.player.x - 1, this.player.y + 1);
 
@@ -610,6 +610,15 @@ export class Game implements IGameWindow {
                 playerBody.currenthp = playerBody.dataRef.maxhp;
                 this.messagebuffer.add("You drink the potion. Your wounds heal instantly.");
                 return true;
+            } else if (item.category === "tome") {
+                console.log("You used a tome"); // id = 14
+                const tilepos = Math.floor(Math.random() * 4);
+                const tilex = tilepos === 0 ? this.player.x + 1 : (tilepos === 1 ? this.player.x - 1 : this.player.x);
+                const tiley = tilepos === 2 ? this.player.y + 1 : (tilepos === 3 ? this.player.y - 1 : this.player.y);
+                this.currentLevel.set(tilex, tiley, 14);
+                // tslint:disable-next-line:max-line-length
+                this.messagebuffer.add("You try to mumble according to the symbols of this strange tome. You feel a lot warmer.");
+                playerBody.inventory[this.itemSlotToBeUsed].item = "";
             } else {
                 this.messagebuffer.add("You can not use that.");
                 return false;
