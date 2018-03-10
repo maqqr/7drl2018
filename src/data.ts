@@ -36,9 +36,9 @@ export class GameData {
     ];
 
     public wintexts: {[id: string]: string[]} = {
-        beast: ["Vitalius is devoured by the beast’s maw that gnaws on his bones!"],
+        beast: ["Vitalius is devoured by the beast's maw that gnaws on his bones!"],
         boss: ["In the chaos of the fight, one cultist takes his knife and lunges it to",
-            "the Vitalius’ back, breaking his spine and ending his former master!"],
+            "the Vitalius' back, breaking his spine and ending his former master!"],
         demonic: ["Demonic laughter echoes through the crypt as the last drop of life drains from Vitalius' body!"],
         floor: ["Vitalius jumps on the spikes and bleeds to death."],
         humanoid: ["Vitalius trips and breaks his neck."],
