@@ -20,42 +20,42 @@
  <objectgroup name="creature">
   <object id="55" gid="242" x="64" y="112" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="56" gid="242" x="112" y="96" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="57" gid="252" x="80" y="48" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="58" gid="252" x="96" y="144" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="20"/>
    </properties>
   </object>
   <object id="59" gid="252" x="32" y="96" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="60" gid="252" x="144" y="112" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="61" gid="252" x="80" y="80" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="62" gid="245" x="80" y="112" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
  </objectgroup>

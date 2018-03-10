@@ -20,62 +20,62 @@
  <objectgroup name="creature">
   <object id="81" gid="249" x="48" y="144" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="83" gid="248" x="80" y="80" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="84" gid="248" x="96" y="80" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="85" gid="248" x="112" y="96" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="86" gid="248" x="112" y="112" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="87" gid="248" x="96" y="128" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="88" gid="248" x="80" y="128" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="89" gid="248" x="64" y="112" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="90" gid="248" x="64" y="96" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="91" gid="248" x="64" y="64" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="92" gid="248" x="128" y="64" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
   <object id="93" gid="248" x="128" y="144" width="16" height="16">
    <properties>
-    <property name="probability" value="5"/>
+    <property name="probability" value="8"/>
    </properties>
   </object>
  </objectgroup>
