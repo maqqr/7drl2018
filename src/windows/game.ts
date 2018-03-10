@@ -879,8 +879,8 @@ export class Game implements IGameWindow {
             this.checkPressureDeactivation(oldX, oldY);
             this.checkPressureActivation(targetX, targetY);
 
-            const damage = this.currentLevel.getTileDamage(targetX, targetY);
-            if (damage > 0 && !cre.dataRef.flying) {
+            const damage = this.currentLevel.getTileDamage(targetX, targetY, cre);
+            if (damage > 0) {
                 cre.currenthp -= damage;
                 const tileType = this.currentLevel.getTile(targetX, targetY).type;
 
