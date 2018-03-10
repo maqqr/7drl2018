@@ -90,7 +90,7 @@ export class MainMenu implements IGameWindow {
                                 MainMenu.anim[this.animIndex], this.currentTintColor);
 
         if (this.canContinue) {
-            this.renderer.drawString(240, 350, "* Press Space to die *", Color.white);
+            this.renderer.drawString(230, 350, "* Press any key to die *", Color.white);
         }
         this.renderer.render();
     }

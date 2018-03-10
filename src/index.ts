@@ -40,6 +40,7 @@ export class App {
         this.window.stopWindow();
         this.window = window;
         this.window.startWindow();
+        this.window.draw();
     }
 
     public goToMainMenu(): void {

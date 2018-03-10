@@ -6,4 +6,5 @@ export interface IGameWindow {
     stopWindow(): void;
     handleKeyPress(app: App, e: KeyboardEvent): void;
     handleClick(app: App, mouseEvent: IMouseEvent): void;
+    draw(): void;
 }
