@@ -1,7 +1,7 @@
 {
-  "name": "7drl2018",
+  "name": "crypt-of-grimwin",
   "main": "index.js",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack",
