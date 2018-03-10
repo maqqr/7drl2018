@@ -6,6 +6,7 @@ import { IGameWindow } from "./window";
 
 export class LoadingWindow implements IGameWindow {
     private renderer: PixiRenderer;
+    private progress: number = 0;
 
     constructor(renderer: PixiRenderer) {
         this.renderer = renderer;
@@ -20,10 +21,7 @@ export class LoadingWindow implements IGameWindow {
     }
 
     public startWindow(): void {
-        this.renderer.clear();
-        this.renderer.drawString(Game.WIDTH / 2 - 40, Game.HEIGHT / 2,
-            "Loading game data...");
-        this.renderer.render();
+        this.draw();
     }
 
     public stopWindow(): void {
@@ -31,6 +29,13 @@ export class LoadingWindow implements IGameWindow {
     }
 
     public draw(): void {
-        //
+        this.renderer.clear();
+        this.renderer.drawString(Game.WIDTH / 2 - 60, Game.HEIGHT / 2, "Loading game data... (" + this.progress + "%)");
+        this.renderer.render();
+    }
+
+    public setProgress(progress: number): void {
+        this.progress = progress;
+        this.draw();
     }
 }

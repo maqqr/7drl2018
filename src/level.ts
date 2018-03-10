@@ -61,7 +61,6 @@ export class Level {
     private tiles: TileID[] = [];
     private tilestate: TileState[] = [];
 
-
     private readonly data: GameData;
 
     constructor(width: number, height: number, depth: number, data: GameData, fillTile: number = 1) {

@@ -22,6 +22,7 @@ export class App {
     public data: GameData;
     public renderer: Renderer;
 
+    private loadingWindow: LoadingWindow;
     private window: IGameWindow = null;
     private keyDownCallBack: any;
 
@@ -33,7 +34,8 @@ export class App {
         this.renderer = new Renderer();
         this.renderer.addClickListener(this.handleClick.bind(this));
 
-        this.window = new LoadingWindow(this.renderer.renderer);
+        this.loadingWindow = new LoadingWindow(this.renderer.renderer);
+        this.window = this.loadingWindow;
         this.renderer.loadGraphics().then(this.graphicsLoaded.bind(this));
     }
 
@@ -67,6 +69,10 @@ export class App {
     }
 
     private handleKeyPress(e: KeyboardEvent): void {
+        // Prevent arrow key navigation.
+        if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
         this.window.handleKeyPress(this, e);
     }
 
@@ -75,18 +81,27 @@ export class App {
     }
 
     private async loadData(): Promise<void> {
+        this.loadingWindow.setProgress(0);
         const tileset = await this.loadJSON<ITileset>("data/tileset.json");
+        this.loadingWindow.setProgress(5);
         const creatureset = await this.loadJSON<ICreatureset>("data/creatureset.json");
+        this.loadingWindow.setProgress(10);
         const itemset = await this.loadJSON<IItemset>("data/itemset.json");
+        this.loadingWindow.setProgress(15);
         const furnitureset = await this.loadJSON<IFurnitureset>("data/furnitureset.json");
+        this.loadingWindow.setProgress(20);
         const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
+        this.loadingWindow.setProgress(25);
         this.data.prefixes = await this.loadJSON<IEnemyPrefixSet>("data/enemyprefixes.json");
+        this.loadingWindow.setProgress(30);
 
         const puzzleSchema = await this.loadJSON<any>("data/puzzle-schema.json");
+        this.loadingWindow.setProgress(50);
         const validator = new Validator();
 
         const questions = await this.loadJSON<ICharCreation>("data/charcreation.json");
         this.data.charcreation = questions;
+        this.loadingWindow.setProgress(55);
 
         const roomLoader = async (roomType: "puzzles"|"other"|"pre"|"base") => {
             for (let index = 0; index < puzzleList[roomType].length; index++) {
@@ -108,14 +123,19 @@ export class App {
         };
 
         await roomLoader("puzzles");
+        this.loadingWindow.setProgress(60);
         await roomLoader("other");
+        this.loadingWindow.setProgress(70);
         await roomLoader("pre");
+        this.loadingWindow.setProgress(80);
         await roomLoader("base");
+        this.loadingWindow.setProgress(90);
         const startRoomDef = await this.loadJSON<IPuzzleRoom>("data/puzzles/other12_1_tombofplayer.json");
         const finalRoomDef =
             await this.loadJSON<IPuzzleRoom>("data/puzzles/other24_bossfloor_tombofceciliaandvictorii.json");
         this.data.predefinedRooms.startRoom = new PuzzleRoom(startRoomDef);
         this.data.predefinedRooms.finalRoom = new PuzzleRoom(finalRoomDef);
+        this.loadingWindow.setProgress(100);
 
         // console.log(this.data);
 
