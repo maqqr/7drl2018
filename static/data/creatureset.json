@@ -81,7 +81,7 @@
         },
         {
             "id":224, "type": "demon", "name": "demon", "category": "demonic", "description": "An abyssal demon with large horns and reddish scale covered body.",
-            "flying": true, "maxhp": 55, "strength": 13, "defence": 3, "speed": 5, "willpower": 18, "size": 12,
+            "flying": true, "maxhp": 55, "strength": 11, "defence": 3, "speed": 5, "willpower": 18, "size": 12,
             "offensiveslot": false, "defenciveslot": false, "inventoryslots": 1,
             "inventory": ["tome"]
         },
@@ -109,13 +109,13 @@
 
         {
             "id":225, "type": "cultist", "name": "cultist", "category": "boss", "description": "A hooded human clad in black robes filled with runes.",
-            "maxhp": 25, "strength": 5, "defence": 0, "speed": 5, "willpower": 18, "size": 10,
+            "maxhp": 35, "strength": 5, "defence": 1, "speed": 5, "willpower": 18, "size": 10,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 3,
             "inventory": ["mace", "tome"]
         },
         {
             "id":226, "type": "vitalius", "name": "Vitalius", "category": "boss", "description": "At first glance you recognize who this person is, even though he is wearing decorated dark amethyst gown and has hidden his face under hood. His clothes are inscribed with slightly glowing silver runes and symbols. He is the one who cursed you all those years ago and you sense that he is the one that binds your spirit to eternal suffering!",
-            "maxhp": 70, "strength": 6, "defence": 1, "speed": 5, "willpower": 25, "size": 10,
+            "maxhp": 110, "strength": 10, "defence": 3, "speed": 5, "willpower": 24, "size": 10,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 3,
             "inventory": ["sword", "tome", "kalamakkara"]
         }
