@@ -143,6 +143,9 @@ export class App {
             cre.flying = getProp(cre, "flying", false, convertBool);
             cre.offensiveslot = getProp(cre, "offensiveslot", false, convertBool);
             cre.defenciveslot = getProp(cre, "defenciveslot", false, convertBool);
+            cre.fireimmunity = getProp(cre, "fireimmunity", false, convertBool);
+            cre.poisonimmunity = getProp(cre, "poisonimmunity", false, convertBool);
+            cre.spikeimmunity = getProp(cre, "spikeimmunity", false, convertBool);
             if (!("name" in cre)) { this.data.creatures[cre.id].category = "nameless creature"; }
             if (!("category" in cre)) { this.data.creatures[cre.id].category = "default"; }
             if (!("inventoryslots" in cre)) { this.data.creatures[cre.id].inventoryslots = null; }

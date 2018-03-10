@@ -25,6 +25,9 @@ export interface ICreature extends IHasType {
    namearticle: string;
    willpower: number;
    flying?: boolean;
+   fireimmunity?: boolean;
+   poisonimmunity?: boolean;
+   spikeimmunity?: boolean;
    category?: string;
    inventoryslots?: number;
    defenciveslot?: boolean;
