@@ -147,7 +147,7 @@ export class App {
             if (!("category" in cre)) { this.data.creatures[cre.id].category = "default"; }
             if (!("inventoryslots" in cre)) { this.data.creatures[cre.id].inventoryslots = null; }
             if (!("inventory" in cre)) { this.data.creatures[cre.id].inventory = null; }
-            // console.log(cre);
+            console.log(cre);
         }
 
         // Load item data
