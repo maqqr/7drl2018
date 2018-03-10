@@ -611,14 +611,23 @@ export class Game implements IGameWindow {
                 this.messagebuffer.add("You drink the potion. Your wounds heal instantly.");
                 return true;
             } else if (item.category === "tome") {
-                console.log("You used a tome"); // id = 14
                 const tilepos = Math.floor(Math.random() * 4);
                 const tilex = tilepos === 0 ? this.player.x + 1 : (tilepos === 1 ? this.player.x - 1 : this.player.x);
                 const tiley = tilepos === 2 ? this.player.y + 1 : (tilepos === 3 ? this.player.y - 1 : this.player.y);
-                this.currentLevel.set(tilex, tiley, 14);
-                // tslint:disable-next-line:max-line-length
-                this.messagebuffer.add("You try to mumble according to the symbols of this strange tome. You feel a lot warmer.");
+                const effect = Math.random();
+                const actext = "You try to mumble according to the symbols of this strange tome.";
+                const action = effect < 0.3 ? actext.concat(" A pile of lava erupts from deep underground")
+                : (effect < 0.6 ? actext.concat(" Water gushes through the floor.")
+                : (effect < 0.9 ? actext.concat(" A pond of vile acid forms at your feet.")
+                : actext.concat(" You see a demony figure appear before your eyes.")));
+                this.messagebuffer.add(action);
                 playerBody.inventory[this.itemSlotToBeUsed].item = "";
+                if (effect < 0.3) {this.currentLevel.set(tilex, tiley, 14); } else
+                if (effect < 0.6) {this.currentLevel.set(tilex, tiley, 13); } else
+                if (effect < 0.9) {this.currentLevel.set(tilex, tiley, 15); } else {
+                    this.currentLevel.set(tilex, tiley, 14); this.currentLevel
+                    .createCreatureAt(this.data.creatures[224], tilex, tiley); }
+
             } else {
                 this.messagebuffer.add("You can not use that.");
                 return false;
