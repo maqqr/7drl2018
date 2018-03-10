@@ -81,10 +81,7 @@ export class App {
         const puzzleList = await this.loadJSON<IPuzzleList>("data/puzzlelist.json");
 
         const questions = await this.loadJSON<ICharCreation>("data/charcreation.json");
-        console.log(questions);
         this.data.charcreation = questions;
-
-        // console.log(puzzleList);
 
         const roomLoader = async (roomType: "puzzles"|"other"|"pre"|"base") => {
             for (let index = 0; index < puzzleList[roomType].length; index++) {

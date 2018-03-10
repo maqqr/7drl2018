@@ -304,7 +304,6 @@ export class Game implements IGameWindow {
             this.currentLevel.nextLevel = undefined;
             this.currentLevel.prevLevel = undefined;
             const dump = { player: this.player, level: this.currentLevel };
-            console.log(dump);
 
             document.body.innerHTML = "";
             document.body.style.backgroundColor = "white";
