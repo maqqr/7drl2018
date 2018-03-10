@@ -1,6 +1,7 @@
 import { LevelRooms, PuzzleRoom } from "./entity";
 import { ICreature, IFurniture, IHasType, IItem, IPlayer, ITile } from "./interface/entity-schema";
 import { IPuzzleList, IPuzzleRoom } from "./interface/puzzle-schema";
+import { ICharCreation } from "./windows/charcreation";
 
 export class PredefinedRooms {
     public level: LevelRooms[] = [];
@@ -28,6 +29,8 @@ export class GameData {
     public items: {[id: number]: IItem} = {};
 
     public furnitures: {[id: number]: IFurniture} = {};
+
+    public charcreation: ICharCreation;
 
     public wintext: string[] = [
         "You have now succeeded in exacting your revenge. The man who cursed your soul to",
