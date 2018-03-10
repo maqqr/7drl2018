@@ -46,8 +46,8 @@ export class CharCreation implements IGameWindow {
 
     public draw(): void {
         this.renderer.clear();
-        this.renderer.drawString(50, 50, "(char gen here)", Color.white);
-        this.renderer.drawString(50, 100, "Press space", Color.white);
+        this.renderer.drawString(50, 50, "(character generation is still unfinished)", Color.white);
+        this.renderer.drawString(50, 100, "Press space to continue", Color.white);
         this.renderer.render();
     }
 
