@@ -1006,7 +1006,7 @@ export class Game implements IGameWindow {
             const movingToPlayer =
                 this.player.currentbody !== null && targetX === this.player.x && targetY === this.player.y;
 
-            if (this.currentLevel.getTileDamage(targetX, targetY) === 0 || cre.dataRef.flying || movingToPlayer) {
+            if (this.currentLevel.getTileDamage(targetX, targetY, cre) === 0 || cre.dataRef.flying || movingToPlayer) {
                 this.moveCreature(cre, targetX, targetY);
             }
         } else {
