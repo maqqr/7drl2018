@@ -114,7 +114,7 @@
             "inventory": ["mace", "tome"]
         },
         {
-            "id":226, "type": "vitalius", "name": "Vitalius", "category": "boss", "description": "At first glance you recognize who this person is, even though he is wearing decorated dark amethyst gown and has hidden his face under hood. His clothes are inscribed with slightly glowing silver runes and symbols. He is the one who cursed you all those years ago and you sense that he is the one that binds your spirit to eternal suffering!",
+            "id":226, "type": "vitalius", "name": "Vitalius", "category": "boss", "description": "At first glance you recognize who this person is, even though he is wearing a decorated dark amethyst gown and has hidden his face under a hood. His clothes are inscribed with slightly glowing silver runes and symbols. He is the one who cursed you all those years ago and you sense that he is the one that binds your spirit to eternal suffering!",
             "maxhp": 110, "strength": 10, "defence": 3, "speed": 5, "willpower": 24, "size": 10,
             "offensiveslot": true, "defenciveslot": true, "inventoryslots": 3,
             "inventory": ["sword", "tome", "kalamakkara"]
