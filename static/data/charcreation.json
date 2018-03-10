@@ -1,34 +1,34 @@
 {
     "questions": [
         {
-            "question": "In your youth, you and your cousin Markus had a friend named Norbert Omenius. Norbert was a child of a very noble and old family, even at your standards. Unfortunately, one day you walked in as Norbert was kicking Markus and making fun of your family. You stood there and did what?",
-            "willpower": "I resisted my urge to beat him, and begged Norbert to stop.",
-            "power": "I punched Norber in the face knocking him unconscious.",
-            "stability": "I turned away and pretended that I never noticed anything."
+            "question": "In my youth, me and my cousin Markus had a friend named Norbert Omenius. Norbert was a child of a very noble and old family, even at our standards. Unfortunately, one day I walked in as Norbert was kicking Markus and making fun of our family. I stood there and ..",
+            "willpower": "I resisted the urge to beat him, and begged Norbert to stop.",
+            "power": "I punched Norbert in the face, knocking him unconscious.",
+            "stability": "I turned away and pretended that I never saw anything."
         },
         {
-            "question": "Many years later in a ball, you find out that Norbert has returned to town and is attending the same party. You decide, that now is the time to get even with him. Your plan is:",
-            "willpower": "I'll steal some jewellery at the ball, and plant them in to the Norberts carriage.",
-            "power": "I'll quickly break in to his home, and trash his room.",
-            "stability": "I'll wait for an opportunity, and then give him a beating he deserves."
+            "question": "Many years later in a ball, I found out that Norbert has returned to town and is attending the same party. I decide, that now is the time to get even with him. My plan was: ..",
+            "willpower": "I'd steal some jewellery at the ball, and plant them in Norberts carriage.",
+            "power": "I'd quickly break in to his home, and trash his room.",
+            "stability": "I'd wait for an opportunity, and then give him the beating he deserved."
         },
         {
-            "question": "Just before you have successfully executed your plan, Norbert and two of his guards catch you in act. In the heat of the moment, you grab a knife and stab him in the throat and manage to flee from the situation. Panicking, because you have brought dishonor to your family, you decide to flee the country. What will you take with you?",
-            "willpower": "You only take the essentials: food and money. Then you sneak in the stables and saddle your father's best horse, hoping to make as much ground as possible before they start looking for you.",
-            "power": "You steal the family sword and other valuables. Hoping you can make a living as a mercenary or in the worst case sell some of your possessions.",
-            "stability": "You steal what you can and bribe a local farmer to hide you. Hoping to make a better plan the next day."
+            "question": "Just before I'd have successfully executed my plan, Norbert and two of his guards caught me red handed. In the heat of the moment, I grabbed a knife and stabbed him in the throat and managed to flee from the situation panicking. Because I brought dishonor to my family, I decided to flee the country. With me ..",
+            "willpower": "I took only take the essentials: food and money. Then I sneaked to the stables and saddled my father's best horse, hoping to make as much ground as possible before they start looking for me.",
+            "power": "I stole the family sword and other valuables. Hoping I could make a living as a mercenary, or in the worst case sell some of my possessions.",
+            "stability": "I stole what I could and bribed a local farmer to hide me. Hoping it would buy me some time to make a better plan the next day."
         },
         {
-            "question": "Despite your best efforts, you are caught in matter of hours and thrown behind lock and key. As you wait for the trial, you are visited by your uncle Vitalius. He tells you that your family is very disappointed and will not help you, for you must pay for your crime if the family honor is to be restored. When, at last, the day of the trial comes, no one from your family is present as you make your speech, trying to plead for you life. Your simple plan is:",
-            "willpower": "You lie, trying to blame the guards. Telling that they killed Norbert and you tried to save his life.",
-            "power": "Distract the guards and try to run.",
-            "stability": "Plead guilty, hoping your honesty will mitigate your sentence."
+            "question": "Despite my best efforts, I was caught in a matter of hours and I was thrown behind bars. As I waited for the trial, I was visited by my uncle Vitalius. He told me that my family was very disappointed and would not help me, for I must pay for my crime if the family honor is to be restored. When, at last, the day of the trial came, no one from my family was present as I made my speech. Trying to plead for my life I ..",
+            "willpower": "I lied, trying to blame the guards. I told that they killed Norbert and I tried to save his life.",
+            "power": "I tried to distract the guards and run.",
+            "stability": "I plead guilty, hoping my honesty will lessen my sentence."
         },
         {
-            "question": "But before you can make your desperate case, you are interrupted and informed that you will be executed the next day. Baffled for what is happening, you are locked in the dungeon and asked how you would like to be executed.",
-            "willpower": "Death by hanging.",
-            "power": "Death by beheading.",
-            "stability": "Death by poison."
+            "question": "But before I could make my desperate case, I was interrupted and informed that I will be executed the next day. Baffled for what is happening, I was locked in the dungeon and asked how I would like to be executed.",
+            "willpower": "I wanted a death by hanging so that the commoners would see my hanging corpse.",
+            "power": "I wanted a death by beheading to show that I was not a coward.",
+            "stability": "I wanted a death by poison as I wanted to slowly fade away."
         }
     ]
 }
