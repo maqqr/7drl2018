@@ -670,6 +670,8 @@ export class Game implements IGameWindow {
         const xx = this.player.currentbody.x + dx;
         const yy = this.player.currentbody.y + dy;
         let advanceTime = false;
+
+        // Push furniture
         for (const fur of this.currentLevel.getFurnituresAt(xx, yy)) {
             const furTargetX = fur.x + dx;
             const furTargetY = fur.y + dy;
@@ -693,6 +695,26 @@ export class Game implements IGameWindow {
                 this.messagebuffer.add("The " + fur.dataRef.name + " is too heavy for you to push.");
             }
         }
+
+        // Push creatures
+        const cre = this.currentLevel.getCreatureAt(xx, yy);
+        if (cre !== null) {
+            if (this.player.currentbody.dataRef.size >= cre.dataRef.size) {
+                const targetX = cre.x + dx;
+                const targetY = cre.y + dy;
+                if (this.isCurrable(targetX, targetY) &&
+                        this.creatureCanMoveTo(cre.dataRef.size, targetX, targetY)) {
+                    this.messagebuffer.add("You push the " + cre.dataRef.name + ".");
+                    this.moveCreature(cre, targetX, targetY);
+                    advanceTime = true;
+                } else {
+                    this.messagebuffer.add("Not enough space to push the " + cre.dataRef.name + " there.");
+                }
+            } else {
+                this.messagebuffer.add("You are too weak to push the " + cre.dataRef.name + ".");
+            }
+        }
+
         return advanceTime;
     }
 

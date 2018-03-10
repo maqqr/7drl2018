@@ -21,7 +21,7 @@ export class DungeonGenerator {
                                 roomsX: number,
                                 roomsY: number, depth: number): Level {
 
-        let fillTile = 0;
+        let fillTile = 1;
         let levelStyle = 0;
         if (depth >= 4) {
             levelStyle = 1;
