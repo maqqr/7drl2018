@@ -73,7 +73,7 @@
     <property name="probability" value="5"/>
    </properties>
   </object>
-  <object id="82" gid="250" x="97.5" y="31.5" width="16" height="16">
+  <object id="82" gid="250" x="96" y="32" width="16" height="16">
    <properties>
     <property name="probability" value="5"/>
    </properties>
