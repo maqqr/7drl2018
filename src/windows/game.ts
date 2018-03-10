@@ -286,34 +286,34 @@ export class Game implements IGameWindow {
         }
 
         // Debugging keys
-        if (e.code === "Home") {
-            Game.debugMode = !Game.debugMode;
-            if (Game.debugMode) {
-                this.messagebuffer.add("Debug mode activated.");
-            } else {
-                this.messagebuffer.add("Debug mode deactivated.");
-            }
-        }
-        if (Game.debugMode && e.code === "KeyP") {
-            this.placePlayerAtFurniture("stairsup");
-        }
-        if (Game.debugMode && e.code === "KeyO") {
-            this.placePlayerAtFurniture("stairsdown");
-        }
-        if (e.code === "KeyL") {
-            this.currentLevel.nextLevel = undefined;
-            this.currentLevel.prevLevel = undefined;
-            const dump = { player: this.player, level: this.currentLevel };
+        // if (e.code === "Home") {
+        //     Game.debugMode = !Game.debugMode;
+        //     if (Game.debugMode) {
+        //         this.messagebuffer.add("Debug mode activated.");
+        //     } else {
+        //         this.messagebuffer.add("Debug mode deactivated.");
+        //     }
+        // }
+        // if (Game.debugMode && e.code === "KeyP") {
+        //     this.placePlayerAtFurniture("stairsup");
+        // }
+        // if (Game.debugMode && e.code === "KeyO") {
+        //     this.placePlayerAtFurniture("stairsdown");
+        // }
+        // if (e.code === "KeyL") {
+        //     this.currentLevel.nextLevel = undefined;
+        //     this.currentLevel.prevLevel = undefined;
+        //     const dump = { player: this.player, level: this.currentLevel };
 
-            document.body.innerHTML = "";
-            document.body.style.backgroundColor = "white";
-            const textArea = document.createElement("p");
-            textArea.innerHTML = "Dumping data...";
-            document.body.appendChild(textArea);
-            setTimeout(() => {
-                textArea.innerHTML = JSON.stringify(dump);
-            }, 100);
-        }
+        //     document.body.innerHTML = "";
+        //     document.body.style.backgroundColor = "white";
+        //     const textArea = document.createElement("p");
+        //     textArea.innerHTML = "Dumping data...";
+        //     document.body.appendChild(textArea);
+        //     setTimeout(() => {
+        //         textArea.innerHTML = JSON.stringify(dump);
+        //     }, 100);
+        // }
 
         // 1-9 numbers - Use items
         if (!keyAccepted && this.player.currentbody !== null) {
