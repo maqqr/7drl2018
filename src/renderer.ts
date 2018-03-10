@@ -100,11 +100,13 @@ export class Renderer {
 
         const items = this.game.getCurrentLevel().items;
         for (const item of items) {
-            const tileState = level.getTileState(item.x, item.y);
-            if (tileState.state === TileVisibility.Visible) {
-                this.renderer.drawTexture(
-                    toScreen(this.game.mapOffsetX + item.x), toScreen(this.game.mapOffsetY + item.y),
-                    item.dataRef.icon, this.game.currentTintColor);
+            if (level.isInLevelBounds(item.x, item.y)) {
+                const tileState = level.getTileState(item.x, item.y);
+                if (tileState.state === TileVisibility.Visible) {
+                    this.renderer.drawTexture(
+                        toScreen(this.game.mapOffsetX + item.x), toScreen(this.game.mapOffsetY + item.y),
+                        item.dataRef.icon, this.game.currentTintColor);
+                }
             }
         }
 
