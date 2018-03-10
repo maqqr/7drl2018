@@ -52,6 +52,8 @@ export class Game implements IGameWindow {
     private renderer: Renderer;
     private currentLevel: Level = null;
 
+    private winReason: string = null;
+
     private handlers: { [id: number]: (e: KeyboardEvent) => void } = {};
 
     // private chargen: CharCreation = null;
@@ -250,12 +252,6 @@ export class Game implements IGameWindow {
     }
 
     public handleKeyPress(app: App, e: KeyboardEvent): void {
-
-        // if (this.chargen !== null) {
-        //     this.chargen.handleKeyPress(e);
-        //     return;
-        // }
-
         const px = this.player.x;
         const py = this.player.y;
         let keyAccepted = false;
@@ -408,7 +404,7 @@ export class Game implements IGameWindow {
                 const baseChance =
                     (1.0 - (cre.currenthp / cre.dataRef.maxhp)) + ((playerWp - creWp) / (playerWp + creWp));
                 const chance = Math.max(0.0, Math.min(1.0, baseChance));
-                const creatureName = cre.dataRef.type;
+                const creatureName = cre.dataRef.name;
 
                 if (chance < 1.0) {
                     const action = "You try to possess the " + creatureName +
@@ -494,6 +490,20 @@ export class Game implements IGameWindow {
             }
         }
 
+        // Check victory
+        if (this.winReason !== null) {
+            if (!(this.winReason in this.data.wintexts)) {
+                this.winReason = "other";
+            }
+            const texts = this.data.wintext.slice();
+            texts.push("");
+            for (const line of this.data.wintexts[this.winReason]) {
+                texts.push(line);
+            }
+            const gameover = new GameOver(this.renderer.renderer, "", texts);
+            app.setWindow(gameover);
+        }
+
         if (keyAccepted) {
             const speed = this.player.currentbody === null ? 5 : this.player.currentbody.dataRef.speed;
             this.updateLoop(advanceTime ? speed : 0);
@@ -540,10 +550,6 @@ export class Game implements IGameWindow {
         const tile = this.currentLevel.getTile(x, y);
 
         return (pile + creSize) <= tile.maxsize;
-    }
-
-    private playerTurn(): void {
-        //
     }
 
     private useItemCallback(keyCode: string): boolean {
@@ -727,7 +733,7 @@ export class Game implements IGameWindow {
         return advanceTime;
     }
 
-    private checkDeath(cre: Creature): void {
+    private checkDeath(cre: Creature, reason: string = "other"): void {
         if (cre.currenthp <= 0 && !cre.dead) {
             cre.dead = true;
 
@@ -757,6 +763,11 @@ export class Game implements IGameWindow {
                     this.currentLevel.addItemAt(newItem, cre.x, cre.y);
                 }
             }
+
+            // Check victory condition
+            if (cre.dataRef.type === "vitalius") {
+                this.winReason = reason;
+            }
         }
     }
 
@@ -785,8 +796,8 @@ export class Game implements IGameWindow {
         damage -= getItemDefence(defender) + defender.dataRef.defence;
         damage = Math.max(0, damage);
         defender.currenthp -= damage;
-        const attackerName = attacker === this.player.currentbody ? "you" : attacker.dataRef.type;
-        const defenderName = defender === this.player.currentbody ? "you" : "the " + defender.dataRef.type;
+        const attackerName = attacker === this.player.currentbody ? "you" : attacker.dataRef.name;
+        const defenderName = defender === this.player.currentbody ? "you" : "the " + defender.dataRef.name;
         const color = defender === this.player.currentbody ? Color.red : Color.skin;
 
         const extraS = attacker === this.player.currentbody ? "" : "s";
@@ -796,7 +807,7 @@ export class Game implements IGameWindow {
                 " and deal" + extraS + " " + damage + " damage.", color);
         }
 
-        this.checkDeath(defender);
+        this.checkDeath(defender, attacker.dataRef.category);
     }
 
     private moveCreature(cre: Creature, targetX: number, targetY: number): void {
@@ -822,11 +833,14 @@ export class Game implements IGameWindow {
             const damage = this.currentLevel.getTileDamage(targetX, targetY);
             if (damage > 0 && !cre.dataRef.flying) {
                 cre.currenthp -= damage;
+                const tileType = this.currentLevel.getTile(targetX, targetY).type;
+
                 if (cre === this.player.currentbody) {
-                    const tileName = this.currentLevel.getTile(targetX, targetY).type;
-                    this.messagebuffer.add("You take " + damage + " from the " + tileName + "!", Color.red);
+                    this.messagebuffer.add("You take " + damage + " from the " + tileType + "!", Color.red);
                 }
-                this.checkDeath(cre);
+
+                const reason = tileType;
+                this.checkDeath(cre, reason);
             }
         }
     }
@@ -886,7 +900,6 @@ export class Game implements IGameWindow {
             this.currentLevel.cleanupDeadCreatures();
         }
         this.renderer.renderGame();
-        this.playerTurn();
     }
 
     private updateAI(cre: Creature): void {

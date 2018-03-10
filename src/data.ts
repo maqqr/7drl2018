@@ -29,6 +29,26 @@ export class GameData {
 
     public furnitures: {[id: number]: IFurniture} = {};
 
+    public wintext: string[] = [
+        "You have now succeeded in exacting your revenge. The man who cursed your soul to",
+        "eternal punishment of existing between the world of living and the world of the",
+        "spirits is now dead. Your soul can now pass on to the spirit world and continue the cycle.",
+    ];
+
+    public wintexts: {[id: string]: string[]} = {
+        beast: ["Vitalius is devoured by the beast’s maw that gnaws on his bones!"],
+        boss: ["In the chaos of the fight, one cultist takes his knife and lunges it to",
+            "the Vitalius’ back, breaking his spine and ending his former master!"],
+        demonic: ["Demonic laughter echoes through the crypt as the last drop of life drains from Vitalius' body!"],
+        floor: ["Vitalius jumps on the spikes and bleeds to death."],
+        humanoid: ["Vitalius trips and breaks his neck."],
+        lava: ["Vitalius is thrown into the lava and dies burning while he slowly sinks."],
+        magic: ["Vitalius is mauled by the might of the magical creature!"],
+        other: ["Well, that's awkward...",
+            "You feel that Vitalius is no longer alive and you think that's that then..."],
+        undead: ["The undead creature rips Vitalius' limbs apart and starts feasting on his bone marrow!"],
+    };
+
     public player: IPlayer = {
         description: "This is me.",
         id: 255,

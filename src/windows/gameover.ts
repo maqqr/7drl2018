@@ -50,7 +50,9 @@ export class GameOver implements IGameWindow {
         this.renderer.drawString(280, 100, this.title, Color.white);
         let y = 0;
         for (const line of this.texts) {
-            this.renderer.drawString(45, 150 + y, line, Color.lightgray);
+            if (line.length > 0) {
+                this.renderer.drawString(45, 150 + y, line, Color.lightgray);
+            }
             y += 23;
         }
         if (this.canContinue) {
